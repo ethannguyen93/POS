@@ -1,0 +1,10 @@
+<div class="col-md-2 col-md-offset-4 passcode">
+    <input class="input-number" readonly="true" type="text"
+           ng-model="data.password" placeholder="Passcode"/>
+    <ul class="numpad">
+        <a ng-repeat="num in numpad" href ng-click="updatePasscode(num)">{{num}}</a>
+        <a href ng-click="verify()"><span class="glyphicon glyphicon-ok"></span></a>
+        <a href ng-click="updatePasscode('0')">0</a>
+        <a href ng-click="remove()"><span class="glyphicon glyphicon-chevron-left"></span></a>
+    </ul>
+</div>

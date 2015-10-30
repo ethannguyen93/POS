@@ -1,0 +1,82 @@
+<div class="container mainpage" ng-init="initMainpage()">
+    <div class="col-md-8">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Order number {{data.index}}
+            </div>
+            <div class="panel-body">
+                <div class="panel panel-default">
+                    <div ui-grid="data.gridOptions" ui-grid-pagination class="grid" ng-init="data.initOrder()"></div>
+                    <p>Current page: {{ admin.item.gridApi.pagination.getPage() }} of {{ admin.item.gridApi.pagination.getTotalPages() }}</p>
+                    <button type="button" class="btn btn-success" ng-click="admin.item.gridApi.pagination.previousPage()">
+                        previous page
+                    </button>
+                    <button type="button" class="btn btn-success" ng-click="admin.item.gridApi.pagination.nextPage()">
+                        next page
+                    </button>
+                </div>
+                <div class="col-md=5 payment">
+                    <div class="panel panel-default">
+                        <button type="button" ng-click="data.payOrder()" class="btn btn-success btn-block">Pay</button>
+                        <button type="button" ng-click="data.saveOrder()" class="btn btn-success btn-block">Save Order</button>
+                    </div>
+                </div>
+                <div class="col-md=6 subtotal">
+                    <div class="panel panel-default">
+
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <td>Subtotal:</td>
+                                <td>${{(data.subtotal).toFixed(2)}}</td>
+                            </tr>
+                            <tr>
+                                <td>Taxes:</td>
+                                <td>${{(data.subtotal*data.tax).toFixed(2)}}</td>
+                            </tr>
+                            <tr>
+                                <td>Total cost:</td>
+                                <td>${{(data.subtotal + data.subtotal*data.tax).toFixed(2)}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Categories
+            </div>
+            <div class="panel-body">
+                <button ng-repeat="cat in data.category" ng-click="getItem(cat)"
+                        type="button" class="btn btn-default btn-block">{{cat}}</button>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Items
+            </div>
+            <div class="panel-body">
+                <button ng-repeat="item in data.items" ng-click="addItemToOrder(item)"
+                        type="button" class="btn btn-default btn-block">{{item.name}}</button>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Add gift card
+            </div>
+            <div class="panel-body">
+                <button ng-click="addItemToOrder(item)"
+                        type="button" class="btn btn-default btn-block">Buy gift card</button>
+                <button ng-click="addItemToOrder(item)"
+                        type="button" class="btn btn-default btn-block">Use gift card</button>
+                <button ng-click="data.checkBalance()"
+                        type="button" class="btn btn-default btn-block">Check balance</button>
+            </div>
+        </div>
+    </div>
+</div>
+

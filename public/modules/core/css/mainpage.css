@@ -1,0 +1,10 @@
+.mainpage {
+    margin-top: 15px;
+    height: 80%;
+}
+.amount {
+    width: 30%;
+}
+.subtotal {
+    float: right;
+}

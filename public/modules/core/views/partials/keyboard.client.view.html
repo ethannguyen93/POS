@@ -1,0 +1,94 @@
+<ul class="keyboard">
+    <div ng-switch on="keyboard.shift">
+        <div ng-switch-when="shift-off">
+            <li ng-repeat="key in keyboard.keyboard.shiftoff.firstline track by $index" class="symbol"
+                ng-click="enter(key)">
+                <span> {{key}}</span>
+            </li>
+            <li class="delete lastitem" ng-click="enter('delete')">
+                <span class="glyphicon glyphicon-menu-left"></span>
+            </li>
+            <li class="tab" ng-click="enter('tab')">tab</li>
+            <li ng-repeat="key in keyboard.keyboard.shiftoff.secondline track by $index" class="symbol"
+                ng-click="enter(key)">
+                <span> {{key}}</span>
+            </li>
+            <li class="symbol lastitem" ng-click="enter('\\')">
+                <span>\</span>
+            </li>
+            <li class="capslock" ng-click="enter('caps')">caps lock</li>
+            <li ng-repeat="key in keyboard.keyboard.shiftoff.thirdline track by $index" class="symbol"
+                ng-click="enter(key)">
+                <span> {{key}}</span>
+            </li>
+            <li class="return lastitem" ng-click="enter('enter')">Enter</li>
+            <li class="left-shift" ng-click="enter('shift')">shift</li>
+            <li ng-repeat="key in keyboard.keyboard.shiftoff.forthline track by $index" class="symbol"
+                ng-click="enter(key)">
+                <span> {{key}}</span>
+            </li>
+            <li class="right-shift lastitem" ng-click="enter('shift')">shift</li>
+            <li class="space lastitem" ng-click="enter('space')">&nbsp;</li>
+        </div>
+        <div ng-switch-when="shift-on">
+            <li ng-repeat="key in keyboard.keyboard.shifton.firstline track by $index" class="symbol"
+                ng-click="enter(key)">
+                <span> {{key}}</span>
+            </li>
+            <li class="delete lastitem" ng-click="enter('delete')">
+                <span class="glyphicon glyphicon-menu-left"></span>
+            </li>
+            <li class="tab" ng-click="enter('tab')">tab</li>
+            <li ng-repeat="key in keyboard.keyboard.shifton.secondline track by $index" class="symbol"
+                ng-click="enter(key)">
+                <span> {{key}}</span>
+            </li>
+            <li class="symbol lastitem" ng-click="enter('|')">
+                <span>|</span>
+            </li>
+            <li class="capslock" ng-click="enter('caps')">caps lock</li>
+            <li ng-repeat="key in keyboard.keyboard.shifton.thirdline track by $index" class="symbol"
+                ng-click="enter(key)">
+                <span> {{key}}</span>
+            </li>
+            <li class="return lastitem" ng-click="enter('enter')">Enter</li>
+            <li class="left-shift" ng-click="enter('shift')">shift</li>
+            <li ng-repeat="key in keyboard.keyboard.shifton.forthline track by $index" class="symbol"
+                ng-click="enter(key)">
+                <span> {{key}}</span>
+            </li>
+            <li class="right-shift lastitem" ng-click="enter('shift')">shift</li>
+            <li class="space lastitem" ng-click="enter('space')">&nbsp;</li>
+        </div>
+        <div ng-switch-when="tab-on">
+            <li ng-repeat="key in keyboard.keyboard.tabon.firstline track by $index" class="symbol"
+                ng-click="enter(key)">
+                <span> {{key}}</span>
+            </li>
+            <li class="delete lastitem" ng-click="enter('delete')">
+                <span class="glyphicon glyphicon-menu-left"></span>
+            </li>
+            <li class="tab" ng-click="enter('tab')">tab</li>
+            <li ng-repeat="key in keyboard.keyboard.tabon.secondline track by $index" class="symbol"
+                ng-click="enter(key)">
+                <span> {{key}}</span>
+            </li>
+            <li class="symbol lastitem" ng-click="enter('\\')">
+                <span>\</span>
+            </li>
+            <li class="capslock" ng-click="enter('caps')">caps lock</li>
+            <li ng-repeat="key in keyboard.keyboard.tabon.thirdline track by $index" class="symbol"
+                ng-click="enter(key)">
+                <span> {{key}}</span>
+            </li>
+            <li class="return lastitem" ng-click="enter('enter')">Enter</li>
+            <li class="left-shift" ng-click="enter('shift')">shift</li>
+            <li ng-repeat="key in keyboard.keyboard.tabon.forthline track by $index" class="symbol"
+                ng-click="enter(key)">
+                <span> {{key}}</span>
+            </li>
+            <li class="right-shift lastitem" ng-click="enter('shift')">shift</li>
+            <li class="space lastitem" ng-click="enter('space')">&nbsp;</li>
+        </div>
+    </div>
+</ul>

@@ -1,0 +1,28 @@
+<div class="modal-header">
+    <h3 class="modal-title">Change password</h3>
+</div>
+<div class="modal-body">
+    <div class="alert alert-danger" role="alert" ng-show="data.isError">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        {{data.errorMessage}}
+    </div>
+    <div class="alert alert-success" role="alert" ng-show="data.success">
+        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+        <span class="sr-only">Success:</span>
+        Saved successfully
+    </div>
+    <div class="col-md-2 col-md-offset-4 passcode">
+        <input class="input-number password-modal" readonly="true" type="text"
+               ng-model="data.newpassword" placeholder="{{data.placeholder}}"/>
+        <ul class="numpad">
+            <a ng-repeat="num in numpad" href ng-click="updatePasscode(num)">{{num}}</a>
+            <a href ng-click="verify()"><span class="glyphicon glyphicon-ok"></span></a>
+            <a href ng-click="updatePasscode('0')">0</a>
+            <a href ng-click="remove()"><span class="glyphicon glyphicon-chevron-left"></span></a>
+        </ul>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="finish()">Finish</button>
+</div>

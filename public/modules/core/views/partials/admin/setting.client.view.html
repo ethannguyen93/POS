@@ -1,0 +1,23 @@
+<div>
+    <div class="alert alert-danger" role="alert" ng-show="admin.setting.isError">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        {{admin.setting.errorMessage}}
+    </div>
+    <div class="form-group">
+        <label>Account name: {{admin.setting.name}}</label>
+    </div>
+    <div class="form-group">
+        <label>Current password:</label>
+        <input disabled="true" type="password" class="form-control" placeholder="Password" ng-model="admin.setting.passcode">
+    </div>
+    <div class="form-group">
+        <label>New password:</label>
+        <input type="password" ng-change="admin.setting.onchange()" class="form-control" placeholder="Password" ng-model="admin.setting.newpasscode" ng-pattern="/^.{6,12}$/">
+    </div>
+    <div class="form-group">
+        <label>New password:</label>
+        <input type="password" ng-change="admin.setting.onchange()" class="form-control" placeholder="Password" ng-model="admin.setting.newpasscode_repeat" ng-pattern="/^.{6,12}$/">
+    </div>
+    <button type="submit" class="btn btn-default" ng-click="changepassword()">Submit</button>
+</div>

@@ -1,0 +1,15 @@
+<div>
+    <div class="alert alert-danger" role="alert" ng-show="admin.item.isError">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        {{admin.item.errorMessage}}
+    </div>
+    <div ui-grid="admin.item.gridOptions" ui-grid-pagination ui-grid-edit class="grid" ng-init="initItem()"></div>
+    <p>Current page: {{ admin.item.gridApi.pagination.getPage() }} of {{ admin.item.gridApi.pagination.getTotalPages() }}</p>
+    <button type="button" class="btn btn-success" ng-click="admin.item.gridApi.pagination.previousPage()">
+        previous page
+    </button>
+    <button type="button" class="btn btn-success" ng-click="admin.item.gridApi.pagination.nextPage()">
+        next page
+    </button>
+</div>
