@@ -7,11 +7,11 @@
             <div class="panel-body">
                 <div class="panel panel-default">
                     <div ui-grid="data.gridOptions" ui-grid-pagination class="grid" ng-init="data.initOrder()"></div>
-                    <p>Current page: {{ admin.item.gridApi.pagination.getPage() }} of {{ admin.item.gridApi.pagination.getTotalPages() }}</p>
-                    <button type="button" class="btn btn-success" ng-click="admin.item.gridApi.pagination.previousPage()">
+                    <p>Current page: {{ data.gridApi.pagination.getPage() }} of {{ data.gridApi.pagination.getTotalPages() }}</p>
+                    <button type="button" class="btn btn-success" ng-click="data.gridApi.pagination.previousPage()">
                         previous page
                     </button>
-                    <button type="button" class="btn btn-success" ng-click="admin.item.gridApi.pagination.nextPage()">
+                    <button type="button" class="btn btn-success" ng-click="data.gridApi.pagination.nextPage()">
                         next page
                     </button>
                 </div>
@@ -32,11 +32,11 @@
                             </tr>
                             <tr>
                                 <td>Taxes:</td>
-                                <td>${{(data.subtotal*data.tax).toFixed(2)}}</td>
+                                <td>${{(data.tax).toFixed(2)}}</td>
                             </tr>
                             <tr>
                                 <td>Total cost:</td>
-                                <td>${{(data.subtotal + data.subtotal*data.tax).toFixed(2)}}</td>
+                                <td>${{(data.subtotal + data.tax).toFixed(2)}}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -69,9 +69,9 @@
                 Add gift card
             </div>
             <div class="panel-body">
-                <button ng-click="addItemToOrder(item)"
+                <button ng-click="data.buyGiftcard()"
                         type="button" class="btn btn-default btn-block">Buy gift card</button>
-                <button ng-click="addItemToOrder(item)"
+                <button ng-click="data.useGiftcard()"
                         type="button" class="btn btn-default btn-block">Use gift card</button>
                 <button ng-click="data.checkBalance()"
                         type="button" class="btn btn-default btn-block">Check balance</button>

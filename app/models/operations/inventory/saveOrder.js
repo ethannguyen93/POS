@@ -19,12 +19,20 @@ module.exports = function (req, res) {
                                todayDate: result[0].todayDate
                            },
                            {
-                               $set: {todayDate: now}
+                               $set: {todayDate: now, index: 0}
                            }, function(){
                                deferred.resolve(0);
                            })
                    }else{
-                       deferred.resolve(result[0].index);
+                       collection.update(
+                           {
+                               todayDate: result[0].todayDate
+                           },
+                           {
+                               $set: {todayDate: now, index: result[0].index + 1}
+                           }, function(){
+                               deferred.resolve(result[0].index);
+                           });
                    }
                }else{
                    collection.insert(

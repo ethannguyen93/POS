@@ -17,7 +17,7 @@ angular.module('core').controller('HomeController', [
 		/**********************************************************************************************************/
 		/**********************************************************************************************************/
 		/**********************************************************************************************************/
-		$scope.view = 'numpad';
+		$scope.view = 'mainpage';
 		$scope.logOut = function(){
 			$scope.view = 'numpad';
 			$scope.data.password = '';
@@ -113,7 +113,7 @@ angular.module('core').controller('HomeController', [
 			categories: [],
 			items: [],
 			subtotal: 0,
-			tax: 0.13,
+			tax: 0,
 			currentUser: {
 				name: ''
 			},
@@ -122,6 +122,9 @@ angular.module('core').controller('HomeController', [
 				paginationPageSize: 10,
 				data: 'data.orders'
 			}
+		};
+		$scope.data.gridOptions.onRegisterApi = function (gridApi) {
+			$scope.data.gridApi = gridApi;
 		};
 		$scope.data.initOrder = function(){
 			$scope.data.gridOptions.columnDefs = [
@@ -198,6 +201,7 @@ angular.module('core').controller('HomeController', [
 		};
 		$scope.addItemToOrder = function(item){
 			MainpageServices.addItem($scope, item);
+			$scope.data.tax += item.price * 0.13;
 		};
 		$scope.updateOrder = function(type, index){
 			MainpageServices.updateOrder($scope, type, index);
@@ -210,6 +214,9 @@ angular.module('core').controller('HomeController', [
 				return order.id === id;
 			});
 			MainpageServices.removeItem($scope, item);
+			if (!item.isGiftcard){
+				$scope.data.tax -= item.price*0.13;
+			}
 		};
 		$scope.data.checkBalance = function () {
 			$scope.data.checkBalanceModal();
@@ -227,8 +234,62 @@ angular.module('core').controller('HomeController', [
 			});
 			return deferred.promise;
 		};
+		$scope.data.buyGiftcard = function () {
+			$scope.data.buyGiftcardModal().then(function(giftcard){
+				if (giftcard !== undefined){
+					giftcard.name = 'Giftcard ' + giftcard.number;
+					giftcard.price = giftcard.amount;
+					MainpageServices.addItem($scope, giftcard);
+				}
+			});
+		};
+		$scope.data.buyGiftcardModal = function () {
+			var deferred = $q.defer();
+			var editorInstance = $modal.open({
+				animation: true,
+				windowClass: 'modal-fullwindow',
+				templateUrl: 'modules/core/views/buyGiftcardModal.client.view.html',
+				controller: 'buyGiftcardCtrl'
+			});
+			editorInstance.result.then(function (giftcard) {
+				deferred.resolve(giftcard);
+			});
+			return deferred.promise;
+		};
+		$scope.data.useGiftcard = function () {
+			$scope.data.useGiftcardModal().then(function(giftcard){
+				if (giftcard !== undefined){
+					giftcard.name = 'Giftcard ' + giftcard.number;
+					giftcard.price = - giftcard.amount;
+					MainpageServices.addItem($scope, giftcard);
+				}
+			});
+		};
+		$scope.data.useGiftcardModal = function () {
+			var deferred = $q.defer();
+			var editorInstance = $modal.open({
+				animation: true,
+				windowClass: 'modal-fullwindow',
+				templateUrl: 'modules/core/views/useGiftcardModal.client.view.html',
+				controller: 'useGiftcardCtrl'
+			});
+			editorInstance.result.then(function (giftcard) {
+				deferred.resolve(giftcard);
+			});
+			return deferred.promise;
+		};
 		$scope.data.saveOrder = function () {
 			MainpageServices.saveOrder($scope);
+			$scope.logOut();
+		};
+		$scope.data.payOrder = function () {
+			console.log('here');
+			var body = {
+				'type': 'printReceipt'
+			};
+			RetrieveInventory.load(body, function(response){
+				console.log(response);
+			});
 		};
 		/**********************************************************************************************************/
 		/**********************************************************************************************************/
@@ -241,7 +302,7 @@ angular.module('core').controller('HomeController', [
 		/**********************************************************************************************************/
 		/*Admin Main Page*/
 		$scope.admin = {
-			page: 'giftcard',
+			page: 'report',
 			setting: {
 				name: '',
 				passcode: '',
@@ -703,6 +764,58 @@ angular.module('core').controller('HomeController', [
 					}
 				];
 			});
+		};
+		/******************************************************************************************************/
+		$scope.dt = new Date();
+
+		$scope.openDate = function($event) {
+			$scope.status.opened = true;
+		};
+
+		$scope.setDate = function(year, month, day) {
+			$scope.dt = new Date(year, month, day);
+		};
+
+		$scope.dateOptions = {
+			formatYear: 'yy',
+			startingDay: 1
+		};
+		$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+		$scope.format = 'dd-MMMM-yyyy';
+
+		$scope.status = {
+			opened: false
+		};
+		var tomorrow = new Date();
+		tomorrow.setDate(tomorrow.getDate() + 1);
+		var afterTomorrow = new Date();
+		afterTomorrow.setDate(tomorrow.getDate() + 2);
+		$scope.events =
+			[
+				{
+					date: tomorrow,
+					status: 'full'
+				},
+				{
+					date: afterTomorrow,
+					status: 'partially'
+				}
+			];
+
+		$scope.getDayClass = function(date, mode) {
+			if (mode === 'day') {
+				var dayToCheck = new Date(date).setHours(0,0,0,0);
+
+				for (var i=0;i<$scope.events.length;i++){
+					var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
+
+					if (dayToCheck === currentDay) {
+						return $scope.events[i].status;
+					}
+				}
+			}
+
+			return '';
 		};
 	}
 

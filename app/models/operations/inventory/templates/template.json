@@ -1,0 +1,39 @@
+﻿{
+    "name": "Dummy Template for Test",
+    "version": "1.0.0",
+    "debug": false,
+    "options": {
+        "pages": [
+            {
+                "layout": {
+                    "size": [200, 400],
+                    "header": false,
+                    "footer": false,
+                    "layout": "portrait",
+                    "margins": {
+                        "top": 0,
+                        "left": 0,
+                        "bottom": 0,
+                        "right": 0
+                    }
+                },
+                "sections": {
+                    "content": {
+                        "font": {
+                            "name": "./app/models/operations/inventory/fonts/arial.ttf",
+                            "size": 12,
+                            "color": "#000000"
+                        },
+                        "format": {
+                            "align": "center",
+                            "left": 0,
+                            "top": 0,
+                            "width": 200,
+                            "height": 350
+                        }
+                    }
+                }
+            }
+        ]
+    }
+}

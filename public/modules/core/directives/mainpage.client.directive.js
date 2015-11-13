@@ -91,5 +91,14 @@ angular.module('core')
 				templateUrl: 'modules/core/views/partials/admin/giftcard.client.view.html'
 			};
 		}
+	])
+	.directive('adminReport', [
+		function() {
+			return {
+				restrict: 'E',
+				replace: true,
+				templateUrl: 'modules/core/views/partials/admin/report.client.view.html'
+			};
+		}
 	]);
 

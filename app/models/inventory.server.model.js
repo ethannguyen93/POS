@@ -39,7 +39,8 @@ var operationMap = {
 	updateItem: require('./operations/inventory/updateItem'),
 	saveOrder: require('./operations/inventory/saveOrder'),
 	getOrder: require('./operations/inventory/getOrder'),
-	selectOneOrder: require('./operations/inventory/selectOneOrder')
+	selectOneOrder: require('./operations/inventory/selectOneOrder'),
+	printReceipt: require('./operations/inventory/printReceipt')
 };
 
 exports.operationMap = operationMap;

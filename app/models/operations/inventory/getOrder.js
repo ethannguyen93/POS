@@ -15,8 +15,15 @@ module.exports = function (req, res) {
                     if (err) {
                         console.log(err);
                     } else {
+                        console.log(result);
+                        var now = new Date ();
                         _.map(result, function(i){
-                            items.push(i);
+                            var isSameDay = (now.getDate() == i.timeOrderPlaced.getDate()
+                            && now.getMonth() == i.timeOrderPlaced.getMonth()
+                            && now.getFullYear() == i.timeOrderPlaced.getFullYear());
+                            if (isSameDay){
+                                items.push(i);
+                            }
                         });
                         res.jsonp(items);
                     }

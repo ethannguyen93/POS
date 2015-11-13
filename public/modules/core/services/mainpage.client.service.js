@@ -22,6 +22,7 @@ angular.module('core').factory('MainpageServices', ['RetrieveInventory',
 				}
 			},
 			addItem: function($scope, item){
+				console.log(item);
 				var index = -1;
 				var prevItem = _.find($scope.data.orders, function(order){
 					index++;
@@ -33,7 +34,8 @@ angular.module('core').factory('MainpageServices', ['RetrieveInventory',
 						'name': item.name,
 						'price': item.price,
 						'quantity': 1,
-						'index': $scope.data.orders.length
+						'index': $scope.data.orders.length,
+						'isGiftcard': (item.hasOwnProperty('number'))
 					}));
 				}else{
 					$scope.data.orders[index].quantity++;
@@ -73,7 +75,7 @@ angular.module('core').factory('MainpageServices', ['RetrieveInventory',
 					index++;
 				});
 				$scope.data.subtotal -= item.quantity*item.price;
-				if ($scope.data.subtotal < 0){
+				if ($scope.data.subtotal === 0){
 					$scope.data.subtotal = 0;
 				}
 			}
