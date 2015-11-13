@@ -4,12 +4,12 @@
         <span class="sr-only">Error:</span>
         {{admin.employee.errorMessage}}
     </div>
-    <div ui-grid="admin.employee.gridOptions" ui-grid-pagination ui-grid-edit class="grid" ng-init="initEmployee()"></div>
-    <p>Current page: {{ admin.employee.gridApi.pagination.getPage() }} of {{ admin.employee.gridApi.pagination.getTotalPages() }}</p>
-    <button type="button" class="btn btn-success" ng-click="admin.employee.gridApi.pagination.previousPage()">
-        previous page
-    </button>
-    <button type="button" class="btn btn-success" ng-click="admin.employee.gridApi.pagination.nextPage()">
-        next page
-    </button>
+    <div id="employee-grid" ui-grid="admin.employee.gridOptions" ui-grid-pagination ui-grid-edit class="grid" ng-init="initEmployee(); initFTScrollerGrid('employee-grid');" ></div>
+
+
+    <pos-pagination page="{{ admin.employee.gridApi.pagination.getPage() }}"
+                of="{{ admin.employee.gridApi.pagination.getTotalPages() }}"
+                prev="admin.employee.gridApi.pagination.previousPage()"
+                next="admin.employee.gridApi.pagination.nextPage()"
+                ></pos-pagination>
 </div>

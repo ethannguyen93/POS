@@ -1,40 +1,40 @@
-<section data-ng-controller="HomeController">
-	<header class="navbar navbar-fixed-top navbar-inverse">
-		<div class="container">
-			<div class="navbar-header">
-				<a href="/#!/" class="navbar-brand">POS</a>
-			</div>
-			<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
-				<div ng-switch on="view">
-					<ul class="nav navbar-nav navbar-right" ng-switch-when='numpad'>
-						<li>
-							<a ng-click="navigateAdminPage()">Admin</a>
-						</li>
-					</ul>
-					<ul class="nav navbar-nav navbar-right" ng-switch-when='mainpage'>
-						<li><a>{{data.currentUser.name}}</a></li>
-						<li>
-							<a ng-click="logOut()">Log Out</a>
-						</li>
-					</ul>
-					<ul class="nav navbar-nav navbar-right" ng-switch-when='adminpagelogin'>
-						<li>
-							<a ng-click="navigateNumpadPage()">Back</a>
-						</li>
-					</ul>
-					<ul class="nav navbar-nav navbar-right" ng-switch-when='adminpage'>
-						<li>
-							<a ng-click="navigateNumpadPage()">Log out</a>
-						</li>
-					</ul>
-				</div>
-			</nav>
-		</div>
-	</header>
-	<div class='col-md-12 property-content' ng-switch on='view'>
-		<num-pad ng-switch-when='numpad'></num-pad>
-		<main-page ng-switch-when='mainpage'></main-page>
-		<admin-pagelogin ng-switch-when='adminpagelogin'></admin-pagelogin>
-		<admin-page ng-switch-when="adminpage"></admin-page>
-	</div>
+<section class="main-container" data-ng-controller="HomeController">
+    <header class="navbar navbar-fixed-top navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="/#!/" class="navbar-brand">POS</a>
+            </div>
+            <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
+                <div ng-switch on="view">
+                    <ul class="nav navbar-nav navbar-right" ng-switch-when='numpad'>
+                        <li>
+                            <a ng-click="navigateAdminPage()">Admin</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right" ng-switch-when='mainpage'>
+                        <li><a>{{data.currentUser.name}}</a></li>
+                        <li>
+                            <a ng-click="logOut()">Log Out</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right" ng-switch-when='adminpagelogin'>
+                        <li>
+                            <a ng-click="navigateNumpadPage()">Back</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right" ng-switch-when='adminpage'>
+                        <li>
+                            <a ng-click="navigateNumpadPage()">Log out</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="row property-content" ng-switch on='view'>
+            <num-pad ng-switch-when='numpad'></num-pad>
+            <main-page ng-switch-when='mainpage'></main-page>
+            <admin-pagelogin ng-switch-when='adminpagelogin'></admin-pagelogin>
+            <admin-page ng-switch-when="adminpage"></admin-page>
+    </div>
 </section>

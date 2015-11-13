@@ -4,12 +4,10 @@
         <span class="sr-only">Error:</span>
         {{admin.category.errorMessage}}
     </div>-->
-    <div ui-grid="admin.giftcard.gridOptions" ui-grid-pagination class="grid" ng-init="initGiftcard()"></div>
-    <p>Current page: {{ admin.giftcard.gridApi.pagination.getPage() }} of {{ admin.giftcard.gridApi.pagination.getTotalPages() }}</p>
-    <button type="button" class="btn btn-success" ng-click="admin.giftcard.gridApi.pagination.previousPage()">
-        previous page
-    </button>
-    <button type="button" class="btn btn-success" ng-click="admin.giftcard.gridApi.pagination.nextPage()">
-        next page
-    </button>
+    <div id="giftcard-grid" ui-grid="admin.giftcard.gridOptions" ui-grid-pagination class="grid" ng-init="initGiftcard(); initFTScrollerGrid('giftcard-grid');"></div>
+    <pos-pagination page="{{ admin.giftcard.gridApi.pagination.getPage() }}"
+                    of="{{ admin.giftcard.gridApi.pagination.getTotalPages() }}"
+                    prev="admin.giftcard.gridApi.pagination.previousPage()"
+                    next="admin.giftcard.gridApi.pagination.nextPage()"
+            ></pos-pagination>
 </div>

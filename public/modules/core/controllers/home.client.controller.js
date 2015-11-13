@@ -118,6 +118,8 @@ angular.module('core').controller('HomeController', [
 				name: ''
 			},
 			gridOptions: {
+				rowHeight: 50,
+				columnFooterHeight: 60,
 				enablePaginationControls: false,
 				paginationPageSize: 10,
 				data: 'data.orders'
@@ -130,7 +132,8 @@ angular.module('core').controller('HomeController', [
 			$scope.data.gridOptions.columnDefs = [
 				{
 					name: '#' ,
-					field: 'index'
+					field: 'index',
+					width: '80'
 				},
 				{
 					name: 'Item' ,
@@ -139,15 +142,18 @@ angular.module('core').controller('HomeController', [
 				{
 					name: 'Price' ,
 					field: 'price',
-					cellFilter: 'priceFilter'
+					cellFilter: 'priceFilter',
+					width: '100'
 				},
 				{
 					name: 'Quantity',
-					cellTemplate: 'modules/core/views/partials/mainpage/plusminus.client.view.html'
+					cellTemplate: 'modules/core/views/partials/mainpage/plusminus.client.view.html',
+					width: '200'
 				},
 				{
 					name: 'Remove',
-					cellTemplate: 'modules/core/views/partials/mainpage/remove.client.view.html'
+					cellTemplate: 'modules/core/views/partials/mainpage/remove.client.view.html',
+					width: '150'
 				}
 			];
 		};
@@ -169,7 +175,7 @@ angular.module('core').controller('HomeController', [
 						$scope.data.index = selectedItem.data;
 						break;
 					case 'order':
-						debugger;
+						//debugger;
 						$scope.data.index = selectedItem.data.index;
 						$scope.data.order = selectedItem.data._id;
 						$scope.data.orders = selectedItem.data.orders;
@@ -315,6 +321,8 @@ angular.module('core').controller('HomeController', [
 				isError: false,
 				errorMessage: '',
 				gridOptions: {
+					rowHeight: 60,
+					columnFooterHeight: 60,
 					showColumnFooter: true,
 					enableFiltering: true,
 					enablePaginationControls: false,
@@ -329,6 +337,8 @@ angular.module('core').controller('HomeController', [
 				isError: false,
 				errorMessage: '',
 				gridOptions: {
+					rowHeight: 60,
+					columnFooterHeight: 60,
 					showColumnFooter: true,
 					enableFiltering: true,
 					enablePaginationControls: false,
@@ -342,6 +352,8 @@ angular.module('core').controller('HomeController', [
 				isError: false,
 				errorMessage: '',
 				gridOptions: {
+					rowHeight: 60,
+					columnFooterHeight: 60,
 					enableFiltering: true,
 					enablePaginationControls: false,
 					paginationPageSize: 10,
@@ -355,6 +367,8 @@ angular.module('core').controller('HomeController', [
 				isError: false,
 				errorMessage: '',
 				gridOptions: {
+					rowHeight: 60,
+					columnFooterHeight: 60,
 					showColumnFooter: true,
 					enableFiltering: true,
 					enablePaginationControls: false,
@@ -817,6 +831,30 @@ angular.module('core').controller('HomeController', [
 
 			return '';
 		};
+		/******************************************************************************************************/
+		/*Scroller Initialization*/
+		$scope.initFTScroller = function(id) {
+			var containerElement = document.getElementById(id);
+			console.log(containerElement);
+			setTimeout(function() {
+				var scroller = new FTScroller(containerElement, {
+					//contentHeight: 160,
+					alwaysScroll: true,
+					scrollingY: false
+				});
+			}, 100);
+		};
+
+		$scope.initFTScrollerGrid = function(id) {
+			setTimeout(function() {
+				var containerElement = document.querySelector("#" + id + " .ui-grid-viewport");
+				console.log(containerElement);
+				var scroller = new FTScroller(containerElement, {
+					alwaysScroll: true,
+					scrollingX: false,
+				});
+			}, 100);
+		}
 	}
 
 ]);

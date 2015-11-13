@@ -32,7 +32,9 @@ module.exports = {
 				'public/lib/underscore/underscore-min.js',
 				'public/lib/eeh-navigation/dist/eeh-navigation.js',
 				'public/lib/eeh-navigation/dist/eeh-navigation.tpl.js',
-				'public/lib/angular-ui-grid/ui-grid.min.js'
+				'public/lib/angular-ui-grid/ui-grid.min.js',
+				'public/lib/ftscroller/lib/ftscroller.js',
+				'public/lib/dragscroll/dragscroll.js'
 			]
 		},
 		css: [

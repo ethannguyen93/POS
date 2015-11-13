@@ -1,80 +1,106 @@
-<div class="container mainpage" ng-init="initMainpage()">
-    <div class="col-md-8">
-        <div class="panel panel-primary">
+<div class="col-md-12 property-content-container mainpage" ng-init="initMainpage()">
+    <div class="flex-panel col-md-8">
+
+        <div class="order-panel flex-panel-content">
             <div class="panel-heading">
                 Order number {{data.index}}
             </div>
-            <div class="panel-body">
-                <div class="panel panel-default">
-                    <div ui-grid="data.gridOptions" ui-grid-pagination class="grid" ng-init="data.initOrder()"></div>
-                    <p>Current page: {{ data.gridApi.pagination.getPage() }} of {{ data.gridApi.pagination.getTotalPages() }}</p>
-                    <button type="button" class="btn btn-success" ng-click="data.gridApi.pagination.previousPage()">
-                        previous page
-                    </button>
-                    <button type="button" class="btn btn-success" ng-click="data.gridApi.pagination.nextPage()">
-                        next page
-                    </button>
+            <div id="order-grid" ui-grid="data.gridOptions" ui-grid-pagination class="grid" ng-init="data.initOrder(); initFTScrollerGrid('order-grid')"></div>
+            <pos-pagination page="{{ data.gridApi.pagination.getPage() }}"
+                            of="{{ data.gridApi.pagination.getTotalPages() }}"
+                            prev="data.gridApi.pagination.previousPage()"
+                            next="data.gridApi.pagination.nextPage()"></pos-pagination>
+            <!--<div class="panel panel-primary">
+                <div class="panel-heading">
+                    Order number {{data.index}}
                 </div>
-                <div class="col-md=5 payment">
+                <div class="panel-body">
                     <div class="panel panel-default">
-                        <button type="button" ng-click="data.payOrder()" class="btn btn-success btn-block">Pay</button>
-                        <button type="button" ng-click="data.saveOrder()" class="btn btn-success btn-block">Save Order</button>
+                        <div ui-grid="data.gridOptions" ui-grid-pagination class="grid" ng-init="data.initOrder()"></div>
+                        <p>Current page: {{ admin.item.gridApi.pagination.getPage() }} of {{ admin.item.gridApi.pagination.getTotalPages() }}</p>
+                        <button type="button" class="btn btn-success" ng-click="admin.item.gridApi.pagination.previousPage()">
+                            previous page
+                        </button>
+                        <button type="button" class="btn btn-success" ng-click="admin.item.gridApi.pagination.nextPage()">
+                            next page
+                        </button>
                     </div>
                 </div>
-                <div class="col-md=6 subtotal">
-                    <div class="panel panel-default">
-
-                        <table class="table">
-                            <tbody>
-                            <tr>
-                                <td>Subtotal:</td>
-                                <td>${{(data.subtotal).toFixed(2)}}</td>
-                            </tr>
-                            <tr>
-                                <td>Taxes:</td>
-                                <td>${{(data.tax).toFixed(2)}}</td>
-                            </tr>
-                            <tr>
-                                <td>Total cost:</td>
-                                <td>${{(data.subtotal + data.tax).toFixed(2)}}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+            </div>-->
+        </div>
+        <div class="summary-panel flex-panel-content">
+            <div class="payment-panel">
+                <div class="flex-column">
+                    <button type="button" ng-click="data.payOrder()" class="btn btn-flat-outline btn-block">Pay</button>
+                </div>
+                <div class="flex-column">
+                    <button type="button" ng-click="data.saveOrder()" class="btn btn-flat-outline btn-block">Save Order</button>
                 </div>
             </div>
+            <div class="subtotal-panel">
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <td>Subtotal:</td>
+                        <td>${{(data.subtotal).toFixed(2)}}</td>
+                    </tr>
+                    <tr>
+                        <td>Taxes:</td>
+                        <td>${{(data.subtotal*data.tax).toFixed(2)}}</td>
+                    </tr>
+                    <tr>
+                        <td>Total cost:</td>
+                        <td>${{(data.subtotal + data.subtotal*data.tax).toFixed(2)}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+
     </div>
-    <div class="col-md-4">
-        <div class="panel panel-primary">
+    <div class="flex-panel col-md-4">
+        <div class="category-panel flex-panel-content">
             <div class="panel-heading">
                 Categories
             </div>
-            <div class="panel-body">
-                <button ng-repeat="cat in data.category" ng-click="getItem(cat)"
-                        type="button" class="btn btn-default btn-block">{{cat}}</button>
+            <div class="scroll-panel-body" id="list-categories" ng-init="initFTScroller('list-categories');">
+                <div class="horizontal-list">
+                    <button ng-repeat="cat in data.category" ng-click="getItem(cat)"
+                            type="button" class="btn btn-default btn-block">{{cat}}
+                    </button>
+                </div>
             </div>
         </div>
-        <div class="panel panel-primary">
+        <div class="items-panel flex-panel-content">
             <div class="panel-heading">
                 Items
             </div>
-            <div class="panel-body">
-                <button ng-repeat="item in data.items" ng-click="addItemToOrder(item)"
-                        type="button" class="btn btn-default btn-block">{{item.name}}</button>
+            <div class="scroll-panel-body" id="list-items" ng-init="initFTScroller('list-items');">
+                <div class="horizontal-list">
+                    <button ng-repeat="item in data.items" ng-click="addItemToOrder(item)"
+                            type="button" class="btn btn-default btn-block">{{item.name}}
+                    </button>
+                </div>
             </div>
         </div>
-        <div class="panel panel-primary">
+        <div class="giftcard-panel flex-panel-content">
             <div class="panel-heading">
                 Add gift card
             </div>
-            <div class="panel-body">
-                <button ng-click="data.buyGiftcard()"
-                        type="button" class="btn btn-default btn-block">Buy gift card</button>
-                <button ng-click="data.useGiftcard()"
-                        type="button" class="btn btn-default btn-block">Use gift card</button>
-                <button ng-click="data.checkBalance()"
-                        type="button" class="btn btn-default btn-block">Check balance</button>
+            <div class="panel-body giftcard">
+                <button id="buy-gc" ng-click="addItemToOrder(item)"
+                        type="button" class="btn btn-default btn-block">
+                    <div><span class="glyphicon glyphicon-gift"></span></div>
+                    <div>Buy gift card</div>
+                </button>
+                <div class="flex-column">
+                    <button ng-click="addItemToOrder(item)"
+                            type="button" class="btn btn-default btn-block">Use gift card
+                    </button>
+                    <button ng-click="data.checkBalance()"
+                            type="button" class="btn btn-default btn-block">Check balance
+                    </button>
+                </div>
             </div>
         </div>
     </div>

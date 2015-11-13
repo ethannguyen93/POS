@@ -1,0 +1,147 @@
+@font-face {
+  font-family: Montserrat;
+  src: url(../../../assets/Montserrat/Montserrat-Regular.ttf);
+}
+
+@mixin m-transition($prop, $duration, $easing) {
+  -webkit-transition: $prop $duration $easing;
+  -moz-transition: $prop $duration $easing;
+  -ms-transition: $prop $duration $easing;
+  -o-transition: $prop $duration $easing;
+  transition: $prop $duration $easing;
+}
+
+#admin-sidebar {
+  height: 100%;
+}
+
+#admin-content {
+  padding-left: 0;
+  padding-right: 0;
+  height: 100%;
+
+  & > div:nth-child(1) {
+    height: 100%;
+  }
+
+  .panel {
+
+    .panel-body {
+      //height: 100%;
+      height: calc(100% - 75px);
+    }
+
+    .panel.panel-default > div:nth-child(1) {
+      height: 100%;
+
+      .grid.ui-grid {
+        height: calc(100% - 75px) !important;
+      }
+
+    }
+
+    /*display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+
+    .panel-body {
+      flex: 1;
+      -webkit-flex: 1;
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: column;
+
+      .panel, .panel > div:nth-child(1) {
+        flex: 1;
+        -webkit-flex: 1;
+        display: flex;
+        display: -webkit-flex;
+        flex-direction: column;
+      }
+      
+      button {
+        display: inline-flex;
+      }
+
+    }*/
+
+  }
+
+}
+
+.sidebar-nav-fixed.affix {
+  width: 100%;
+  position: relative;
+  height: 100%;
+  background-color: blue;
+}
+
+.col-nav {
+  background: #2C3E50;
+  padding: 0;
+  overflow-y: scroll;
+
+}
+
+.col-nav .nav li {
+  //margin: 10px 0;
+
+  .ng-click-active {
+    //background-color: rgba(255,255,255,0.1);
+  }
+
+  a {
+    font-weight: lighter;
+    letter-spacing: 2px;
+    font-size: 1.5vw;
+    @include m-transition(all, 250ms, ease-out);
+    padding: 10% 20px;
+    color: rgba(255, 255, 255, 0.85);
+
+    .glyphicon {
+      font-size: 1.2vw;
+      //width: 60px;
+    }
+  }
+
+  a:active, a:hover, a:focus {
+    color: white;
+    padding-left: 30px;
+    //background-color: rgba(255, 255, 255, 0.1);
+    background-color: #1abc9c;
+  }
+
+}
+
+/** POS Pagination directive */
+
+.pos-pagination {
+  align-items: center;
+  height: 75px;
+  display: flex;
+  display: -webkit-flex;
+
+  &-display {
+    text-align: right;
+    flex: 5;
+    -webkit-flex: 5;
+  }
+
+  &-controller {
+    text-align: left;
+    flex: 5;
+    -webkit-flex: 5;
+
+    button {
+      width: 120px;
+      padding: 10px;
+
+      span {
+        font-size: 1.5em;
+      }
+    }
+
+  }
+
+}
+
