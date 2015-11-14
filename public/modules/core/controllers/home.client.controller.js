@@ -200,6 +200,7 @@ angular.module('core').controller('HomeController', [
 				templateUrl: 'modules/core/views/orderModal.client.view.html',
 				controller: 'orderCtrl',
 				backdrop : 'static',
+				keyboard: false,
 				resolve: {
 					currentUser : function(){
 						return $scope.data.currentUser;
