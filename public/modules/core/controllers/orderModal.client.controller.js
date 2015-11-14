@@ -5,7 +5,9 @@ angular.module('core').controller('orderCtrl',
     function ($scope, $stateParams, $location, $modalInstance, currentUser, RetrieveInventory) {
         $scope.data = {
             orders: [],
-            view: 'selection'
+            view: 'selection',
+            isError: false,
+            errorMessage: ''
         };
         $scope.selectOrder = function(index, user){
             var body = {
@@ -34,12 +36,25 @@ angular.module('core').controller('orderCtrl',
                 type: 'getIndex'
             };
             RetrieveInventory.load(body, function(response){
-                $modalInstance.close({'message': 'neworder', 'data': response[0]});
+                $scope.data.view = 'newOrders';
+                $scope.data.newIndex = response[0];
             });
+        };
+        $scope.reset = function(){
+            $scope.data.isError = false;
+            $scope.data.errorMessage = '';
         };
         $scope.back = function(){
             $scope.data.view = 'selection';
             $scope.data.orders = [];
+        };
+        $scope.done = function(){
+            if ($scope.data.newCustomer === undefined){
+                $scope.data.isError = true;
+                $scope.data.errorMessage = 'Please enter custome\'s name';
+            }else{
+                $modalInstance.close({'message': 'neworder', 'data': $scope.data.newIndex, 'customerName': $scope.data.newCustomer});
+            }
         };
         $scope.cancel = function() {
             $modalInstance.close({'message': 'no'});

@@ -1,34 +1,13 @@
 <div>
-    <p class="input-group" ng-init="initReport()">
-        <!--<input type="date" class="form-control" ng-model="admin.report.date" is-open="$parent.admin.report.open" ng-required="true" close-text="Close" />
-        <button type="button" class="btn btn-default" ng-click="openDate($event)">
-            <i class="glyphicon glyphicon-calendar"></i>
-        </button>-->
-        <div class="col-md-6">
-            <p class="input-group">
-                <input type="date" class="form-control" uib-datepicker-popup ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-                      <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                      </span>
-            </p>
-        </div>
-        <!--<input type="date" class="form-control" uib-datepicker-popup ng-model="admin.report.date" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>-->
-    </p>
-    <!--<div class="col-md-6">
-        <p class="input-group">
-            <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="openDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
-        </p>
-    </div>-->
-    <!--<div ui-grid="admin.giftcard.gridOptions" ui-grid-pagination class="grid" ng-init="initGiftcard()"></div>
-    <p>Current page: {{ admin.giftcard.gridApi.pagination.getPage() }} of {{ admin.giftcard.gridApi.pagination.getTotalPages() }}</p>
-    <button type="button" class="btn btn-success" ng-click="admin.giftcard.gridApi.pagination.previousPage()">
-        previous page
-    </button>
-    <button type="button" class="btn btn-success" ng-click="admin.giftcard.gridApi.pagination.nextPage()">
-        next page
-    </button>-->
+    <div ng-init="initReport()">
+        <input type="date" uib-datepicker-popup ng-model="admin.report.date" is-open="admin.report.open" ng-required="true" close-text="Close" />
+        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+        <select ng-model="admin.report.selectedOption"
+                class="ng-pristine ng-valid ng-scope ng-touched">
+            <option value="checkGiftcard">Giftcard Transaction</option>
+            <option value="DailyReport">Daily Report</option>
+        </select>
+        <button type="button" class="btn btn-info btn-block" ng-click="generateReport()">Generate Report</button>
+    </div>
+    <!--<div ui-grid="admin.report.gridOptions" class="grid"></div>-->
 </div>

@@ -3,7 +3,7 @@
 
         <div class="order-panel flex-panel-content">
             <div class="panel-heading">
-                Order number {{data.index}}
+                Order number {{data.index}} - Customer {{data.customerName}}
             </div>
             <div id="order-grid" ui-grid="data.gridOptions" ui-grid-pagination class="grid" ng-init="data.initOrder(); initFTScrollerGrid('order-grid')"></div>
             <pos-pagination page="{{ data.gridApi.pagination.getPage() }}"

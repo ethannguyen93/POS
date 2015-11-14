@@ -36,9 +36,9 @@ angular.module('core').controller('buyGiftcardCtrl',
             };
             RetrieveGiftcard.load(body, function(response){
                 if (response[0].number !== undefined){
-                    $scope.data.type = 'reload';
+                    $scope.data.type = 'Reload';
                 }else{
-                    $scope.data.type = 'use';
+                    $scope.data.type = 'Buy';
                 }
                 $scope.data.view = 'addAmount'
             });

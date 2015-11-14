@@ -5,8 +5,6 @@
         {{admin.employee.errorMessage}}
     </div>
     <div id="employee-grid" ui-grid="admin.employee.gridOptions" ui-grid-pagination ui-grid-edit class="grid" ng-init="initEmployee(); initFTScrollerGrid('employee-grid');" ></div>
-
-
     <pos-pagination page="{{ admin.employee.gridApi.pagination.getPage() }}"
                 of="{{ admin.employee.gridApi.pagination.getTotalPages() }}"
                 prev="admin.employee.gridApi.pagination.previousPage()"

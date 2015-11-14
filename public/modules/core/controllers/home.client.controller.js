@@ -20,6 +20,8 @@ angular.module('core').controller('HomeController', [
 		$scope.view = 'mainpage';
 		$scope.logOut = function(){
 			$scope.view = 'numpad';
+			$scope.data.subtotal = 0;
+			$scope.data.tax = 0;
 			$scope.data.password = '';
 			$scope.data.order = '';
 			$scope.data.index = 0;
@@ -114,6 +116,7 @@ angular.module('core').controller('HomeController', [
 			items: [],
 			subtotal: 0,
 			tax: 0,
+			customerName: '',
 			currentUser: {
 				name: ''
 			},
@@ -162,8 +165,6 @@ angular.module('core').controller('HomeController', [
 			var body = {
 				'type': 'retrieveCat'
 			};
-			$scope.data.subtotal = 0;
-			$scope.data.tax = 0;
 			RetrieveInventory.load(body, function(response){
 				$scope.data.category = _.map(response, _.clone);
 				$scope.data.orderModal().then(function(selectedItem){
@@ -175,12 +176,17 @@ angular.module('core').controller('HomeController', [
 							break;
 						case 'neworder':
 							$scope.data.index = selectedItem.data;
+							$scope.data.customerName = selectedItem.customerName;
+							$scope.data.subtotal = 0;
+							$scope.data.tax = 0;
 							break;
 						case 'order':
-							//debugger;
 							$scope.data.index = selectedItem.data.index;
 							$scope.data.order = selectedItem.data._id;
 							$scope.data.orders = selectedItem.data.orders;
+							$scope.data.customerName = selectedItem.data.customerName;
+							$scope.data.subtotal = selectedItem.data.subtotal;
+							$scope.data.tax = selectedItem.data.tax;
 							break;
 					}
 				});
@@ -249,7 +255,7 @@ angular.module('core').controller('HomeController', [
 		$scope.data.buyGiftcard = function () {
 			$scope.data.buyGiftcardModal().then(function(giftcard){
 				if (giftcard !== undefined){
-					giftcard.name = 'Giftcard ' + giftcard.number;
+					giftcard.name = 'Giftcard ' + giftcard.number + ' - ' + giftcard.type;
 					giftcard.price = giftcard.amount;
 					MainpageServices.addItem($scope, giftcard);
 				}
@@ -299,7 +305,12 @@ angular.module('core').controller('HomeController', [
 				if (selectedItem === 'yes'){
 					var body = {
 						'type': 'doneOrder',
-						'order': $scope.data.order
+						'order': $scope.data.order,
+						'orders': $scope.data.orders,
+						'user': $scope.data.currentUser,
+						'customerName': $scope.data.customerName,
+						'subtotal': $scope.data.subtotal,
+						'tax': $scope.data.tax
 					};
 					RetrieveInventory.load(body, function(){
 						$scope.logOut();
@@ -400,13 +411,18 @@ angular.module('core').controller('HomeController', [
 				isError: false,
 				errorMessage: '',
 				gridOptions: {
+					columnDefs: [
+						{ field: 'name' },
+						{ field: 'gender', visible: false},
+						{ field: 'company' }
+					],
 					rowHeight: 60,
-					columnFooterHeight: 60,
-					enableFiltering: true,
 					enablePaginationControls: false,
 					paginationPageSize: 10,
-					data: 'admin.giftcard.giftcards'
-				}
+					data: 'admin.report.reports'
+				},
+				reports: [],
+				selectedOption: ''
 			},
 			item: {
 				isError: false,
@@ -828,90 +844,28 @@ angular.module('core').controller('HomeController', [
 			$scope.admin.page = 'report';
 		};
 		$scope.initReport = function() {
-			console.log('here');
 			$scope.admin.report.date = new Date();
-			$scope.admin.report.open = true;
+			$scope.admin.report.open = false;
 		};
 		$scope.today = function() {
 			$scope.dt = new Date();
 		};
-		$scope.today();
-
 		$scope.clear = function () {
 			$scope.dt = null;
 		};
-
-		// Disable weekend selection
-		$scope.disabled = function(date, mode) {
-			return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
-		};
-
-		$scope.toggleMin = function() {
-			$scope.minDate = $scope.minDate ? null : new Date();
-		};
-		$scope.toggleMin();
-		$scope.maxDate = new Date(2020, 5, 22);
-
 		$scope.open = function($event) {
-			$scope.status.opened = true;
-		};
-
-		$scope.setDate = function(year, month, day) {
-			$scope.dt = new Date(year, month, day);
-		};
-
-		$scope.dateOptions = {
-			formatYear: 'yy',
-			startingDay: 1
-		};
-
-		$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-		$scope.format = $scope.formats[0];
-
-		$scope.status = {
-			opened: false
-		};
-
-		var tomorrow = new Date();
-		tomorrow.setDate(tomorrow.getDate() + 1);
-		var afterTomorrow = new Date();
-		afterTomorrow.setDate(tomorrow.getDate() + 2);
-		$scope.events =
-				[
-					{
-						date: tomorrow,
-						status: 'full'
-					},
-					{
-						date: afterTomorrow,
-						status: 'partially'
-					}
-				];
-
-		$scope.getDayClass = function(date, mode) {
-			if (mode === 'day') {
-				var dayToCheck = new Date(date).setHours(0,0,0,0);
-
-				for (var i=0;i<$scope.events.length;i++){
-					var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
-
-					if (dayToCheck === currentDay) {
-						return $scope.events[i].status;
-					}
-				}
-			}
-
-			return '';
-		};
-/*		$scope.openDate = function($event) {
-			console.log($event);
 			$scope.admin.report.open = !$scope.admin.report.open;
-			console.log('open');
 		};
-		$scope.datePicker = {};
-		$scope.datePicker.status = {
-			opened: true
-		};*/
+		$scope.generateReport = function () {
+			console.log('creating reports');
+			var body = {
+				'type': 'getReport',
+				date: $scope.admin.report.date
+			};
+			RetrieveInventory.load(body, function(response){
+				console.log('getReport');
+			})
+		};
 		/******************************************************************************************************/
 		/*Scroller Initialization*/
 		$scope.initFTScroller = function(id) {

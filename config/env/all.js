@@ -24,7 +24,7 @@ module.exports = {
 				'public/lib/angular-resource/angular-resource.js', 
 				'public/lib/angular-cookies/angular-cookies.js', 
 				'public/lib/angular-animate/angular-animate.js',
-				'//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-animate.js',
+				'public/lib/angular-animate/another_animate.js',,
 				'public/lib/angular-touch/angular-touch.js', 
 				'public/lib/angular-sanitize/angular-sanitize.js', 
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
@@ -36,7 +36,8 @@ module.exports = {
 				'public/lib/angular-ui-grid/ui-grid.min.js',
 				'public/lib/ftscroller/lib/ftscroller.js',
 				'public/lib/dragscroll/dragscroll.js',
-				//'public/lib/material-design-lite/material.min.js'
+				'public/lib/pdfmake/build/pdfmake.min.js',
+				'public/lib/pdfmake/build/vfs_fonts.js'
 			]
 		},
 		css: [

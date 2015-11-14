@@ -2,6 +2,11 @@
     <h3 class="modal-title">Please select</h3>
 </div>
 <div class="modal-body">
+    <div class="alert alert-danger" role="alert" ng-show="data.isError">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        {{data.errorMessage}}
+    </div>
     <div ng-switch on="data.view">
         <div class="order-selection"  ng-switch-when="selection">
             <button type="button" class="btn-squircle btn-w-icon btn btn-success" ng-click="getOrders()">
@@ -15,9 +20,13 @@
         <div class="order-gridview" id="order-gridview" ng-switch-when="existingOrders" ng-init="initFTScroller('order-gridview');">
             <button ng-repeat="order in data.orders" type="button" class="btn-squircle-sm btn btn-default" ng-click="selectOrder(order.index, order.user.name)">Order number {{order.index}}</button>
         </div>
+        <div ng-switch-when="newOrders">
+            <input type="text" class="form-control"  placeholder="Enter customner's name" ng-model="data.newCustomer" ng-pattern="/(^.+$)/" ng-change="reset()">
+        </div>
     </div>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-default" ng-click="back()" ng-show="data.view === 'existingOrders'">Back</button>
+    <button class="btn btn-default" ng-click="back()" ng-show="data.view === 'existingOrders' || data.view === 'newOrders'">Back</button>
     <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-default" ng-click="done()" ng-show="data.view === 'newOrders'">Done</button>
 </div>

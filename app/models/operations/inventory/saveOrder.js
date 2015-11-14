@@ -56,7 +56,10 @@ module.exports = function (req, res) {
                     orders: req.body.orders,
                     isPaid: false,
                     timeOrderPlaced: new Date(),
-                    index: index+1
+                    index: index+1,
+                    customerName: req.body.customerName,
+                    subtotal: req.body.subtotal,
+                    tax: req.body.tax
                 }, function(err, result){
                     if (err) {
                         console.log(err)

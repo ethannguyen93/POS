@@ -61,7 +61,10 @@ angular.module('core').factory('MainpageServices', ['RetrieveInventory',
 					'type': 'saveOrder',
 					'orders': $scope.data.orders,
 					'user': $scope.data.currentUser,
-					'order': $scope.data.order
+					'order': $scope.data.order,
+					'customerName': $scope.data.customerName,
+					'subtotal': $scope.data.subtotal,
+					'tax': $scope.data.tax
 				};
 				RetrieveInventory.load(body, function(response){
 					//$scope.data.items = _.map(response, _.clone);
