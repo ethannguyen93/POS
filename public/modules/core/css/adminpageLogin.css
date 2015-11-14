@@ -1,18 +1,16 @@
 .adminpageLogin {
     margin: 100px auto;
     width: 688px;
-    -webkit-transform: scale(2);
-    transform: scale(2);
 }
 .passwordAdmin {
     margin: 0 0 5px;
-    margin-bottom: 30px;
     padding: 5px;
     width: 671px;
     font: 1em/1.5 Verdana, Sans-Serif;
-    border: 0;
-    border-bottom: 2px solid #3498db;
-
+    background: #fff;
+    border: 1px solid #f9f9f9;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
 }
 .keyboard {
     margin: 0;
@@ -27,7 +25,7 @@
     line-height: 40px;
     text-align: center;
     background: #fff;
-    border: 1px solid rgba(0,0,0,0.12);
+    border: 1px solid #f9f9f9;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
 }

@@ -13,15 +13,13 @@ angular.module('core').factory('AdminLoginPageServices', [ '$q', 'RetrieveEmploy
 						}
 						break;
 					case 'delete':
-						console.log($scope.adminLogin.password);
-						$scope.adminLogin.password = $scope.adminLogin.password.slice(0, -1);
-						console.log($scope.adminLogin.password);
+						$scope.keyboard.password = $scope.keyboard.password.slice(0,-1);
 						if ($scope.keyboard.shift !== 'tab-on'){
 							$scope.keyboard.shift = 'shift-off';
 						}
 						break;
 					case 'space':
-						$scope.adminLogin.password += ' ';
+						$scope.keyboard.password += ' ';
 						if ($scope.keyboard.shift !== 'tab-on'){
 							$scope.keyboard.shift = 'shift-off';
 						}

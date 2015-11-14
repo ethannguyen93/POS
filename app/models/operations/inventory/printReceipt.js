@@ -132,8 +132,6 @@ module.exports = function (req, res) {
             }
         }
     ];
-
-    
     lxDocument.addTable('content', tableData, tableHeader);
     var printDocument = function(){
         printer.printDirect({

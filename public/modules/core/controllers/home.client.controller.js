@@ -146,12 +146,12 @@ angular.module('core').controller('HomeController', [
 				{
 					name: 'Price' ,
 					field: 'price',
-					cellFilter: 'priceFilter'
+					cellFilter: 'priceFilter',
 					//width: '200'
 				},
 				{
 					name: 'Quantity',
-					cellTemplate: 'modules/core/views/partials/mainpage/plusminus.client.view.html'
+					cellTemplate: 'modules/core/views/partials/mainpage/plusminus.client.view.html',
 					//width: '200'
 				},
 				{
@@ -200,6 +200,7 @@ angular.module('core').controller('HomeController', [
 				templateUrl: 'modules/core/views/orderModal.client.view.html',
 				controller: 'orderCtrl',
 				backdrop : 'static',
+				keyboard: false,
 				resolve: {
 					currentUser : function(){
 						return $scope.data.currentUser;
@@ -777,7 +778,7 @@ angular.module('core').controller('HomeController', [
 					{
 						name: 'Category name',
 						field: 'category',
-						footerCellTemplate: '<select class="form-control" ng-model="grid.appScope.admin.item.newcat" ng-change="grid.appScope.admin.item.onchange()" ng-options="category as category.name for category in grid.appScope.admin.category.categories"></select>',
+						footerCellTemplate: '<select ng-model="grid.appScope.admin.item.newcat" ng-change="grid.appScope.admin.item.onchange()" ng-options="category as category.name for category in grid.appScope.admin.category.categories"></select>',
 						enableCellEdit: false
 						/*cellFilter: 'categoryFilter:grid.appScope.admin.category.categories',*/
 						/*editDropdownValueLabel: 'name',
@@ -842,7 +843,6 @@ angular.module('core').controller('HomeController', [
 		/******************************************************************************************************/
 		$scope.showReport = function(){
 			$scope.admin.page = 'report';
-			$scope.admin.report.pdf = undefined;
 		};
 		$scope.initReport = function() {
 			$scope.admin.report.date = new Date();
@@ -861,14 +861,9 @@ angular.module('core').controller('HomeController', [
 			console.log('creating reports');
 			var body = {
 				'type': 'getReport',
-				'reportType': $scope.admin.report.selectedOption,
-				'giftcardNum': $scope.admin.report.giftcardNum,
 				date: $scope.admin.report.date
 			};
-			console.log('generating report');
-			$scope.admin.report.pdf = undefined;
 			RetrieveInventory.load(body, function(response){
-				$scope.admin.report.pdf = response[0].pdf;
 				console.log('getReport');
 			})
 		};

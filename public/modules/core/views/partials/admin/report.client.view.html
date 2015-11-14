@@ -1,53 +1,13 @@
 <div>
     <div ng-init="initReport()">
-        <div class="row">
-            <div class="col-md-3 col-md-offset-3 justify-center" >
-                <h3>Select Date</h3>
-            </div>
-            <div class="col-md-3 justify-center">
-                <h3>Select Report Type</h3>
-            </div>
-            <div ng-show="admin.report.selectedOption==='checkGiftcard'" class="col-md-3 justify-center">
-                <h3>Giftcard Number</h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3 col-md-offset-3 justify-center" >
-                <input ng-change="admin.report.pdf = undefined" class="height-100" type="date" uib-datepicker-popup ng-model="admin.report.date" is-open="admin.report.open" ng-required="true" close-text="Close" />
-                <button type="button" class="height-100 btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-            </div>
-            <div class="col-md-3 justify-center">
-                <select ng-change="admin.report.pdf = undefined" ng-model="admin.report.selectedOption"
-                        class="height-100 form-control ng-pristine ng-valid ng-scope ng-touched">
-                    <option value="">---Please select---</option>
-                    <option value="checkGiftcard">Giftcard Transaction</option>
-                    <option value="DailyReport">Daily Report</option>
-                </select>
-            </div>
-            <div ng-show="admin.report.selectedOption==='checkGiftcard'" class="col-md-3 justify-center">
-                <input class="height-100 form-control" placeholder="Giftcard#" ng-model="admin.report.giftcardNum">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                &nbsp;
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <button type="button" class="btn height-150 btn-info btn-block" ng-click="generateReport()">Generate Report</button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                &nbsp;
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <a ng-show="admin.report.pdf" href="{{admin.report.pdf}}" target="_blank" class="btn height-150 btn-info btn-block" >Download Report</a>
-            </div>
-        </div>
+        <input type="date" uib-datepicker-popup ng-model="admin.report.date" is-open="admin.report.open" ng-required="true" close-text="Close" />
+        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+        <select ng-model="admin.report.selectedOption"
+                class="ng-pristine ng-valid ng-scope ng-touched">
+            <option value="checkGiftcard">Giftcard Transaction</option>
+            <option value="DailyReport">Daily Report</option>
+        </select>
+        <button type="button" class="btn btn-info btn-block" ng-click="generateReport()">Generate Report</button>
     </div>
     <!--<div ui-grid="admin.report.gridOptions" class="grid"></div>-->
 </div>

@@ -31,24 +31,13 @@
         <div class="summary-panel flex-panel-content">
             <div class="payment-panel">
                 <div class="flex-column">
-                    <button type="button" class="btn-squircle-expand btn-w-icon btn btn-success" ng-click="data.payOrder()">
-                        <div><span class="glyphicon glyphicon-usd"></span></div>
-                        <div>Pay</div>
-                    </button>
+                    <button type="button" ng-click="data.payOrder()" class="btn btn-flat-outline text-xl btn-block">Pay</button>
                 </div>
                 <div class="flex-column">
-                    <button type="button" class="btn-squircle-expand btn-w-icon btn btn-success" ng-click="data.saveOrder()">
-                        <div><span class="glyphicon glyphicon-save-file"></span></div>
-                        <div>Save Order</div>
-                    </button>
-                    <!--<button type="button" ng-click="data.saveOrder()" class="btn btn-flat-outline text-xl btn-block">Save Order</button>-->
+                    <button type="button" ng-click="data.saveOrder()" class="btn btn-flat-outline text-xl btn-block">Save Order</button>
                 </div>
                 <div class="flex-column">
-                    <button type="button" class="btn-squircle-expand btn-w-icon btn btn-success" ng-click="data.doneOrder()">
-                        <div><span class="glyphicon glyphicon-check"></span></div>
-                        <div>Done</div>
-                    </button>
-                    <!--<button type="button" ng-click="data.doneOrder()" class="btn btn-flat-outline text-xl btn-block">Done</button>-->
+                    <button type="button" ng-click="data.doneOrder()" class="btn btn-flat-outline text-xl btn-block">Done</button>
                 </div>
             </div>
             <div class="subtotal-panel">
