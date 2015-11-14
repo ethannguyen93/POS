@@ -9,7 +9,8 @@ angular.module('core').controller('buyGiftcardCtrl',
             errorMessage: '',
             placeholder: 'Enter giftcard',
             gcnumber: '',
-            view: 'start'
+            view: 'start',
+            type: 'use'
         };
         $scope.reset = function(){
             console.log('here');
@@ -35,11 +36,11 @@ angular.module('core').controller('buyGiftcardCtrl',
             };
             RetrieveGiftcard.load(body, function(response){
                 if (response[0].number !== undefined){
-                    $scope.setError('Giftcard existed');
-                    $scope.data.gcnumber = '';
+                    $scope.data.type = 'reload';
                 }else{
-                    $scope.data.view = 'addAmount'
+                    $scope.data.type = 'use';
                 }
+                $scope.data.view = 'addAmount'
             });
         };
         $scope.add = function(){
@@ -48,7 +49,7 @@ angular.module('core').controller('buyGiftcardCtrl',
             }else{
                 var newAmount = parseFloat($scope.data.newAmount);
                 var id = guid();
-                $modalInstance.close({_id: id, number: $scope.data.gcnumber, amount: newAmount});
+                $modalInstance.close({_id: id, number: $scope.data.gcnumber, amount: newAmount, type: $scope.data.type});
             }
         };
         var guid = function() {

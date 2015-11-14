@@ -221,7 +221,10 @@ angular.module('core').controller('HomeController', [
 			});
 			MainpageServices.removeItem($scope, item);
 			if (!item.isGiftcard){
-				$scope.data.tax -= item.price*0.13;
+				$scope.data.tax -= item.price * 0.13 * item.quantity;
+				if ($scope.data.subtotal <= 0 && $scope.data.subtotal > -0.1){
+					$scope.data.subtotal = 0;
+				}
 			}
 		};
 		$scope.data.checkBalance = function () {
@@ -288,7 +291,28 @@ angular.module('core').controller('HomeController', [
 			MainpageServices.saveOrder($scope);
 			$scope.logOut();
 		};
-		$scope.data.payOrder = function () {
+		$scope.data.doneOrder = function () {
+			$scope.data.doneOrderModal().then(function(selectedItem){
+				if (selectedItem === 'yes'){
+
+				}
+			})
+		};
+		$scope.data.doneOrderModal = function () {
+			var deferred = $q.defer();
+			var modalInstance = $modal.open({
+				animation: true,
+				templateUrl: 'modules/core/views/doneOrderModal.client.view.html',
+				controller: 'ModalInstanceCtrl'
+			});
+
+			modalInstance.result.then(function (selectedItem) {
+				deferred.resolve(selectedItem);
+			});
+
+			return deferred.promise;
+		};
+		$scope.data.printReceipt = function () {
 			console.log('here');
 			var body = {
 				'type': 'printReceipt'
