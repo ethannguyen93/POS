@@ -26,6 +26,7 @@ module.exports = function (req, res) {
     lxDocument.addTable('content', tableData);
     lxDocument.addContent('content', 'SERVICE');
     lxDocument.addContent('content', '****************************************');
+    
     var tableHeader = [
         {
             "align": "center",
