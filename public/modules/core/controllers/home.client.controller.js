@@ -333,9 +333,14 @@ angular.module('core').controller('HomeController', [
 			return deferred.promise;
 		};
 		$scope.data.printReceipt = function () {
-			console.log('here');
 			var body = {
-				'type': 'printReceipt'
+				'type': 'printReceipt',
+				'order': $scope.data.index,
+				'orders': $scope.data.orders,
+				'user': $scope.data.currentUser,
+				'customerName': $scope.data.customerName,
+				'subtotal': $scope.data.subtotal,
+				'tax': $scope.data.tax
 			};
 			RetrieveInventory.load(body, function(response){
 				console.log(response);

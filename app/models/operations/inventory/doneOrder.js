@@ -51,6 +51,7 @@ module.exports = function (req, res) {
     var updateGiftcard = function(){
         var deferred = Q.defer();
         connectionDB.collection('giftcards', function (err, collection) {
+            if (err) console.log(err);
             var bulk = collection.initializeUnorderedBulkOp();
             _.each(req.body.orders, function(order){
                 if (order.isGiftcard){
