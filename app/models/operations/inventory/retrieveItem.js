@@ -11,6 +11,7 @@ module.exports = function (req, res) {
             } else {
                 var items = [];
                 cursor.toArray(function (err, result) {
+                    console.log(result);
                     if (err) {
                         console.log(err);
                     } else {

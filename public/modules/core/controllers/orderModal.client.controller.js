@@ -26,7 +26,7 @@ angular.module('core').controller('orderCtrl',
             };
             RetrieveInventory.load(body, function(response){
                 _.each(response, function(o){
-                    $scope.data.orders.push({'user': currentUser, 'index': o.index})
+                    $scope.data.orders.push({'user': currentUser, 'index': o.index, 'customerName': o.customerName})
                 });
                 $scope.data.view = 'existingOrders';
             });

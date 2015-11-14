@@ -18,6 +18,12 @@ body {
   height: 100%;
   font-size: 2.4em; }
 
+/** For Angular hidden elements */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak],
+.ng-cloak, .x-ng-cloak,
+.ng-hide {
+  display: none !important; }
+
 section {
   height: 100%; }
 
@@ -52,8 +58,12 @@ a > span {
   text-align: center; }
 
 .form-control {
+  width: auto;
+  display: inline-block;
   height: auto;
   font-size: inherit; }
+  .form-control.full-width {
+    width: 100%; }
 
 .navbar-inverse {
   background-color: #34495E;
@@ -148,6 +158,8 @@ a > span {
     display: -webkit-flex;
     flex-direction: column;
     margin: 2px; }
+    .flex-panel .flex-column .btn {
+      flex: 1; }
   .flex-panel .panel-body.giftcard {
     display: flex;
     display: -webkit-flex; }
@@ -257,6 +269,8 @@ input[type="button"], input[type="button"].btn {
   outline: none; }
 
 .btn {
+  min-width: 75px;
+  vertical-align: top;
   white-space: normal;
   overflow: hidden;
   background-image: none;
@@ -304,7 +318,7 @@ input[type="button"], input[type="button"].btn {
   color: white;
   background-color: #2ECC71; }
 
-.btn-squircle, .btn-squircle-sm {
+.btn-squircle, .btn-squircle-sm, .btn-squircle-expand {
   border-radius: 25px;
   margin: 10px;
   height: 250px;
@@ -312,6 +326,9 @@ input[type="button"], input[type="button"].btn {
   .btn-squircle-sm {
     height: 150px;
     width: 150px; }
+  .btn-squircle-expand {
+    width: 95%;
+    height: 95%; }
 
 .btn-w-icon {
   display: flex;
@@ -319,6 +336,30 @@ input[type="button"], input[type="button"].btn {
   flex-direction: column; }
   .btn-w-icon .glyphicon {
     font-size: 2em; }
+  .btn-w-icon > div:first-child {
+    flex: 1;
+    display: flex;
+    align-items: flex-end; }
+  .btn-w-icon > div:last-child {
+    flex: 1;
+    display: flex;
+    align-items: flex-start; }
+
+.justify-center {
+  text-align: center; }
+
+.height-50 {
+  height: 50px; }
+.height-100 {
+  height: 100px; }
+.height-150 {
+  height: 150px; }
+.height-200 {
+  height: 200px; }
+.height-250 {
+  height: 250px; }
+.height-300 {
+  height: 300px; }
 
 .modal-dialog {
   margin: 0px auto;
