@@ -17,7 +17,7 @@ angular.module('core').controller('HomeController', [
 		/**********************************************************************************************************/
 		/**********************************************************************************************************/
 		/**********************************************************************************************************/
-		$scope.view = 'adminpage';
+		$scope.view = 'mainpage';
 		$scope.logOut = function(){
 			$scope.view = 'numpad';
 			$scope.data.password = '';
@@ -118,7 +118,8 @@ angular.module('core').controller('HomeController', [
 				name: ''
 			},
 			gridOptions: {
-				rowHeight: 50,
+				rowHeight: 60,
+				columnHeaderHeight: 60,
 				columnFooterHeight: 60,
 				enablePaginationControls: false,
 				paginationPageSize: 10,
@@ -143,12 +144,12 @@ angular.module('core').controller('HomeController', [
 					name: 'Price' ,
 					field: 'price',
 					cellFilter: 'priceFilter',
-					width: '100'
+					//width: '200'
 				},
 				{
 					name: 'Quantity',
 					cellTemplate: 'modules/core/views/partials/mainpage/plusminus.client.view.html',
-					width: '200'
+					//width: '200'
 				},
 				{
 					name: 'Remove',
@@ -726,7 +727,6 @@ angular.module('core').controller('HomeController', [
 				$scope.admin.category.errorMessage = '';
 			});
 			gridApi.edit.on.afterCellEdit($scope,function(rowEntity, colDef, newValue, oldValue){
-				debugger;
 				var field = colDef.field;
 				var tmp = _.filter($scope.admin.item.items, function(item){
 					return (item.name === rowEntity.name

@@ -3,12 +3,17 @@
 </div>
 <div class="modal-body">
     <div ng-switch on="data.view">
-        <div ng-switch-when="selection">
-            <button type="button" class="btn btn-primary btn-block" ng-click="getOrders()">Existing Order</button>
-            <button type="button" class="btn btn-primary btn-block" ng-click="newOrders()">New Order</button>
+        <div class="order-selection"  ng-switch-when="selection">
+            <button type="button" class="btn-squircle btn-w-icon btn btn-success" ng-click="getOrders()">
+                <div><span class="glyphicon glyphicon-th-large"></span></div>
+                <div>Existing Order</div>
+            </button>
+            <button type="button" class="btn-squircle btn-w-icon btn btn-success" ng-click="newOrders()">
+                <div><span class="glyphicon glyphicon-pencil"></span></div>
+                <div>New Order</div></button>
         </div>
-        <div ng-switch-when="existingOrders">
-            <button ng-repeat="order in data.orders" type="button" class="btn btn-block" ng-click="selectOrder(order.index, order.user.name)">Order number {{order.index}}</button>
+        <div class="order-gridview" id="order-gridview" ng-switch-when="existingOrders" ng-init="initFTScroller('order-gridview');">
+            <button ng-repeat="order in data.orders" type="button" class="btn-squircle-sm btn btn-default" ng-click="selectOrder(order.index, order.user.name)">Order number {{order.index}}</button>
         </div>
     </div>
 </div>

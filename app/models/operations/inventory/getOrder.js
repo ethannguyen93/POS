@@ -16,15 +16,16 @@ module.exports = function (req, res) {
                         console.log(err);
                     } else {
                         console.log(result);
-                        var now = new Date ();
+                        var now = new Date();
                         _.map(result, function(i){
-                            var isSameDay = (now.getDate() == i.timeOrderPlaced.getDate()
-                            && now.getMonth() == i.timeOrderPlaced.getMonth()
-                            && now.getFullYear() == i.timeOrderPlaced.getFullYear());
+                            var isSameDay = (now.getDate() === i.timeOrderPlaced.getDate()
+                            && now.getMonth() === i.timeOrderPlaced.getMonth()
+                            && now.getFullYear() === i.timeOrderPlaced.getFullYear());
                             if (isSameDay){
                                 items.push(i);
                             }
                         });
+                        console.log(items);
                         res.jsonp(items);
                     }
                 });

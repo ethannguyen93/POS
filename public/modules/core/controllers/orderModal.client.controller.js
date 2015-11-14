@@ -44,5 +44,19 @@ angular.module('core').controller('orderCtrl',
         $scope.cancel = function() {
             $modalInstance.close({'message': 'no'});
         };
+
+        $scope.initFTScroller = function(id) {
+            console.log('Init scroller=' + id);
+            var containerElement = document.getElementById(id);
+            console.log(containerElement);
+            setTimeout(function() {
+                var scroller = new FTScroller(containerElement, {
+                    //contentHeight: 800,
+                    alwaysScroll: true,
+                    scrollingX: false,
+                    scrollingY: true
+                });
+            }, 100);
+        };
     }
 );

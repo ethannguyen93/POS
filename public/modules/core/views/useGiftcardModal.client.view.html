@@ -12,20 +12,23 @@
         Gift card {{data.gcnumber}} has ${{data.balance}} left.
     </div>
     <div ng-switch on="data.view">
-        <div class="col-md-2 col-md-offset-4 passcode" ng-switch-when="start">
-            <input class="input-number password-modal" readonly="true" type="text"
-                   ng-model="data.gcnumber" placeholder="{{data.placeholder}}"/>
-            <ul class="numpad">
-                <a ng-repeat="num in numpad" href ng-click="updatePasscode(num)">{{num}}</a>
-                <a href ng-click="verify()"><span class="glyphicon glyphicon-ok"></span></a>
-                <a href ng-click="updatePasscode('0')">0</a>
-                <a href ng-click="remove()"><span class="glyphicon glyphicon-chevron-left"></span></a>
-            </ul>
+        <div class="col-md-12" ng-switch-when="start">
+            <div class="passcode">
+                <input class="input-number password-modal" readonly="true" type="text"
+                       ng-model="data.gcnumber" placeholder="{{data.placeholder}}"/>
+                <ul class="numpad">
+                    <a ng-repeat="num in numpad" href ng-click="updatePasscode(num)">{{num}}</a>
+                    <a href ng-click="verify()"><span class="glyphicon glyphicon-ok"></span></a>
+                    <a href ng-click="updatePasscode('0')">0</a>
+                    <a href ng-click="remove()"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                </ul>
+            </div>
         </div>
         <div ng-switch-when="addAmount">
             <div class="input-group">
                 <span class="input-group-addon">$</span>
-                <input type="text" class="form-control"  placeholder="Enter giftcard amount" ng-model="data.newAmount" ng-pattern="/(^[0-9]+$)|(^[0-9]+[.]{1}[0-9]+$)/" ng-change="reset()">
+                <input type="text" class="form-control" placeholder="Enter giftcard amount" ng-model="data.newAmount"
+                       ng-pattern="/(^[0-9]+$)|(^[0-9]+[.]{1}[0-9]+$)/" ng-change="reset()">
                 <span class="input-group-addon">.00</span>
             </div>
         </div>

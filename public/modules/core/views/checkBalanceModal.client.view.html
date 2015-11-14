@@ -8,15 +8,17 @@
         {{data.errorMessage}}
     </div>
     <div ng-switch on="data.view">
-        <div class="col-md-2 col-md-offset-4 passcode" ng-switch-when="start">
-            <input class="input-number password-modal" readonly="true" type="text"
-                   ng-model="data.gcnumber" placeholder="{{data.placeholder}}"/>
-            <ul class="numpad">
-                <a ng-repeat="num in numpad" href ng-click="updatePasscode(num)">{{num}}</a>
-                <a href ng-click="verify()"><span class="glyphicon glyphicon-ok"></span></a>
-                <a href ng-click="updatePasscode('0')">0</a>
-                <a href ng-click="remove()"><span class="glyphicon glyphicon-chevron-left"></span></a>
-            </ul>
+        <div class="col-md-12" ng-switch-when="start">
+            <div class="passcode">
+                <input class="input-number password-modal" readonly="true" type="text"
+                       ng-model="data.gcnumber" placeholder="{{data.placeholder}}"/>
+                <ul class="numpad">
+                    <a ng-repeat="num in numpad" href ng-click="updatePasscode(num)">{{num}}</a>
+                    <a href ng-click="verify()"><span class="glyphicon glyphicon-ok"></span></a>
+                    <a href ng-click="updatePasscode('0')">0</a>
+                    <a href ng-click="remove()"><span class="glyphicon glyphicon-chevron-left"></span></a>
+                </ul>
+            </div>
         </div>
         <div ng-switch-when="end">
             <div class="alert alert-success alert-dismissable">

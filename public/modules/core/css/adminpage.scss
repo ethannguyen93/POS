@@ -1,3 +1,14 @@
+$primary-dark: #34495E;
+$primary-regular: #1ABC9C;
+$primary-light: #2ECC71;
+
+$accent: #F58840;
+$divider: #B6B6B6;
+
+$text-on-dark: #fff;
+$text-primary: #212121;
+$text-secondary: #727272;
+
 @font-face {
   font-family: Montserrat;
   src: url(../../../assets/Montserrat/Montserrat-Regular.ttf);
@@ -77,10 +88,9 @@
 }
 
 .col-nav {
-  background: #2C3E50;
+  background: $primary-dark;
   padding: 0;
   overflow-y: scroll;
-
 }
 
 .col-nav .nav li {
@@ -105,10 +115,10 @@
   }
 
   a:active, a:hover, a:focus {
-    color: white;
+    color: $text-primary;
     padding-left: 30px;
     //background-color: rgba(255, 255, 255, 0.1);
-    background-color: #1abc9c;
+    background-color: white;
   }
 
 }

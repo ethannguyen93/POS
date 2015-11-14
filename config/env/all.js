@@ -16,7 +16,8 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap.css',
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
 				'public/lib/eeh-navigation/dist/eeh-navigation.css',
-				'public/lib/angular-ui-grid/ui-grid.min.css'
+				'public/lib/angular-ui-grid/ui-grid.min.css',
+				//'public/lib/material-design-lite/material.min.css'
 			],
 			js: [
 				'public/lib/angular/angular.js',
@@ -34,7 +35,8 @@ module.exports = {
 				'public/lib/eeh-navigation/dist/eeh-navigation.tpl.js',
 				'public/lib/angular-ui-grid/ui-grid.min.js',
 				'public/lib/ftscroller/lib/ftscroller.js',
-				'public/lib/dragscroll/dragscroll.js'
+				'public/lib/dragscroll/dragscroll.js',
+				//'public/lib/material-design-lite/material.min.js'
 			]
 		},
 		css: [

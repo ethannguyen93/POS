@@ -8,13 +8,15 @@
                 <div ng-switch on="view">
                     <ul class="nav navbar-nav navbar-right" ng-switch-when='numpad'>
                         <li>
-                            <a ng-click="navigateAdminPage()">Admin</a>
+                            <button ng-click="navigateAdminPage()" type="button" class="btn btn-default btn-block ng-binding ng-scope ng-click-active">
+                                <span class="glyphicon glyphicon-user"></span>&nbsp;Admin</button>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right" ng-switch-when='mainpage'>
                         <li><a>{{data.currentUser.name}}</a></li>
                         <li>
-                            <a ng-click="logOut()">Log Out</a>
+                            <button ng-click="logOut()" type="button" class="btn btn-default btn-block ng-binding ng-scope ng-click-active">
+                                <span class="glyphicon glyphicon-log-out"></span>&nbsp;Log out</button>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right" ng-switch-when='adminpagelogin'>
@@ -24,7 +26,8 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right" ng-switch-when='adminpage'>
                         <li>
-                            <a ng-click="navigateNumpadPage()">Log out</a>
+                            <button ng-click="navigateNumpadPage()" type="button" class="btn btn-default btn-block ng-binding ng-scope ng-click-active">
+                                <span class="glyphicon glyphicon-log-out"></span>&nbsp;Log out</button>
                         </li>
                     </ul>
                 </div>

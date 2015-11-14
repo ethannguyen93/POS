@@ -3,6 +3,7 @@ var mongoose = require('mongoose'),
     _ = require('lodash');
 
 module.exports = function (req, res) {
+    console.log("[saveOrder.js] Reached!");
     var connectionDB = mongoose.connection.db;
     var getIndex = function(collection){
         var deferred = Q.defer();
@@ -60,6 +61,7 @@ module.exports = function (req, res) {
                     if (err) {
                         console.log(err)
                     } else {
+                        console.log("saved successfully!");
                         res.jsonp([result]);
                     }
                 })

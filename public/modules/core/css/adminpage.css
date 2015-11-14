@@ -49,7 +49,7 @@
   background-color: blue; }
 
 .col-nav {
-  background: #2C3E50;
+  background: #34495E;
   padding: 0;
   overflow-y: scroll; }
 
@@ -67,9 +67,9 @@
   .col-nav .nav li a .glyphicon {
     font-size: 1.2vw; }
 .col-nav .nav li a:active, .col-nav .nav li a:hover, .col-nav .nav li a:focus {
-  color: white;
+  color: #212121;
   padding-left: 30px;
-  background-color: #1abc9c; }
+  background-color: white; }
 
 /** POS Pagination directive */
 .pos-pagination {
