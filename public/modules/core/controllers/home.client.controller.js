@@ -17,7 +17,7 @@ angular.module('core').controller('HomeController', [
 		/**********************************************************************************************************/
 		/**********************************************************************************************************/
 		/**********************************************************************************************************/
-		$scope.view = 'mainpage';
+		$scope.view = 'adminpage';
 		$scope.logOut = function(){
 			$scope.view = 'numpad';
 			$scope.data.password = '';
@@ -161,26 +161,28 @@ angular.module('core').controller('HomeController', [
 			var body = {
 				'type': 'retrieveCat'
 			};
+			$scope.data.subtotal = 0;
+			$scope.data.tax = 0;
 			RetrieveInventory.load(body, function(response){
 				$scope.data.category = _.map(response, _.clone);
-			});
-			$scope.data.orderModal().then(function(selectedItem){
-				console.log(selectedItem.message);
-				switch (selectedItem.message){
-					case undefined:
-					case 'no':
-						$scope.view = 'numpad';
-						break;
-					case 'neworder':
-						$scope.data.index = selectedItem.data;
-						break;
-					case 'order':
-						//debugger;
-						$scope.data.index = selectedItem.data.index;
-						$scope.data.order = selectedItem.data._id;
-						$scope.data.orders = selectedItem.data.orders;
-						break;
-				}
+				$scope.data.orderModal().then(function(selectedItem){
+					console.log(selectedItem.message);
+					switch (selectedItem.message){
+						case undefined:
+						case 'no':
+							$scope.view = 'numpad';
+							break;
+						case 'neworder':
+							$scope.data.index = selectedItem.data;
+							break;
+						case 'order':
+							//debugger;
+							$scope.data.index = selectedItem.data.index;
+							$scope.data.order = selectedItem.data._id;
+							$scope.data.orders = selectedItem.data.orders;
+							break;
+					}
+				});
 			});
 		};
 		$scope.data.orderModal = function(){
@@ -294,7 +296,13 @@ angular.module('core').controller('HomeController', [
 		$scope.data.doneOrder = function () {
 			$scope.data.doneOrderModal().then(function(selectedItem){
 				if (selectedItem === 'yes'){
-
+					var body = {
+						'type': 'doneOrder',
+						'order': $scope.data.order
+					};
+					RetrieveInventory.load(body, function(){
+						$scope.logOut();
+					});
 				}
 			})
 		};
@@ -386,6 +394,18 @@ angular.module('core').controller('HomeController', [
 				giftcards: [],
 				newgc: '',
 				newgcprice: ''
+			},
+			report: {
+				isError: false,
+				errorMessage: '',
+				gridOptions: {
+					rowHeight: 60,
+					columnFooterHeight: 60,
+					enableFiltering: true,
+					enablePaginationControls: false,
+					paginationPageSize: 10,
+					data: 'admin.giftcard.giftcards'
+				}
 			},
 			item: {
 				isError: false,
@@ -804,9 +824,35 @@ angular.module('core').controller('HomeController', [
 			});
 		};
 		/******************************************************************************************************/
-		$scope.dt = new Date();
+		$scope.showReport = function(){
+			$scope.admin.page = 'report';
+		};
+		$scope.initReport = function() {
+			console.log('here');
+			$scope.admin.report.date = new Date();
+			$scope.admin.report.open = true;
+		};
+		$scope.today = function() {
+			$scope.dt = new Date();
+		};
+		$scope.today();
 
-		$scope.openDate = function($event) {
+		$scope.clear = function () {
+			$scope.dt = null;
+		};
+
+		// Disable weekend selection
+		$scope.disabled = function(date, mode) {
+			return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+		};
+
+		$scope.toggleMin = function() {
+			$scope.minDate = $scope.minDate ? null : new Date();
+		};
+		$scope.toggleMin();
+		$scope.maxDate = new Date(2020, 5, 22);
+
+		$scope.open = function($event) {
 			$scope.status.opened = true;
 		};
 
@@ -818,27 +864,29 @@ angular.module('core').controller('HomeController', [
 			formatYear: 'yy',
 			startingDay: 1
 		};
+
 		$scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-		$scope.format = 'dd-MMMM-yyyy';
+		$scope.format = $scope.formats[0];
 
 		$scope.status = {
 			opened: false
 		};
+
 		var tomorrow = new Date();
 		tomorrow.setDate(tomorrow.getDate() + 1);
 		var afterTomorrow = new Date();
 		afterTomorrow.setDate(tomorrow.getDate() + 2);
 		$scope.events =
-			[
-				{
-					date: tomorrow,
-					status: 'full'
-				},
-				{
-					date: afterTomorrow,
-					status: 'partially'
-				}
-			];
+				[
+					{
+						date: tomorrow,
+						status: 'full'
+					},
+					{
+						date: afterTomorrow,
+						status: 'partially'
+					}
+				];
 
 		$scope.getDayClass = function(date, mode) {
 			if (mode === 'day') {
@@ -855,6 +903,15 @@ angular.module('core').controller('HomeController', [
 
 			return '';
 		};
+/*		$scope.openDate = function($event) {
+			console.log($event);
+			$scope.admin.report.open = !$scope.admin.report.open;
+			console.log('open');
+		};
+		$scope.datePicker = {};
+		$scope.datePicker.status = {
+			opened: true
+		};*/
 		/******************************************************************************************************/
 		/*Scroller Initialization*/
 		$scope.initFTScroller = function(id) {

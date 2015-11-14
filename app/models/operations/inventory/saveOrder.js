@@ -49,7 +49,7 @@ module.exports = function (req, res) {
     };
     connectionDB.collection('orders', function (err, collection) {
         getIndex(collection).then(function(index){
-            if (req.body.order === ''){
+            if (!req.body.order){
                 collection.insert({
                     employee: req.body.user,
                     orders: req.body.orders,

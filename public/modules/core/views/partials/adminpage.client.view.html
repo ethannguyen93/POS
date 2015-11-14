@@ -46,7 +46,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="" ng-click="showReport()">
                         <div class="row">
                             <div class="col-md-3"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span></div>
                             <div class="col-md-9">Reports</div>
@@ -107,14 +107,14 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="panel panel-primary" ng-switch-when="report">
-                <div class="panel-heading">
-                    Generate Report
-                </div>
-                <div class="panel-body">
-                    <div class="panel panel-default">
-                        <admin-report></admin-report>
+                <div class="panel panel-primary" ng-switch-when="report">
+                    <div class="panel-heading">
+                        Generate Report
+                    </div>
+                    <div class="panel-body">
+                        <div class="panel panel-default">
+                            <admin-report></admin-report>
+                        </div>
                     </div>
                 </div>
             </div>

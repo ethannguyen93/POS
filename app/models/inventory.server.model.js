@@ -40,7 +40,8 @@ var operationMap = {
 	saveOrder: require('./operations/inventory/saveOrder'),
 	getOrder: require('./operations/inventory/getOrder'),
 	selectOneOrder: require('./operations/inventory/selectOneOrder'),
-	printReceipt: require('./operations/inventory/printReceipt')
+	printReceipt: require('./operations/inventory/printReceipt'),
+	doneOrder: require('./operations/inventory/doneOrder')
 };
 
 exports.operationMap = operationMap;
