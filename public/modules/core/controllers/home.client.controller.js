@@ -240,9 +240,20 @@ angular.module('core').controller('HomeController', [
 		/*$scope.$watch(
 			"data.subtotal",
 			function updateTax( newValue, oldValue ) {
-				//console.log("newValue=" + newValue + '\toldValue' + oldValue);
-				$scope.data.tax = $scope.data.subtotal*0.13;
-				$scope.data.total = $scope.data.subtotal + $scope.data.tax;
+
+				/!*$scope.data.tax = $scope.subtotal * 0.13;
+				$scope.data.total =   $scope.data.subtotal + $scope.data.tax;*!/
+
+				if ($scope.data.orders && $scope.data.orders.length > 0) {
+					var taxes = 0;
+					var total = 0;
+					var subtotal = 0;
+					_.each($scope.data.orders, function(item) {
+						if (!item.isGiftcard) {
+							taxes += item.quantity * item.price * 1.13;
+						}
+					});
+				}
 			}
 		);*/
 

@@ -9,11 +9,17 @@ angular.module('core').factory('MainpageServices', ['RetrieveInventory',
 					case 'increase':
 						$scope.data.orders[index].quantity++;
 						$scope.data.subtotal += $scope.data.orders[index].price;
+						if (!$scope.data.orders[index].isGiftcard) {
+							$scope.data.tax += 0.13*$scope.data.orders[index].price;
+						}
 						break;
 					case 'decrease':
 						if ($scope.data.orders[index].quantity > 0){
 							$scope.data.orders[index].quantity--;
 							$scope.data.subtotal -= $scope.data.orders[index].price;
+							if (!$scope.data.orders[index].isGiftcard) {
+								$scope.data.tax -= 0.13*$scope.data.orders[index].price;
+							}
 							if ($scope.data.orders[index].quantity === 0){
 								self.removeItem($scope,$scope.data.orders[index]);
 							}
@@ -81,9 +87,6 @@ angular.module('core').factory('MainpageServices', ['RetrieveInventory',
 					index++;
 				});
 				$scope.data.subtotal -= item.quantity*item.price;
-				if (!item.isGiftcard) {
-					$scope.data.tax -= 0.13*item.price;
-				}
 				if ($scope.data.subtotal === 0){
 					$scope.data.subtotal = 0;
 				}
