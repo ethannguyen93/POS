@@ -53,7 +53,7 @@ angular.module('core').controller('useGiftcardCtrl',
                     $scope.setError('Amount exceeds remaining balance');
                 }else{
                     var id = guid();
-                    $modalInstance.close({_id: id, number: $scope.data.gcnumber, amount: newAmount});
+                    $modalInstance.close({_id: id, number: $scope.data.gcnumber, amount: newAmount, isGiftcard: true});
                 }
             }
         };

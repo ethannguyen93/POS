@@ -49,7 +49,7 @@ angular.module('core').controller('buyGiftcardCtrl',
             }else{
                 var newAmount = parseFloat($scope.data.newAmount);
                 var id = guid();
-                $modalInstance.close({_id: id, number: $scope.data.gcnumber, amount: newAmount, type: $scope.data.type});
+                $modalInstance.close({_id: id, number: $scope.data.gcnumber, amount: newAmount, type: $scope.data.type, isGiftcard: true});
             }
         };
         var guid = function() {

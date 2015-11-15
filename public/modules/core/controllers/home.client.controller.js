@@ -17,7 +17,7 @@ angular.module('core').controller('HomeController', [
 		/**********************************************************************************************************/
 		/**********************************************************************************************************/
 		/**********************************************************************************************************/
-		$scope.view = 'mainpage';
+		$scope.view = 'numpad';
 		$scope.logOut = function(){
 			$scope.view = 'numpad';
 			$scope.data.subtotal = 0;
@@ -216,7 +216,7 @@ angular.module('core').controller('HomeController', [
 		};
 		$scope.addItemToOrder = function(item){
 			MainpageServices.addItem($scope, item);
-			$scope.data.tax += item.price * 0.13;
+
 		};
 		$scope.updateOrder = function(type, index){
 			MainpageServices.updateOrder($scope, type, index);
@@ -236,6 +236,17 @@ angular.module('core').controller('HomeController', [
 				}
 			}
 		};
+
+		// Watch for order changes and recalculate tax
+		/*$scope.$watch(
+			"data.subtotal",
+			function updateTax( newValue, oldValue ) {
+				//console.log("newValue=" + newValue + '\toldValue' + oldValue);
+				$scope.data.tax = $scope.data.subtotal*0.13;
+				$scope.data.total = $scope.data.subtotal + $scope.data.tax;
+			}
+		);*/
+
 		$scope.data.checkBalance = function () {
 			$scope.data.checkBalanceModal();
 		};

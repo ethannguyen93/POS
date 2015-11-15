@@ -41,6 +41,9 @@ angular.module('core').factory('MainpageServices', ['RetrieveInventory',
 					$scope.data.orders[index].quantity++;
 				}
 				$scope.data.subtotal += item.price;
+				if (!item.isGiftcard) {
+					$scope.data.tax += 0.13*item.price;
+				}
 			},
 			/**
 			 *
@@ -78,6 +81,9 @@ angular.module('core').factory('MainpageServices', ['RetrieveInventory',
 					index++;
 				});
 				$scope.data.subtotal -= item.quantity*item.price;
+				if (!item.isGiftcard) {
+					$scope.data.tax -= 0.13*item.price;
+				}
 				if ($scope.data.subtotal === 0){
 					$scope.data.subtotal = 0;
 				}
