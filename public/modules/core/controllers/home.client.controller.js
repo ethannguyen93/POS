@@ -230,7 +230,6 @@ angular.module('core').controller('HomeController', [
 			});
 			MainpageServices.removeItem($scope, item);
 			if (!item.isGiftcard){
-				$scope.data.tax -= item.price * 0.13 * item.quantity;
 				if ($scope.data.subtotal <= 0 && $scope.data.subtotal > -0.1){
 					$scope.data.subtotal = 0;
 				}
