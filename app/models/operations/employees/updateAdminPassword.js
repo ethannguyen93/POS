@@ -3,6 +3,7 @@ var mongoose = require('mongoose'),
 
 module.exports = function (req, res) {
     var connectionDB = mongoose.connection.db;
+    console.log(req.body);
     connectionDB.collection('employees', function (err, collection) {
         collection.update({
             'isAdmin': true,

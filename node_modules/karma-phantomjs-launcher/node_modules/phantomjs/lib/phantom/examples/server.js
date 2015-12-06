@@ -28,7 +28,7 @@ if (system.args.length !== 2) {
         console.log("could not create web server listening on port " + port);
         phantom.exit();
     }
-    var url = "http://localhost:" + port + "/foo/bar.php?asdf=true";
+    var url = "http://127.0.0.1:" + port + "/foo/bar.php?asdf=true";
     console.log("SENDING REQUEST TO:");
     console.log(url);
     page.open(url, function (status) {

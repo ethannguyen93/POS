@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	db: 'mongodb://localhost/pos-dev',
+	db: 'mongodb://127.0.0.1/pos-dev',
 	app: {
 		title: 'POS - Development Environment'
 	},

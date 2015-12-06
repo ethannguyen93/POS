@@ -17,7 +17,7 @@ service = server.listen(port, (request, response) ->
   response.write JSON.stringify(request, null, 4)
   response.close()
 )
-page.open "http://localhost:" + port + "/", "post", data, (status) ->
+page.open "http://127.0.0.1:" + port + "/", "post", data, (status) ->
   if status isnt "success"
     console.log "Unable to post!"
   else

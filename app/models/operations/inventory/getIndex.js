@@ -19,7 +19,7 @@ module.exports = function (req, res) {
                                todayDate: result[0].todayDate
                            },
                            {
-                               $set: {todayDate: now}
+                               $set: {todayDate: now, index: 0}
                            }, function(){
                                deferred.resolve(0);
                            })

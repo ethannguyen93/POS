@@ -378,7 +378,7 @@ angular.module('core').controller('HomeController', [
 		/**********************************************************************************************************/
 		/*Admin Main Page*/
 		$scope.admin = {
-			page: 'report',
+			page: 'setting',
 			setting: {
 				name: '',
 				passcode: '',
@@ -476,7 +476,7 @@ angular.module('core').controller('HomeController', [
 			$scope.admin.setting.newpasscode_repeat = '';
 		};
 		$scope.changepassword = function(){
-			AdminPageServices.changepassword($scope, $scope.admin.newpasscode, $scope.admin.newpasscode_repeat)
+			AdminPageServices.changepassword($scope, $scope.admin.setting.passcode, $scope.admin.setting.newpasscode, $scope.admin.setting.newpasscode_repeat)
 		};
 		$scope.admin.setting.onchange = function(){
 			$scope.admin.setting.isError = false;

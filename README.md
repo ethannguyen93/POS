@@ -74,7 +74,7 @@ After the install process is over, you'll be able to run your application using 
 $ grunt
 ```
 
-Your application should run on the 3000 port so in your browser just go to [http://localhost:3000](http://localhost:3000)
+Your application should run on the 3000 port so in your browser just go to [http://127.0.0.1:3000](http://127.0.0.1:3000)
                             
 That's it! your application should be running by now, to proceed with your development check the other sections in this documentation. 
 If you encounter any problem try the Troubleshooting section.

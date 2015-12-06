@@ -4,7 +4,6 @@ var mongoose = require('mongoose'),
 
 module.exports = function (req, res) {
     var connectionDB = mongoose.connection.db;
-    console.log(req.body);
     var getIndex = function(collection){
         var deferred = Q.defer();
         collection.find({todayDate: {$exists: true}}, function(err, cursor){
@@ -20,7 +19,7 @@ module.exports = function (req, res) {
                                 todayDate: result[0].todayDate
                             },
                             {
-                                $set: {todayDate: now, index: 0}
+                                t$set: {todayDate: now, index: 0}
                             }, function(){
                                 deferred.resolve(0);
                             })
@@ -50,52 +49,61 @@ module.exports = function (req, res) {
     };
     var updateGiftcard = function(){
         var deferred = Q.defer();
-        connectionDB.collection('giftcards', function (err, collection) {
-            if (err) console.log(err);
-            var bulk = collection.initializeUnorderedBulkOp();
-            _.each(req.body.orders, function(order){
-                if (order.isGiftcard){
-                    var gc = {};
-                    var tmp = order.name.substring(9);
-                    var index = tmp.indexOf(' ');
-                    if (index < 0){
-                        index = 1;
-                    }
-                    var gcnum = order.name.substring(9, 9+index);
-                    var type = '';
-                    gc.price = order.price;
-                    if (gc.price < 0){
-                        type = 'Reload'
-                    }else{
-                        type = (order.name.indexOf('Buy') > -1) ? 'Buy' : 'Reload';
-                    }
-                    gc.type = type;
-                    gc.number = gcnum;
-                    switch (type){
-                        case 'Buy':
-                            bulk.insert(
-                                {
-                                    number: gc.number,
-                                    amount: gc.price
-                                });
-                            break;
-                        case 'Reload':
-                            bulk.find(
-                                {
-                                    number: gc.number
-                                }).updateOne(
-                                {
-                                    $inc: {amount: gc.price}
-                                });
-                            break;
-                    }
-                }
-            });
-            bulk.execute(function(err, result) {
-                console.log('done with giftcard');
-                deferred.resolve();
-            });
+        var hasGC = _.find(req.body.orders, function(order){
+            return (order.isGiftcard);
         });
+        if (hasGC !== undefined){
+            connectionDB.collection('giftcards', function (err, collection) {
+                if (err) console.log(err);
+                var bulk = collection.initializeUnorderedBulkOp();
+                _.each(req.body.orders, function(order){
+                    if (order.isGiftcard){
+                        console.log(order);
+                        var gc = {};
+                        var tmp = order.name.substring(9);
+                        var index = tmp.indexOf(' ');
+                        if (index < 0){
+                            index = order.name.length - 9 + 1;
+                        }
+                        var gcnum = order.name.substring(9, 9+index);
+                        var type = '';
+                        gc.price = order.price;
+                        if (gc.price < 0){
+                            type = 'Reload'
+                        }else{
+                            type = (order.name.indexOf('Buy') > -1) ? 'Buy' : 'Reload';
+                        }
+                        gc.type = type;
+                        gc.number = gcnum;
+                        switch (type){
+                            case 'Buy':
+                                bulk.insert(
+                                    {
+                                        number: gc.number,
+                                        amount: gc.price
+                                    });
+                                break;
+                            case 'Reload':
+                                console.log('Reload');
+                                bulk.find(
+                                    {
+                                        number: gc.number
+                                    }).updateOne(
+                                    {
+                                        $inc: {amount: gc.price}
+                                    });
+                                break;
+                        }
+                    }
+                });
+                bulk.execute(function(err, result) {
+                    console.log('done with giftcard');
+                    deferred.resolve();
+                });
+            });
+        }else{
+            deferred.resolve();
+        }
         return deferred.promise;
     };
     updateGiftcard().then(function(){

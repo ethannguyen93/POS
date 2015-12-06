@@ -4,7 +4,7 @@ describe('The main view', function () {
   var page;
 
   beforeEach(function () {
-    browser.get('http://localhost:3000/index.html');
+    browser.get('http://127.0.0.1:3000/index.html');
     page = require('./main.po');
   });
 

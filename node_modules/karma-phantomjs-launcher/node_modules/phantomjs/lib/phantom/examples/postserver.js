@@ -24,7 +24,7 @@ service = server.listen(port, function (request, response) {
     response.close();
 });
 
-page.open('http://localhost:' + port + '/', 'post', data, function (status) {
+page.open('http://127.0.0.1:' + port + '/', 'post', data, function (status) {
     if (status !== 'success') {
         console.log('Unable to post!');
     } else {

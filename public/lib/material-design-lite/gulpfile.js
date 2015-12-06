@@ -488,7 +488,7 @@ gulp.task('serve', function() {
   watch();
 
   gulp.src('./dist/index.html')
-    .pipe($.open('', {url: 'http://localhost:5000'}));
+    .pipe($.open('', {url: 'http://127.0.0.1:5000'}));
 });
 
 // Generate release archive containing just JS, CSS, Source Map deps

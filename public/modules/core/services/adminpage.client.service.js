@@ -140,7 +140,7 @@ angular.module('core').factory('AdminPageServices', [ 'RetrieveEmployee', 'Retri
 					});
 				})
 			},
-			changepassword: function($scope, newpasscode, newpasscode_repeat){
+			changepassword: function($scope, passcode, newpasscode, newpasscode_repeat){
 				if (newpasscode === undefined || newpasscode_repeat === undefined
 					|| newpasscode === '' || newpasscode_repeat === ''){
 					$scope.admin.setting.isError = true;
@@ -148,14 +148,17 @@ angular.module('core').factory('AdminPageServices', [ 'RetrieveEmployee', 'Retri
 				}else if (newpasscode === newpasscode_repeat){
 					var body = {
 						type: 'updateAdminPassword',
-						passcode: $scope.admin.passcode,
+						passcode: passcode,
 						newpasscode: newpasscode
 					};
 					RetrieveEmployee.load(body, function(response){
 						console.log(response);
 						$scope.admin.passcode = newpasscode;
-						$scope.admin.newpasscode = '';
-						$scope.admin.newpasscode_repeat = '';
+						$scope.admin.setting.newpasscode = '';
+						$scope.admin.setting.newpasscode_repeat = '';
+						$scope.admin.setting.passcode = newpasscode;
+						$scope.admin.setting.isError = true;
+						$scope.admin.setting.errorMessage = 'Password has been updated successfully';
 					});
 				}else{
 					$scope.admin.setting.isError = true;
