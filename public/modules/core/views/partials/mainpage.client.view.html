@@ -3,16 +3,24 @@
 
         <div class="order-panel flex-panel-content">
             <div class="panel-heading">
-                Order number {{data.index}} - Customer {{data.customerName}}
+                <div class="row">
+                    <div class="col-md-9">
+                        Order number {{data.index}} - Customer {{data.customerName}}
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control" ng-options="employee for employee in data.employees track by employee"
+                                ng-model="data.selectedEmployee"
+                                ng-change="data.updateEmployee()"></select>
+                    </div>
+                </div>
+
+
             </div>
             <div id="order-grid" ui-grid="data.gridOptions" ui-grid-pagination class="grid" ng-init="data.initOrder(); initFTScrollerGrid('order-grid')"></div>
             <pos-pagination page="{{ data.gridApi.pagination.getPage() }}"
                             of="{{ data.gridApi.pagination.getTotalPages() }}"
                             prev="data.gridApi.pagination.previousPage()"
                             next="data.gridApi.pagination.nextPage()"></pos-pagination>
-            <select ng-options="employee for employee in data.employees track by employee"
-                    ng-model="data.selectedEmployee"
-                    ng-change="data.updateEmployee()"></select>
         </div>
         <div class="summary-panel flex-panel-content">
             <div class="payment-panel">
@@ -41,22 +49,23 @@
                 <table class="table">
                     <tbody>
                     <tr>
-                        <td>Subtotal:</td>
+                        <td>Subtotal</td>
                         <td>${{(data.subtotal).toFixed(2)}}</td>
                     </tr>
                     <tr>
                         <td>
-                            Taxes:
-                            <input type="checkbox" ng-model="data.isTax" ng-change="data.getTax()"/>
-                            <!--<div class="roundedOne">
-                                <input type="checkbox" value="None" id="roundedOne" name="check" />
-                                <label for="roundedOne"></label>
-                            </div>-->
+                            Taxes
+                            <div class="slideThree">
+                                <input type="checkbox" value="None" id="slideThree" name="check" checked
+                                       ng-model="data.isTax" ng-change="data.getTax()"
+                                />
+                                <label for="slideThree"></label>
+                            </div>
                         </td>
                         <td>${{(data.tax).toFixed(2)}}</td>
                     </tr>
                     <tr>
-                        <td>Total cost:</td>
+                        <td>Total cost</td>
                         <td>${{(data.subtotal + data.tax).toFixed(2)}}</td>
                     </tr>
                     </tbody>

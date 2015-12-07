@@ -132,6 +132,15 @@ a > span {
   flex-direction: column;
   align-items: center;
   justify-content: center; }
+  .panel-heading .row {
+    width: 100%; }
+  .panel-heading select {
+    width: 100%; }
+
+.navbar li {
+  margin: 5px; }
+  .navbar li li > select {
+    height: 100%; }
 
 .horizontal-list {
   white-space: nowrap;
@@ -250,7 +259,11 @@ a > span {
       padding: 10px;
       display: flex;
       display: -webkit-flex;
-      flex-direction: column; }
+      flex-direction: column;
+      /* .slideThree */
+      /* $activeColor: #c0392b; //red */
+      /* $background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/13460/dark_wall.png'); */
+      /* end .slideThree */ }
       .flex-panel .summary-panel .subtotal-panel table {
         border-color: rgba(255, 255, 255, 0.1);
         color: white; }
@@ -258,6 +271,54 @@ a > span {
           border-top: 1px solid rgba(255, 255, 255, 0.1); }
       .flex-panel .summary-panel .subtotal-panel .table > tbody > tr > td {
         border-top: 1px solid rgba(255, 255, 255, 0.1); }
+      .flex-panel .summary-panel .subtotal-panel .slideThree {
+        display: inline-block;
+        width: 80px;
+        height: 30px;
+        background: #333;
+        margin: 5px auto;
+        margin-top: 10px;
+        margin-bottom: 0px;
+        position: relative;
+        border-radius: 50px;
+        box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2); }
+        .flex-panel .summary-panel .subtotal-panel .slideThree:after {
+          content: 'OFF';
+          color: #000;
+          top: 2px;
+          position: absolute;
+          right: 10px;
+          z-index: 0;
+          font: 12px/26px Arial, sans-serif;
+          font-weight: bold;
+          text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.15); }
+        .flex-panel .summary-panel .subtotal-panel .slideThree:before {
+          content: 'ON';
+          color: #27ae60;
+          top: 2px;
+          position: absolute;
+          left: 10px;
+          z-index: 0;
+          font: 12px/26px Arial, sans-serif;
+          font-weight: bold; }
+        .flex-panel .summary-panel .subtotal-panel .slideThree label {
+          display: block;
+          width: 34px;
+          height: 25px;
+          cursor: pointer;
+          position: absolute;
+          top: 3px;
+          left: 3px;
+          z-index: 1;
+          background: #fcfff4;
+          background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+          border-radius: 50px;
+          transition: all 0.4s ease;
+          box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3); }
+        .flex-panel .summary-panel .subtotal-panel .slideThree input[type=checkbox] {
+          visibility: hidden; }
+          .flex-panel .summary-panel .subtotal-panel .slideThree input[type=checkbox]:checked + label {
+            left: 43px; }
     .flex-panel .summary-panel * {
       -webkit-flex: 1;
       flex: 1;
