@@ -10,23 +10,9 @@
                             of="{{ data.gridApi.pagination.getTotalPages() }}"
                             prev="data.gridApi.pagination.previousPage()"
                             next="data.gridApi.pagination.nextPage()"></pos-pagination>
-            <!--<div class="panel panel-primary">
-                <div class="panel-heading">
-                    Order number {{data.index}}
-                </div>
-                <div class="panel-body">
-                    <div class="panel panel-default">
-                        <div ui-grid="data.gridOptions" ui-grid-pagination class="grid" ng-init="data.initOrder()"></div>
-                        <p>Current page: {{ admin.item.gridApi.pagination.getPage() }} of {{ admin.item.gridApi.pagination.getTotalPages() }}</p>
-                        <button type="button" class="btn btn-success" ng-click="admin.item.gridApi.pagination.previousPage()">
-                            previous page
-                        </button>
-                        <button type="button" class="btn btn-success" ng-click="admin.item.gridApi.pagination.nextPage()">
-                            next page
-                        </button>
-                    </div>
-                </div>
-            </div>-->
+            <select ng-options="employee for employee in data.employees track by employee"
+                    ng-model="data.selectedEmployee"
+                    ng-change="data.updateEmployee()"></select>
         </div>
         <div class="summary-panel flex-panel-content">
             <div class="payment-panel">
@@ -59,7 +45,14 @@
                         <td>${{(data.subtotal).toFixed(2)}}</td>
                     </tr>
                     <tr>
-                        <td>Taxes:</td>
+                        <td>
+                            Taxes:
+                            <input type="checkbox" ng-model="data.isTax" ng-change="data.getTax()"/>
+                            <!--<div class="roundedOne">
+                                <input type="checkbox" value="None" id="roundedOne" name="check" />
+                                <label for="roundedOne"></label>
+                            </div>-->
+                        </td>
                         <td>${{(data.tax).toFixed(2)}}</td>
                     </tr>
                     <tr>

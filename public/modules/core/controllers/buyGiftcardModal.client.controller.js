@@ -13,7 +13,6 @@ angular.module('core').controller('buyGiftcardCtrl',
             type: 'use'
         };
         $scope.reset = function(){
-            console.log('here');
             $scope.data.isError = false;
             $scope.data.errorMessage = '';
         };

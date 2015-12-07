@@ -47,6 +47,31 @@ angular.module('core').controller('HomeController', [
 		/**********************************************************************************************************/
 		/**********************************************************************************************************/
 		/**********************************************************************************************************/
+		/*Scheduler Page*/
+		$scope.scheduler.events = [
+			{title: 'All Day Event',start: new Date(y, m, 1)},
+			{title: 'Long Event',start: new Date(y, m, d - 5),end: new Date(y, m, d - 2)},
+			{id: 999,title: 'Repeating Event',start: new Date(y, m, d - 3, 16, 0),allDay: false},
+			{id: 999,title: 'Repeating Event',start: new Date(y, m, d + 4, 16, 0),allDay: false},
+			{title: 'Birthday Party',start: new Date(y, m, d + 1, 19, 0),end: new Date(y, m, d + 1, 22, 30),allDay: false},
+			{title: 'Click for Google',start: new Date(y, m, 28),end: new Date(y, m, 29),url: 'http://google.com/'}
+		];
+
+
+
+
+
+
+
+		/**********************************************************************************************************/
+		/**********************************************************************************************************/
+		/**********************************************************************************************************/
+		/**********************************************************************************************************/
+		/**********************************************************************************************************/
+		/**********************************************************************************************************/
+		/**********************************************************************************************************/
+		/**********************************************************************************************************/
+		/**********************************************************************************************************/
 		/*Admin Login Page*/
 		$scope.adminLogin = {
 			password: ''
@@ -116,6 +141,9 @@ angular.module('core').controller('HomeController', [
 			items: [],
 			subtotal: 0,
 			tax: 0,
+			isTax: true,
+			employees: [],
+			selectedEmployee: '',
 			customerName: '',
 			currentUser: {
 				name: ''
@@ -192,6 +220,32 @@ angular.module('core').controller('HomeController', [
 				});
 			});
 		};
+		$scope.$watch("data.tax", function(newValue, oldValue) {
+			if (newValue !== undefined && oldValue !== undefined){
+				if (!$scope.data.isTax){
+					$scope.data.tax = 0;
+				}else{
+					$scope.data.tax = 0;
+					_.each($scope.data.orders, function(order){
+						if (!order.isGiftcard){
+							$scope.data.tax += order.price*order.quantity*0.13;
+						}
+					});
+				}
+			}
+		});
+		$scope.data.getTax = function(){
+			if (!$scope.data.isTax){
+				$scope.data.tax = 0;
+			}else{
+				$scope.data.tax = 0;
+				_.each($scope.data.orders, function(order){
+					if (!order.isGiftcard){
+						$scope.data.tax += order.price*order.quantity*0.13;
+					}
+				});
+			}
+		};
 		$scope.data.orderModal = function(){
 			var deferred = $q.defer();
 			var editorInstance = $modal.open({
@@ -235,27 +289,6 @@ angular.module('core').controller('HomeController', [
 				}
 			}
 		};
-
-		// Watch for order changes and recalculate tax
-		/*$scope.$watch(
-			"data.subtotal",
-			function updateTax( newValue, oldValue ) {
-
-				/!*$scope.data.tax = $scope.subtotal * 0.13;
-				$scope.data.total =   $scope.data.subtotal + $scope.data.tax;*!/
-
-				if ($scope.data.orders && $scope.data.orders.length > 0) {
-					var taxes = 0;
-					var total = 0;
-					var subtotal = 0;
-					_.each($scope.data.orders, function(item) {
-						if (!item.isGiftcard) {
-							taxes += item.quantity * item.price * 1.13;
-						}
-					});
-				}
-			}
-		);*/
 
 		$scope.data.checkBalance = function () {
 			$scope.data.checkBalanceModal();
@@ -323,15 +356,22 @@ angular.module('core').controller('HomeController', [
 		};
 		$scope.data.doneOrder = function () {
 			$scope.data.doneOrderModal().then(function(selectedItem){
+				var server = {'name' : ''};
+				if ($scope.data.selectedEmployee === undefined || $scope.data.selectedEmployee === ''){
+					server = $scope.data.currentUser;
+				}else{
+					server = {'name' : $scope.data.selectedEmployee};
+				}
 				if (selectedItem === 'yes'){
 					var body = {
 						'type': 'doneOrder',
 						'order': $scope.data.order,
 						'orders': $scope.data.orders,
-						'user': $scope.data.currentUser,
+						'user': server,
 						'customerName': $scope.data.customerName,
 						'subtotal': $scope.data.subtotal,
-						'tax': $scope.data.tax
+						'tax': $scope.data.tax,
+						'isTax': $scope.data.isTax
 					};
 					RetrieveInventory.load(body, function(){
 						$scope.logOut();
@@ -354,11 +394,17 @@ angular.module('core').controller('HomeController', [
 			return deferred.promise;
 		};
 		$scope.data.printReceipt = function () {
+			var server = {'name' : ''};
+			if ($scope.data.selectedEmployee === undefined || $scope.data.selectedEmployee === ''){
+				server = $scope.data.currentUser;
+			}else{
+				server = {'name' : $scope.data.selectedEmployee};
+			}
 			var body = {
 				'type': 'printReceipt',
 				'order': $scope.data.index,
 				'orders': $scope.data.orders,
-				'user': $scope.data.currentUser,
+				'user': server,
 				'customerName': $scope.data.customerName,
 				'subtotal': $scope.data.subtotal,
 				'tax': $scope.data.tax

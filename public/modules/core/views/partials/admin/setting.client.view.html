@@ -1,8 +1,13 @@
 <div>
-    <div class="alert alert-danger" role="alert" ng-show="admin.setting.isError">
-        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-        <span class="sr-only">Error:</span>
-        {{admin.setting.errorMessage}}
+    <div ng-show="admin.setting.isError">
+        <div class="alert alert-danger" role="alert" ng-show="admin.setting.errorMessage !== 'Password has been updated successfully'">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+            {{admin.setting.errorMessage}}
+        </div>
+        <div class="alert alert-success" ng-hide="admin.setting.errorMessage !== 'Password has been updated successfully'">
+            {{admin.setting.errorMessage}}
+        </div>
     </div>
     <div class="form-group">
         <label>Account name: {{admin.setting.name}}</label>

@@ -18,10 +18,8 @@ angular.module('core').controller('checkBalanceCtrl',
             $scope.data.errorMessage = '';
         };
         $scope.updatePasscode = function(num){
-            if ($scope.data.gcnumber.length <= 3){
-                $scope.data.gcnumber += num;
-                $scope.reset();
-            }
+            $scope.data.gcnumber += num;
+            $scope.reset();
         };
         $scope.setError = function(message){
             $scope.data.isError = true;

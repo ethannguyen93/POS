@@ -58,7 +58,6 @@ module.exports = function (req, res) {
                 var bulk = collection.initializeUnorderedBulkOp();
                 _.each(req.body.orders, function(order){
                     if (order.isGiftcard){
-                        console.log(order);
                         var gc = {};
                         var tmp = order.name.substring(9);
                         var index = tmp.indexOf(' ');
@@ -119,7 +118,8 @@ module.exports = function (req, res) {
                         index: index+1,
                         customerName: req.body.customerName,
                         subtotal: req.body.subtotal,
-                        tax: req.body.tax
+                        tax: req.body.tax,
+                        isTax: req.body.isTax
                     }, function(err, result){
                         if (err) {
                             console.log(err)

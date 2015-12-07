@@ -18,7 +18,21 @@ angular.module('core').factory('LoginpageService', ['RetrieveEmployee', '$q',
 				};
 				RetrieveEmployee.load(body, function(response){
 					var user = response[0];
-					if (user.passcode !== undefined){
+					if (user.passcode !== undefined && user.isAdmin){
+						$scope.data.currentUser.name = user.name;
+						body = {
+							type: 'getAll'
+						};
+						RetrieveEmployee.load(body, function(response){
+							var employees = [];
+							_.each(response, function(res){
+								employees.push(res.name);
+							});
+							$scope.data.employees = employees;
+							$scope.data.selectedEmployee = employees[0];
+							$scope.view = 'mainpage';
+						});
+					}else if (user.passcode !== undefined){
 						$scope.data.currentUser.name = user.name;
 						$scope.view = 'mainpage';
 					}

@@ -18,13 +18,10 @@ module.exports = function (req, res) {
     var nextDate = moment(givenDate).add(1, 'days');
     var connectionDB = mongoose.connection.db;
 
-    console.log("Request Body");
-    console.log(req.body);
-
     connectionDB.collection('orders', function (err, collection) {
 
         var queryBody;
-        if (!req.body.reportType || req.body.reportType === 'DailyReport') {
+        if (!req.body.reportType || req.body.reportType === 'DailyReport' || req.body.reportType === 'EmployeeReport') {
             queryBody = {
                 timePaid: {
                     $gte: givenDate.toDate(),
@@ -51,7 +48,7 @@ module.exports = function (req, res) {
                             orders.push(i);
                         });
                         var report = [];
-
+                        var tableCols = [];
                         function generateReportRegular(order) {
                             var o = [];
                             o.push(order.index.toString());
@@ -61,6 +58,14 @@ module.exports = function (req, res) {
                             var time = moment(order.timePaid).format("MMM-DD-YYYY HH:mm");
                             o.push(time);
                             o.push(order.customerName);
+                            var totalBeforeGC = 0;
+                            var tax = order.isTax ? 1.13 : 1;
+                            _.each(order.orders, function(item){
+                                if (!item.isGiftcard){
+                                    totalBeforeGC += item.quantity * item.price * tax;
+                                }
+                            });
+                            o.push('$' + (totalBeforeGC).toFixed(2));
                             o.push('$' + (order.subtotal + order.tax).toFixed(2));
                             report.push(o);
                         }
@@ -81,17 +86,58 @@ module.exports = function (req, res) {
                                     report.push(o);
                                 }
                             });
-
                         }
-                        _.each(orders, (!req.body.reportType || req.body.reportType === 'DailyReport') ? generateReportRegular : generateReportGiftCard);
-                        saveToPDF(PDFFile, report);
+
+                        function generateEmployeeReport(order) {
+                            var r = _.find(report, function(r){
+                                return r[0] === order.employee.name
+                            });
+                            var totalBeforeGC = 0;
+                            var tax = order.isTax ? 1.13 : 1;
+                            _.each(order.orders, function(item){
+                                if (!item.isGiftcard){
+                                    totalBeforeGC += item.quantity * item.price * tax;
+                                }
+                            });
+                            if (r !== undefined){
+                                //remove $ sign then add new total
+                                r[1] = r[1].substring(1);
+                                r[1] = parseFloat(r[1]);
+                                r[1] += totalBeforeGC;
+                                r[1] = '$' + r[1].toFixed(2);
+                            }else{
+                                var o = [];
+                                o.push(order.employee.name);
+                                o.push('$' + (totalBeforeGC).toFixed(2));
+                                report.push(o);
+                            }
+                        }
+
+                        if (req.body.reportType){
+                            switch (req.body.reportType){
+                                case 'DailyReport':
+                                    _.each(orders, generateReportRegular);
+                                    tableCols = ['Index', 'Employee Name', 'Paid?', 'Time Paid', 'Customer Name', 'Total-Before GC', 'Total-After GC'];
+                                    break;
+                                case 'checkGiftcard':
+                                    _.each(orders, generateReportGiftCard);
+                                    tableCols = ['Index', 'Employee Name', 'Paid?', 'Time Paid', 'Customer Name', 'Total'];
+                                    break;
+                                case 'EmployeeReport':
+                                    _.each(orders, generateEmployeeReport);
+                                    tableCols = ['Employee', 'Total'];
+                                    break;
+                            }
+                        }
+                        //_.each(orders, (!req.body.reportType || req.body.reportType === 'DailyReport') ? generateReportRegular : generateReportGiftCard);
+                        saveToPDF(PDFFile, report, tableCols);
                         res.jsonp([{"status": "success", "pdf": "/reports/reports.pdf"}])
                     }
                 });
             }
         })
     });
-    var saveToPDF = function (filename, report) {
+    var saveToPDF = function (filename, report, tableCols) {
         var printer = new PdfPrinter(fonts);
 
         var title = (req.body.reportType === 'checkGiftcard') ?  ('Giftcard ' + req.body.giftcardNum) : (moment(givenDate).format("MMM-DD-YYYY HH:mm")) ;
@@ -108,11 +154,10 @@ module.exports = function (req, res) {
                 }
             ]
         };
-        docDefinition.content[1].table.body.push(['Index', 'Employee Name', 'Paid?', 'Time Paid', 'Customer Name', 'Total']);
+        docDefinition.content[1].table.body.push(tableCols);
         _.each(report, function (r) {
             docDefinition.content[1].table.body.push(r);
         });
-        console.log(docDefinition.content[1].table.body);
         var pdfDoc = printer.createPdfKitDocument(docDefinition);
         pdfDoc.pipe(fs.createWriteStream(filename));
         pdfDoc.end();

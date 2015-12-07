@@ -17,6 +17,7 @@
     "ftscroller": "~0.6.2",
     "dragscroll": "~0.0.5",
     "angularjs-datepicker": "~0.2.13",
-    "pdfmake": "~0.1.20"
+    "pdfmake": "~0.1.20",
+    "angular-ui-calendar": "~1.0.1"
   }
 }
