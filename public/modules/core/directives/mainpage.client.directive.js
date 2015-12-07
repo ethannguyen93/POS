@@ -20,6 +20,15 @@ angular.module('core')
 			};
 		}
 	])
+	.directive('schedulerPage', [
+		function() {
+			return {
+				restrict: 'E',
+				replace: true,
+				templateUrl: 'modules/core/views/partials/scheduler.client.view.html'
+			};
+		}
+	])
 	.directive('adminPagelogin', [
 		function() {
 			return {

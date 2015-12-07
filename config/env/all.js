@@ -37,7 +37,8 @@ module.exports = {
 				'public/lib/ftscroller/lib/ftscroller.js',
 				'public/lib/dragscroll/dragscroll.js',
 				'public/lib/pdfmake/build/pdfmake.min.js',
-				'public/lib/pdfmake/build/vfs_fonts.js'
+				'public/lib/pdfmake/build/vfs_fonts.js',
+				'public/lib/angular-ui-calendar/src/calendar.js'
 			]
 		},
 		css: [

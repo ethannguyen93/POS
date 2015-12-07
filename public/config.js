@@ -4,8 +4,8 @@
 var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'pos';
-	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize',  'ui.router', 'ui.bootstrap',
-		'ui.utils', 'ui.grid', 'ui.grid.edit', 'ui.grid.pagination', 'ui.calendar', 'ui.bootstrap'];
+	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize', 'ui.router', 'ui.bootstrap',
+		'ui.utils', 'ui.grid', 'ui.grid.edit', 'ui.grid.pagination'];
 
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {
