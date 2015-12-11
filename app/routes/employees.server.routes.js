@@ -15,7 +15,7 @@ module.exports = function(app) {
 		.delete(users.requiresLogin, employees.hasAuthorization, employees.delete);
 
 	app.route('/employees/load')
-		.post(employees.load)
+		.post(employees.load);
 
 	// Finish by binding the Employee middleware
 	app.param('employeeId', employees.employeeByID);

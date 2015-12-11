@@ -17,14 +17,16 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
 				'public/lib/eeh-navigation/dist/eeh-navigation.css',
 				'public/lib/angular-ui-grid/ui-grid.min.css',
-				//'public/lib/material-design-lite/material.min.css'
+				'public/lib/fullcalendar/dist/fullcalendar.css'
 			],
 			js: [
+				'public/lib/jquery/dist/jquery.min.js',
+				'public/lib/moment/min/moment.min.js',
 				'public/lib/angular/angular.js',
 				'public/lib/angular-resource/angular-resource.js', 
 				'public/lib/angular-cookies/angular-cookies.js', 
 				'public/lib/angular-animate/angular-animate.js',
-				'public/lib/angular-animate/another_animate.js',,
+				'public/lib/angular-animate/another_animate.js',
 				'public/lib/angular-touch/angular-touch.js', 
 				'public/lib/angular-sanitize/angular-sanitize.js', 
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
@@ -38,7 +40,8 @@ module.exports = {
 				'public/lib/dragscroll/dragscroll.js',
 				'public/lib/pdfmake/build/pdfmake.min.js',
 				'public/lib/pdfmake/build/vfs_fonts.js',
-				'public/lib/angular-ui-calendar/src/calendar.js'
+				'public/lib/ui-calendar/src/calendar.js',
+				'public/lib/fullcalendar/dist/fullcalendar.js'
 			]
 		},
 		css: [

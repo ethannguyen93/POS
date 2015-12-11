@@ -1,3 +1,92 @@
 <div class="col-md-12 property-content">
-    <div ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="eventSources"></div>
+    <button class="btn btn-success" ng-click="scheduler.changeView('month', 'myCalendar')">AgendaMonth</button>
+    <button class="btn btn-success" ng-click="scheduler.changeView('agendaWeek', 'myCalendar')">AgendaWeek</button>
+    <button class="btn btn-success" ng-click="scheduler.changeView('agendaDay', 'myCalendar')">AgendaDay</button>
+    <div ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="scheduler.eventSources" calendar="myCalendar"></div>
+    <div class="col-md-6 panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">Add new event</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div>
+                    <label>Customer name</label>
+                    <input type="text" class="form-control" ng-model="scheduler.new.customerName" placeholder="Customer name">
+                </div>
+                <div>
+                    <label>Employee</label>
+                    <select class="form-control" ng-options="employee.name for employee in scheduler.employees track by employee.id"
+                            ng-model="scheduler.new.assignedEmployee"></select>
+                </div>
+                <div>
+                    <label>Start time</label>
+                    <select class="form-control" ng-options="hour for hour in scheduler.hourList track by hour"
+                            ng-model="scheduler.new.startTime"></select>
+                    <select class="form-control" ng-options="time for time in scheduler.timeList track by time"
+                            ng-model="scheduler.new.startTimeList"></select>
+                    <input class="height-100" type="date" uib-datepicker-popup ng-model="scheduler.new.startDate" is-open="scheduler.new.startOpen" ng-required="true" close-text="Close" />
+                    <button type="button" class="height-100 btn btn-default" ng-click="scheduler.openCalender('newStart')"><i class="glyphicon glyphicon-calendar"></i></button>
+                </div>
+                <div>
+                    <label>End Time</label>
+                    <select class="form-control" ng-options="hour for hour in scheduler.hourList track by hour"
+                            ng-model="scheduler.new.endTime"></select>
+                    <select class="form-control" ng-options="time for time in scheduler.timeList track by time"
+                            ng-model="scheduler.new.endTimeList"></select>
+                    <input class="height-100" type="date" uib-datepicker-popup ng-model="scheduler.new.endDate" is-open="scheduler.new.endOpen" ng-required="true" close-text="Close" />
+                    <button type="button" class="height-100 btn btn-default" ng-click="scheduler.openCalender('newEnd')"><i class="glyphicon glyphicon-calendar"></i></button>
+                </div>
+                <div>
+                    <label>Note</label>
+                    <textarea class="form-control" rows="3" placeholder="Note" ng-model="scheduler.new.note"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" ng-click="addNewEvent()">Save</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">Current event</h3>
+        </div>
+        <div class="panel-body" ng-show="scheduler.selectedEvent">
+            <div class="row">
+                <div>
+                    <label>Customer name</label>
+                    <input type="text" class="form-control" ng-model="scheduler.selected.customerName" placeholder="Customer name">
+                </div>
+                <div>
+                    <label>Employee</label>
+                    <select class="form-control" ng-options="employee.name for employee in scheduler.employees track by employee.id"
+                            ng-model="scheduler.selected.assignedEmployee"></select>
+                </div>
+                <div>
+                    <label>Start time</label>
+                    <select class="form-control" ng-options="hour for hour in scheduler.hourList track by hour"
+                            ng-model="scheduler.selected.startTime"></select>
+                    <select class="form-control" ng-options="time for time in scheduler.timeList track by time"
+                            ng-model="scheduler.selected.startTimeList"></select>
+                    <input class="height-100" type="date" uib-datepicker-popup ng-model="scheduler.selected.startDate" is-open="scheduler.selected.startOpen" ng-required="true" close-text="Close" />
+                    <button type="button" class="height-100 btn btn-default" ng-click="scheduler.openCalender('selectedStart')"><i class="glyphicon glyphicon-calendar"></i></button>
+                </div>
+                <div>
+                    <label>End Time</label>
+                    <select class="form-control" ng-options="hour for hour in scheduler.hourList track by hour"
+                            ng-model="scheduler.selected.endTime"></select>
+                    <select class="form-control" ng-options="time for time in scheduler.timeList track by time"
+                            ng-model="scheduler.selected.endTimeList"></select>
+                    <input class="height-100" type="date" uib-datepicker-popup ng-model="scheduler.selected.endDate" is-open="scheduler.selected.endOpen" ng-required="true" close-text="Close" />
+                    <button type="button" class="height-100 btn btn-default" ng-click="scheduler.openCalender('selectedEnd')"><i class="glyphicon glyphicon-calendar"></i></button>
+                </div>
+                <div>
+                    <label>Note</label>
+                    <textarea class="form-control" rows="3" placeholder="Note" ng-model="scheduler.selected.note"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" ng-click="updateEvent()">Update</button>
+            </div>
+        </div>
+    </div>
 </div>
