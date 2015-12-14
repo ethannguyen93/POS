@@ -1,0 +1,166 @@
+<div class="flex-panel-content panel">
+    <div class="panel-heading">
+        <h3>{{title}}</h3>
+    </div>
+
+    <div class="panel-body" ng-show="bodyVisible">
+        <div class="row">
+            <label class="col-md-12">Customer name</label>
+        </div>
+        <div class="row space-bottom">
+            <div class="col-md-12">
+                <input class="form-control full-width" type="text"
+                       ng-model="schedulerGroup.customerName"
+                       placeholder="Customer name">
+            </div>
+        </div>
+
+        <div class="row">
+            <label class="col-md-12">Employee</label>
+        </div>
+        <div class="row space-bottom">
+            <div class="col-md-12">
+                <select class="form-control full-width form-control-md"
+                        ng-options="employee.name for employee in scheduler.employees track by employee.id"
+                        ng-model="schedulerGroup.assignedEmployee"></select>
+            </div>
+        </div>
+
+        <div class="row space-bottom">
+            <div class="col-md-12">
+                <label>Start time</label>
+                <select class="form-control form-control-md"
+                        ng-options="hour for hour in scheduler.hourList track by hour"
+                        ng-model="schedulerGroup.startTime"></select>
+                <select class="form-control form-control-md"
+                        ng-options="time for time in scheduler.timeList track by time"
+                        ng-model="schedulerGroup.startTimeList"></select>
+            </div>
+        </div>
+        <div class="row space-bottom">
+            <div class="col-md-12">
+                <input class="height-50" type="date" uib-datepicker-popup
+                       ng-model="schedulerGroup.startDate"
+                       is-open="schedulerGroup.startOpen" ng-required="true" close-text="Close"/>
+                <button type="button" class="height-50 btn btn-default"
+                        ng-click="pickStart()"><i
+                        class="glyphicon glyphicon-calendar"></i></button>
+            </div>
+        </div>
+
+
+        <div class="row space-bottom">
+            <div class="col-md-12"><label>End Time</label>
+                <select class="form-control form-control-md"
+                        ng-options="hour for hour in scheduler.hourList track by hour"
+                        ng-model="schedulerGroup.endTime"></select>
+                <select class="form-control form-control-md"
+                        ng-options="time for time in scheduler.timeList track by time"
+                        ng-model="schedulerGroup.endTimeList"></select></div>
+
+        </div>
+        <div class="row space-bottom">
+            <div class="col-md-12">
+                <input class="height-50" type="date" uib-datepicker-popup ng-model="schedulerGroup.endDate"
+                       is-open="schedulerGroup.endOpen" ng-required="true" close-text="Close"/>
+                <button type="button" class="height-50 btn btn-default"
+                        ng-click="pickEnd()"><i
+                        class="glyphicon glyphicon-calendar"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="row space-bottom">
+            <div class="col-md-12">
+                <label>Note</label>
+                        <textarea class="form-control full-width" rows="3" placeholder="Note"
+                                  ng-model="schedulerGroup.note"></textarea>
+            </div>
+        </div>
+
+        <div class="modal-footer" ng-transclude>
+
+        </div>
+    </div>
+
+    <!--<div class="panel-body">-->
+        <!--<div class="row">-->
+            <!--<label class="col-md-12">Customer name</label>-->
+        <!--</div>-->
+        <!--<div class="row space-bottom">-->
+            <!--<div class="col-md-12">-->
+                <!--<input class="form-control full-width" type="text"-->
+                       <!--ng-model="schedulerGroup.customerName"-->
+                       <!--placeholder="Customer name">-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="row">-->
+            <!--<label class="col-md-12">Employee</label>-->
+        <!--</div>-->
+        <!--<div class="row space-bottom">-->
+            <!--<div class="col-md-12">-->
+                <!--<select class="form-control full-width form-control-md"-->
+                        <!--ng-options="employee.name for employee in scheduler.employees track by employee.id"-->
+                        <!--ng-model="schedulerGroup.assignedEmployee"></select>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="row space-bottom">-->
+            <!--<div class="col-md-12">-->
+                <!--<label>Start time</label>-->
+                <!--<select class="form-control form-control-md"-->
+                        <!--ng-options="hour for hour in scheduler.hourList track by hour"-->
+                        <!--ng-model="schedulerGroup.startTime"></select>-->
+                <!--<select class="form-control form-control-md"-->
+                        <!--ng-options="time for time in scheduler.timeList track by time"-->
+                        <!--ng-model="schedulerGroup.startTimeList"></select>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row space-bottom">-->
+            <!--<div class="col-md-12">-->
+                <!--<input class="height-50" type="date" uib-datepicker-popup-->
+                       <!--ng-model="schedulerGroup.startDate"-->
+                       <!--is-open="schedulerGroup.startOpen" ng-required="true" close-text="Close"/>-->
+                <!--<button type="button" class="height-50 btn btn-default"-->
+                        <!--ng-click="scheduler.openCalender('newStart')"><i-->
+                        <!--class="glyphicon glyphicon-calendar"></i></button>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+        <!--<div class="row space-bottom">-->
+            <!--<div class="col-md-12"><label>End Time</label>-->
+                <!--<select class="form-control form-control-md"-->
+                        <!--ng-options="hour for hour in scheduler.hourList track by hour"-->
+                        <!--ng-model="schedulerGroup.endTime"></select>-->
+                <!--<select class="form-control form-control-md"-->
+                        <!--ng-options="time for time in scheduler.timeList track by time"-->
+                        <!--ng-model="schedulerGroup.endTimeList"></select></div>-->
+
+        <!--</div>-->
+        <!--<div class="row space-bottom">-->
+            <!--<div class="col-md-12">-->
+                <!--<input class="height-50" type="date" uib-datepicker-popup ng-model="schedulerGroup.endDate"-->
+                       <!--is-open="schedulerGroup.endOpen" ng-required="true" close-text="Close"/>-->
+                <!--<button type="button" class="height-50 btn btn-default"-->
+                        <!--ng-click="scheduler.openCalender('newEnd')"><i-->
+                        <!--class="glyphicon glyphicon-calendar"></i>-->
+                <!--</button>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="row space-bottom">-->
+            <!--<div class="col-md-12">-->
+                <!--<label>Note</label>-->
+                        <!--<textarea class="form-control full-width" rows="3" placeholder="Note"-->
+                                  <!--ng-model="schedulerGroup.note"></textarea>-->
+            <!--</div>-->
+        <!--</div>-->
+
+        <!--<div class="modal-footer">-->
+            <!--<button type="button" class="btn btn-success" ng-click="addNewEvent()">Save</button>-->
+        <!--</div>-->
+    <!--</div>-->
+
+</div>

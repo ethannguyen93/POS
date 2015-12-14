@@ -286,6 +286,8 @@ angular.module('core').controller('HomeController', [
 			$scope.scheduler.selected.endDate = date.data.endDate;
 			$scope.scheduler.selected.endOpen = false;
 			$scope.scheduler.selected.note = date.data.note;
+			// Hide add pane
+			$scope.addPaneHidden = true;
 		};
 		/* alert on Drop */
 		$scope.scheduler.alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view){
@@ -416,6 +418,12 @@ angular.module('core').controller('HomeController', [
 		/* Change View */
 		$scope.scheduler.changeView = function(view,calendar) {
 			uiCalendarConfig.calendars[calendar].fullCalendar('changeView',view);
+		};
+		/* Add New Calendar Btn Event */
+		$scope.addPaneHidden = true;
+		$scope.scheduler.alertOnAddBtnClicked = function() {
+			$scope.addPaneHidden = !$scope.addPaneHidden;
+			console.log($scope.addPaneHidden);
 		};
 		/* config object */
 		$scope.uiConfig = {
