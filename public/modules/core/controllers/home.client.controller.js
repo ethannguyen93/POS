@@ -271,6 +271,22 @@ angular.module('core').controller('HomeController', [
 				event.end = event.data.endDate;
 			});
 		};
+		$scope.deleteEvent = function(){
+			var event = _.find($scope.scheduler.events, function(e){
+				return e.data.id === $scope.scheduler.selected.id;
+			});
+			var body = {
+				type: 'delete',
+				id: event.data.id
+			};
+			RetrieveAppointments.load(body, function(response){
+				var index = _.findIndex($scope.scheduler.events, function(e){
+					return e.data.id === $scope.scheduler.selected.id;
+				});
+				$scope.scheduler.events.splice(index,1);
+				$scope.scheduler.selectedEvent = false;
+			});
+		};
 		/* alert on eventClick */
 		$scope.scheduler.alertOnEventClick = function( date, jsEvent, view){
 			$scope.scheduler.selectedEvent = true;
@@ -353,6 +369,12 @@ angular.module('core').controller('HomeController', [
 				updateEvent.data.endTime = endTime;
 				updateEvent.data.endTimeList = endTimeList;
 				updateEvent.data.endDate = endDate._d;
+				$scope.scheduler.selected.startTime = startTime;
+				$scope.scheduler.selected.startTimeList = startTimeList;
+				$scope.scheduler.selected.startDate = startDate._d;
+				$scope.scheduler.selected.endTime = endTime;
+				$scope.scheduler.selected.endTimeList = endTimeList;
+				$scope.scheduler.selected.endDate = endDate._d;
 			});
 		};
 		/* alert on Resize */
@@ -413,6 +435,9 @@ angular.module('core').controller('HomeController', [
 				updateEvent.data.endTime = endTime;
 				updateEvent.data.endTimeList = endTimeList;
 				updateEvent.data.endDate = endDate._d;
+				$scope.scheduler.selected.endTime = endTime;
+				$scope.scheduler.selected.endTimeList = endTimeList;
+				$scope.scheduler.selected.endDate = endDate._d;
 			});
 		};
 		/* Change View */
