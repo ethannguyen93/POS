@@ -460,6 +460,7 @@ angular.module('core').controller('HomeController', [
 					center: 'title',
 					right: 'today prev,next'
 				},
+				slotDuration: '00:10:00',
 				eventClick: $scope.scheduler.alertOnEventClick,
 				eventDrop: $scope.scheduler.alertOnDrop,
 				eventResize: $scope.scheduler.alertOnResize
