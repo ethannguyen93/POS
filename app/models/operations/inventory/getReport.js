@@ -118,10 +118,23 @@ module.exports = function (req, res) {
                                 case 'DailyReport':
                                     _.each(orders, generateReportRegular);
                                     tableCols = ['Index', 'Employee Name', 'Paid?', 'Time Paid', 'Customer Name', 'Total-Before GC', 'Total-After GC'];
+                                    var sumBeforeGC = 0;
+                                    var sumAfterGC = 0;
+                                    _.each(report,function(item){
+                                        //remove $ sign then add new total
+                                        var valueBeforeGC = parseFloat(item[tableCols.indexOf('Total-Before GC')].substring(1));
+                                        var valueAfterGC = parseFloat(item[tableCols.indexOf('Total-After GC')].substring(1));
+                                        sumBeforeGC += valueBeforeGC;
+                                        sumAfterGC += valueAfterGC;
+                                    });
+                                    sumBeforeGC = '$' + sumBeforeGC.toFixed(2);
+                                    sumAfterGC = '$' + sumAfterGC.toFixed(2);
+                                    report.push(['','','','','Total:', sumBeforeGC, sumAfterGC]);
                                     break;
                                 case 'checkGiftcard':
                                     _.each(orders, generateReportGiftCard);
                                     tableCols = ['Index', 'Employee Name', 'Paid?', 'Time Paid', 'Customer Name', 'Total'];
+
                                     break;
                                 case 'EmployeeReport':
                                     _.each(orders, generateEmployeeReport);
