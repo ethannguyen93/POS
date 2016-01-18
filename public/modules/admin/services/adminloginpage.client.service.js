@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').factory('AdminLoginPageServices', [ '$q', 'RetrieveEmployee',
-	function($q, RetrieveEmployee) {
+angular.module('admin').factory('AdminLoginPageServices', [ '$state', '$q', 'RetrieveEmployee',
+	function($state, $q, RetrieveEmployee) {
 		return {
 			enterpassword: function($scope, key){
 				switch (key){
@@ -45,10 +45,17 @@ angular.module('core').factory('AdminLoginPageServices', [ '$q', 'RetrieveEmploy
 							RetrieveEmployee.load(body, function(response){
 								var user = response[0];
 								if (user.passcode !== undefined){
-									$scope.view = 'adminpage';
-									$scope.admin.setting.name = user.name;
+									// 1st Parent is the Empty Controller created by Abstract State
+									$scope.$parent.$parent.view = 'adminpage';
+									$state.go('^.authenticated', {
+										user: {
+											name: user.name,
+											passcode: user.passcode
+										}
+									});
+									/*$scope.admin.setting.name = user.name;
 									$scope.admin.setting.passcode = user.passcode;
-									$scope.data.currentUser.name = user.name;
+									$scope.data.currentUser.name = user.name;*/
 								}
 								$scope.adminLogin.password = '';
 								deferred.resolve();
