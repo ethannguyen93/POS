@@ -5,51 +5,36 @@
                 <a href="/#!/" class="navbar-brand">POS</a>
             </div>
             <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
-                <div ng-switch on="view">
-                    <ul class="nav navbar-nav navbar-right" ng-switch-when='numpad'>
-                        <li>
-                            <button ng-click="navigateAdminPage()" type="button" class="btn btn-default btn-block ng-binding ng-scope ng-click-active">
-                                <span class="glyphicon glyphicon-user"></span>&nbsp;Admin</button>
-                        </li>
-                        <li>
-                            <button ng-click="navigateSchedulerPage()" type="button" class="btn btn-default btn-block ng-binding ng-scope ng-click-active">
-                                <span class="glyphicon glyphicon-calendar"></span>&nbsp;Scheduler</button>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right" ng-switch-when='scheduler'>
-                        <li>
-                            <button ng-click="navigateNumpadPage()" type="button" class="btn btn-default btn-block ng-binding ng-scope ng-click-active">
-                                <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Back</button>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right" ng-switch-when='mainpage'>
-                        <li><a>{{data.currentUser.name}}</a></li>
-                        <li class="col-md-off">
-                            <button ng-click="logOut()" type="button" class="btn btn-default btn-block ng-binding ng-scope ng-click-active">
-                                <span class="glyphicon glyphicon-log-out"></span>&nbsp;Log out</button>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right" ng-switch-when='adminpagelogin'>
-                        <li>
-                            <button ng-click="navigateNumpadPage()" type="button" class="btn btn-default btn-block ng-binding ng-scope ng-click-active">
-                                <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Back</button>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right" ng-switch-when='adminpage'>
-                        <li>
-                            <button ng-click="navigateNumpadPage()" type="button" class="btn btn-default btn-block ng-binding ng-scope ng-click-active">
-                                <span class="glyphicon glyphicon-log-out"></span>&nbsp;Log out</button>
-                        </li>
-                    </ul>
-                </div>
+                <ul class="nav navbar-nav navbar-right" ng-show="inState('core.login')">
+                    <li>
+                        <button ui-sref=".admin.login" type="button" class="btn btn-default btn-block ng-binding ng-scope ng-click-active">
+                            <span class="glyphicon glyphicon-user"></span>&nbsp;Admin</button>
+                    </li>
+                    <li>
+                        <button ui-sref="core.scheduler" type="button" class="btn btn-default btn-block ng-binding ng-scope ng-click-active">
+                            <span class="glyphicon glyphicon-calendar"></span>&nbsp;Scheduler</button>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" ng-show="inState('admin.authenticated') || inState('core.authenticated')">
+                    <li><a>{{data.currentUser.name}}</a></li>
+                    <li class="col-md-off">
+                        <button ui-sref="core.login" ng-click="logOut" type="button" class="btn btn-default btn-block ng-binding ng-scope ng-click-active">
+                            <span class="glyphicon glyphicon-log-out"></span>&nbsp;Log out</button>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right" ng-show="inState('scheduler') || inState('admin.login')">
+                    <li>
+                        <button ng-click="navigateNumpadPage()" type="button" ui-sref="core.login" class="btn btn-default btn-block ng-binding ng-scope ng-click-active">
+                            <span class="glyphicon glyphicon-chevron-left"></span>&nbsp;Back</button>
+                    </li>
+                </ul>
             </nav>
         </div>
     </header>
-    <div class="row property-content" ng-switch on='view'>
-            <num-pad ng-switch-when='numpad'></num-pad>
-            <main-page ng-switch-when='mainpage'></main-page>
-            <admin-pagelogin ng-switch-when='adminpagelogin'></admin-pagelogin>
-            <admin-page ng-switch-when="adminpage"></admin-page>
-            <scheduler-page ng-switch-when="scheduler"></scheduler-page>
+    <div class="row property-content">
+        <ui-view/>
+            <!--<num-pad ng-switch-when='numpad'></num-pad>-->
+            <!--<main-page ng-switch-when='mainpage'></main-page>-->
+            <!--<scheduler-page ng-switch-when="scheduler"></scheduler-page>-->
     </div>
 </section>

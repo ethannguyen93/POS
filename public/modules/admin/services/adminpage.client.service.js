@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('core').factory('AdminPageServices', [ 'RetrieveEmployee', 'RetrieveInventory', '$q', 'RetrieveGiftcard',
+angular.module('admin').factory('AdminPageServices', [ 'RetrieveEmployee', 'RetrieveInventory', '$q', 'RetrieveGiftcard',
 	function(RetrieveEmployee, RetrieveInventory, $q, RetrieveGiftcard) {
 		return {
 			getDB: function(item){

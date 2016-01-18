@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('core')
+angular.module('scheduler')
 
     .directive('eventInspector', [
         function() {
@@ -14,9 +14,9 @@ angular.module('core')
                     schedulerGroup: '=',
                     scheduler: '=',
                     pickStart: '&',
-                    pickEnd: '&',
+                    pickEnd: '&'
                 },
-                templateUrl: 'modules/core/views/partials/scheduler/eventinspector.client.view.html'
+                templateUrl: 'modules/scheduler/views/partials/eventinspector.client.view.html'
             };
         }
     ]);

@@ -6,7 +6,6 @@
 
 #admin-content {
   padding-left: 0;
-  padding-right: 0;
   height: 100%; }
   #admin-content > div:nth-child(1) {
     height: 100%; }
@@ -50,7 +49,7 @@
 
 .col-nav {
   background: #34495E;
-  padding: 0;
+  padding-right: 0;
   overflow-y: scroll; }
 
 .col-nav .nav li a {

@@ -2,7 +2,7 @@
 
 // Workflows controller
 angular.module('core').controller('orderCtrl',
-    function ($scope, $stateParams, $location, $modalInstance, currentUser, RetrieveInventory) {
+    function ($scope, $state, $stateParams, $location, $modalInstance, currentUser, RetrieveInventory) {
         $scope.data = {
             orders: [],
             view: 'selection',
@@ -58,6 +58,7 @@ angular.module('core').controller('orderCtrl',
         };
         $scope.cancel = function() {
             $modalInstance.close({'message': 'no'});
+            $state.go('^.login');
         };
 
         $scope.initFTScroller = function(id) {
