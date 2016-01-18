@@ -4,11 +4,11 @@
 angular.module('core').controller('HomeController', [
 	'$scope', '$state', 'Authentication', 'RetrieveEmployee', 'RetrieveInventory', 'MainpageServices',
 	'LoginpageService', '$q', 'AdminLoginPageServices', 'AdminPageServices', '$modal', '$compile', 'uiCalendarConfig',
-		'RetrieveAppointments', 'FTScroller',
+	'RetrieveAppointments', 'FTScroller',
 	function(
-		$scope, $state, Authentication, RetrieveEmployee, RetrieveInventory, MainpageServices,
-		LoginpageService, $q, AdminLoginPageServices, AdminPageServices, $modal, $compile, uiCalendarConfig,
-		RetrieveAppointments, FTScroller
+			$scope, $state, Authentication, RetrieveEmployee, RetrieveInventory, MainpageServices,
+			LoginpageService, $q, AdminLoginPageServices, AdminPageServices, $modal, $compile, uiCalendarConfig,
+			RetrieveAppointments, FTScroller
 	) {
 
 		// Function to check if in specified State, used to render menu items
@@ -44,19 +44,6 @@ angular.module('core').controller('HomeController', [
 			};
 			$state.go('^.login');
 		};
-
-
-		/**********************************************************************************************************/
-		/**********************************************************************************************************/
-		/**********************************************************************************************************/
-		/**********************************************************************************************************/
-		/**********************************************************************************************************/
-		/**********************************************************************************************************/
-		/**********************************************************************************************************/
-		/**********************************************************************************************************/
-		/**********************************************************************************************************/
-
-
 
 		/**********************************************************************************************************/
 		/**********************************************************************************************************/

@@ -30,6 +30,7 @@ mongoose.model('Appointment', AppointmentSchema);
 
 var operationMap = {
 	getAll: require('./operations/appointment/getAllAppointments'),
+	getAllGivenDate: require('./operations/appointment/getAllAppointmentsGivenWeek'),
 	add: require('./operations/appointment/addAppointment'),
 	update: require('./operations/appointment/updateAppointment'),
 	delete: require('./operations/appointment/removeAppointment')

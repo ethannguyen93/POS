@@ -2,10 +2,10 @@
 
 angular.module('scheduler').controller('SchedulerController', [ '$scope', '$state', '$stateParams', 'Authentication', 'RetrieveEmployee', 'RetrieveInventory', 'MainpageServices',
     'LoginpageService', '$q', 'AdminLoginPageServices', 'AdminPageServices', '$modal', '$compile', 'uiCalendarConfig',
-    'RetrieveAppointments', 'FTScroller',
+    'RetrieveAppointments', 'FTScroller', 'SchedulerServices',
     function($scope, $state, $stateParams, Authentication, RetrieveEmployee, RetrieveInventory, MainpageServices,
              LoginpageService, $q, AdminLoginPageServices, AdminPageServices, $modal, $compile, uiCalendarConfig,
-             RetrieveAppointments, FTScroller) {
+             RetrieveAppointments, FTScroller, SchedulerServices) {
         /*Scheduler Page*/
 
         $scope.scheduler = {
@@ -75,43 +75,7 @@ angular.module('scheduler').controller('SchedulerController', [ '$scope', '$stat
                 });
                 $scope.scheduler.new.assignedEmployee = $scope.scheduler.employees[0];
             });
-            RetrieveAppointments.load(body, function(response){
-                _.each(response, function(appointment){
-                    var startDate = new Date(appointment.startDate);
-                    var endDate = new Date(appointment.endDate);
-                    function setHours (d, startTime, timeList){
-                        d.setHours(0,0,0,0);
-                        var index = startTime.indexOf(':');
-                        var hour = parseInt(startTime.substring(0,index)) % 12;
-                        if (timeList === 'PM'){
-                            hour += 12;
-                        }
-                        var min = parseInt(startTime.substring(index+1));
-                        d.setHours(hour);
-                        d.setMinutes(min);
-                    }
-                    setHours(startDate, appointment.startTime, appointment.startTimeList);
-                    setHours(endDate, appointment.endTime, appointment.endTimeList);
-                    $scope.scheduler.events.push({
-                        title: $scope.scheduler.new.assignedEmployee.name + ' - ' + appointment.customerName,
-                        start: startDate,
-                        end: endDate,
-                        data: {
-                            id: appointment._id,
-                            customerName: appointment.customerName,
-                            startTime: appointment.startTime,
-                            startTimeList: appointment.startTimeList,
-                            startDate: startDate,
-                            endTime: appointment.endTime,
-                            endTimeList: appointment.endTimeList,
-                            endDate: endDate,
-                            assignedEmployee: appointment.assignedEmployee,
-                            note: appointment.note
-                        }
-                    });
-                })
-            });
-
+            SchedulerServices.updateEvents(undefined , 'month', $scope.scheduler.events);
         })();
 
         $scope.addNewEvent = function() {
@@ -392,14 +356,13 @@ angular.module('scheduler').controller('SchedulerController', [ '$scope', '$stat
             });
         };
         /* Change View */
-        $scope.scheduler.changeView = function(view,calendar) {
+        $scope.changeView = function(view,calendar) {
             uiCalendarConfig.calendars[calendar].fullCalendar('changeView',view);
         };
         /* Add New Calendar Btn Event */
         $scope.addPaneHidden = true;
         $scope.scheduler.alertOnAddBtnClicked = function() {
             $scope.addPaneHidden = !$scope.addPaneHidden;
-            console.log($scope.addPaneHidden);
         };
         /* config object */
         $scope.uiConfig = {
@@ -409,13 +372,27 @@ angular.module('scheduler').controller('SchedulerController', [ '$scope', '$stat
                 header:{
                     left: '',
                     center: 'title',
-                    right: 'today prev,next'
+                    right: ''
                 },
-                slotDuration: '00:05:00',
+                slotEventOverlap: false,
+                slotWidth:  500,
+                slotDuration: '00:15:00',
                 eventClick: $scope.scheduler.alertOnEventClick,
                 eventDrop: $scope.scheduler.alertOnDrop,
                 eventResize: $scope.scheduler.alertOnResize
             }
+        };
+        $scope.getPrev = function(calendar){
+            uiCalendarConfig.calendars[calendar].fullCalendar('prev');
+            SchedulerServices.updateEvents(calendar, uiCalendarConfig.calendars[calendar].fullCalendar('getView').type, $scope.scheduler.events);
+        };
+        $scope.getNext = function(calendar){
+            uiCalendarConfig.calendars[calendar].fullCalendar('next');
+            SchedulerServices.updateEvents(calendar, uiCalendarConfig.calendars[calendar].fullCalendar('getView').type, $scope.scheduler.events);
+        };
+        $scope.getToday = function(calendar){
+            uiCalendarConfig.calendars[calendar].fullCalendar('today');
+            SchedulerServices.updateEvents(calendar, uiCalendarConfig.calendars[calendar].fullCalendar('getView').type, $scope.scheduler.events);
         };
     }
 ]);

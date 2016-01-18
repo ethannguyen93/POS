@@ -1,13 +1,23 @@
 <div class="col-md-12 property-content-container mainpage">
     <div class="flex-panel col-md-9">
         <div class="calendar-view">
-            <button class="col-md-2 btn btn-success" ng-click="scheduler.changeView('month', 'myCalendar')">Month View</button>
-            <button class="col-md-2 btn btn-success" ng-click="scheduler.changeView('agendaWeek', 'myCalendar')">Week View
+            <button class="col-md-2 btn btn-success" ng-click="changeView('month', 'myCalendar')">Month View</button>
+            <button class="col-md-2 btn btn-success" ng-click="changeView('agendaWeek', 'myCalendar')">Week View
             </button>
-            <button class="col-md-2 btn btn-success" ng-click="scheduler.changeView('agendaDay', 'myCalendar')">Day View</button>
+            <button class="col-md-2 btn btn-success" ng-click="changeView('agendaDay', 'myCalendar')">Day View</button>
             <button class="col-md-2 col-md-offset-4 btn btn-success" ng-click="scheduler.alertOnAddBtnClicked()"><span class="glyphicon glyphicon-plus"></span>&nbsp;New Event</button>
         </div>
-
+        <div>
+            <button class="col-md-1 btn btn-success" ng-click="getPrev('myCalendar')">
+                <i class="glyphicon glyphicon-menu-left"></i>
+            </button>
+            <button class="col-md-1 btn btn-success" ng-click="getToday('myCalendar')">
+                Today
+            </button>
+            <button class="col-md-1 btn btn-success" ng-click="getNext('myCalendar')">
+                <i class="glyphicon glyphicon-menu-right"></i>
+            </button>
+        </div>
         <div ui-calendar="uiConfig.calendar" class="span8 calendar" ng-model="scheduler.eventSources"
              calendar="myCalendar"></div>
     </div>
@@ -31,8 +41,6 @@
             <button type="button" class="btn btn-success" ng-click="addNewEvent(); scheduler.alertOnAddBtnClicked()"><span class="glyphicon glyphicon-ok"></span>&nbsp;Save</button>
         </event-inspector>
     </div>
-    <!--<div class="scrim" ng-click="scheduler.alertOnAddBtnClicked()"></div>-->
-
     <div id="event-selected" class="flex-panel col-md-3">
         <event-inspector
                 body-visible="scheduler.selectedEvent"
