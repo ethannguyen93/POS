@@ -74,7 +74,11 @@ module.exports = function (req, res) {
                         _id: mongoose.Types.ObjectId(req.body.order)
                     },
                     {
-                        $set: {orders: req.body.orders}
+                        $set: {
+                            orders: req.body.orders,
+                            subtotal: req.body.subtotal,
+                            tax: req.body.tax
+                        }
                     }, function(err, result){
                         if (err) {
                             console.log(err)

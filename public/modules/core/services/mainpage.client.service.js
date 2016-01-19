@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').factory('MainpageServices', ['RetrieveInventory',
-    function (RetrieveInventory) {
+angular.module('core').factory('MainpageServices', ['RetrieveInventory', 'UserService',
+    function (RetrieveInventory, UserService) {
         return {
             updateOrder: function ($scope, type, index) {
                 var self = this;
@@ -69,7 +69,7 @@ angular.module('core').factory('MainpageServices', ['RetrieveInventory',
                 var body = {
                     'type': 'saveOrder',
                     'orders': $scope.data.orders,
-                    'user': $scope.data.currentUser,
+                    'user': UserService.getUser(),
                     'order': $scope.data.order,
                     'customerName': $scope.data.customerName,
                     'subtotal': $scope.data.subtotal,

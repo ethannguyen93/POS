@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').factory('LoginpageService', ['$state', 'RetrieveEmployee', '$q',
-	function($state, RetrieveEmployee, $q) {
+angular.module('core').factory('LoginpageService', ['$state', 'UserService', 'RetrieveEmployee', '$q',
+	function($state, UserService, RetrieveEmployee, $q) {
 		return {
 			updatePasscode: function($scope, num){
 				if ($scope.data.password.length <= 3){
@@ -19,7 +19,7 @@ angular.module('core').factory('LoginpageService', ['$state', 'RetrieveEmployee'
 				RetrieveEmployee.load(body, function(response){
 					var user = response[0];
 					if (user.passcode !== undefined && user.isAdmin){
-						$scope.data.currentUser.name = user.name;
+						UserService.setUser(user.name);
 						body = {
 							type: 'getAll'
 						};
@@ -36,7 +36,7 @@ angular.module('core').factory('LoginpageService', ['$state', 'RetrieveEmployee'
 
 						});
 					}else if (user.passcode !== undefined){
-						$scope.data.currentUser.name = user.name;
+						UserService.setUser(user.name);
 						$scope.view = 'mainpage';
 						// Go from 'core.login' to 'core.authenticated' state
 						$state.go('^.authenticated');

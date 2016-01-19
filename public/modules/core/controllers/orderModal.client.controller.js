@@ -2,7 +2,7 @@
 
 // Workflows controller
 angular.module('core').controller('orderCtrl',
-    function ($scope, $state, $stateParams, $location, $modalInstance, currentUser, RetrieveInventory) {
+    function ($scope, UserService, $state, $stateParams, $location, $modalInstance, currentUser, RetrieveInventory) {
         $scope.data = {
             orders: [],
             view: 'selection',
@@ -22,11 +22,11 @@ angular.module('core').controller('orderCtrl',
         $scope.getOrders = function(){
             var body = {
                 type: 'getOrder',
-                currentUser: currentUser
+                currentUser: UserService.getUser()
             };
             RetrieveInventory.load(body, function(response){
                 _.each(response, function(o){
-                    $scope.data.orders.push({'user': currentUser, 'index': o.index, 'customerName': o.customerName})
+                    $scope.data.orders.push({'user': UserService.getUser(), 'index': o.index, 'customerName': o.customerName})
                 });
                 $scope.data.view = 'existingOrders';
             });

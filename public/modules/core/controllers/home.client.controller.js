@@ -2,14 +2,17 @@
 
 
 angular.module('core').controller('HomeController', [
-	'$scope', '$state', 'Authentication', 'RetrieveEmployee', 'RetrieveInventory', 'MainpageServices',
+	'$scope', '$state', 'Authentication', 'UserService', 'RetrieveEmployee', 'RetrieveInventory', 'MainpageServices',
 	'LoginpageService', '$q', 'AdminLoginPageServices', 'AdminPageServices', '$modal', '$compile', 'uiCalendarConfig',
 	'RetrieveAppointments', 'FTScroller',
 	function(
-			$scope, $state, Authentication, RetrieveEmployee, RetrieveInventory, MainpageServices,
+			$scope, $state, Authentication, UserService, RetrieveEmployee, RetrieveInventory, MainpageServices,
 			LoginpageService, $q, AdminLoginPageServices, AdminPageServices, $modal, $compile, uiCalendarConfig,
 			RetrieveAppointments, FTScroller
 	) {
+
+		// Inject UserService into $scope
+		$scope.UserService = UserService;
 
 		// Function to check if in specified State, used to render menu items
 		$scope.inState = function(state) {
@@ -25,6 +28,7 @@ angular.module('core').controller('HomeController', [
 		/**********************************************************************************************************/
 		/**********************************************************************************************************/
 		/**********************************************************************************************************/
+
 		$scope.logOut = function(){
 			$scope.view = 'numpad';
 			$scope.data.customerName = '';
@@ -39,10 +43,10 @@ angular.module('core').controller('HomeController', [
 			$scope.data.orders = [];
 			$scope.data.categories = [];
 			$scope.data.items = [];
-			$scope.data.currentUser = {
-				name: ''
-			};
-			$state.go('^.login');
+			UserService.logoutUser();
+			if (!$scope.inState('core.login')) {
+				$state.go('^.login');
+			}
 		};
 
 		/**********************************************************************************************************/
@@ -88,9 +92,6 @@ angular.module('core').controller('HomeController', [
 			employees: [],
 			selectedEmployee: '',
 			customerName: '',
-			currentUser: {
-				name: ''
-			},
 			gridOptions: {
 				rowHeight: 60,
 				columnHeaderHeight: 60,
@@ -133,6 +134,11 @@ angular.module('core').controller('HomeController', [
 			];
 		};
 		$scope.initMainpage = function(){
+			// Check if not authenticated
+			if (!UserService.getUser()) {
+				$scope.logOut();
+			}
+
 			var body = {
 				'type': 'retrieveCat'
 			};
@@ -199,7 +205,7 @@ angular.module('core').controller('HomeController', [
 				backdrop : 'static',
 				resolve: {
 					currentUser : function(){
-						return $scope.data.currentUser;
+						return UserService.getUser().name;
 					}
 				}
 			});
@@ -301,7 +307,7 @@ angular.module('core').controller('HomeController', [
 			$scope.data.doneOrderModal().then(function(selectedItem){
 				var server = {'name' : ''};
 				if ($scope.data.selectedEmployee === undefined || $scope.data.selectedEmployee === ''){
-					server = $scope.data.currentUser;
+					server = UserService.getUser();
 				}else{
 					server = {'name' : $scope.data.selectedEmployee};
 				}
@@ -339,7 +345,7 @@ angular.module('core').controller('HomeController', [
 		$scope.data.printReceipt = function () {
 			var server = {'name' : ''};
 			if ($scope.data.selectedEmployee === undefined || $scope.data.selectedEmployee === ''){
-				server = $scope.data.currentUser;
+				server = UserService.getUser();
 			}else{
 				server = {'name' : $scope.data.selectedEmployee};
 			}
