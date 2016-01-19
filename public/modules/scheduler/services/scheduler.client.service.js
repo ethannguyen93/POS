@@ -23,7 +23,6 @@ angular.module('scheduler').factory('SchedulerServices', [ 'uiCalendarConfig', '
                         type = 'year';
                         break;
                 }
-                events.splice(0, events.length);
                 var now = calendar === undefined ? moment() :  uiCalendarConfig.calendars[calendar].fullCalendar('getDate');
                 //var now = uiCalendarConfig.calendars[calendar].fullCalendar('getDate');
                 var firstDay = moment(now).startOf(type);
@@ -33,23 +32,15 @@ angular.module('scheduler').factory('SchedulerServices', [ 'uiCalendarConfig', '
                     firstDay: firstDay,
                     lastDay: lastDay
                 };
+                var self = this;
+                //remove all previous appointments
+                events.splice(0, events.length);
                 RetrieveAppointments.load(body, function(response){
                     _.each(response, function(appointment){
                         var startDate = new Date(appointment.startDate);
                         var endDate = new Date(appointment.endDate);
-                        function setHours (d, startTime, timeList){
-                            d.setHours(0,0,0,0);
-                            var index = startTime.indexOf(':');
-                            var hour = parseInt(startTime.substring(0,index)) % 12;
-                            if (timeList === 'PM'){
-                                hour += 12;
-                            }
-                            var min = parseInt(startTime.substring(index+1));
-                            d.setHours(hour);
-                            d.setMinutes(min);
-                        }
-                        setHours(startDate, appointment.startTime, appointment.startTimeList);
-                        setHours(endDate, appointment.endTime, appointment.endTimeList);
+                        self.setHours(startDate, appointment.startTime, appointment.startTimeList);
+                        self.setHours(endDate, appointment.endTime, appointment.endTimeList);
                         events.push({
                             title: appointment.assignedEmployee.name + ' - ' + appointment.customerName,
                             start: startDate,
@@ -69,8 +60,19 @@ angular.module('scheduler').factory('SchedulerServices', [ 'uiCalendarConfig', '
                         });
                     });
                 });
-            }
+            },
 
+            setHours: function(d, startTime, timeList){
+                d.setHours(0,0,0,0);
+                var index = startTime.indexOf(':');
+                var hour = parseInt(startTime.substring(0,index)) % 12;
+                if (timeList === 'PM'){
+                    hour += 12;
+                }
+                var min = parseInt(startTime.substring(index+1));
+                d.setHours(hour);
+                d.setMinutes(min);
+            }
 
         };
     }

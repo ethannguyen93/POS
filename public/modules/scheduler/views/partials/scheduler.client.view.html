@@ -34,8 +34,8 @@
                 title="New Event"
                 scheduler="scheduler"
                 scheduler-group="scheduler.new"
-                pick-start="scheduler.openCalender('newStart')"
-                pick-end="scheduler.openCalender('newEnd')"
+                pick-start="openCalender('newStart')"
+                pick-end="openCalender('newEnd')"
         >
             <button type="button" class="btn btn-success" ng-click="scheduler.alertOnAddBtnClicked()"><span class="glyphicon glyphicon-remove"></span>&nbsp;Cancel</button>
             <button type="button" class="btn btn-success" ng-click="addNewEvent(); scheduler.alertOnAddBtnClicked()"><span class="glyphicon glyphicon-ok"></span>&nbsp;Save</button>
@@ -47,8 +47,8 @@
                 title="Selected Event"
                 scheduler="scheduler"
                 scheduler-group="scheduler.selected"
-                pick-start="scheduler.openCalender('selectedStart')"
-                pick-end="scheduler.openCalender('selectedEnd')"
+                pick-start="openCalender('selectedStart')"
+                pick-end="openCalender('selectedEnd')"
         >
             <button type="button" class="btn btn-success" ng-click="updateEvent()">Update</button>
             <button type="button" class="btn btn-success" ng-click="deleteEvent()">Delete</button>

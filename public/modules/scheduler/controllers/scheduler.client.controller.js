@@ -6,7 +6,6 @@ angular.module('scheduler').controller('SchedulerController', [ '$scope', '$stat
     function($scope, $state, $stateParams, Authentication, RetrieveEmployee, RetrieveInventory, MainpageServices,
              LoginpageService, $q, AdminLoginPageServices, AdminPageServices, $modal, $compile, uiCalendarConfig,
              RetrieveAppointments, FTScroller, SchedulerServices) {
-        /*Scheduler Page*/
 
         $scope.scheduler = {
             selectedEvent: false, //if user clicked on an event
@@ -47,22 +46,8 @@ angular.module('scheduler').controller('SchedulerController', [ '$scope', '$stat
                 note: ''
             }
         };
-        $scope.scheduler.openCalender = function(event){
-            switch (event){
-                case 'newStart':
-                    $scope.scheduler.new.startOpen = !$scope.scheduler.new.startOpen;
-                    break;
-                case 'newEnd':
-                    $scope.scheduler.new.endOpen = !$scope.scheduler.new.endOpen;
-                    break;
-                case 'selectedStart':
-                    $scope.scheduler.selected.startOpen = !$scope.scheduler.selected.startOpen;
-                    break;
-                case 'selectedEnd':
-                    $scope.scheduler.selected.endOpen = !$scope.scheduler.selected.endOpen;
-                    break;
-            }
-        };
+
+        //Init Scheduler page
         $scope.initScheduler = (function(){
             $scope.scheduler.events = [];
             $scope.scheduler.eventSources = [$scope.scheduler.events];
@@ -78,22 +63,29 @@ angular.module('scheduler').controller('SchedulerController', [ '$scope', '$stat
             SchedulerServices.updateEvents(undefined , 'month', $scope.scheduler.events);
         })();
 
+        //Change value of popup calendar setting
+        $scope.openCalender = function(event){
+            switch (event){
+                case 'newStart':
+                    $scope.scheduler.new.startOpen = !$scope.scheduler.new.startOpen;
+                    break;
+                case 'newEnd':
+                    $scope.scheduler.new.endOpen = !$scope.scheduler.new.endOpen;
+                    break;
+                case 'selectedStart':
+                    $scope.scheduler.selected.startOpen = !$scope.scheduler.selected.startOpen;
+                    break;
+                case 'selectedEnd':
+                    $scope.scheduler.selected.endOpen = !$scope.scheduler.selected.endOpen;
+                    break;
+            }
+        };
+
         $scope.addNewEvent = function() {
             var startDate = new Date($scope.scheduler.new.startDate);
             var endDate = new Date($scope.scheduler.new.endDate);
-            function setHours (d, startTime, timeList){
-                d.setHours(0,0,0,0);
-                var index = startTime.indexOf(':');
-                var hour = parseInt(startTime.substring(0,index)) % 12;
-                if (timeList === 'PM'){
-                    hour += 12;
-                }
-                var min = parseInt(startTime.substring(index+1));
-                d.setHours(hour);
-                d.setMinutes(min);
-            }
-            setHours(startDate, $scope.scheduler.new.startTime, $scope.scheduler.new.startTimeList);
-            setHours(endDate, $scope.scheduler.new.endTime, $scope.scheduler.new.endTimeList);
+            SchedulerServices.setHours(startDate, $scope.scheduler.new.startTime, $scope.scheduler.new.startTimeList);
+            SchedulerServices.setHours(endDate, $scope.scheduler.new.endTime, $scope.scheduler.new.endTimeList);
             var body = {
                 'type': 'add',
                 customerName: $scope.scheduler.new.customerName,
