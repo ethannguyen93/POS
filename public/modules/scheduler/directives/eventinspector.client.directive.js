@@ -13,11 +13,16 @@ angular.module('scheduler')
                     bodyVisible: '=',
                     schedulerGroup: '=',
                     scheduler: '=',
-                    pickStart: '&',
-                    pickEnd: '&'
+                    openCalendar: '&',
+                    updateStartHour: '&',
+                    updateEndHour: '&',
+                    updateTimeList: '&',
+                    selectCustomer: '&',
+                    removeEmailAndPhone: '&'
                 },
                 templateUrl: 'modules/scheduler/views/partials/eventinspector.client.view.html'
             };
         }
     ]);
+
 

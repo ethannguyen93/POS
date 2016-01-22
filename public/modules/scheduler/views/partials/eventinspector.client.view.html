@@ -10,11 +10,32 @@
         <div class="row space-bottom">
             <div class="col-md-12">
                 <input class="form-control full-width" type="text"
-                       ng-model="schedulerGroup.customerName"
-                       placeholder="Customer name">
+                       ng-model="schedulerGroup.customer.name"
+                       placeholder="Customer name"
+                       ng-change="removeEmailAndPhone()">
+                <button ng-click="selectCustomer()">Select Customer</button>
             </div>
         </div>
-
+        <div class="row">
+            <label class="col-md-12">Customer email</label>
+        </div>
+        <div class="row space-bottom">
+            <div class="col-md-12">
+                <input class="form-control full-width" type="text"
+                       ng-model="schedulerGroup.customer.email"
+                       disabled=true>
+            </div>
+        </div>
+        <div class="row">
+            <label class="col-md-12">Customer phone</label>
+        </div>
+        <div class="row space-bottom">
+            <div class="col-md-12">
+                <input class="form-control full-width" type="text"
+                       ng-model="schedulerGroup.customer.phone"
+                       disabled=true>
+            </div>
+        </div>
         <div class="row">
             <label class="col-md-12">Employee</label>
         </div>
@@ -28,46 +49,40 @@
 
         <div class="row space-bottom">
             <div class="col-md-12">
-                <label>Start time</label>
-                <select class="form-control form-control-md"
-                        ng-options="hour for hour in scheduler.hourList track by hour"
-                        ng-model="schedulerGroup.startTime"></select>
-                <select class="form-control form-control-md"
-                        ng-options="time for time in scheduler.timeList track by time"
-                        ng-model="schedulerGroup.startTimeList"></select>
+                <label>Date</label> </br>
+                <input class="height-50" type="date" uib-datepicker-popup
+                       ng-model="schedulerGroup.date"
+                       is-open="schedulerGroup.open" ng-required="true" close-text="Close"/>
+                <button type="button" class="height-50 btn btn-default"
+                        ng-click="openCalendar()"><i
+                        class="glyphicon glyphicon-calendar"></i></button>
             </div>
         </div>
         <div class="row space-bottom">
             <div class="col-md-12">
-                <input class="height-50" type="date" uib-datepicker-popup
-                       ng-model="schedulerGroup.startDate"
-                       is-open="schedulerGroup.startOpen" ng-required="true" close-text="Close"/>
-                <button type="button" class="height-50 btn btn-default"
-                        ng-click="pickStart()"><i
-                        class="glyphicon glyphicon-calendar"></i></button>
+                <label>Start time</label>
+                <select class="form-control form-control-md"
+                        ng-model="schedulerGroup.startTime"
+                        ng-change="updateStartHour()">
+                    <option ng-repeat="hour in scheduler.hourList" ng-disabled="hour.disable.start" value="{{hour.value}}">{{hour.value}}</option>
+                </select>
+                <select class="form-control form-control-md"
+                        ng-options="time for time in scheduler.timeList track by time"
+                        ng-model="schedulerGroup.startTimeList" ng-change="updateTimeList()"></select>
             </div>
         </div>
-
 
         <div class="row space-bottom">
             <div class="col-md-12"><label>End Time</label>
                 <select class="form-control form-control-md"
-                        ng-options="hour for hour in scheduler.hourList track by hour"
-                        ng-model="schedulerGroup.endTime"></select>
+                        ng-model="schedulerGroup.endTime"
+                        ng-change="updateEndHour()">
+                    <option ng-repeat="hour in scheduler.hourList" ng-disabled="hour.disable.end" value="{{hour.value}}">{{hour.value}}</option>
+                </select>
                 <select class="form-control form-control-md"
                         ng-options="time for time in scheduler.timeList track by time"
-                        ng-model="schedulerGroup.endTimeList"></select></div>
+                        ng-model="schedulerGroup.endTimeList" ng-change="updateTimeList()"></select></div>
 
-        </div>
-        <div class="row space-bottom">
-            <div class="col-md-12">
-                <input class="height-50" type="date" uib-datepicker-popup ng-model="schedulerGroup.endDate"
-                       is-open="schedulerGroup.endOpen" ng-required="true" close-text="Close"/>
-                <button type="button" class="height-50 btn btn-default"
-                        ng-click="pickEnd()"><i
-                        class="glyphicon glyphicon-calendar"></i>
-                </button>
-            </div>
         </div>
 
         <div class="row space-bottom">

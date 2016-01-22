@@ -1,0 +1,14 @@
+<div class="col-md-12 property-content-container mainpage">
+    <div class="alert alert-danger" role="alert" ng-show="data.isError">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        {{data.errorMessage}}
+    </div>
+    <div id="employee-grid" ui-grid="gridOptions" ui-grid-pagination class="grid" ng-init="initFTScrollerGrid('employee-grid');" ></div>
+    <pos-pagination page="{{ gridApi.pagination.getPage() }}"
+                    of="{{ gridApi.pagination.getTotalPages() }}"
+                    prev="gridApi.pagination.previousPage()"
+                    next="gridApi.pagination.nextPage()"
+    ></pos-pagination>
+</div>
+

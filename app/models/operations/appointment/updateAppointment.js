@@ -9,7 +9,7 @@ module.exports = function (req, res) {
             '_id':mongoose.Types.ObjectId(req.body.id)
         },{
             $set: {
-                customerName: req.body.customerName,
+                customer: req.body.customer,
                 startTime: req.body.startTime,
                 startTimeList: req.body.startTimeList,
                 startDate: req.body.startDate,

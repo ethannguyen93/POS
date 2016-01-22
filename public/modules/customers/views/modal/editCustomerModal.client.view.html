@@ -1,0 +1,30 @@
+<div class="modal-header">
+    <h3 class="modal-title">Add Customer</h3>
+</div>
+<div class="modal-body">
+    <div class="alert alert-danger" role="alert" ng-show="data.isError">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        {{data.errorMessage}}
+    </div>
+    <div class="col-md-12">
+        <div class="passcode">
+            <label>
+                Name:
+            </label>
+            <input type="text" ng-model="data.name" ng-change="reset()"/>
+            <label>
+                Phone Number:
+            </label>
+            <input type="text" ng-model="data.phone" ng-change="reset()"/>
+            <label>
+                Email Address:
+            </label>
+            <input type="text" ng-model="data.email" ng-change="reset()"/>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="edit()">Edit</button>
+    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+</div>

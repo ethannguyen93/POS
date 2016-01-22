@@ -5,7 +5,7 @@ module.exports = function (req, res) {
     var connectionDB = mongoose.connection.db;
     connectionDB.collection('appointments', function (err, collection) {
         collection.insert({
-            customerName: req.body.customerName,
+            customer: req.body.customer,
             startTime: req.body.startTime,
             startTimeList: req.body.startTimeList,
             startDate: req.body.startDate,

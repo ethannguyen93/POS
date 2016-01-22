@@ -10,7 +10,7 @@ angular.module('scheduler').factory('SchedulerServices', [ 'uiCalendarConfig', '
              * @param events: list of current events
              */
             updateEvents: function(calendar, type, events){
-                switch (event){
+                switch (type){
                     case 'month':
                         break;
                     case 'agendaWeek':
@@ -36,18 +36,19 @@ angular.module('scheduler').factory('SchedulerServices', [ 'uiCalendarConfig', '
                 //remove all previous appointments
                 events.splice(0, events.length);
                 RetrieveAppointments.load(body, function(response){
+                    debugger;
                     _.each(response, function(appointment){
                         var startDate = new Date(appointment.startDate);
                         var endDate = new Date(appointment.endDate);
                         self.setHours(startDate, appointment.startTime, appointment.startTimeList);
                         self.setHours(endDate, appointment.endTime, appointment.endTimeList);
                         events.push({
-                            title: appointment.assignedEmployee.name + ' - ' + appointment.customerName,
+                            title: appointment.assignedEmployee.name + ' - ' + appointment.customer.name,
                             start: startDate,
                             end: endDate,
                             data: {
                                 id: appointment._id,
-                                customerName: appointment.customerName,
+                                customer: appointment.customer,
                                 startTime: appointment.startTime,
                                 startTimeList: appointment.startTimeList,
                                 startDate: startDate,

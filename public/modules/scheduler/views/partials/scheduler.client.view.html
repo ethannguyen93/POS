@@ -5,7 +5,8 @@
             <button class="col-md-2 btn btn-success" ng-click="changeView('agendaWeek', 'myCalendar')">Week View
             </button>
             <button class="col-md-2 btn btn-success" ng-click="changeView('agendaDay', 'myCalendar')">Day View</button>
-            <button class="col-md-2 col-md-offset-4 btn btn-success" ng-click="scheduler.alertOnAddBtnClicked()"><span class="glyphicon glyphicon-plus"></span>&nbsp;New Event</button>
+            <button class="col-md-2 col-md-offset-4 btn btn-success" ng-click="sendReminders()"><span class="glyphicon glyphicon-plus"></span>&nbsp;Send Reminders</button>
+            <button class="col-md-2 col-md-offset-4 btn btn-success" ng-click="alertOnAddBtnClicked()"><span class="glyphicon glyphicon-plus"></span>&nbsp;New Event</button>
         </div>
         <div>
             <button class="col-md-1 btn btn-success" ng-click="getPrev('myCalendar')">
@@ -36,9 +37,15 @@
                 scheduler-group="scheduler.new"
                 pick-start="openCalender('newStart')"
                 pick-end="openCalender('newEnd')"
+                update-start-hour="updateDisableHour('new', 'start')"
+                update-end-hour="updateDisableHour('new', 'end')"
+                update-time-list="updateTimeList('new')"
+                select-customer="selectCustomer('new')"
+                remove-email-and-phone="removeEmailAndPhone('new')"
         >
-            <button type="button" class="btn btn-success" ng-click="scheduler.alertOnAddBtnClicked()"><span class="glyphicon glyphicon-remove"></span>&nbsp;Cancel</button>
-            <button type="button" class="btn btn-success" ng-click="addNewEvent(); scheduler.alertOnAddBtnClicked()"><span class="glyphicon glyphicon-ok"></span>&nbsp;Save</button>
+
+            <button type="button" class="btn btn-success" ng-click="alertOnAddBtnClicked()"><span class="glyphicon glyphicon-remove"></span>&nbsp;Cancel</button>
+            <button type="button" class="btn btn-success" ng-click="addNewEvent(); alertOnAddBtnClicked()"><span class="glyphicon glyphicon-ok"></span>&nbsp;Save</button>
         </event-inspector>
     </div>
     <div id="event-selected" class="flex-panel col-md-3">
@@ -47,8 +54,12 @@
                 title="Selected Event"
                 scheduler="scheduler"
                 scheduler-group="scheduler.selected"
-                pick-start="openCalender('selectedStart')"
-                pick-end="openCalender('selectedEnd')"
+                open-calendar="openCalender('selected')"
+                update-start-hour="updateDisableHour('selected', 'start')"
+                update-end-hour="updateDisableHour('selected', 'end')"
+                update-time-list="updateTimeList('selected')"
+                select-customer="selectCustomer('selected')"
+                remove-email-and-phone="removeEmailAndPhone('selected')"
         >
             <button type="button" class="btn btn-success" ng-click="updateEvent()">Update</button>
             <button type="button" class="btn btn-success" ng-click="deleteEvent()">Delete</button>
