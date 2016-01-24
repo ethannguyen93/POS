@@ -13,14 +13,15 @@ angular.module('core').factory('FTScroller', function() {
                 });
             }, 100);
         },
-        initFTScroller: function(id) {
+        initFTScroller: function(id, verticalScroll) {
             var containerElement = document.getElementById(id);
             console.log(containerElement);
             setTimeout(function() {
                 var scroller = new FTScroller(containerElement, {
                     //contentHeight: 160,
                     alwaysScroll: true,
-                    scrollingY: false
+                    scrollingY: (verticalScroll) ? true : false,
+                    scrollingX: (verticalScroll) ? false : true
                 });
             }, 100);
         }

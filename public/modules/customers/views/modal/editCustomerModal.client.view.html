@@ -9,22 +9,30 @@
     </div>
     <div class="col-md-12">
         <div class="passcode">
-            <label>
-                Name:
-            </label>
-            <input type="text" ng-model="data.name" ng-change="reset()"/>
-            <label>
-                Phone Number:
-            </label>
-            <input type="text" ng-model="data.phone" ng-change="reset()"/>
-            <label>
-                Email Address:
-            </label>
-            <input type="text" ng-model="data.email" ng-change="reset()"/>
+            <div class="space-bottom">
+                <label class="col-md-12">
+                    Name:
+                </label>
+                <input class="input-text" type="text" ng-model="data.name" ng-change="reset()"/>
+            </div>
+
+            <div class="space-bottom">
+                <label class="col-md-12">
+                    Phone Number:
+                </label>
+                <input class="input-text" type="text" ng-model="data.phone" ng-change="reset()"/>
+            </div>
+
+            <div class="space-bottom">
+                <label class="col-md-12">
+                    Email Address:
+                </label>
+                <input class="input-text" type="text" ng-model="data.email" ng-change="reset()"/>
+            </div>
         </div>
     </div>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-default" ng-click="edit()">Edit</button>
+    <button class="btn btn-default" ng-click="edit()">Apply</button>
     <button class="btn btn-default" ng-click="cancel()">Cancel</button>
 </div>

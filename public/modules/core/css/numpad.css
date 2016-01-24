@@ -9,6 +9,17 @@
   border-radius: 0;
   color: #3498db; }
 
+.input-text {
+  font-size: 31px;
+  padding: 3px 10px;
+  border: 0;
+  border-bottom: 2px solid #3498db;
+  margin: 0 15px;
+  width: 84%;
+  text-align: left;
+  border-radius: 0;
+  color: #3498db; }
+
 ::-webkit-input-placeholder {
   color: #ccc; }
 

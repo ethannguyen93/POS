@@ -1,0 +1,12 @@
+#employee-grid:nth-child(1) {
+  // 100% - 75px for the pagination height
+  height: calc(100% - 75px) !important;
+}
+
+.event-inspector {
+  overflow-y: scroll;
+}
+
+.fc-toolbar {
+  margin-bottom: 0;
+}

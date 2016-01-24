@@ -1,11 +1,14 @@
-<div class="flex-panel-content panel">
+<div>
     <div class="panel-heading">
         <h3>{{title}}</h3>
     </div>
 
     <div class="panel-body" ng-show="bodyVisible">
         <div class="row">
-            <label class="col-md-12">Customer name</label>
+            <label class="col-md-6">Customer name</label>
+            <div class="col-md-6 align-right">
+                <button class='btn btn-sm btn-success inline-block margin-around font-sm' ng-click="selectCustomer()">Select Customer</button>
+            </div>
         </div>
         <div class="row space-bottom">
             <div class="col-md-12">
@@ -13,7 +16,6 @@
                        ng-model="schedulerGroup.customer.name"
                        placeholder="Customer name"
                        ng-change="removeEmailAndPhone()">
-                <button ng-click="selectCustomer()">Select Customer</button>
             </div>
         </div>
         <div class="row">
@@ -88,7 +90,7 @@
         <div class="row space-bottom">
             <div class="col-md-12">
                 <label>Note</label>
-                        <textarea class="form-control full-width" rows="3" placeholder="Note"
+                        <textarea class="form-control full-width" rows="2" placeholder="Note"
                                   ng-model="schedulerGroup.note"></textarea>
             </div>
         </div>

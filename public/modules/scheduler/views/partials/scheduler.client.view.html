@@ -5,17 +5,17 @@
             <button class="col-md-2 btn btn-success" ng-click="changeView('agendaWeek', 'myCalendar')">Week View
             </button>
             <button class="col-md-2 btn btn-success" ng-click="changeView('agendaDay', 'myCalendar')">Day View</button>
-            <button class="col-md-2 col-md-offset-4 btn btn-success" ng-click="sendReminders()"><span class="glyphicon glyphicon-plus"></span>&nbsp;Send Reminders</button>
-            <button class="col-md-2 col-md-offset-4 btn btn-success" ng-click="alertOnAddBtnClicked()"><span class="glyphicon glyphicon-plus"></span>&nbsp;New Event</button>
+            <button class="col-md-3 col-md-offset-1 btn btn-success" ng-click="sendReminders()"><span class="glyphicon glyphicon-send"></span>&nbsp;&nbsp;Send Reminders</button>
+            <button class="col-md-2 btn btn-success" ng-click="alertOnAddBtnClicked()"><span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Event</button>
         </div>
         <div>
-            <button class="col-md-1 btn btn-success" ng-click="getPrev('myCalendar')">
+            <button class="col-md-1 btn btn-success inline-block" ng-click="getPrev('myCalendar')">
                 <i class="glyphicon glyphicon-menu-left"></i>
             </button>
-            <button class="col-md-1 btn btn-success" ng-click="getToday('myCalendar')">
+            <button class="col-md-1 btn btn-success inline-block" ng-click="getToday('myCalendar')">
                 Today
             </button>
-            <button class="col-md-1 btn btn-success" ng-click="getNext('myCalendar')">
+            <button class="col-md-1 btn btn-success inline-block" ng-click="getNext('myCalendar')">
                 <i class="glyphicon glyphicon-menu-right"></i>
             </button>
         </div>
@@ -26,10 +26,11 @@
     <div id="event-new" ng-class="{
                 'popout': 'true',
                 'popout-right': 'true',
+                'event-inspector': 'true',
                  'col-md-3': 'true',
                  'popout-hidden': addPaneHidden,
                  'popout-visible': !addPaneHidden
-             }">
+             }" ng-init="initFTScroller('event-new', true);">
         <event-inspector
                 body-visible="true"
                 title="New Event"
@@ -47,7 +48,9 @@
             <button type="button" class="btn btn-success" ng-click="addNewEvent(); alertOnAddBtnClicked()"><span class="glyphicon glyphicon-ok"></span>&nbsp;Save</button>
         </event-inspector>
     </div>
-    <div id="event-selected" class="flex-panel col-md-3">
+    <div id="event-selected" class="event-inspector col-md-3"
+         ng-init="initFTScroller('event-selected', true);"
+    >
         <event-inspector
                 body-visible="scheduler.selectedEvent"
                 title="Selected Event"

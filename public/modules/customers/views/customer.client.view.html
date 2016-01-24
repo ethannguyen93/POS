@@ -4,7 +4,7 @@
         <span class="sr-only">Error:</span>
         {{data.errorMessage}}
     </div>
-    <div id="employee-grid" ui-grid="gridOptions" ui-grid-pagination class="grid" ng-init="initFTScrollerGrid('employee-grid');" ></div>
+    <div id="customer-grid" ui-grid="gridOptions" ui-grid-pagination class="grid" ng-init="initFTScrollerGrid('customer-grid');" ></div>
     <pos-pagination page="{{ gridApi.pagination.getPage() }}"
                     of="{{ gridApi.pagination.getTotalPages() }}"
                     prev="gridApi.pagination.previousPage()"

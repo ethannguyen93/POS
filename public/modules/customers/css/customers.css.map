@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,cAAe;EACb,MAAM,EAAE,4BAA4B",
+"sources": ["customers.scss"],
+"names": [],
+"file": "customers.css"
+}

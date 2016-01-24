@@ -404,7 +404,7 @@ angular.module('scheduler').controller('SchedulerController', [ '$scope', '$stat
             var deferred = $q.defer();
             var editorInstance = $modal.open({
                 animation: true,
-                windowClass: 'modal-fullwindow',
+                windowClass: 'modal-expand',
                 templateUrl: 'modules/scheduler/views/modal/selectCustomerModal.client.view.html',
                 controller: 'selectCustomerController'
             });
@@ -444,7 +444,7 @@ angular.module('scheduler').controller('SchedulerController', [ '$scope', '$stat
         /*This config has to be below the event functions*/
         $scope.uiConfig = {
             calendar:{
-                height: 800,
+                height: 768,
                 editable: true,
                 header:{
                     left: '',
@@ -475,5 +475,11 @@ angular.module('scheduler').controller('SchedulerController', [ '$scope', '$stat
         $scope.changeView = function(view,calendar) {
             uiCalendarConfig.calendars[calendar].fullCalendar('changeView',view);
         };
+
+        /* Init FT Scroller */
+        $scope.initFTScroller = function(id, vertical) {
+            console.log('attempting init!');
+            FTScroller.initFTScroller(id, vertical);
+        }
     }
 ]);

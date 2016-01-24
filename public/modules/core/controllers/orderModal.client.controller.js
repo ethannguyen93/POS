@@ -74,5 +74,6 @@ angular.module('core').controller('orderCtrl',
                 });
             }, 100);
         };
+
     }
 );

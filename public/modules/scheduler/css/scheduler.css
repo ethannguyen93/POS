@@ -1,0 +1,12 @@
+#employee-grid:nth-child(1) {
+  height: calc(100% - 75px) !important; }
+
+.event-inspector {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.fc-toolbar {
+  margin-bottom: 0; }
+
+/*# sourceMappingURL=scheduler.css.map */
