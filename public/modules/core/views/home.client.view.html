@@ -22,8 +22,8 @@
                 <ul class="nav navbar-nav navbar-right" ng-show="inState('admin.authenticated') || inState('core.authenticated')">
                     <li><a>{{UserService.getUser().name}}</a></li>
                     <li class="col-md-off">
-                        <button ui-sref="core.login" ng-click="userLogout()" type="button" class="btn btn-default btn-block ng-binding ng-scope ng-click-active">
-                            <span class="glyphicon glyphicon-log-out"></span>&nbsp;Log out test?</button>
+                        <button ui-sref="core.login" ng-click="logOut" type="button" class="btn btn-default btn-block ng-binding ng-scope ng-click-active">
+                            <span class="glyphicon glyphicon-log-out"></span>&nbsp;Log out</button>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" ng-show="inState('scheduler') || inState('admin.login') || inState('customer')">
