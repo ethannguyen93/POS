@@ -119,7 +119,8 @@ module.exports = function (req, res) {
                         customerName: req.body.customerName,
                         subtotal: req.body.subtotal,
                         tax: req.body.tax,
-                        isTax: req.body.isTax
+                        isTax: req.body.isTax,
+                        discountPrice: req.body.discountPrice
                     }, function(err, result){
                         if (err) {
                             console.log(err)

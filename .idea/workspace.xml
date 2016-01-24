@@ -1,32 +1,370 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d76265e9-6b37-4398-a467-0bcf6737874e" name="Default" comment="fixing scheduler services and controller">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/operations/appointment/sendReminders.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/operations/customers/addCustomer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/operations/customers/getAllCustomers.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/operations/customers/getCustomer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/operations/customers/removeCustomer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/operations/customers/updateCustomer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/customers/controllers/editCustomerModal.client.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/customers/controllers/removeCustomerModal.client.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/customers/services/retrieveCustomer.client.service.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/customers/views/customer.client.view.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/customers/views/modal/editCustomerModal.client.view.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/customers/views/modal/removeCustomerModal.client.view.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/scheduler/controllers/editCustomerModal.client.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/scheduler/controllers/selectCustomerModal.client.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/scheduler/views/modal/selectCustomerModal.client.view.html" />
+    <list default="true" id="d76265e9-6b37-4398-a467-0bcf6737874e" name="Default" comment="Finalized customer database, sending sms and email">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/build/Release/kerberos.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/build/Release/obj.target/kerberos/lib/base64.o" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/build/Release/obj.target/kerberos/lib/kerberos.o" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/build/Release/obj.target/kerberos/lib/kerberos_context.o" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/build/Release/obj.target/kerberos/lib/kerberosgss.o" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/build/Release/obj.target/kerberos/lib/worker.o" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/data/WiredTiger.wt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/data/WiredTigerLAS.wt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/data/_mdb_catalog.wt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/data/collection-0-757073248613337118.wt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/data/diagnostic.data/metrics.2015-10-07T14-44-37Z-00000" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/data/diagnostic.data/metrics.2015-10-07T14-45-15Z-00000" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/data/diagnostic.data/metrics.2015-10-07T14-46-31Z-00000" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/data/diagnostic.data/metrics.2015-10-07T14-47-25Z-00000" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/data/diagnostic.data/metrics.2015-10-07T14-49-07Z-00000" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/data/diagnostic.data/metrics.2015-10-07T14-50-41Z-00000" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/data/diagnostic.data/metrics.2015-10-07T14-50-53Z-00000" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/data/diagnostic.data/metrics.2015-10-07T14-52-31Z-00000" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/data/diagnostic.data/metrics.2015-10-07T14-54-53Z-00000" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/data/diagnostic.data/metrics.2015-10-07T14-55-09Z-00000" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/data/diagnostic.data/metrics.2015-10-07T14-55-38Z-00000" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/data/index-1-757073248613337118.wt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/data/mongod.lock" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/data/sizeStorer.wt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/data/storage.bson" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/operations/appointment/getNumberOfReminders.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/.idea/jsLibraryMappings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/.idea/libraries/mongodb_driver_2_0_node_modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/.idea/mongodb-driver-2.0.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/HISTORY.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/conf.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/admin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/aggregation_cursor.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/apm.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/bulk/common.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/bulk/ordered.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/bulk/unordered.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/collection.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/command_cursor.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/cursor.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/db.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/gridfs-stream/download.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/gridfs-stream/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/gridfs-stream/upload.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/gridfs/chunk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/gridfs/grid_store.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/metadata.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongo_client.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/mongos.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/read_preference.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/replset.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/server.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/topology_base.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/url_parser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/lib/utils.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/es6-promise/CHANGELOG.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/es6-promise/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/es6-promise/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/es6-promise/dist/es6-promise.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/es6-promise/dist/es6-promise.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/es6-promise/lib/es6-promise.umd.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/es6-promise/lib/es6-promise/-internal.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/es6-promise/lib/es6-promise/asap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/es6-promise/lib/es6-promise/enumerator.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/es6-promise/lib/es6-promise/polyfill.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/es6-promise/lib/es6-promise/promise.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/es6-promise/lib/es6-promise/promise/all.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/es6-promise/lib/es6-promise/promise/race.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/es6-promise/lib/es6-promise/promise/reject.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/es6-promise/lib/es6-promise/promise/resolve.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/es6-promise/lib/es6-promise/utils.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/es6-promise/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/HISTORY.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/binding.gyp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/build/Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/build/Release/.deps/Release/kerberos.node.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/build/Release/.deps/Release/obj.target/kerberos/lib/base64.o.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/build/Release/.deps/Release/obj.target/kerberos/lib/kerberos.o.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/build/Release/.deps/Release/obj.target/kerberos/lib/kerberos_context.o.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/build/Release/.deps/Release/obj.target/kerberos/lib/kerberosgss.o.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/build/Release/.deps/Release/obj.target/kerberos/lib/worker.o.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/build/binding.Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/build/config.gypi" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/build/gyp-mac-tool" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/build/kerberos.target.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/auth_processes/mongodb.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/base64.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/base64.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/kerberos.cc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/kerberos.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/kerberos.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/kerberos_context.cc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/kerberos_context.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/kerberosgss.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/kerberosgss.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/sspi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/base64.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/base64.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/kerberos.cc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/kerberos.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/kerberos_sspi.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/kerberos_sspi.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/worker.cc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/worker.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_buffer.cc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_buffer.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_buffer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_buffer_descriptor.cc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_buffer_descriptor.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_buffer_descriptor.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_context.cc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_context.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_context.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_credentials.cc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_credentials.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_credentials.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/worker.cc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/lib/worker.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/.dntrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/CHANGELOG.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/LICENSE.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/appveyor.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/doc/.build.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/doc/asyncworker.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/doc/buffers.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/doc/callback.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/doc/converters.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/doc/errors.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/doc/maybe_types.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/doc/methods.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/doc/new.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/doc/node_misc.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/doc/persistent.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/doc/scopes.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/doc/script.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/doc/string_bytes.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/doc/v8_internals.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/doc/v8_misc.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/include_dirs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/nan.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/nan_callbacks.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/nan_callbacks_12_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/nan_callbacks_pre_12_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/nan_converters.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/nan_converters_43_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/nan_converters_pre_43_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/nan_implementation_12_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/nan_implementation_pre_12_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/nan_maybe_43_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/nan_maybe_pre_43_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/nan_new.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/nan_object_wrap.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/nan_persistent_12_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/nan_persistent_pre_12_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/nan_string_bytes.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/nan_weak.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/tools/1to2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/tools/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/node_modules/nan/tools/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/kerberos/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/HISTORY.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/TESTING.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/conf.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/auth/gssapi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/auth/mongocr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/auth/plain.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/auth/scram.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/auth/sspi.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/auth/x509.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/connection/commands.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/connection/connection.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/connection/logger.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/connection/pool.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/connection/utils.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/cursor.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/error.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/tools/smoke_plugin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/command_result.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/mongos.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/read_preference.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/replset.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/replset_state.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/server.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/session.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/topologies/strategies/ping.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/wireprotocol/2_4_support.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/wireprotocol/2_6_support.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/wireprotocol/3_2_support.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/lib/wireprotocol/commands.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/HISTORY" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/alternate_parsers/bson.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/alternate_parsers/faster_bson.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/browser_build/bson.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/browser_build/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/deserializer_bak.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/lib/bson/binary.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/lib/bson/binary_parser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/lib/bson/bson.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/lib/bson/code.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/lib/bson/db_ref.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/lib/bson/double.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/lib/bson/float_parser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/lib/bson/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/lib/bson/long.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/lib/bson/map.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/lib/bson/max_key.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/lib/bson/min_key.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/lib/bson/objectid.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/lib/bson/parser/calculate_size.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/lib/bson/parser/deserializer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/lib/bson/parser/serializer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/lib/bson/regexp.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/lib/bson/symbol.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/lib/bson/timestamp.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/node_modules/bson/tools/gleak.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/mongodb-core/simple_2_document_limit_toArray.dat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/duplex.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/lib/_stream_duplex.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/lib/_stream_passthrough.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/lib/_stream_readable.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/lib/_stream_transform.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/lib/_stream_writable.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/node_modules/core-util-is/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/node_modules/core-util-is/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/node_modules/core-util-is/float.patch" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/node_modules/core-util-is/lib/util.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/node_modules/core-util-is/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/node_modules/core-util-is/test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/node_modules/inherits/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/node_modules/inherits/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/node_modules/inherits/inherits.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/node_modules/inherits/inherits_browser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/node_modules/inherits/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/node_modules/inherits/test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/node_modules/isarray/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/node_modules/isarray/build/build.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/node_modules/isarray/component.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/node_modules/isarray/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/node_modules/isarray/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/node_modules/string_decoder/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/node_modules/string_decoder/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/node_modules/string_decoder/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/node_modules/string_decoder/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/node_modules/string_decoder/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/passthrough.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/readable.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/transform.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/node_modules/readable-stream/writable.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/t.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/boot.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/ca.pem" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/client.pem" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/client_password.pem" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/connect.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/data/WiredTiger" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/data/WiredTiger.lock" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/data/WiredTiger.turtle" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/mongodb/test_boot/server_password.pem" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/node_modules/duplexer2/node_modules/readable-stream/node_modules/core-util-is/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/node_modules/duplexer2/node_modules/readable-stream/node_modules/core-util-is/test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/node_modules/through2/node_modules/readable-stream/node_modules/core-util-is/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/node_modules/through2/node_modules/readable-stream/node_modules/core-util-is/test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/xoauth2/.jshintrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/xoauth2/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/xoauth2/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/xoauth2/CHANGELOG.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/xoauth2/Gruntfile.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/xoauth2/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/xoauth2/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/xoauth2/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/xoauth2/src/xoauth2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/xoauth2/test/server.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/xoauth2/test/xoauth2-test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/core/controllers/logoutModal.client.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/core/views/logoutModal.client.view.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/scheduler/controllers/sendReminderModal.client.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/scheduler/views/modal/sendReminderModal.client.view.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/node_modules/duplexer2/node_modules/readable-stream/node_modules/core-util-is/util.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/node_modules/through2/node_modules/readable-stream/node_modules/core-util-is/util.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/reports/reports.pdf" afterPath="$PROJECT_DIR$/public/reports/reports.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/appointment.server.model.js" afterPath="$PROJECT_DIR$/app/models/appointment.server.model.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/operations/appointment/addAppointment.js" afterPath="$PROJECT_DIR$/app/models/operations/appointment/addAppointment.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/operations/appointment/updateAppointment.js" afterPath="$PROJECT_DIR$/app/models/operations/appointment/updateAppointment.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/operations/sms/test.js" afterPath="$PROJECT_DIR$/app/models/operations/sms/test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/operations/appointment/getAllAppointmentsGivenWeek.js" afterPath="$PROJECT_DIR$/app/models/operations/appointment/getAllAppointmentsGivenWeek.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/operations/appointment/sendReminders.js" afterPath="$PROJECT_DIR$/app/models/operations/appointment/sendReminders.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/operations/inventory/doneOrder.js" afterPath="$PROJECT_DIR$/app/models/operations/inventory/doneOrder.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/operations/inventory/getReport.js" afterPath="$PROJECT_DIR$/app/models/operations/inventory/getReport.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/operations/inventory/saveOrder.js" afterPath="$PROJECT_DIR$/app/models/operations/inventory/saveOrder.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/buildmail/README.md" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/buildmail/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/buildmail/src/buildmail.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/buildmail/src/buildmail.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/buildmail/test/libbuildmail-unit.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/buildmail/test/libbuildmail-unit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/example/many_hyperquest.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/example/many_hyperquest.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/example/many_request.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/example/many_request.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/example/req.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/example/req.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/node_modules/duplexer2/node_modules/readable-stream/node_modules/core-util-is/lib/util.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/node_modules/duplexer2/node_modules/readable-stream/node_modules/core-util-is/lib/util.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/node_modules/duplexer2/node_modules/readable-stream/node_modules/core-util-is/package.json" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/node_modules/duplexer2/node_modules/readable-stream/node_modules/core-util-is/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/node_modules/through2/node_modules/readable-stream/node_modules/core-util-is/lib/util.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/node_modules/through2/node_modules/readable-stream/node_modules/core-util-is/lib/util.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/node_modules/through2/node_modules/readable-stream/node_modules/core-util-is/package.json" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/node_modules/through2/node_modules/readable-stream/node_modules/core-util-is/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/node_modules/through2/node_modules/xtend/immutable.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/node_modules/through2/node_modules/xtend/immutable.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/node_modules/through2/node_modules/xtend/mutable.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/node_modules/through2/node_modules/xtend/mutable.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/node_modules/through2/node_modules/xtend/package.json" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/node_modules/through2/node_modules/xtend/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/node_modules/through2/node_modules/xtend/test.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/node_modules/through2/node_modules/xtend/test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/readme.markdown" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/readme.markdown" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/test/auth.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/test/auth.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/test/auth_encoded.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/test/auth_encoded.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/test/auth_opt.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/test/auth_opt.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/test/get.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/test/get.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/test/many.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/test/many.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/test/opts.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/test/opts.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/test/post.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/test/post.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/test/post_immediate.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/test/post_immediate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/test/readable.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/test/readable.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/test/set_header.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/hyperquest/test/set_header.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-direct-transport/node_modules/smtp-connection/CHANGELOG.md" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-direct-transport/node_modules/smtp-connection/CHANGELOG.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-direct-transport/node_modules/smtp-connection/README.md" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-direct-transport/node_modules/smtp-connection/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-direct-transport/node_modules/smtp-connection/package.json" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-direct-transport/node_modules/smtp-connection/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-direct-transport/node_modules/smtp-connection/src/smtp-connection.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-direct-transport/node_modules/smtp-connection/src/smtp-connection.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-direct-transport/src/direct-transport.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-direct-transport/src/direct-transport.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-direct-transport/test/direct-transport-test.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-direct-transport/test/direct-transport-test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-smtp-transport/README.md" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-smtp-transport/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-smtp-transport/node_modules/nodemailer-wellknown/package.json" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-smtp-transport/node_modules/nodemailer-wellknown/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-smtp-transport/node_modules/smtp-connection/CHANGELOG.md" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-smtp-transport/node_modules/smtp-connection/CHANGELOG.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-smtp-transport/node_modules/smtp-connection/README.md" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-smtp-transport/node_modules/smtp-connection/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-smtp-transport/node_modules/smtp-connection/package.json" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-smtp-transport/node_modules/smtp-connection/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-smtp-transport/node_modules/smtp-connection/src/smtp-connection.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-smtp-transport/node_modules/smtp-connection/src/smtp-connection.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-smtp-transport/package.json" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-smtp-transport/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-smtp-transport/src/smtp-transport.js" afterPath="$PROJECT_DIR$/node_modules/nodemailer/node_modules/nodemailer-smtp-transport/src/smtp-transport.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/core/controllers/home.client.controller.js" afterPath="$PROJECT_DIR$/public/modules/core/controllers/home.client.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/core/services/mainpage.client.service.js" afterPath="$PROJECT_DIR$/public/modules/core/services/mainpage.client.service.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/core/views/home.client.view.html" afterPath="$PROJECT_DIR$/public/modules/core/views/home.client.view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/core/views/partials/mainpage.client.view.html" afterPath="$PROJECT_DIR$/public/modules/core/views/partials/mainpage.client.view.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/scheduler/controllers/scheduler.client.controller.js" afterPath="$PROJECT_DIR$/public/modules/scheduler/controllers/scheduler.client.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/scheduler/directives/eventinspector.client.directive.js" afterPath="$PROJECT_DIR$/public/modules/scheduler/directives/eventinspector.client.directive.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/scheduler/services/scheduler.client.service.js" afterPath="$PROJECT_DIR$/public/modules/scheduler/services/scheduler.client.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/scheduler/views/partials/eventinspector.client.view.html" afterPath="$PROJECT_DIR$/public/modules/scheduler/views/partials/eventinspector.client.view.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/scheduler/views/partials/scheduler.client.view.html" afterPath="$PROJECT_DIR$/public/modules/scheduler/views/partials/scheduler.client.view.html" />
     </list>
     <ignored path="POS1.iws" />
@@ -48,53 +386,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="scheduler.client.service.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/modules/scheduler/services/scheduler.client.service.js">
+      <file leaf-file-name="getReport.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/operations/inventory/getReport.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.07158352">
-              <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="85" column="29" selection-start-line="85" selection-start-column="29" selection-end-line="85" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scheduler.client.controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/modules/scheduler/controllers/scheduler.client.controller.js">
+      <file leaf-file-name="home.client.view.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/modules/core/views/home.client.view.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="447" column="39" selection-start-line="447" selection-start-column="39" selection-end-line="447" selection-end-column="39" />
-              <folding>
-                <element signature="e#21512#21605#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/operations/sms/test.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="2" selection-start-line="9" selection-start-column="0" selection-end-line="19" selection-end-column="5" />
+            <state vertical-scroll-proportion="-15.0">
+              <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sendReminders.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="logoutModal.client.controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/modules/core/controllers/logoutModal.client.controller.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="3" column="45" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sendReminders.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/operations/appointment/sendReminders.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="66" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="66" />
+            <state vertical-scroll-proportion="0.66571426">
+              <caret line="62" column="47" selection-start-line="62" selection-start-column="47" selection-end-line="62" selection-end-column="47" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getAllAppointmentsGivenWeek.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/operations/appointment/getAllAppointmentsGivenWeek.js">
+      <file leaf-file-name="home.client.controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/modules/core/controllers/home.client.controller.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="10" selection-end-column="13" />
+              <caret line="32" column="40" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -119,25 +455,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/modules/appoinments/services/appoinments.client.service.js" />
-        <option value="$PROJECT_DIR$/app/routes/employees.server.routes.js" />
-        <option value="$PROJECT_DIR$/app/routes/appointments.server.routes.js" />
-        <option value="$PROJECT_DIR$/app/controllers/appointments.server.controller.js" />
-        <option value="$PROJECT_DIR$/public/modules/appointments/services/appointments.client.service.js" />
-        <option value="$PROJECT_DIR$/app/models/operations/appointment/getAllAppointments.js" />
-        <option value="$PROJECT_DIR$/public/lib/fullcalendar/dist/fullcalendar.js" />
-        <option value="$PROJECT_DIR$/public/lib/ui-calendar/src/calendar.js" />
-        <option value="$PROJECT_DIR$/public/modules/core/views/partials/mainpage.client.view.html" />
         <option value="$PROJECT_DIR$/public/modules/core/directives/eventinspector.client.directive.js" />
         <option value="$PROJECT_DIR$/public/modules/core/css/core.scss" />
         <option value="$PROJECT_DIR$/public/modules/core/views/partials/scheduler/eventinspector.client.view.html" />
         <option value="$PROJECT_DIR$/app/models/operations/appointment/removeAppointment.js" />
         <option value="$PROJECT_DIR$/public/modules/core/views/partials/scheduler.client.view.html" />
-        <option value="$PROJECT_DIR$/app/models/operations/inventory/getReport.js" />
-        <option value="$PROJECT_DIR$/public/modules/core/controllers/home.client.controller.js" />
-        <option value="$PROJECT_DIR$/app/models/operations/appointment/getAllAppointmentsGivenWeek.js" />
         <option value="$PROJECT_DIR$/public/modules/scheduler/services/scheduler.client.service.ks.js" />
-        <option value="$PROJECT_DIR$/public/modules/core/views/home.client.view.html" />
         <option value="$PROJECT_DIR$/public/modules/customers/config/customers.client.routes.js" />
         <option value="$PROJECT_DIR$/public/modules/customers/services/retrieveCustomer.client.service.js" />
         <option value="$PROJECT_DIR$/app/controllers/customers.server.controller.js" />
@@ -164,12 +487,25 @@
         <option value="$PROJECT_DIR$/public/modules/scheduler/views/partials/eventinspector.client.view.html" />
         <option value="$PROJECT_DIR$/public/modules/scheduler/controllers/editCustomerModal.client.controller.js" />
         <option value="$PROJECT_DIR$/public/modules/scheduler/controllers/selectCustomerModal.client.controller.js" />
-        <option value="$PROJECT_DIR$/public/modules/scheduler/views/partials/scheduler.client.view.html" />
-        <option value="$PROJECT_DIR$/app/models/appointment.server.model.js" />
-        <option value="$PROJECT_DIR$/public/modules/scheduler/controllers/scheduler.client.controller.js" />
         <option value="$PROJECT_DIR$/app/models/operations/sms/test.js" />
-        <option value="$PROJECT_DIR$/app/models/operations/appointment/sendReminders.js" />
         <option value="$PROJECT_DIR$/public/modules/scheduler/services/scheduler.client.service.js" />
+        <option value="$PROJECT_DIR$/public/modules/scheduler/views/partials/scheduler.client.view.html" />
+        <option value="$PROJECT_DIR$/app/models/operations/appointment/getAllAppointmentsGivenWeek.js" />
+        <option value="$PROJECT_DIR$/app/models/operations/appointment/getNumberOfReminders.js" />
+        <option value="$PROJECT_DIR$/app/models/appointment.server.model.js" />
+        <option value="$PROJECT_DIR$/public/modules/scheduler/controllers/sendReminderModal.client.controller.js" />
+        <option value="$PROJECT_DIR$/public/modules/scheduler/controllers/scheduler.client.controller.js" />
+        <option value="$PROJECT_DIR$/public/modules/scheduler/views/modal/sendReminderModal.client.view.html" />
+        <option value="$PROJECT_DIR$/public/modules/core/views/partials/mainpage.client.view.html" />
+        <option value="$PROJECT_DIR$/public/modules/core/services/mainpage.client.service.js" />
+        <option value="$PROJECT_DIR$/app/models/operations/inventory/saveOrder.js" />
+        <option value="$PROJECT_DIR$/app/models/operations/inventory/doneOrder.js" />
+        <option value="$PROJECT_DIR$/public/modules/core/views/logoutModal.client.view.html" />
+        <option value="$PROJECT_DIR$/public/modules/core/controllers/logoutModal.client.controller.js" />
+        <option value="$PROJECT_DIR$/public/modules/core/views/home.client.view.html" />
+        <option value="$PROJECT_DIR$/public/modules/core/controllers/home.client.controller.js" />
+        <option value="$PROJECT_DIR$/app/models/operations/inventory/getReport.js" />
+        <option value="$PROJECT_DIR$/app/models/operations/appointment/sendReminders.js" />
       </list>
     </option>
   </component>
@@ -212,6 +548,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -388,80 +725,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="scheduler" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="employees" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="employees" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="customers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -566,11 +829,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="customers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -592,7 +851,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -614,7 +877,37 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="partials" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="POS1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="POS1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -650,51 +943,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="routes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="operations" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sms" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -742,7 +991,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="customers" />
+              <option name="myItemId" value="inventory" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -775,7 +1024,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -808,11 +1056,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/modules/core/controllers" />
+      <recent name="$PROJECT_DIR$/public/modules/core/views" />
       <recent name="$PROJECT_DIR$/app/models/operations/appointment" />
       <recent name="$PROJECT_DIR$/public/modules/scheduler/controllers" />
       <recent name="$PROJECT_DIR$/public/modules/scheduler/views/modal" />
-      <recent name="$PROJECT_DIR$/public/modules/customers/controllers" />
-      <recent name="$PROJECT_DIR$/public/modules/customers/views/modal" />
     </key>
   </component>
   <component name="RunManager">
@@ -942,7 +1190,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="773" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2875298" sideWeight="0.4924812" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -953,7 +1201,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16005874" sideWeight="0.503231" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.4418417" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2819383" sideWeight="0.46526656" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44493392" sideWeight="0.46526656" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -997,198 +1245,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/modules/customers/customers.client.module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/core/views/header.client.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3807532">
-          <caret line="44" column="71" selection-start-line="44" selection-start-column="70" selection-end-line="44" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/core/config/core.client.routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/core/views/home.client.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5">
-          <caret line="14" column="94" selection-start-line="14" selection-start-column="94" selection-end-line="14" selection-end-column="94" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/admin/config/admin.client.routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8366534">
-          <caret line="31" column="18" selection-start-line="16" selection-start-column="12" selection-end-line="31" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/scheduler/config/scheduler.client.routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35856575">
-          <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/admin/views/partials/admin/giftcard.client.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09414226">
-          <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/customers/config/customers.client.routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4183267">
-          <caret line="14" column="75" selection-start-line="14" selection-start-column="75" selection-end-line="14" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/employees/services/retrieveemployee.client.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20916335">
-          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/employees/services/employees.client.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/customers/services/customers.client.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08964144">
-          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/employee.server.model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4621514">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="40" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/customers.server.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.505263">
-          <caret line="111" column="17" selection-start-line="111" selection-start-column="17" selection-end-line="111" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/employees.server.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.2868526">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes/employees.server.routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47808766">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="17" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes/customers.server.routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5368421">
-          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/core/controllers/tax">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.965358">
-          <caret line="284" column="29" selection-start-line="284" selection-start-column="29" selection-end-line="284" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/core/controllers/home.client.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33256352">
-          <caret line="272" column="29" selection-start-line="272" selection-start-column="29" selection-end-line="272" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/core/controllers/buyGiftcardModal.client.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1039261">
-          <caret line="3" column="50" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/admin/views/partials/admin/employee.client.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12552302">
-          <caret line="4" column="19" selection-start-line="0" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/operations/customers/getCustomer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35856575">
-          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/operations/customers/addCustomer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="35" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/customers/services/retrieveCustomer.client.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.119521916">
-          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/operations/customers/getAllCustomers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5378486">
-          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/modules/admin/controllers/admin.client.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5079681">
@@ -1201,7 +1257,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37250996">
           <caret line="33" column="39" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1209,7 +1264,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.65481174">
           <caret line="25" column="6" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1217,7 +1271,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4183267">
           <caret line="14" column="10" selection-start-line="5" selection-start-column="8" selection-end-line="14" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1225,7 +1278,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17928287">
           <caret line="6" column="53" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1233,15 +1285,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.35856575">
           <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/customers/views/modal/removeCustomerModal.client.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15690376">
-          <caret line="5" column="58" selection-start-line="5" selection-start-column="58" selection-end-line="5" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1249,7 +1292,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="36" column="58" selection-start-line="36" selection-start-column="58" selection-end-line="36" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1265,15 +1307,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18828452">
           <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="11" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/operations/appointment/removeAppointment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3884462">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1289,7 +1322,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.79083663">
           <caret line="167" column="10" selection-start-line="167" selection-start-column="10" selection-end-line="167" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1297,7 +1329,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4079498">
           <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1313,7 +1344,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.0">
           <caret line="24" column="63" selection-start-line="24" selection-start-column="63" selection-end-line="24" selection-end-column="63" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1321,7 +1351,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="66" selection-start-line="5" selection-start-column="66" selection-end-line="5" selection-end-column="66" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1333,43 +1362,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/operations/appointment/getAllAppointments.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="7" selection-start-line="4" selection-start-column="4" selection-end-line="23" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/modules/scheduler/controllers/editCustomerModal.client.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1039261">
           <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/scheduler/views/partials/scheduler.client.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2567237">
-          <caret line="7" column="92" selection-start-line="7" selection-start-column="92" selection-end-line="7" selection-end-column="92" />
-          <folding>
-            <marker date="1453328221000" expanded="true" signature="1562:1788" placeholder="{&quot;popout&quot;: 'true'...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/appointment.server.model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.77093595">
-          <caret line="36" column="67" selection-start-line="36" selection-start-column="67" selection-end-line="36" selection-end-column="67" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/operations/sms/test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.121475056">
           <caret line="9" column="2" selection-start-line="9" selection-start-column="0" selection-end-line="19" selection-end-column="5" />
           <folding />
         </state>
@@ -1378,33 +1380,269 @@
     <entry file="file://$PROJECT_DIR$/app/models/operations/appointment/getAllAppointmentsGivenWeek.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="10" selection-end-column="13" />
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/operations/appointment/sendReminders.js">
+    <entry file="file://$PROJECT_DIR$/app/models/operations/appointment/getAllAppointments.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5119306">
+          <caret line="16" column="30" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/operations/appointment/removeAppointment.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="66" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="66" />
+          <caret line="6" column="53" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/customers/views/modal/removeCustomerModal.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23489933">
+          <caret line="7" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/scheduler/views/partials/scheduler.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16778524">
+          <caret line="37" column="48" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="48" />
+          <folding>
+            <marker date="1453579443000" expanded="true" signature="1562:1788" placeholder="{&quot;popout&quot;: 'true'...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/scheduler/controllers/sendReminderModal.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.54140127">
+          <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/scheduler/views/modal/sendReminderModal.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20134228">
+          <caret line="6" column="114" selection-start-line="6" selection-start-column="114" selection-end-line="6" selection-end-column="114" />
+          <folding>
+            <element signature="n#style#0;n#span#1;n#div#1;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/operations/appointment/getNumberOfReminders.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/appointment.server.model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8536036">
+          <caret line="37" column="80" selection-start-line="37" selection-start-column="80" selection-end-line="37" selection-end-column="80" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/modules/scheduler/controllers/scheduler.client.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="447" column="39" selection-start-line="447" selection-start-column="39" selection-end-line="447" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.7297297">
+          <caret line="416" column="63" selection-start-line="416" selection-start-column="63" selection-end-line="416" selection-end-column="63" />
           <folding>
-            <element signature="e#21512#21605#0" expanded="false" />
+            <element signature="e#22242#22335#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/modules/scheduler/services/scheduler.client.service.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07158352">
-          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.2356688">
+          <caret line="31" column="38" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/operations/inventory/getOrder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.12738854">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/core/controllers/orderModal.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3715499">
+          <caret line="63" column="19" selection-start-line="63" selection-start-column="15" selection-end-line="63" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/operations/inventory/saveOrder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.031847134">
+          <caret line="63" column="57" selection-start-line="63" selection-start-column="57" selection-end-line="63" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/operations/inventory/doneOrder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.8853502">
+          <caret line="122" column="61" selection-start-line="122" selection-start-column="61" selection-end-line="122" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/operations/inventory/printReceipt.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6496815">
+          <caret line="44" column="15" selection-start-line="44" selection-start-column="15" selection-end-line="44" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/core/views/doneOrderModal.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18337408">
+          <caret line="5" column="6" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/core/controllers/doneOrderModal.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/core/views/header.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36830357">
+          <caret line="11" column="57" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/passport/lib/http/request.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39618644">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/users/users.authentication.server.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33256352">
+          <caret line="75" column="8" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/core/services/user.client.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38106236">
+          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/core/views/partials/numpad.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.036674816">
+          <caret line="1" column="35" selection-start-line="1" selection-start-column="35" selection-end-line="1" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/core/views/partials/mainpage.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.3374083">
+          <caret line="91" column="72" selection-start-line="91" selection-start-column="70" selection-end-line="91" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/operations/inventory/selectOneOrder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/core/services/mainpage.client.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7090069">
+          <caret line="77" column="62" selection-start-line="77" selection-start-column="62" selection-end-line="77" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/core/views/logoutModal.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.234375">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lib/eeh-navigation/docs/dist/scripts/vendor-71356fe7a7.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35280898">
+          <caret line="87" column="30060" selection-start-line="87" selection-start-column="30060" selection-end-line="87" selection-end-column="30060" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/core/views/home.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.0">
+          <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/core/controllers/logoutModal.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="45" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/core/controllers/home.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="40" selection-start-line="32" selection-start-column="40" selection-end-line="32" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/operations/inventory/getReport.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="85" column="29" selection-start-line="85" selection-start-column="29" selection-end-line="85" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/operations/appointment/sendReminders.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66571426">
+          <caret line="62" column="47" selection-start-line="62" selection-start-column="47" selection-end-line="62" selection-end-column="47" />
           <folding />
         </state>
       </provider>

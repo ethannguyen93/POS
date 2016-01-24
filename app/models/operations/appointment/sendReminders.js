@@ -4,45 +4,92 @@ var authToken = 'f0b37ac21592628e9f9abd792add153f';
 var mongoose = require('mongoose'),
     client = require('twilio')(accountSid, authToken),
     _ = require('lodash'),
-    moment = require('moment');;
+    moment = require('moment'),
+    nodemailer = require('nodemailer'),
+    xoauth2 = require('xoauth2');
 
 module.exports = function (req, res) {
     var connectionDB = mongoose.connection.db;
     var today = moment().startOf('day');
     var tomorrow = moment(today).add(1, 'days');
-    console.log(tomorrow.toDate());
     connectionDB.collection('appointments', function (err, collection) {
         collection.find({
-
+            startDate: {
+                $gte: today.toISOString(),
+                $lt: tomorrow.toISOString()
+            }
         }, function(err, cursor){
             if (err) {
                 console.log(err)
             } else {
-                var customers = [];
+                var appointmentsPhone = [];
+                var appointmentsEmail = [];
                 cursor.toArray(function (err, result) {
-                    console.log(result);
                     if (err) {
                         console.log(err);
                     } else {
+                        var bulk = collection.initializeUnorderedBulkOp();
                         _.map(result, function(a){
-                            customers.push(a.customer);
+                            if (a.sentReminderPhone === undefined && a.sentReminderPhone !== 'sent'){
+                                appointmentsPhone.push(a);
+                            }
+                            if (a.sentReminderEmail === undefined && a.sentReminderEmail !== 'sent'){
+                                appointmentsEmail.push(a);
+                            }
                         });
-                        _.each(customers, function(c){
-                            if (c.phone !== ''){
-                                client.messages.create({
-                                    to: c.phone,
+                        _.each(appointmentsPhone, function(a){
+                            if (a.customer.phone !== ''){
+                                bulk.find({ _id: mongoose.Types.ObjectId(a._id) }).updateOne( { $set: { sentReminderPhone: 'sent'} } );
+                                var message = 'Hello ' + a.customer.name + ', this is a reminder that your appointment ' +
+                                    'with ... is tomorrow at ' + a.startTime + ' ' + a.startTimeList + '. We hope ' +
+                                    'to see you there.';
+                                /*client.messages.create({
+                                    to: a.customer.phone,
                                     from: "+16475600735",
-                                    body: "Hello this is reminder"
+                                    body: message
                                 }, function(err, message){
                                     if (err !== null){
                                         console.log(err.message);
                                     }else{
                                         console.log(message.sid);
                                     }
-                                });
+                                });*/
                             }
                         });
-                        res.jsonp([]);
+                        var transporter = nodemailer.createTransport({
+                            service: 'Gmail',
+                            auth: {
+                                user: 'ethannguyen93@gmail.com',
+                                pass: 'password'
+                            }
+                        });
+                        console.log(appointmentsEmail);
+                        _.each(appointmentsEmail, function(a){
+                            if (a.customer.email !== ''){
+                                bulk.find({ _id: mongoose.Types.ObjectId(a._id) }).updateOne( { $set: { sentReminderEmail: 'sent'} } );
+                                var message = 'Hello ' + a.customer.name + ', this is a reminder that your appointment ' +
+                                    'with ... is tomorrow at ' + a.startTime + ' ' + a.startTimeList + '. We hope ' +
+                                    'to see you there.';
+                                console.log(message);
+                                /*transporter.sendMail({
+                                    from: 'ethannguyen93@gmail.com',
+                                    to: a.customer.email,
+                                    subject: 'Reminder Email',
+                                    text: message
+                                });*/
+                            }
+                        });
+                        if (appointmentsPhone.length !== 0 || appointmentsEmail.length !== 0){
+                            bulk.execute(function (err) {
+                                if (err) {
+                                    console.log(err);
+                                } else {
+                                    res.jsonp([]);
+                                }
+                            });
+                        }else{
+                            res.jsonp([]);
+                        }
                     }
                 });
             }

@@ -36,7 +36,6 @@ angular.module('scheduler').factory('SchedulerServices', [ 'uiCalendarConfig', '
                 //remove all previous appointments
                 events.splice(0, events.length);
                 RetrieveAppointments.load(body, function(response){
-                    debugger;
                     _.each(response, function(appointment){
                         var startDate = new Date(appointment.startDate);
                         var endDate = new Date(appointment.endDate);

@@ -59,7 +59,9 @@ module.exports = function (req, res) {
                     index: index+1,
                     customerName: req.body.customerName,
                     subtotal: req.body.subtotal,
-                    tax: req.body.tax
+                    tax: req.body.tax,
+                    discount: req.body.discount,
+                    discountPrice: req.body.discountPrice
                 }, function(err, result){
                     if (err) {
                         console.log(err)

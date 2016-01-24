@@ -3,6 +3,8 @@ var mongoose = require('mongoose'),
 
 module.exports = function (req, res) {
     var connectionDB = mongoose.connection.db;
+    console.log(req.body.firstDay);
+    console.log(req.body.lastDay);
     connectionDB.collection('appointments', function (err, collection) {
         collection.find({
             startDate: {

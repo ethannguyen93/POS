@@ -28,7 +28,26 @@ angular.module('core').controller('HomeController', [
 		/**********************************************************************************************************/
 		/**********************************************************************************************************/
 		/**********************************************************************************************************/
-
+		$scope.userLogout = function(){
+			$scope.logoutModal().then(function(response){
+				if (response === 'yes'){
+					$scope.logOut();
+				}
+			});
+		};
+		$scope.logoutModal = function () {
+			var deferred = $q.defer();
+			var editorInstance = $modal.open({
+				animation: true,
+				windowClass: 'modal-fullwindow',
+				templateUrl: 'modules/core/views/logoutModal.client.view.html',
+				controller: 'logoutCtrl'
+			});
+			editorInstance.result.then(function (response) {
+				deferred.resolve(response);
+			});
+			return deferred.promise;
+		};
 		$scope.logOut = function(){
 			$scope.view = 'numpad';
 			$scope.data.customerName = '';
@@ -43,6 +62,8 @@ angular.module('core').controller('HomeController', [
 			$scope.data.orders = [];
 			$scope.data.categories = [];
 			$scope.data.items = [];
+			$scope.data.discount = '';
+			$scope.data.discountPrice = 0;
 			UserService.logoutUser();
 			if (!$scope.inState('core.login')) {
 				$state.go('^.login');
@@ -80,6 +101,8 @@ angular.module('core').controller('HomeController', [
 		/**********************************************************************************************************/
 		/*User Main Page*/
 		$scope.data = {
+			discount: '',
+			discountPrice: 0,
 			password : '',
 			order: 0,
 			index: 0,
@@ -145,7 +168,6 @@ angular.module('core').controller('HomeController', [
 			RetrieveInventory.load(body, function(response){
 				$scope.data.category = _.map(response, _.clone);
 				$scope.data.orderModal().then(function(selectedItem){
-					console.log(selectedItem.message);
 					switch (selectedItem.message){
 						case undefined:
 						case 'no':
@@ -164,11 +186,30 @@ angular.module('core').controller('HomeController', [
 							$scope.data.customerName = selectedItem.data.customerName;
 							$scope.data.subtotal = selectedItem.data.subtotal;
 							$scope.data.tax = selectedItem.data.tax;
+							$scope.data.discount = selectedItem.data.discount;
+							$scope.data.discountPrice = selectedItem.data.discountPrice;
 							break;
 					}
 				});
 			});
 		};
+		$scope.$watch("data.subtotal", function(newValue, oldValue) {
+			if (newValue !== undefined && oldValue !== undefined){
+				if ($scope.data.discount !== undefined && $scope.data.discount !== ''){
+					var discountPrice = 0;
+					var discount = parseInt($scope.data.discount) / 100;
+					_.each($scope.data.orders, function(order){
+						if (!order.isGiftcard){
+							discountPrice += order.price * order.quantity * discount;
+						}
+					});
+					if ($scope.data.isTax){
+						discountPrice = discountPrice * 1.13;
+					}
+					$scope.data.discountPrice = discountPrice;
+				}
+			}
+		});
 		$scope.$watch("data.tax", function(newValue, oldValue) {
 			if (newValue !== undefined && oldValue !== undefined){
 				if (!$scope.data.isTax){
@@ -320,7 +361,8 @@ angular.module('core').controller('HomeController', [
 						'customerName': $scope.data.customerName,
 						'subtotal': $scope.data.subtotal,
 						'tax': $scope.data.tax,
-						'isTax': $scope.data.isTax
+						'isTax': $scope.data.isTax,
+						'discountPrice' : $scope.data.discountPrice
 					};
 					RetrieveInventory.load(body, function(){
 						$scope.logOut();
@@ -362,7 +404,21 @@ angular.module('core').controller('HomeController', [
 				console.log(response);
 			});
 		};
-
+		$scope.applyDiscount = function(){
+			if ($scope.data.discount !== undefined && $scope.data.discount !== ''){
+				var discountPrice = 0;
+				var discount = parseInt($scope.data.discount) / 100;
+				_.each($scope.data.orders, function(order){
+					if (!order.isGiftcard){
+						discountPrice += order.price * order.quantity * discount;
+					}
+				});
+				if ($scope.data.isTax){
+					discountPrice = discountPrice * 1.13;
+				}
+				$scope.data.discountPrice = discountPrice;
+			}
+		};
 		/******************************************************************************************************/
 		/*Scroller Initialization*/
 		$scope.initFTScroller = FTScroller.initFTScroller;

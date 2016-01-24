@@ -73,7 +73,9 @@ angular.module('core').factory('MainpageServices', ['RetrieveInventory', 'UserSe
                     'order': $scope.data.order,
                     'customerName': $scope.data.customerName,
                     'subtotal': $scope.data.subtotal,
-                    'tax': $scope.data.tax
+                    'tax': $scope.data.tax,
+                    'discount': $scope.data.discount,
+                    'discountPrice': $scope.data.discountPrice
                 };
                 RetrieveInventory.load(body, function (response) {
                     //$scope.data.items = _.map(response, _.clone);

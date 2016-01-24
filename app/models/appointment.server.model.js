@@ -34,6 +34,7 @@ var operationMap = {
 	add: require('./operations/appointment/addAppointment'),
 	update: require('./operations/appointment/updateAppointment'),
 	delete: require('./operations/appointment/removeAppointment'),
-	sendReminders: require('./operations/appointment/sendReminders')
+	sendReminders: require('./operations/appointment/sendReminders'),
+	getNumberOfReminders: require('./operations/appointment/getNumberOfReminders')
 };
 exports.operationMap = operationMap;

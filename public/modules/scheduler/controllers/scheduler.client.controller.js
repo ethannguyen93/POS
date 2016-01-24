@@ -414,12 +414,28 @@ angular.module('scheduler').controller('SchedulerController', [ '$scope', '$stat
             return deferred.promise;
         };
         $scope.sendReminders = function(){
-            var body = {
-                type: 'sendReminders'
-            };
-            RetrieveAppointments.load(body, function(response){
-
+            $scope.sendReminderModal().then(function(response){
+                if (response === 'yes'){
+                    var body = {
+                        type: 'sendReminders'
+                    };
+                    RetrieveAppointments.load(body, function(response){
+                    });
+                }
             });
+        };
+        $scope.sendReminderModal = function () {
+            var deferred = $q.defer();
+            var editorInstance = $modal.open({
+                animation: true,
+                windowClass: 'modal-fullwindow',
+                templateUrl: 'modules/scheduler/views/modal/sendReminderModal.client.view.html',
+                controller: 'sendReminderController'
+            });
+            editorInstance.result.then(function (response) {
+                deferred.resolve(response);
+            });
+            return deferred.promise;
         };
         /* Add New Calendar Btn Event */
         $scope.alertOnAddBtnClicked = function() {
