@@ -237,6 +237,19 @@ angular.module('core').controller('HomeController', [
 						}
 					});
 				}
+				if ($scope.data.discount !== undefined && $scope.data.discount !== ''){
+					var discountPrice = 0;
+					var discount = parseInt($scope.data.discount) / 100;
+					_.each($scope.data.orders, function(order){
+						if (!order.isGiftcard){
+							discountPrice += order.price * order.quantity * discount;
+						}
+					});
+					if ($scope.data.isTax){
+						discountPrice = discountPrice * 1.13;
+					}
+					$scope.data.discountPrice = discountPrice;
+				}
 			}
 		});
 		$scope.data.getTax = function(){

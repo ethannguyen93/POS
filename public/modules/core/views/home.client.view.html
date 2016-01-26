@@ -7,16 +7,16 @@
             <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
                 <ul class="nav navbar-nav navbar-right" ng-show="inState('core.login')">
                     <li>
+                        <button ui-sref="core.scheduler" type="button" class="btn btn-default btn-block ng-binding ng-scope ng-click-active">
+                            <span class="glyphicon glyphicon-calendar"></span>&nbsp;Scheduler</button>
+                    </li>
+                    <li>
                         <button ui-sref="core.customer" type="button" class="btn btn-default btn-block ng-binding ng-scope ng-click-active">
                             <span class="glyphicon glyphicon-folder-open"></span>&nbsp;Customers</button>
                     </li>
                     <li>
                         <button ui-sref=".admin.login" type="button" class="btn btn-default btn-block ng-binding ng-scope ng-click-active">
                             <span class="glyphicon glyphicon-user"></span>&nbsp;Admin</button>
-                    </li>
-                    <li>
-                        <button ui-sref="core.scheduler" type="button" class="btn btn-default btn-block ng-binding ng-scope ng-click-active">
-                            <span class="glyphicon glyphicon-calendar"></span>&nbsp;Scheduler</button>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" ng-show="inState('admin.authenticated') || inState('core.authenticated')">
