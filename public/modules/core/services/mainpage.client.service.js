@@ -68,6 +68,7 @@ angular.module('core').factory('MainpageServices', ['RetrieveInventory', 'UserSe
             saveOrder: function ($scope) {
                 var body = {
                     'type': 'saveOrder',
+                    'paymentType': $scope.data.selectedPayment,
                     'orders': $scope.data.orders,
                     'user': UserService.getUser(),
                     'order': $scope.data.order,
@@ -75,7 +76,8 @@ angular.module('core').factory('MainpageServices', ['RetrieveInventory', 'UserSe
                     'subtotal': $scope.data.subtotal,
                     'tax': $scope.data.tax,
                     'discount': $scope.data.discount,
-                    'discountPrice': $scope.data.discountPrice
+                    'discountPrice': $scope.data.discountPrice,
+                    'customerID': $scope.data.customerID
                 };
                 RetrieveInventory.load(body, function (response) {
                     //$scope.data.items = _.map(response, _.clone);

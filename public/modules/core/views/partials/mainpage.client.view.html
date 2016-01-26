@@ -3,8 +3,13 @@
         <div class="order-panel flex-panel-content">
             <div class="panel-heading">
                 <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-md-6">
                         Order number {{data.index}} - Customer {{data.customerName}}
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control" ng-options="paymentType for paymentType in data.paymentTypes track by paymentType"
+                                ng-model="data.selectedPayment"
+                                ng-change="data.updateselectedPayment()"></select>
                     </div>
                     <div class="col-md-3">
                         <select ng-if="data.employees.length > 0" class="form-control" ng-options="employee for employee in data.employees track by employee"

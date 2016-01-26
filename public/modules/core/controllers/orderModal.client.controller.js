@@ -2,7 +2,7 @@
 
 // Workflows controller
 angular.module('core').controller('orderCtrl',
-    function ($scope, UserService, $state, $stateParams, $location, $modalInstance, currentUser, RetrieveInventory) {
+    function ($scope, UserService, $state, $stateParams, $location, $modalInstance, currentUser, RetrieveInventory, $q, $modal) {
         $scope.data = {
             orders: [],
             view: 'selection',
@@ -43,17 +43,40 @@ angular.module('core').controller('orderCtrl',
         $scope.reset = function(){
             $scope.data.isError = false;
             $scope.data.errorMessage = '';
+            $scope.data.newCustomer.email = '';
+            $scope.data.newCustomer.phone = '';
+            $scope.data.newCustomer._id = '';
         };
         $scope.back = function(){
             $scope.data.view = 'selection';
             $scope.data.orders = [];
+        };
+        $scope.selectCustomer = function(){
+            $scope.selectCustomerModal().then(function(customer){
+                if (customer !== undefined){
+                    $scope.data.newCustomer = customer;
+                }
+            });
+        };
+        $scope.selectCustomerModal = function(){
+            var deferred = $q.defer();
+            var editorInstance = $modal.open({
+                animation: true,
+                windowClass: 'modal-expand',
+                templateUrl: 'modules/core/views/modal/selectCustomerModal.client.view.html',
+                controller: 'selectCustomerCoreController'
+            });
+            editorInstance.result.then(function (customer) {
+                deferred.resolve(customer);
+            });
+            return deferred.promise;
         };
         $scope.done = function(){
             if ($scope.data.newCustomer === undefined){
                 $scope.data.isError = true;
                 $scope.data.errorMessage = 'Please enter custome\'s name';
             }else{
-                $modalInstance.close({'message': 'neworder', 'data': $scope.data.newIndex, 'customerName': $scope.data.newCustomer});
+                $modalInstance.close({'message': 'neworder', 'data': $scope.data.newIndex, 'customer': $scope.data.newCustomer});
             }
         };
         $scope.cancel = function() {

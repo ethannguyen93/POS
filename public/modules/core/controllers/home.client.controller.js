@@ -31,7 +31,8 @@ angular.module('core').controller('HomeController', [
 		$scope.userLogout = function(){
 			$scope.logoutModal().then(function(response){
 				if (response === 'yes'){
-					$scope.logOut();
+					$state.go('core.login');
+					//$scope.logOut();
 				}
 			});
 		};
@@ -51,6 +52,9 @@ angular.module('core').controller('HomeController', [
 		$scope.logOut = function(){
 			$scope.view = 'numpad';
 			$scope.data.customerName = '';
+			$scope.data.customerPhone = '';
+			$scope.data.customerEmail = '';
+			$scope.data.customterID = '';
 			$scope.data.selectedEmployee = '';
 			$scope.data.employees = [];
 			$scope.data.isTax = true;
@@ -64,6 +68,7 @@ angular.module('core').controller('HomeController', [
 			$scope.data.items = [];
 			$scope.data.discount = '';
 			$scope.data.discountPrice = 0;
+			$scope.data.selectedPayment = 'Cash';
 			UserService.logoutUser();
 			if (!$scope.inState('core.login')) {
 				$state.go('^.login');
@@ -101,6 +106,8 @@ angular.module('core').controller('HomeController', [
 		/**********************************************************************************************************/
 		/*User Main Page*/
 		$scope.data = {
+			paymentTypes: ['Cash', 'DebitCard', 'CreditCard'],
+			selectedPayment: 'Cash',
 			discount: '',
 			discountPrice: 0,
 			password : '',
@@ -115,6 +122,9 @@ angular.module('core').controller('HomeController', [
 			employees: [],
 			selectedEmployee: '',
 			customerName: '',
+			customerEmail: '',
+			customerPhone: '',
+			customerID: '',
 			gridOptions: {
 				rowHeight: 60,
 				columnHeaderHeight: 60,
@@ -175,7 +185,10 @@ angular.module('core').controller('HomeController', [
 							break;
 						case 'neworder':
 							$scope.data.index = selectedItem.data;
-							$scope.data.customerName = selectedItem.customerName;
+							$scope.data.customerName = selectedItem.customer.name;
+							$scope.data.customerEmail = selectedItem.customer.email;
+							$scope.data.customerPhone = selectedItem.customer.phone;
+							$scope.data.customerID = selectedItem.customer._id;
 							$scope.data.subtotal = 0;
 							$scope.data.tax = 0;
 							break;
@@ -184,10 +197,12 @@ angular.module('core').controller('HomeController', [
 							$scope.data.order = selectedItem.data._id;
 							$scope.data.orders = selectedItem.data.orders;
 							$scope.data.customerName = selectedItem.data.customerName;
+							$scope.data.customerID = selectedItem.data.customerID;
 							$scope.data.subtotal = selectedItem.data.subtotal;
 							$scope.data.tax = selectedItem.data.tax;
 							$scope.data.discount = selectedItem.data.discount;
 							$scope.data.discountPrice = selectedItem.data.discountPrice;
+							$scope.data.selectedPayment = selectedItem.data.paymentType;
 							break;
 					}
 				});
@@ -359,10 +374,12 @@ angular.module('core').controller('HomeController', [
 						'orders': $scope.data.orders,
 						'user': server,
 						'customerName': $scope.data.customerName,
+						'customerID': $scope.data.customterID,
 						'subtotal': $scope.data.subtotal,
 						'tax': $scope.data.tax,
 						'isTax': $scope.data.isTax,
-						'discountPrice' : $scope.data.discountPrice
+						'discountPrice' : $scope.data.discountPrice,
+						'paymentType': $scope.data.selectedPayment
 					};
 					RetrieveInventory.load(body, function(){
 						$scope.logOut();
@@ -398,7 +415,10 @@ angular.module('core').controller('HomeController', [
 				'user': server,
 				'customerName': $scope.data.customerName,
 				'subtotal': $scope.data.subtotal,
-				'tax': $scope.data.tax
+				'tax': $scope.data.tax,
+				'paymentType': $scope.data.selectedPayment,
+				'discount': $scope.data.discount,
+				'discountPrice': $scope.data.discountPrice
 			};
 			RetrieveInventory.load(body, function(response){
 				console.log(response);

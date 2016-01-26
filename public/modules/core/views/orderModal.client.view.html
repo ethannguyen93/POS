@@ -25,7 +25,8 @@
             <button ng-repeat="order in data.orders | filter:searchOrder" type="button" class="btn-squircle-sm btn btn-default" ng-click="selectOrder(order.index, order.user.name)">Order number {{order.index}}</button>
         </div>
         <div ng-switch-when="newOrders">
-            <input type="text" class="form-control full-width"  placeholder="Enter customer's name" ng-model="data.newCustomer" ng-pattern="/(^.+$)/" ng-change="reset()">
+            <input type="text" class="form-control full-width"  placeholder="Enter customer's name" ng-model="data.newCustomer.name" ng-pattern="/(^.+$)/" ng-change="reset()">
+            <button ng-click="selectCustomer()" class="btn-w-icon btn btn-success">Select Customer</button>
         </div>
     </div>
 </div>

@@ -21,18 +21,31 @@ module.exports = function (req, res) {
     connectionDB.collection('orders', function (err, collection) {
 
         var queryBody;
-        if (!req.body.reportType || req.body.reportType === 'DailyReport' || req.body.reportType === 'EmployeeReport') {
+
+        if (!req.body.reportType || req.body.reportType === 'DailyReport') {
             queryBody = {
                 timePaid: {
                     $gte: givenDate.toDate(),
                     $lt: nextDate.toDate()
                 }
             };
-        } else {
+        } else if (req.body.reportType === 'checkGiftcard') {
             var regex = 'Giftcard ' + req.body.giftcardNum;
             queryBody = {
                 $query: {'orders.name': new RegExp(regex)},
                 $orderBy: {timeOrderPlace: 1}
+            };
+        } else if (req.body.reportType === 'EmployeeReport'){
+            queryBody = {
+                'employee.name': req.body.employeeName,
+                timePaid: {
+                    $gte: givenDate.toDate(),
+                    $lt: nextDate.toDate()
+                }
+            };
+        } else{
+            queryBody = {
+                customerID: req.body.customerID
             };
         }
         console.log(queryBody);
@@ -42,6 +55,7 @@ module.exports = function (req, res) {
             } else {
                 var orders = [];
                 cursor.toArray(function (err, result) {
+                    console.log(result);
                     if (err) {
                         console.log(err);
                     } else {
@@ -50,8 +64,7 @@ module.exports = function (req, res) {
                         });
                         var report = [];
                         var tableCols = [];
-                        function generateReportRegular(order) {
-                            console.log(order);
+                        function generateCustomerReport(order) {
                             var o = [];
                             //employee
                             o.push(order.employee.name);
@@ -77,6 +90,37 @@ module.exports = function (req, res) {
                             var discountPrice = (order.discountPrice !== undefined) ? order.discountPrice: 0;
                             o.push('$ -' + (discountPrice).toFixed(2));
                             o.push('$' + (order.subtotal + order.tax - discountPrice).toFixed(2));
+                            o.push(order.paymentType);
+                            report.push(o);
+                        }
+
+                        function generateReportRegular(order) {
+                            var o = [];
+                            //employee
+                            o.push(order.employee.name);
+                            //time
+                            var time = moment(order.timePaid).format("MMM-DD-YYYY HH:mm");
+                            o.push(time);
+                            //customer name
+                            o.push(order.customerName);
+                            //subtotal
+                            var totalBeforeGC = 0;
+                            var Giftcard = 0;
+                            var tax = order.isTax ? 1.13 : 1;
+                            _.each(order.orders, function(item){
+                                if (!item.isGiftcard){
+                                    totalBeforeGC += item.quantity * item.price * tax;
+                                }else{
+                                    Giftcard += item.price;
+                                }
+                            });
+                            o.push('$' + (totalBeforeGC).toFixed(2));
+                            o.push('$' + (Giftcard).toFixed(2));
+                            o.push('$' + (order.tax).toFixed(2));
+                            var discountPrice = (order.discountPrice !== undefined) ? order.discountPrice: 0;
+                            o.push('$ -' + (discountPrice).toFixed(2));
+                            o.push('$' + (order.subtotal + order.tax - discountPrice).toFixed(2));
+                            o.push(order.paymentType);
                             report.push(o);
                         }
 
@@ -99,36 +143,40 @@ module.exports = function (req, res) {
                         }
 
                         function generateEmployeeReport(order) {
-                            console.log(order);
-                            var r = _.find(report, function(r){
-                                return r[0] === order.employee.name
-                            });
+                            var o = [];
+                            //employee
+                            o.push(order.employee.name);
+                            //time
+                            var time = moment(order.timePaid).format("MMM-DD-YYYY HH:mm");
+                            o.push(time);
+                            //customer name
+                            o.push(order.customerName);
+                            //subtotal
                             var totalBeforeGC = 0;
+                            var Giftcard = 0;
                             var tax = order.isTax ? 1.13 : 1;
                             _.each(order.orders, function(item){
                                 if (!item.isGiftcard){
                                     totalBeforeGC += item.quantity * item.price * tax;
+                                }else{
+                                    Giftcard += item.price;
                                 }
                             });
-                            if (r !== undefined){
-                                //remove $ sign then add new total
-                                r[1] = r[1].substring(1);
-                                r[1] = parseFloat(r[1]);
-                                r[1] += totalBeforeGC;
-                                r[1] = '$' + r[1].toFixed(2);
-                            }else{
-                                var o = [];
-                                o.push(order.employee.name);
-                                o.push('$' + (totalBeforeGC).toFixed(2));
-                                report.push(o);
-                            }
+                            o.push('$' + (totalBeforeGC).toFixed(2));
+                            o.push('$' + (Giftcard).toFixed(2));
+                            o.push('$' + (order.tax).toFixed(2));
+                            var discountPrice = (order.discountPrice !== undefined) ? order.discountPrice: 0;
+                            o.push('$ -' + (discountPrice).toFixed(2));
+                            o.push('$' + (order.subtotal + order.tax - discountPrice).toFixed(2));
+                            o.push(order.paymentType);
+                            report.push(o);
                         }
 
                         if (req.body.reportType){
                             switch (req.body.reportType){
                                 case 'DailyReport':
                                     _.each(orders, generateReportRegular);
-                                    tableCols = ['Employee', 'Time Paid', 'Customer', 'Subtotal', 'Giftcard', 'Tax', 'Discount', 'Total'];
+                                    tableCols = ['Employee', 'Time Paid', 'Customer', 'Subtotal', 'Giftcard', 'Tax', 'Discount', 'Total', 'PaymentType'];
                                     var sumSubtotal = 0;
                                     var sumGiftcard = 0;
                                     var sumDiscount = 0;
@@ -152,7 +200,35 @@ module.exports = function (req, res) {
                                     sumDiscount = '$' + sumDiscount.toFixed(2);
                                     sumTotal = '$' + sumTotal.toFixed(2);
                                     sumTax = '$' + sumTax.toFixed(2);
-                                    report.push(['','','Total:', sumSubtotal, sumGiftcard, sumTax, sumDiscount, sumTotal]);
+                                    report.push(['','','Total:', sumSubtotal, sumGiftcard, sumTax, sumDiscount, sumTotal, '']);
+                                    break;
+                                case 'CustomerReport':
+                                    _.each(orders, generateCustomerReport);
+                                    tableCols = ['Employee', 'Time Paid', 'Customer', 'Subtotal', 'Giftcard', 'Tax', 'Discount', 'Total', 'PaymentType'];
+                                    var sumSubtotal = 0;
+                                    var sumGiftcard = 0;
+                                    var sumDiscount = 0;
+                                    var sumTotal = 0;
+                                    var sumTax = 0;
+                                    _.each(report,function(item){
+                                        //remove $ sign then add new total
+                                        var subtotal = parseFloat(item[tableCols.indexOf('Subtotal')].substring(1));
+                                        var giftcard = parseFloat(item[tableCols.indexOf('Giftcard')].substring(1));
+                                        var discount = parseFloat(item[tableCols.indexOf('Discount')].substring(1));
+                                        var total = parseFloat(item[tableCols.indexOf('Total')].substring(1));
+                                        var tax = parseFloat(item[tableCols.indexOf('Tax')].substring(1));
+                                        sumSubtotal += subtotal;
+                                        sumGiftcard += giftcard;
+                                        sumDiscount += discount;
+                                        sumTax += tax;
+                                        sumTotal += total;
+                                    });
+                                    sumSubtotal = '$' + sumSubtotal.toFixed(2);
+                                    sumGiftcard = '$' + sumGiftcard.toFixed(2);
+                                    sumDiscount = '$' + sumDiscount.toFixed(2);
+                                    sumTotal = '$' + sumTotal.toFixed(2);
+                                    sumTax = '$' + sumTax.toFixed(2);
+                                    report.push(['','','Total:', sumSubtotal, sumGiftcard, sumTax, sumDiscount, sumTotal, '']);
                                     break;
                                 case 'checkGiftcard':
                                     _.each(orders, generateReportGiftCard);
@@ -161,7 +237,31 @@ module.exports = function (req, res) {
                                     break;
                                 case 'EmployeeReport':
                                     _.each(orders, generateEmployeeReport);
-                                    tableCols = ['Employee', 'Total'];
+                                    tableCols = ['Employee', 'Time Paid', 'Customer', 'Subtotal', 'Giftcard', 'Tax', 'Discount', 'Total', 'PaymentType'];
+                                    var sumSubtotal = 0;
+                                    var sumGiftcard = 0;
+                                    var sumDiscount = 0;
+                                    var sumTotal = 0;
+                                    var sumTax = 0;
+                                    _.each(report,function(item){
+                                        //remove $ sign then add new total
+                                        var subtotal = parseFloat(item[tableCols.indexOf('Subtotal')].substring(1));
+                                        var giftcard = parseFloat(item[tableCols.indexOf('Giftcard')].substring(1));
+                                        var discount = parseFloat(item[tableCols.indexOf('Discount')].substring(1));
+                                        var total = parseFloat(item[tableCols.indexOf('Total')].substring(1));
+                                        var tax = parseFloat(item[tableCols.indexOf('Tax')].substring(1));
+                                        sumSubtotal += subtotal;
+                                        sumGiftcard += giftcard;
+                                        sumDiscount += discount;
+                                        sumTax += tax;
+                                        sumTotal += total;
+                                    });
+                                    sumSubtotal = '$' + sumSubtotal.toFixed(2);
+                                    sumGiftcard = '$' + sumGiftcard.toFixed(2);
+                                    sumDiscount = '$' + sumDiscount.toFixed(2);
+                                    sumTotal = '$' + sumTotal.toFixed(2);
+                                    sumTax = '$' + sumTax.toFixed(2);
+                                    report.push(['','','Total:', sumSubtotal, sumGiftcard, sumTax, sumDiscount, sumTotal, '']);
                                     break;
                             }
                         }
@@ -178,6 +278,7 @@ module.exports = function (req, res) {
 
         var title = (req.body.reportType === 'checkGiftcard') ?  ('Giftcard ' + req.body.giftcardNum) : (moment(givenDate).format("MMM-DD-YYYY HH:mm")) ;
         var docDefinition = {
+            pageOrientation: 'landscape',
             content: [
                 { text: 'Report for ' + title  , fontSize: 15 },
                 {
