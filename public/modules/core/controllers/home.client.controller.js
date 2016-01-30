@@ -54,7 +54,7 @@ angular.module('core').controller('HomeController', [
 			$scope.data.customerName = '';
 			$scope.data.customerPhone = '';
 			$scope.data.customerEmail = '';
-			$scope.data.customterID = '';
+			$scope.data.customerID = '';
 			$scope.data.selectedEmployee = '';
 			$scope.data.employees = [];
 			$scope.data.isTax = true;
@@ -387,7 +387,7 @@ angular.module('core').controller('HomeController', [
 						'orders': $scope.data.orders,
 						'user': server,
 						'customerName': $scope.data.customerName,
-						'customerID': $scope.data.customterID,
+						'customerID': $scope.data.customerID,
 						'subtotal': $scope.data.subtotal,
 						'tax': $scope.data.tax,
 						'isTax': $scope.data.isTax,
@@ -450,6 +450,8 @@ angular.module('core').controller('HomeController', [
 					discountPrice = discountPrice * 1.13;
 				}
 				$scope.data.discountPrice = discountPrice;
+			}else if ($scope.data.discount !== undefined && $scope.data.discount === ''){
+				$scope.data.discountPrice = 0;
 			}
 		};
 		/******************************************************************************************************/

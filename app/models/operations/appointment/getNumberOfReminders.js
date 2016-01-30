@@ -6,11 +6,12 @@ module.exports = function (req, res) {
     var connectionDB = mongoose.connection.db;
     var today = moment().startOf('day');
     var tomorrow = moment(today).add(1, 'days');
+    var dayAfterTomorrow = moment(today).add(2, 'days');
     connectionDB.collection('appointments', function (err, collection) {
         collection.find({
             startDate: {
-                $gte: today.toISOString(),
-                $lt: tomorrow.toISOString()
+                $gte: tomorrow.toISOString(),
+                $lt: dayAfterTomorrow.toISOString()
             }
         }, function(err, cursor){
             if (err) {
@@ -23,10 +24,10 @@ module.exports = function (req, res) {
                         console.log(err);
                     } else {
                         _.map(result, function(a){
-                            if (a.sentReminderPhone === undefined && a.sentReminderPhone !== 'sent'){
+                            if (a.sentReminderPhone === undefined && a.sentReminderPhone !== 'sent' && a.customer.phone !== ''){
                                 appointmentsPhone.push(a);
                             }
-                            if (a.sentReminderEmail === undefined && a.sentReminderEmail !== 'sent'){
+                            if (a.sentReminderEmail === undefined && a.sentReminderEmail !== 'sent' && a.customer.email !== ''){
                                 appointmentsEmail.push(a);
                             }
                         });
