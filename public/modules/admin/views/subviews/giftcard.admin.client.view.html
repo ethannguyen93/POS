@@ -1,0 +1,23 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Gift card List
+    </div>
+    <div class="panel-body">
+        <div class="panel panel-default">
+            <div>
+                <!--<div class="alert alert-danger" role="alert" ng-show="admin.category.isError">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    {{admin.category.errorMessage}}
+                </div>-->
+                <div id="giftcard-grid" ui-grid="admin.giftcard.gridOptions" ui-grid-pagination class="grid" ng-init="initGiftcard(); initFTScrollerGrid('giftcard-grid');"></div>
+                <pos-pagination page="{{ admin.giftcard.gridApi.pagination.getPage() }}"
+                                of="{{ admin.giftcard.gridApi.pagination.getTotalPages() }}"
+                                prev="admin.giftcard.gridApi.pagination.previousPage()"
+                                next="admin.giftcard.gridApi.pagination.nextPage()"
+                ></pos-pagination>
+            </div>
+
+        </div>
+    </div>
+</div>

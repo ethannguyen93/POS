@@ -1,0 +1,82 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Generate Report
+    </div>
+    <div class="panel-body">
+        <div class="panel panel-default">
+            <div>
+                <div ng-init="initReport()">
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-2 justify-center" >
+                            <h3>Select Date</h3>
+                        </div>
+                        <div class="col-md-3 justify-center">
+                            <h3>Select Report Type</h3>
+                        </div>
+                        <div ng-show="admin.report.selectedOption==='checkGiftcard'" class="col-md-3 justify-center">
+                            <h3>Giftcard Number</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-2 justify-center" >
+                            <input ng-change="admin.report.pdf = undefined" class="height-100" type="date" uib-datepicker-popup ng-model="admin.report.date" is-open="admin.report.open" ng-required="true" close-text="Close" />
+                            <button type="button" class="height-100 btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </div>
+                        <div class="col-md-3 justify-center">
+                            <select ng-change="admin.report.pdf = undefined" ng-model="admin.report.selectedOption"
+                                    class="height-100 form-control ng-pristine ng-valid ng-scope ng-touched">
+                                <option value="">---Please select---</option>
+                                <option value="DailyReport">Daily Report</option>
+                                <option value="EmployeeReport">Employee Report</option>
+                                <option value="CustomerReport">Customer Report</option>
+                                <option value="checkGiftcard">Giftcard Transaction</option>
+                            </select>
+                        </div>
+                        <div ng-show="admin.report.selectedOption==='checkGiftcard'" class="col-md-3 justify-center">
+                            <input class="height-100 form-control" placeholder="Giftcard#" ng-model="admin.report.giftcardNum">
+                        </div>
+                        <div ng-show="admin.report.selectedOption==='EmployeeReport'" class="col-md-3 justify-center">
+                            <select ng-model="admin.report.selectedEmployee"
+                                    class="height-100 form-control ng-pristine ng-valid ng-scope ng-touched">
+                                <option value="">---Please select---</option>
+                                <option ng-repeat="employee in admin.report.employees" value="{{employee.name}}">{{employee.name}}</option>
+                            </select>
+                        </div>
+                        <div ng-show="admin.report.selectedOption==='CustomerReport'" class="col-md-3 justify-center">
+                            <div class="row">
+                                <div class="col-md-9 padding-0">
+                                    <input disabled=true class="height-100 full-width" ng-model="admin.report.customer.name">
+                                </div>
+                                <button ng-click="selectCustomer()" class="height-100 btn-w-icon btn btn-success col-md-3">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            &nbsp;
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <button type="button" class="btn height-150 btn-info btn-block" ng-click="generateReport()">Generate Report</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            &nbsp;
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <a ng-show="admin.report.pdf" href="{{admin.report.pdf}}" target="_blank" class="btn height-150 btn-info btn-block" >Download Report</a>
+                        </div>
+                    </div>
+                </div>
+                <!--<div ui-grid="admin.report.gridOptions" class="grid"></div>-->
+            </div>
+
+        </div>
+    </div>
+</div>

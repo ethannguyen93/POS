@@ -1,0 +1,23 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Item List
+    </div>
+    <div class="panel-body">
+        <div class="panel panel-default">
+            <div>
+                <div class="alert alert-danger" role="alert" ng-show="admin.item.isError">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    {{admin.item.errorMessage}}
+                </div>
+                <div id="item-grid" ui-grid="admin.item.gridOptions" ui-grid-pagination ui-grid-edit class="grid" ng-init="initItem(); initFTScrollerGrid('item-grid');"></div>
+                <pos-pagination page="{{ admin.item.gridApi.pagination.getPage() }}"
+                                of="{{ admin.item.gridApi.pagination.getTotalPages() }}"
+                                prev="admin.item.gridApi.pagination.previousPage()"
+                                next="admin.item.gridApi.pagination.nextPage()"
+                ></pos-pagination>
+            </div>
+
+        </div>
+    </div>
+</div>
