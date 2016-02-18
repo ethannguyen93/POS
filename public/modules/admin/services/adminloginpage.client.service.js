@@ -47,7 +47,7 @@ angular.module('admin').factory('AdminLoginPageServices', [ '$state', '$q', 'Ret
 								if (user.passcode !== undefined){
 									// 1st Parent is the Empty Controller created by Abstract State
 									$scope.$parent.$parent.view = 'adminpage';
-									$state.go('^.authenticated', {
+									$state.go('^.authenticated.settings', {
 										user: {
 											name: user.name,
 											passcode: user.passcode
