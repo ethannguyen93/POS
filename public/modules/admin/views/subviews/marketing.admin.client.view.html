@@ -1,0 +1,22 @@
+<div class="panel panel-primary" >
+    <div class="panel-heading">
+        Email Marketing
+    </div>
+    <div class="panel-body">
+        <div class="panel panel-default">
+
+                <div class="list-group">
+                    <a data-ng-repeat="email in emails" data-ng-href="#!/emails/{{email._id}}" class="list-group-item">
+                        <small class="list-group-item-text">
+                            Posted on
+                            <span data-ng-bind="email.created | date:'medium'"></span>
+                            by
+                            <span data-ng-bind="email.user.displayName"></span>
+                        </small>
+                        <h4 class="list-group-item-heading" data-ng-bind="email.name"></h4>
+                    </a>
+                </div>
+
+        </div>
+    </div>
+</div>

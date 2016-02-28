@@ -1,0 +1,43 @@
+<div class="modal-header">
+    <div class="row">
+    <div class="col-md-5"><h3 class="modal-title">Please select</h3></div>
+<div class="col-md-5"><input placeholder="Search Customer" class="form-control" ng-model="searchOrder.$" ng-show="data.view === 'existingOrders'"></div>
+    </div>
+    </div>
+    <div class="modal-body">
+    <div class="alert alert-danger" role="alert" ng-show="data.isError">
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+    <span class="sr-only">Error:</span>
+{{data.errorMessage}}
+</div>
+<div ng-switch on="data.view">
+    <div class="order-selection"  ng-switch-when="selection">
+    <button type="button" class="btn-squircle btn-w-icon btn btn-success" ng-click="getOrders()">
+    <div><span class="glyphicon glyphicon-th-large"></span></div>
+    <div>Existing Order</div>
+</button>
+<button type="button" class="btn-squircle btn-w-icon btn btn-success" ng-click="newOrders()">
+    <div><span class="glyphicon glyphicon-pencil"></span></div>
+    <div>New Order</div></button>
+</div>
+<!-- ng-init="initFTScroller('order-gridview');" -->
+    <div class="order-gridview" id="order-gridview" ng-switch-when="existingOrders" ng-init="initFTScroller('order-gridview');" >
+    <button ng-repeat="order in data.orders | filter:searchOrder" type="button" class="btn-squircle-sm btn btn-default" ng-click="selectOrder(order.index, order.user.name)">Order number {{order.index}}</button>
+</div>
+<div ng-switch-when="newOrders">
+    <div class="row margin-around">
+    <div class="col-md-9">
+    <input type="text" class="form-control full-width"  placeholder="Enter customer's name" ng-model="data.newCustomer.name" ng-pattern="/(^.+$)/" ng-change="reset()">
+    </div>
+    <button ng-click="selectCustomer()" class="btn-w-icon btn btn-success col-md-3 font-sm">
+    <span class="glyphicon glyphicon-search"></span>
+    </button>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="modal-footer">
+    <button class="btn btn-default" ng-click="back()" ng-show="data.view === 'existingOrders' || data.view === 'newOrders'">Back</button>
+    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+    <button class="btn btn-default" ng-click="done()" ng-show="data.view === 'newOrders'">Done</button>
+    </div>
