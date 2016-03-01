@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('admin').controller('Emails.AdminController', ['$scope', '$state', '$stateParams', 'Authentication', 'RetrieveEmployee', 'RetrieveInventory', 'MainpageServices',
-    'LoginpageService', '$q', 'AdminLoginPageServices', 'AdminPageServices', '$modal',
+angular.module('admin').controller('Marketing.AdminController', ['$scope', '$state', '$stateParams', 'Authentication', 'RetrieveEmployee', 'RetrieveInventory', 'MainpageServices',
+    'LoginpageService', '$q', 'AdminLoginPageServices', 'AdminPageServices', '$modal', 'FTScroller',
     function ($scope, $state, $stateParams, Authentication, RetrieveEmployee, RetrieveInventory, MainpageServices,
-              LoginpageService, $q, AdminLoginPageServices, AdminPageServices, $modal) {
+              LoginpageService, $q, AdminLoginPageServices, AdminPageServices, $modal, FTScroller) {
 
         // Init - $scope.admin inherited from AdminController
         $scope.admin.report.pdf = undefined;
@@ -16,6 +16,7 @@ angular.module('admin').controller('Emails.AdminController', ['$scope', '$state'
                 }
             });
         };
+
         $scope.selectCustomerModal = function () {
             var deferred = $q.defer();
             var editorInstance = $modal.open({
@@ -48,22 +49,7 @@ angular.module('admin').controller('Emails.AdminController', ['$scope', '$state'
         $scope.open = function ($event) {
             $scope.admin.report.open = !$scope.admin.report.open;
         };
-        $scope.generateReport = function () {
-            console.log('creating reports');
-            var body = {
-                'type': 'getReport',
-                'reportType': $scope.admin.report.selectedOption,
-                'giftcardNum': $scope.admin.report.giftcardNum,
-                'customerID': $scope.admin.report.customer.id,
-                'employeeName': $scope.admin.report.selectedEmployee,
-                date: $scope.admin.report.date
-            };
-            console.log('generating report');
-            $scope.admin.report.pdf = undefined;
-            RetrieveInventory.load(body, function (response) {
-                $scope.admin.report.pdf = response[0].pdf;
-                console.log('getReport');
-            })
-        };
+
+        $scope.initFTScroller = FTScroller.initFTScroller;
 
     }]);

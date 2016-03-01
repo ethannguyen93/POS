@@ -7,6 +7,9 @@ angular.module('emails').factory('Emails', ['$resource',
 		}, {
 			update: {
 				method: 'PUT'
+			},
+			send: {
+				method: 'POST'
 			}
 		});
 	}

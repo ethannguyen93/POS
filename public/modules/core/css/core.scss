@@ -720,6 +720,15 @@ input[type="button"]
 
 // Modals
 
+.modal-email {
+
+  .modal-body {
+    padding: 0 0;
+    max-height: 80vh;
+    overflow-y: scroll;
+  }
+}
+
 .modal-dialog {
   margin: 0px auto;
   height: 100%;
@@ -960,4 +969,14 @@ input[type="button"]
 
 .calendar-view {
   margin: 15px 0;
+}
+
+
+.list-group-item {
+  background-color: #eee;
+  margin: 10px;
+}
+
+.list-group-item:hover {
+  background-color: #efe;
 }

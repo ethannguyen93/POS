@@ -86,6 +86,49 @@ exports.list = function(req, res) {
 };
 
 /**
+ * List Customers not in Array
+ * Required: req.email
+ */
+exports.listNin  = function(req, res, next) {
+	if (!req.email) {
+		return res.status(400).send({
+			message: 'No Email specified!'
+		});
+	}
+
+	var recipientsSent = req.email.sent;
+	var query = {
+		email: {
+			$exists: true,
+			$ne: "",
+			$nin: recipientsSent
+		}
+	};
+
+	Customer.find(query).sort('-created').exec(function(err, customers) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			var currRecipients = [];
+
+			console.log(customers);
+
+			customers.forEach(function (customer) {
+				console.log(customer);
+				console.log("Email=" + customer.email);
+				currRecipients.push(customer.email);
+			});
+			req.currRecipients = currRecipients;
+			console.log(req.currRecipients);
+			console.log("Found NIN");
+			next();
+		}
+	});
+};
+
+/**
  * Customer middleware
  */
 exports.customerByID = function(req, res, next, id) { 

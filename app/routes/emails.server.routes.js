@@ -1,19 +1,29 @@
 'use strict';
 
-module.exports = function(app) {
-	var users = require('../../app/controllers/users.server.controller');
-	var emails = require('../../app/controllers/emails.server.controller');
+module.exports = function (app) {
+    var users = require('../../app/controllers/users.server.controller');
+    var customers = require('../../app/controllers/customers.server.controller');
+    var emails = require('../../app/controllers/emails.server.controller');
 
-	// Emails Routes
-	app.route('/emails')
-		.get(emails.list)
-		.post(users.requiresLogin, emails.create);
+    // Emails Routes
+    app.route('/emails')
+        .get(emails.list)
+        //.post(users.requiresLogin, emails.create);
+        .post(emails.create);
 
-	app.route('/emails/:emailId')
-		.get(emails.read)
-		.put(users.requiresLogin, emails.hasAuthorization, emails.update)
-		.delete(users.requiresLogin, emails.hasAuthorization, emails.delete);
+    app.route('/emails/test')
+        .get(emails.sendTest);
 
-	// Finish by binding the Email middleware
-	app.param('emailId', emails.emailByID);
+    app.route('/emails/:emailId')
+        .get(emails.read)
+        .put(emails.update)
+        .post(customers.listNin, emails.sendEmail)
+        .delete(emails.delete);
+
+    app.route('/emails/:emailId/send')
+        // TODO change to post
+        .post(customers.listNin, emails.sendEmail);
+
+    // Finish by binding the Email middleware
+    app.param('emailId', emails.emailByID);
 };
