@@ -1,0 +1,27 @@
+<div class="modal-header">
+    <h3 class="modal-title">Redeem Point Card</h3>
+</div>
+<div class="modal-body">
+    <div class="alert alert-danger" role="alert" ng-show="data.isError">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        {{data.errorMessage}}
+    </div>
+    <div ng-show="view === 'input'">
+        <p>Please enter Point Card number:</p>
+        <input class="pointcard-input" ng-change="reset()" type="text" ng-model="data.number" required>
+    </div>
+    <div ng-show="view === 'redeem'">
+        <p>
+            There is {{data.point}} points available
+        </p>
+        <p>Please enter number of point you want to redeem:</p>
+        <input class="pointcard-input" ng-change="reset()" type="number" ng-model="data.pointredeem" required>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="next()" ng-show="view === 'input'">Next</button>
+    <button class="btn btn-default" ng-click="finish()" ng-show="view === 'input'">Cancel</button>
+    <button class="btn btn-default" ng-click="redeem()" ng-show="view === 'redeem'">Redeem</button>
+    <button class="btn btn-default" ng-click="back()" ng-show="view === 'redeem'">Back</button>
+</div>

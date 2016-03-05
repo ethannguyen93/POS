@@ -63,7 +63,8 @@ module.exports = function (req, res) {
                     discount: req.body.discount,
                     discountPrice: req.body.discountPrice,
                     customerID: req.body.customerID,
-                    paymentType: req.body.paymentType
+                    paymentType: req.body.paymentType,
+                    ticketNumber: req.body.ticketNumber
                 }, function(err, result){
                     if (err) {
                         console.log(err)
@@ -83,7 +84,9 @@ module.exports = function (req, res) {
                             subtotal: req.body.subtotal,
                             tax: req.body.tax,
                             discount: req.body.discount,
-                            discountPrice: req.body.discountPrice
+                            discountPrice: req.body.discountPrice,
+                            paymentType: req.body.paymentType,
+                            ticketNumber: req.body.ticketNumber
                         }
                     }, function(err, result){
                         if (err) {

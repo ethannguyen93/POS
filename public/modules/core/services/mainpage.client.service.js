@@ -9,7 +9,7 @@ angular.module('core').factory('MainpageServices', ['RetrieveInventory', 'UserSe
                     case 'increase':
                         $scope.data.orders[index].quantity++;
                         $scope.data.subtotal += $scope.data.orders[index].price;
-                        if (!$scope.data.orders[index].isGiftcard) {
+                        if (!$scope.data.orders[index].isGiftcard && !$scope.data.orders[index].isPointcard) {
                             $scope.data.tax += 0.13 * $scope.data.orders[index].price;
                         }
                         break;
@@ -17,7 +17,7 @@ angular.module('core').factory('MainpageServices', ['RetrieveInventory', 'UserSe
                         if ($scope.data.orders[index].quantity > 0) {
                             $scope.data.orders[index].quantity--;
                             $scope.data.subtotal -= $scope.data.orders[index].price;
-                            if (!$scope.data.orders[index].isGiftcard) {
+                            if (!$scope.data.orders[index].isGiftcard && !$scope.data.orders[index].isPointcard) {
                                 $scope.data.tax -= 0.13 * $scope.data.orders[index].price;
                             }
                             if ($scope.data.orders[index].quantity === 0) {
@@ -40,14 +40,20 @@ angular.module('core').factory('MainpageServices', ['RetrieveInventory', 'UserSe
                         'name': item.name,
                         'price': item.price,
                         'quantity': 1,
+                        'barcode': (item.barcode === undefined)  ? '' : item.barcode,
+                        'itemType': (item.type === undefined || item.type !== 'StockItem')? '' : 'StockItem',
                         'index': $scope.data.orders.length,
-                        'isGiftcard': (item.hasOwnProperty('number'))
+                        'isGiftcard': (item.isGiftcard === undefined) ? false : item.isGiftcard,
+                        'isPointcard': (item.isPointcard === undefined) ? false : item.isPointcard,
+                        'pcNumber': (item.pcNumber === undefined) ? '': item.pcNumber,
+                        'pcType': (item.pcType === undefined) ? '': item.pcType,
+                        'pcRedeem': (item.pcRedeem === undefined) ? '': item.pcRedeem
                     }));
                 } else {
                     $scope.data.orders[index].quantity++;
                 }
                 $scope.data.subtotal += item.price;
-                if (!item.isGiftcard) {
+                if (!item.isGiftcard && !item.isPointcard) {
                     $scope.data.tax += 0.13 * item.price;
                 }
             },
@@ -77,7 +83,8 @@ angular.module('core').factory('MainpageServices', ['RetrieveInventory', 'UserSe
                     'tax': $scope.data.tax,
                     'discount': $scope.data.discount,
                     'discountPrice': $scope.data.discountPrice,
-                    'customerID': $scope.data.customerID
+                    'customerID': $scope.data.customerID,
+                    'ticketNumber': $scope.data.ticketNumber
                 };
                 RetrieveInventory.load(body, function (response) {
                     //$scope.data.items = _.map(response, _.clone);
@@ -90,7 +97,7 @@ angular.module('core').factory('MainpageServices', ['RetrieveInventory', 'UserSe
                     order.index = index;
                     index++;
                 });
-                if (!item.isGiftcard && !decreased) {
+                if (!item.isGiftcard && !item.isPointcard && !decreased) {
                     $scope.data.tax -= 0.13 * item.quantity * item.price;
                 }
                 $scope.data.subtotal -= item.quantity * item.price;

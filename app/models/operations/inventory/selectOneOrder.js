@@ -1,13 +1,13 @@
 var mongoose = require('mongoose'),
-    _ = require('lodash');
+    _ = require('lodash'),
+    objectId = mongoose.Types.ObjectId;
 
 module.exports = function (req, res) {
     var connectionDB = mongoose.connection.db;
     connectionDB.collection('orders', function (err, collection) {
         collection.findOne({
-            'employee.name': req.body.user,
-            'isPaid': false,
-            'index': req.body.index
+            '_id': objectId(req.body.id),
+            'isPaid': false
         }, function(err, result){
             if (err) {
                 console.log(err)

@@ -7,13 +7,13 @@ angular.module('core').controller('orderCtrl',
             orders: [],
             view: 'selection',
             isError: false,
-            errorMessage: ''
+            errorMessage: '',
+            ticketNumber: ''
         };
-        $scope.selectOrder = function(index, user){
+        $scope.selectOrder = function(id){
             var body = {
                 type: 'selectOneOrder',
-                user: user,
-                index: index
+                id: id
             };
             RetrieveInventory.load(body, function(response){
                 $modalInstance.close({'message': 'order', 'data': response[0]});
@@ -26,10 +26,32 @@ angular.module('core').controller('orderCtrl',
             };
             RetrieveInventory.load(body, function(response){
                 _.each(response, function(o){
-                    $scope.data.orders.push({'user': UserService.getUser(), 'index': o.index, 'customerName': o.customerName})
+                    $scope.data.orders.push({'user': UserService.getUser(), 'index': o.index, 'customerName': o.customerName, 'id': o._id})
                 });
                 $scope.data.view = 'existingOrders';
             });
+        };
+        $scope.ticketOrders = function(){
+            $scope.data.view = 'ticketOrders';
+        };
+        $scope.getTicketOrder = function(){
+            if ($scope.data.ticketNumber !== ''){
+                var body = {
+                    type: 'getTicketOrder',
+                    ticketNumber: $scope.data.ticketNumber
+                };
+                RetrieveInventory.load(body, function(response){
+                    if (response[0]._id !== undefined){
+                        $modalInstance.close({'message': 'order', 'data': response[0]});
+                    }else{
+                        $scope.data.errorMessage = 'This order does not exist or already paid!';
+                        $scope.data.isError = true;
+                    }
+                });
+            }else{
+                $scope.data.errorMessage = 'Please enter a ticket number';
+                $scope.data.isError = true;
+            }
         };
         $scope.newOrders = function(){
             var body = {
@@ -43,9 +65,11 @@ angular.module('core').controller('orderCtrl',
         $scope.reset = function(){
             $scope.data.isError = false;
             $scope.data.errorMessage = '';
-            $scope.data.newCustomer.email = '';
-            $scope.data.newCustomer.phone = '';
-            $scope.data.newCustomer._id = '';
+            if ($scope.view === 'newOrders'){
+                $scope.data.newCustomer.email = '';
+                $scope.data.newCustomer.phone = '';
+                $scope.data.newCustomer._id = '';
+            }
         };
         $scope.back = function(){
             $scope.data.view = 'selection';

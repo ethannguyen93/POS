@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
 	Giftcard = mongoose.model('Giftcard'),
 	_ = require('lodash'),
-	giftcardModel = require('../models/giftcard.server.model');;
+	giftcardModel = require('../models/giftcard.server.model');
 
 /**
  * Create a Giftcard

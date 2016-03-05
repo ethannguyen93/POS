@@ -54,6 +54,7 @@ angular.module('admin').controller('Reports.AdminController', ['$scope', '$state
                 'type': 'getReport',
                 'reportType': $scope.admin.report.selectedOption,
                 'giftcardNum': $scope.admin.report.giftcardNum,
+                'itemBarcode': $scope.admin.report.itemBarcode,
                 'customerID': $scope.admin.report.customer.id,
                 'employeeName': $scope.admin.report.selectedEmployee,
                 date: $scope.admin.report.date

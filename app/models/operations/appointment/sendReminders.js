@@ -31,10 +31,18 @@ module.exports = function (req, res) {
                     } else {
                         var bulk = collection.initializeUnorderedBulkOp();
                         _.map(result, function(a){
-                            if (a.sentReminderPhone === undefined && a.sentReminderPhone !== 'sent' && a.customer.phone !== ''){
+                            if (a.sentReminderPhone === undefined
+                                && a.sentReminderPhone !== 'sent'
+                                && a.customer.phone !== ''
+                                && a.sendSMS !== undefined
+                                && a.sendSMS){
                                 appointmentsPhone.push(a);
                             }
-                            if (a.sentReminderEmail === undefined && a.sentReminderEmail !== 'sent' && a.customer.email !== ''){
+                            if (a.sentReminderEmail === undefined
+                                && a.sentReminderEmail !== 'sent'
+                                && a.customer.email !== ''
+                                && a.sendEmail !== undefined
+                                && a.sendEmail){
                                 appointmentsEmail.push(a);
                             }
                         });

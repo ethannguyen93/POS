@@ -27,13 +27,23 @@
                                     class="height-100 form-control ng-pristine ng-valid ng-scope ng-touched">
                                 <option value="">---Please select---</option>
                                 <option value="DailyReport">Daily Report</option>
-                                <option value="EmployeeReport">Employee Report</option>
+                                <option value="WeeklyReport">Weekly Report</option>
+                                <option value="MonthlyReport">Monthly Report</option>
+                                <option value="YearlyReport">Yearly Report</option>
+                                <option value="InventoryReport">Inventory Report</option>
+                                <option value="EmployeeReportDaily">Employee Report Daily</option>
+                                <option value="EmployeeReportWeekly">Employee Report Weekly</option>
+                                <option value="EmployeeReportMonthly">Employee Report Monthly</option>
+                                <option value="EmployeeReportYearly">Employee Report Yearly</option>
                                 <option value="CustomerReport">Customer Report</option>
                                 <option value="checkGiftcard">Giftcard Transaction</option>
                             </select>
                         </div>
                         <div ng-show="admin.report.selectedOption==='checkGiftcard'" class="col-md-3 justify-center">
                             <input class="height-100 form-control" placeholder="Giftcard#" ng-model="admin.report.giftcardNum">
+                        </div>
+                        <div ng-show="admin.report.selectedOption==='InventoryReport'" class="col-md-3 justify-center">
+                            <input class="height-100 form-control" placeholder="Item Barcode" ng-model="admin.report.itemBarcode">
                         </div>
                         <div ng-show="admin.report.selectedOption==='EmployeeReport'" class="col-md-3 justify-center">
                             <select ng-model="admin.report.selectedEmployee"

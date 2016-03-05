@@ -17,7 +17,9 @@ module.exports = function (req, res) {
                 endTimeList: req.body.endTimeList,
                 endDate: req.body.endDate,
                 assignedEmployee: req.body.assignedEmployee,
-                note: req.body.note
+                note: req.body.note,
+                sendSMS: req.body.sendSMS,
+                sendEmail: req.body.sendEmail
             }
         }, function(err, result){
             if (err) {

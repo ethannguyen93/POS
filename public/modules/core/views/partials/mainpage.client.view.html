@@ -3,15 +3,18 @@
         <div class="order-panel flex-panel-content">
             <div class="panel-heading">
                 <div class="row">
+                    <div class="col-md-2">
+                        <input placeholder="Enter Ticket number" style="color:black; border-width: 4px;" type="text" ng-model="data.ticketNumber">
+                    </div>
                     <div class="col-md-6">
                         Order number {{data.index}} - Customer {{data.customerName}}
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <select class="form-control" ng-options="paymentType for paymentType in data.paymentTypes track by paymentType"
                                 ng-model="data.selectedPayment"
                                 ng-change="data.updateselectedPayment()"></select>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <select ng-if="data.employees.length > 0" class="form-control" ng-options="employee for employee in data.employees track by employee"
                                 ng-model="data.selectedEmployee"
                                 ng-change="data.updateEmployee()"></select>
@@ -71,9 +74,18 @@
                     <tr>
                         <td>
                             Discount
+                            <div class="slideDiscount">
+                                <input type="checkbox" value="None" id="slideDiscount" name="check" checked
+                                       ng-model="data.discountType" ng-change="applyDiscount()"
+                                />
+                                <label for="slideDiscount"></label>
+                            </div>
                         </td>
-                        <td>
+                        <td ng-show="data.discountType">
                             <input class="discount" ng-change="applyDiscount()" style="color:black; border-width: 4px;" type="text" ng-model="data.discount" ng-pattern="/^[0-9]{1,2}$/"> % = ${{data.discountPrice.toFixed(2)}}
+                        </td>
+                        <td ng-hide="data.discountType">
+                            $ <input class="discount" ng-change="applyDiscount()" style="color:black; border-width: 4px;" type="text" ng-model="data.discount" ng-pattern="/^[0-9]{1,2}$/">
                         </td>
                     </tr>
                     <tr>
@@ -113,7 +125,7 @@
         </div>
         <div class="giftcard-panel flex-panel-content">
             <div class="panel-heading">
-                Add gift card
+                Gift card
             </div>
             <div class="panel-body giftcard">
                 <button id="buy-gc" ng-click="data.buyGiftcard()"
@@ -129,6 +141,23 @@
                             type="button" class="btn btn-default btn-block">Check balance
                     </button>
                 </div>
+            </div>
+        </div>
+        <div class="giftcard-panel flex-panel-content">
+            <div class="panel-heading">
+                Point Card
+            </div>
+            <div class="panel-body giftcard">
+                <button id="buy-gc" ng-click="data.usePointCard()"
+                        type="button" class="btn btn-default btn-block">
+                    <div><span class="glyphicon glyphicon-star"></span></div>
+                    <div>Add Point Card</div>
+                </button>
+                <button id="buy-gc" ng-click="data.redeemPointCard()"
+                        type="button" class="btn btn-default btn-block">
+                    <div><span class="glyphicon glyphicon-gift"></span></div>
+                    <div>Redeem Points</div>
+                </button>
             </div>
         </div>
     </div>

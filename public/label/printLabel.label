@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DieCutLabel Version="8.0" Units="twips">
+  <PaperOrientation>Portrait</PaperOrientation>
+  <Id>Jewelry30299</Id>
+  <PaperName>30299 Jewelry Label - offset</PaperName>
+  <DrawCommands>
+    <Path>
+      <FillMode>EvenOdd</FillMode>
+      <Line X1="90" Y1="0" X2="990" Y2="0"/>
+      <Arc CenterX="990" CenterY="90" Radius="90" StartAngle="90" EndAngle="0"/>
+      <LineTo X="1080" Y="180"/>
+      <LineTo X="1980" Y="180"/>
+      <LineTo X="1980" Y="90"/>
+      <Arc CenterX="2070" CenterY="90" Radius="90" StartAngle="180" EndAngle="90"/>
+      <LineTo X="2970" Y="0"/>
+      <Arc CenterX="2970" CenterY="90" Radius="90" StartAngle="90" EndAngle="0"/>
+      <LineTo X="3060" Y="540"/>
+      <Arc CenterX="2970" CenterY="540" Radius="90" StartAngle="0" EndAngle="-90"/>
+      <LineTo X="2070" Y="630"/>
+      <Arc CenterX="2070" CenterY="540" Radius="90" StartAngle="-90" EndAngle="-180"/>
+      <LineTo X="1980" Y="450"/>
+      <LineTo X="1080" Y="450"/>
+      <LineTo X="1080" Y="540"/>
+      <Arc CenterX="990" CenterY="540" Radius="90" StartAngle="0" EndAngle="-90"/>
+      <LineTo X="90" Y="630"/>
+      <Arc CenterX="90" CenterY="540" Radius="90" StartAngle="-90" EndAngle="-180"/>
+      <LineTo X="0" Y="90"/>
+      <Arc CenterX="90" CenterY="90" Radius="90" StartAngle="180" EndAngle="90"/>
+    </Path>
+    <Path>
+      <FillMode>EvenOdd</FillMode>
+      <Line X1="90" Y1="630" X2="990" Y2="630"/>
+      <Arc CenterX="990" CenterY="720" Radius="90" StartAngle="90" EndAngle="0"/>
+      <LineTo X="1080" Y="810"/>
+      <LineTo X="1980" Y="810"/>
+      <LineTo X="1980" Y="720"/>
+      <Arc CenterX="2070" CenterY="720" Radius="90" StartAngle="180" EndAngle="90"/>
+      <LineTo X="2970" Y="630"/>
+      <Arc CenterX="2970" CenterY="720" Radius="90" StartAngle="90" EndAngle="0"/>
+      <LineTo X="3060" Y="1170"/>
+      <Arc CenterX="2970" CenterY="1170" Radius="90" StartAngle="0" EndAngle="-90"/>
+      <LineTo X="2070" Y="1260"/>
+      <Arc CenterX="2070" CenterY="1170" Radius="90" StartAngle="-90" EndAngle="-180"/>
+      <LineTo X="1980" Y="1080"/>
+      <LineTo X="1080" Y="1080"/>
+      <LineTo X="1080" Y="1170"/>
+      <Arc CenterX="990" CenterY="1170" Radius="90" StartAngle="0" EndAngle="-90"/>
+      <LineTo X="90" Y="1260"/>
+      <Arc CenterX="90" CenterY="1170" Radius="90" StartAngle="-90" EndAngle="-180"/>
+      <LineTo X="0" Y="720"/>
+      <Arc CenterX="90" CenterY="720" Radius="90" StartAngle="180" EndAngle="90"/>
+    </Path>
+  </DrawCommands>
+  <ObjectInfo>
+    <BarcodeObject>
+      <Name>Top Barcode</Name>
+      <ForeColor Alpha="255" Red="0" Green="0" Blue="0"/>
+      <BackColor Alpha="0" Red="255" Green="255" Blue="255"/>
+      <LinkedObjectName></LinkedObjectName>
+      <Rotation>Rotation0</Rotation>
+      <IsMirrored>False</IsMirrored>
+      <IsVariable>True</IsVariable>
+      <Text>123456</Text>
+      <Type>Code2of5</Type>
+      <Size>Small</Size>
+      <TextPosition>Bottom</TextPosition>
+      <TextFont Family="Arial" Size="7.3125" Bold="False" Italic="False" Underline="False" Strikeout="False"/>
+      <CheckSumFont Family="Arial" Size="7.3125" Bold="False" Italic="False" Underline="False" Strikeout="False"/>
+      <TextEmbedding>None</TextEmbedding>
+      <ECLevel>0</ECLevel>
+      <HorizontalAlignment>Left</HorizontalAlignment>
+      <QuietZonesPadding Left="0" Right="0" Top="0" Bottom="0"/>
+    </BarcodeObject>
+    <Bounds X="2145.6" Y="100.8" Width="763.2" Height="446.4"/>
+  </ObjectInfo>
+  <ObjectInfo>
+    <BarcodeObject>
+      <Name>Bottom Barcode</Name>
+      <ForeColor Alpha="255" Red="0" Green="0" Blue="0"/>
+      <BackColor Alpha="0" Red="255" Green="255" Blue="255"/>
+      <LinkedObjectName></LinkedObjectName>
+      <Rotation>Rotation0</Rotation>
+      <IsMirrored>False</IsMirrored>
+      <IsVariable>True</IsVariable>
+      <Text>123456</Text>
+      <Type>Code2of5</Type>
+      <Size>Small</Size>
+      <TextPosition>Bottom</TextPosition>
+      <TextFont Family="Arial" Size="7.3125" Bold="False" Italic="False" Underline="False" Strikeout="False"/>
+      <CheckSumFont Family="Arial" Size="7.3125" Bold="False" Italic="False" Underline="False" Strikeout="False"/>
+      <TextEmbedding>None</TextEmbedding>
+      <ECLevel>0</ECLevel>
+      <HorizontalAlignment>Left</HorizontalAlignment>
+      <QuietZonesPadding Left="0" Right="0" Top="0" Bottom="0"/>
+    </BarcodeObject>
+    <Bounds X="2142.6" Y="726" Width="765.6" Height="450"/>
+  </ObjectInfo>
+  <ObjectInfo>
+    <TextObject>
+      <Name>Top Text</Name>
+      <ForeColor Alpha="255" Red="0" Green="0" Blue="0"/>
+      <BackColor Alpha="0" Red="255" Green="255" Blue="255"/>
+      <LinkedObjectName></LinkedObjectName>
+      <Rotation>Rotation0</Rotation>
+      <IsMirrored>False</IsMirrored>
+      <IsVariable>True</IsVariable>
+      <HorizontalAlignment>Center</HorizontalAlignment>
+      <VerticalAlignment>Top</VerticalAlignment>
+      <TextFitMode>ShrinkToFit</TextFitMode>
+      <UseFullFontHeight>True</UseFullFontHeight>
+      <Verticalized>False</Verticalized>
+      <StyledText>
+        <Element>
+          <String>$19.99</String>
+          <Attributes>
+            <Font Family="Arial" Size="12" Bold="False" Italic="False" Underline="False" Strikeout="False"/>
+            <ForeColor Alpha="255" Red="0" Green="0" Blue="0"/>
+          </Attributes>
+        </Element>
+      </StyledText>
+    </TextObject>
+    <Bounds X="201.6" Y="172.8" Width="633.6" Height="302.4"/>
+  </ObjectInfo>
+  <ObjectInfo>
+    <TextObject>
+      <Name>Bottom Text</Name>
+      <ForeColor Alpha="255" Red="0" Green="0" Blue="0"/>
+      <BackColor Alpha="0" Red="255" Green="255" Blue="255"/>
+      <LinkedObjectName></LinkedObjectName>
+      <Rotation>Rotation0</Rotation>
+      <IsMirrored>False</IsMirrored>
+      <IsVariable>True</IsVariable>
+      <HorizontalAlignment>Left</HorizontalAlignment>
+      <VerticalAlignment>Top</VerticalAlignment>
+      <TextFitMode>ShrinkToFit</TextFitMode>
+      <UseFullFontHeight>True</UseFullFontHeight>
+      <Verticalized>False</Verticalized>
+      <StyledText>
+        <Element>
+          <String>$19.99</String>
+          <Attributes>
+            <Font Family="Arial" Size="12" Bold="False" Italic="False" Underline="False" Strikeout="False"/>
+            <ForeColor Alpha="255" Red="0" Green="0" Blue="0"/>
+          </Attributes>
+        </Element>
+      </StyledText>
+    </TextObject>
+    <Bounds X="230.4" Y="792" Width="633.6" Height="302.4"/>
+  </ObjectInfo>
+</DieCutLabel>

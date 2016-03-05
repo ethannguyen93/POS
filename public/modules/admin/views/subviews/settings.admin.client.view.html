@@ -6,12 +6,15 @@
         <div class="panel panel-default">
             <div>
                 <div ng-show="admin.setting.isError">
-                    <div class="alert alert-danger" role="alert" ng-show="admin.setting.errorMessage !== 'Password has been updated successfully'">
+                    <div class="alert alert-danger" role="alert" ng-show="!voidSuccess && admin.setting.errorMessage !== 'Password has been updated successfully'">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                         <span class="sr-only">Error:</span>
                         {{admin.setting.errorMessage}}
                     </div>
                     <div class="alert alert-success" ng-hide="admin.setting.errorMessage !== 'Password has been updated successfully'">
+                        {{admin.setting.errorMessage}}
+                    </div>
+                    <div class="alert alert-success" ng-show="voidSuccess">
                         {{admin.setting.errorMessage}}
                     </div>
                 </div>
@@ -31,6 +34,11 @@
                     <input type="password" ng-change="admin.setting.onchange()" class="form-control" placeholder="Password" ng-model="admin.setting.newpasscode_repeat">
                 </div>
                 <button type="submit" class="btn btn-default" ng-click="changepassword()">Submit</button>
+                <div class="form-group">
+                    <label>Void Order:</label>
+                    <input type="text" ng-change="admin.setting.onchange()" class="form-control" placeholder="order ID" ng-model="orderId">
+                </div>
+                <button type="submit" class="btn btn-default" ng-click="voidOrder()">Void Order</button>
             </div>
         </div>
     </div>

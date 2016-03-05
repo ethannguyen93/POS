@@ -1,4 +1,4 @@
-<div class="plus-minus">
+<div class="plus-minus" ng-hide="row.entity.isPointcard || row.entity.isGiftcard">
     <button type="button" class="btn btn-danger" data-type="minus"
             ng-click="grid.appScope.updateOrder('decrease',row.entity.index)">
         <span class="glyphicon glyphicon-minus"></span>

@@ -6,7 +6,6 @@ angular.module('core').factory('FTScroller', function() {
         initFTScrollerGrid:  function(id) {
             setTimeout(function () {
                 var containerElement = document.querySelector("#" + id + " .ui-grid-viewport");
-                console.log(containerElement);
                 var scroller = new FTScroller(containerElement, {
                     alwaysScroll: true,
                     scrollingX: false
@@ -15,7 +14,6 @@ angular.module('core').factory('FTScroller', function() {
         },
         initFTScroller: function(id, verticalScroll) {
             var containerElement = document.getElementById(id);
-            console.log(containerElement);
             setTimeout(function() {
                 var scroller = new FTScroller(containerElement, {
                     //contentHeight: 160,

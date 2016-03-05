@@ -104,5 +104,25 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
                     }
                 }
             })
+            .state('core.admin.authenticated.pointcard', {
+                url: '/pointcard',
+                views: {
+                    'admin-content': {
+                        controller: 'PointCard.AdminController',
+                        params: {user: null},
+                        templateUrl: 'modules/admin/views/subviews/pointcard.admin.client.view.html'
+                    }
+                }
+            })
+            .state('core.admin.authenticated.stocks', {
+                url: '/stocks',
+                views: {
+                    'admin-content': {
+                        controller: 'Stocks.AdminController',
+                        params: {user: null},
+                        templateUrl: 'modules/admin/views/subviews/stocks.admin.client.view.html'
+                    }
+                }
+            })
     }
 ]);

@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <h3 class="modal-title">Use Point Card</h3>
+</div>
+<div class="modal-body">
+    <div class="alert alert-danger" role="alert" ng-show="data.isError">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        {{data.errorMessage}}
+    </div>
+    <p>Please enter Point Card number:</p>
+    <input class="pointcard-input" ng-change="reset()" type="text" ng-model="data.number" required>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="add()">Add</button>
+    <button class="btn btn-default" ng-click="finish()">Cancel</button>
+</div>

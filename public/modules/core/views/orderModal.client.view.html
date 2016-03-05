@@ -19,10 +19,13 @@
             <button type="button" class="btn-squircle btn-w-icon btn btn-success" ng-click="newOrders()">
                 <div><span class="glyphicon glyphicon-pencil"></span></div>
                 <div>New Order</div></button>
+            <button type="button" class="btn-squircle btn-w-icon btn btn-success" ng-click="ticketOrders()">
+                <div><span class="glyphicon glyphicon-list-alt"></span></div>
+                <div>Ticket Order</div></button>
         </div>
         <!-- ng-init="initFTScroller('order-gridview');" -->
         <div class="order-gridview" id="order-gridview" ng-switch-when="existingOrders" ng-init="initFTScroller('order-gridview');" >
-            <button ng-repeat="order in data.orders | filter:searchOrder" type="button" class="btn-squircle-sm btn btn-default" ng-click="selectOrder(order.index, order.user.name)">Order number {{order.index}}</button>
+            <button ng-repeat="order in data.orders | filter:searchOrder" type="button" class="btn-squircle-sm btn btn-default" ng-click="selectOrder(order.id)">Order number {{order.index}}</button>
         </div>
         <div ng-switch-when="newOrders">
             <div class="row margin-around">
@@ -34,10 +37,18 @@
                 </button>
             </div>
         </div>
+        <div ng-switch-when="ticketOrders">
+            <div class="row margin-around">
+                <div class="col-md-9">
+                    <input type="text" class="form-control full-width"  placeholder="Enter ticket number" ng-model="data.ticketNumber" ng-change="reset()">
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div class="modal-footer">
     <button class="btn btn-default" ng-click="back()" ng-show="data.view === 'existingOrders' || data.view === 'newOrders'">Back</button>
     <button class="btn btn-default" ng-click="cancel()">Cancel</button>
     <button class="btn btn-default" ng-click="done()" ng-show="data.view === 'newOrders'">Done</button>
+    <button class="btn btn-default" ng-click="getTicketOrder()" ng-show="data.view === 'ticketOrders'">Done</button>
 </div>

@@ -2,10 +2,10 @@
 
 angular.module('scheduler').controller('SchedulerController', [ '$scope', '$state', '$stateParams', 'Authentication', 'RetrieveEmployee', 'RetrieveInventory', 'MainpageServices',
     'LoginpageService', '$q', 'AdminLoginPageServices', 'AdminPageServices', '$modal', '$compile', 'uiCalendarConfig',
-    'RetrieveAppointments', 'FTScroller', 'SchedulerServices',
+    'RetrieveAppointments', 'FTScroller', 'SchedulerServices', 'RetrieveStock', '$http',
     function($scope, $state, $stateParams, Authentication, RetrieveEmployee, RetrieveInventory, MainpageServices,
              LoginpageService, $q, AdminLoginPageServices, AdminPageServices, $modal, $compile, uiCalendarConfig,
-             RetrieveAppointments, FTScroller, SchedulerServices) {
+             RetrieveAppointments, FTScroller, SchedulerServices, RetrieveStock, $http) {
         /* config object */
         $scope.scheduler = {
             selectedEvent: false, //if user clicked on an event
@@ -28,7 +28,9 @@ angular.module('scheduler').controller('SchedulerController', [ '$scope', '$stat
                 startTimeList: 'AM',
                 endTime: '12:00',
                 endTimeList: 'AM',
-                note: ''
+                note: '',
+                sendEmail: true,
+                sendSMS: true,
             },
             selected: {
                 id: '',
@@ -44,7 +46,9 @@ angular.module('scheduler').controller('SchedulerController', [ '$scope', '$stat
                 startTimeList: 'AM',
                 endTime: '12:00',
                 endTimeList: 'AM',
-                note: ''
+                note: '',
+                sendEmail: true,
+                sendSMS: true,
             }
         };
         $scope.addPaneHidden = true;
@@ -95,7 +99,9 @@ angular.module('scheduler').controller('SchedulerController', [ '$scope', '$stat
                 endTimeList: $scope.scheduler.new.endTimeList,
                 endDate: endDate,
                 assignedEmployee: $scope.scheduler.new.assignedEmployee,
-                note: $scope.scheduler.new.note
+                note: $scope.scheduler.new.note,
+                sendSMS: $scope.scheduler.new.sendSMS,
+                sendEmail: $scope.scheduler.new.sendEmail
             };
             RetrieveAppointments.load(body, function(response){
                 $scope.scheduler.events.push({
@@ -112,9 +118,13 @@ angular.module('scheduler').controller('SchedulerController', [ '$scope', '$stat
                         endTimeList: $scope.scheduler.new.endTimeList,
                         endDate: endDate,
                         assignedEmployee: $scope.scheduler.new.assignedEmployee,
-                        note: $scope.scheduler.new.note
+                        note: $scope.scheduler.new.note,
+                        sendSMS: $scope.scheduler.new.sendSMS,
+                        sendEmail: $scope.scheduler.new.sendEmail
                     }
                 });
+                $scope.scheduler.new.sendEmail = true;
+                $scope.scheduler.new.sendSMS = true;
                 $scope.scheduler.new.id = '';
                 $scope.scheduler.new.assignedEmployee = $scope.scheduler.employees[0];
                 $scope.scheduler.new.customer = {
@@ -153,7 +163,9 @@ angular.module('scheduler').controller('SchedulerController', [ '$scope', '$stat
                 endTimeList: $scope.scheduler.selected.endTimeList,
                 endDate: endDate,
                 assignedEmployee: $scope.scheduler.selected.assignedEmployee,
-                note: $scope.scheduler.selected.note
+                note: $scope.scheduler.selected.note,
+                sendSMS: $scope.scheduler.selected.sendSMS,
+                sendEmail: $scope.scheduler.selected.sendEmail
             };
             RetrieveAppointments.load(body, function(){
                 event.data.customer = $scope.scheduler.selected.customer;
@@ -168,6 +180,8 @@ angular.module('scheduler').controller('SchedulerController', [ '$scope', '$stat
                 event.title = event.data.assignedEmployee.name + ' - ' + event.data.customer.name;
                 event.start = event.data.startDate;
                 event.end = event.data.endDate;
+                event.data.sendSMS = $scope.scheduler.selected.sendSMS;
+                event.data.sendEmail = $scope.scheduler.selected.sendEmail;
             });
         };
 
@@ -248,6 +262,8 @@ angular.module('scheduler').controller('SchedulerController', [ '$scope', '$stat
             $scope.scheduler.selected.endTimeList = date.data.endTimeList;
             $scope.scheduler.selected.endOpen = false;
             $scope.scheduler.selected.note = date.data.note;
+            $scope.scheduler.selected.sendEmail = date.data.sendEmail;
+            $scope.scheduler.selected.sendSMS = date.data.sendSMS;
             // Hide add pane
             $scope.addPaneHidden = true;
             //Reset all disable selection
@@ -307,7 +323,9 @@ angular.module('scheduler').controller('SchedulerController', [ '$scope', '$stat
                 endTimeList: endTimeList,
                 endDate: endDate._d,
                 assignedEmployee: event.data.assignedEmployee,
-                note: event.data.note
+                note: event.data.note,
+                sendSMS: event.data.sendSMS,
+                sendEmail: event.data.sendEmail
             };
             RetrieveAppointments.load(body, function(response){
                 var updateEvent = _.find($scope.scheduler.events, function(e){
@@ -375,7 +393,9 @@ angular.module('scheduler').controller('SchedulerController', [ '$scope', '$stat
                 endTimeList: endTimeList,
                 endDate: endDate._d,
                 assignedEmployee: event.data.assignedEmployee,
-                note: event.data.note
+                note: event.data.note,
+                sendSMS: event.data.sendSMS,
+                sendEmail: event.data.sendEmail
             };
             RetrieveAppointments.load(body, function(response){
                 var updateEvent = _.find($scope.scheduler.events, function(e){
@@ -480,6 +500,35 @@ angular.module('scheduler').controller('SchedulerController', [ '$scope', '$stat
         $scope.initFTScroller = function(id, vertical) {
             console.log('attempting init!');
             FTScroller.initFTScroller(id, vertical);
+        }
+
+
+
+
+
+        $scope.printBarcode = function(){
+            $http({
+                method  : 'GET',
+                url     : './label/printLabel.label',
+                timeout : 10000,
+                params  : {},  // Query Parameters (GET)
+                transformResponse : function(data) {
+                    return data;
+                }
+            }).success(function(data, status, headers, config) {
+                var printers = dymo.label.framework.getPrinters();
+                var labelXml = data;
+                var label = dymo.label.framework.openLabelXml(labelXml);
+                label.setObjectText("Top Barcode", '999999');
+                label.setObjectText("Bottom Barcode", '123456');
+                label.setObjectText("Top Text", '$1.99');
+                label.setObjectText("Bottom Text", '$5.99');
+                console.log(printers);
+                label.print(printers[0].name);
+                //$scope.xml = data.documentElement.innerHTML;
+            }).error(function(data, status, headers, config) {
+                console.log('error');
+            });
         }
     }
 ]);

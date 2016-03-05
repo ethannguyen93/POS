@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
 
 module.exports = function (req, res) {
     var connectionDB = mongoose.connection.db;
+    console.log('here');
     var getIndex = function(collection){
         var deferred = Q.defer();
         collection.find({todayDate: {$exists: true}}, function(err, cursor){
@@ -105,7 +106,132 @@ module.exports = function (req, res) {
         }
         return deferred.promise;
     };
-    updateGiftcard().then(function(){
+    var trackStock = function(){
+        var deferred = Q.defer();
+        connectionDB.collection('inventoryTracking', function (err, collection) {
+            var bulk = collection.initializeUnorderedBulkOp();
+            _.each(req.body.orders, function(order){
+                if (order.itemType === 'StockItem'){
+                    bulk.insert({
+                        itemName: order.name,
+                        itemId: mongoose.Types.ObjectId(order.id),
+                        itemBarcode: order.barcode,
+                        type: 'Sold',
+                        quantity: -order.quantity,
+                        date: new Date()
+                    });
+                };
+                bulk.execute(function(err, result) {
+                    deferred.resolve();
+                });
+            });
+        });
+        return deferred.promise;
+    };
+    var updateStock = function(){
+        var deferred = Q.defer();
+        var hasStock = _.find(req.body.orders, function(order){
+            return (order.itemType === 'StockItem');
+        });
+        if (hasStock !== undefined){
+            trackStock().then(function(){
+                connectionDB.collection('items', function (err, collection) {
+                    var bulk = collection.initializeUnorderedBulkOp();
+                    _.each(req.body.orders, function(order){
+                        console.log(order);
+                        if (order.itemType === 'StockItem'){
+                            bulk.find(
+                                {
+                                    _id: mongoose.Types.ObjectId(order.id)
+                                }).updateOne(
+                                {
+                                    $inc: {quantity: -order.quantity}
+                                });
+                        }
+                    });
+                    bulk.execute(function(err, result) {
+                        deferred.resolve();
+                    });
+                });
+            });
+        }else{
+            deferred.resolve();
+        }
+        return deferred.promise;
+    };
+    var getPointCardSetting = function(){
+        var deferred = Q.defer();
+        connectionDB.collection('settings', function (err, collection) {
+            collection.findOne({
+                type: 'PointCard'
+            }, function(err, result){
+                deferred.resolve(result);
+            })
+        });
+        return deferred.promise;
+    };
+    var updatePointCard = function(){
+        var deferred = Q.defer();
+        var hasPC = _.find(req.body.orders, function(order){
+            return (order.isPointcard);
+        });
+        if (hasPC !== undefined){
+            getPointCardSetting().then(function(setting){
+                connectionDB.collection('pointcards', function (err, collection) {
+                    if (err) console.log(err);
+                    var bulk = collection.initializeUnorderedBulkOp();
+                    _.each(req.body.orders, function(order){
+                        if (order.isPointcard){
+                            var point = req.body.subtotal;
+                            switch(req.body.paymentType) {
+                                case 'DebitCard':
+                                    point = point * setting.debit;
+                                    break;
+                                case 'CreditCard':
+                                    point = point * setting.credit;
+                                    break;
+                                case 'Cash':
+                                    point = point * setting.cash;
+                                    break;
+                            };
+                            point = Math.floor(point);
+                            switch (order.pcType){
+                                case 'Use':
+                                    bulk.find(
+                                        {
+                                            number: order.pcNumber
+                                        }).updateOne(
+                                        {
+                                            $inc: {point: point}
+                                        });
+                                    break;
+                                case 'Redeem':
+                                    bulk.find(
+                                        {
+                                            number: order.pcNumber
+                                        }).updateOne(
+                                        {
+                                            $inc: {point: -order.pcRedeem}
+                                        });
+                                    break;
+                            }
+                        }
+                    });
+                    bulk.execute(function(err, result) {
+                        deferred.resolve();
+                    });
+                });
+            });
+        }else{
+            deferred.resolve();
+        }
+        return deferred.promise;
+    };
+    updateGiftcard().then(function() {
+        return updatePointCard();
+    }).then(function(){
+        return updateStock();
+    }).then(function(){
         connectionDB.collection('orders', function (err, collection) {
             if (req.body.order === 0 || req.body.order === ''){
                 getIndex(collection).then(function(index) {
@@ -139,13 +265,16 @@ module.exports = function (req, res) {
                     },
                     {
                         $set: {
+                            employee: req.body.user,
                             'isPaid': true,
                             'timePaid': new Date(),
                             orders: req.body.orders,
                             subtotal: req.body.subtotal,
                             tax: req.body.tax,
                             discount: req.body.discount,
-                            discountPrice: req.body.discountPrice
+                            discountPrice: req.body.discountPrice,
+                            paymentType: req.body.paymentType,
+                            ticketNumber: req.body.ticketNumber
                         }
                     },
                     function(err, result){

@@ -5,17 +5,18 @@ module.exports = function (req, res) {
     var connectionDB = mongoose.connection.db;
     console.log(req.body.currentUser);
     connectionDB.collection('orders', function (err, collection) {
-        collection.find({'employee.name': req.body.currentUser.name, 'isPaid': false}, function(err, cursor){
+        collection.find({
+            'employee.name': req.body.currentUser.name,
+            'isPaid': false
+        }, function(err, cursor){
             if (err) {
                 console.log(err)
             } else {
                 var items = [];
                 cursor.toArray(function (err, result) {
-                    console.log(result);
                     if (err) {
                         console.log(err);
                     } else {
-                        console.log(result);
                         var now = new Date();
                         _.map(result, function(i){
                             var isSameDay = (now.getDate() === i.timeOrderPlaced.getDate()

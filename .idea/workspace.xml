@@ -2,30 +2,601 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d76265e9-6b37-4398-a467-0bcf6737874e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/core/css/.sass-cache/f01a4b0421f61f6463d1ae2855eb182d24243ce3/core.scssc" afterPath="$PROJECT_DIR$/public/modules/core/css/.sass-cache/f01a4b0421f61f6463d1ae2855eb182d24243ce3/core.scssc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/lib/DYMO.Common.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/lib/DYMO.DLS.Runtime.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/lib/DYMO.Label.Framework.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/lib/NodeDymoLib.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/MonoEmbedding.exe" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/edge.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/obj.target/build_managed.stamp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/obj.target/edge/src/common/v8synchronizationcontext.o" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/obj.target/edge/src/mono/clractioncontext.o" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/obj.target/edge/src/mono/clrfunc.o" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/obj.target/edge/src/mono/clrfuncinvokecontext.o" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/obj.target/edge/src/mono/dictionary.o" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/obj.target/edge/src/mono/edge.o" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/obj.target/edge/src/mono/monoembedding.o" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/obj.target/edge/src/mono/nodejsfunc.o" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/obj.target/edge/src/mono/nodejsfuncinvokecontext.o" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/obj.target/edge/src/mono/task.o" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/obj.target/edge/src/mono/utils.o" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/lib/native/win32/ia32/0.10.0/edge.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/lib/native/win32/ia32/0.12.0/edge.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/lib/native/win32/ia32/0.8.22/edge.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/lib/native/win32/ia32/4.1.1/edge.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/lib/native/win32/ia32/msvcp120.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/lib/native/win32/ia32/msvcr120.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/lib/native/win32/x64/0.10.0/edge.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/lib/native/win32/x64/0.12.0/edge.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/lib/native/win32/x64/0.8.22/edge.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/lib/native/win32/x64/4.1.1/edge.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/lib/native/win32/x64/msvcp120.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/lib/native/win32/x64/msvcr120.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/edge-cs/lib/edge-cs.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/edge.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/ia32/0.10.0/CoreCLREmbedding.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/ia32/0.10.0/edge_coreclr.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/ia32/0.10.0/edge_nativeclr.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/ia32/0.12.0/CoreCLREmbedding.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/ia32/0.12.0/edge_coreclr.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/ia32/0.12.0/edge_nativeclr.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/ia32/0.8.22/CoreCLREmbedding.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/ia32/0.8.22/edge_coreclr.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/ia32/0.8.22/edge_nativeclr.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/ia32/4.1.1/CoreCLREmbedding.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/ia32/4.1.1/edge_coreclr.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/ia32/4.1.1/edge_nativeclr.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/ia32/5.1.0/CoreCLREmbedding.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/ia32/5.1.0/edge_coreclr.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/ia32/5.1.0/edge_nativeclr.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/ia32/msvcp120.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/ia32/msvcr120.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/x64/0.10.0/CoreCLREmbedding.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/x64/0.10.0/edge_coreclr.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/x64/0.10.0/edge_nativeclr.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/x64/0.12.0/CoreCLREmbedding.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/x64/0.12.0/edge_coreclr.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/x64/0.12.0/edge_nativeclr.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/x64/0.8.22/CoreCLREmbedding.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/x64/0.8.22/edge_coreclr.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/x64/0.8.22/edge_nativeclr.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/x64/4.1.1/CoreCLREmbedding.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/x64/4.1.1/edge_coreclr.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/x64/4.1.1/edge_nativeclr.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/x64/5.1.0/CoreCLREmbedding.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/x64/5.1.0/edge_coreclr.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/x64/5.1.0/edge_nativeclr.node" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/x64/msvcp120.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/x64/msvcr120.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/edge-cs/lib/edge-cs-coreclr/edge-cs-coreclr.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/edge-cs/lib/edge-cs.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/edge.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/CoreCLREmbedding/bin/Release/dnxcore50/CoreCLREmbedding.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/double/coreclr/bin/Debug/coreclr.5.0.0.nupkg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/double/coreclr/bin/Debug/coreclr.5.0.0.symbols.nupkg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/double/coreclr/bin/Debug/dnxcore50/coreclr.dll" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/pointcards.server.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/stocks.server.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/operations/inventory/getTicketOrder.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/operations/inventory/voidOrder.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/operations/pointcard/addPointcard.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/operations/pointcard/getAll.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/operations/pointcard/getPointcard.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/operations/pointcard/getSetting.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/operations/pointcard/setSetting.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/operations/stock/addItem.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/operations/stock/editQuantity.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/operations/stock/getAllCategory.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/operations/stock/getAllItem.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/operations/stock/getItemWithBarcode.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/operations/stock/printBarcode.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/operations/stock/removeItem.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/operations/stock/test.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/pointcard.server.model.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/models/stock.server.model.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/routes/pointcards.server.routes.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/routes/stocks.server.routes.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/routes/upload.server.routes.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/tests/pointcard.server.model.test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/tests/pointcard.server.routes.test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/tests/stock.server.model.test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/tests/stock.server.routes.test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/.gitattributes" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/.jshintrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/Dockerfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/LICENSE.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/binding.gyp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/.deps/Release/edge.node.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/.deps/Release/obj.target/build_managed.stamp.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/.deps/Release/obj.target/edge/src/common/v8synchronizationcontext.o.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/.deps/Release/obj.target/edge/src/mono/clractioncontext.o.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/.deps/Release/obj.target/edge/src/mono/clrfunc.o.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/.deps/Release/obj.target/edge/src/mono/clrfuncinvokecontext.o.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/.deps/Release/obj.target/edge/src/mono/dictionary.o.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/.deps/Release/obj.target/edge/src/mono/edge.o.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/.deps/Release/obj.target/edge/src/mono/monoembedding.o.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/.deps/Release/obj.target/edge/src/mono/nodejsfunc.o.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/.deps/Release/obj.target/edge/src/mono/nodejsfuncinvokecontext.o.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/.deps/Release/obj.target/edge/src/mono/task.o.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/.deps/Release/obj.target/edge/src/mono/utils.o.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/Release/.deps/src/mono/monoembedding.exe.d" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/binding.Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/build_managed.target.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/config.gypi" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/edge.target.mk" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/build/gyp-mac-tool" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/lib/double_edge.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/lib/edge.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/lib/native/win32/ia32/0.10.0/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/lib/native/win32/ia32/0.12.0/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/lib/native/win32/ia32/0.8.22/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/lib/native/win32/ia32/4.1.1/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/lib/native/win32/x64/0.10.0/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/lib/native/win32/x64/0.12.0/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/lib/native/win32/x64/0.8.22/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/lib/native/win32/x64/4.1.1/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/edge-cs/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/edge-cs/LICENSE.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/edge-cs/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/edge-cs/lib/edge-cs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/edge-cs/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/edge-cs/src/edge-cs/EdgeCompiler.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/edge-cs/src/edge-cs/Properties/AssemblyInfo.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/edge-cs/src/edge-cs/edge-cs.csproj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/edge-cs/src/edge-cs/edge-cs.sln" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/.dntrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/CHANGELOG.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/LICENSE.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/appveyor.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/doc/.build.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/doc/asyncworker.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/doc/buffers.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/doc/callback.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/doc/converters.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/doc/errors.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/doc/maybe_types.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/doc/methods.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/doc/new.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/doc/node_misc.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/doc/object_wrappers.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/doc/persistent.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/doc/scopes.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/doc/script.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/doc/string_bytes.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/doc/v8_internals.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/doc/v8_misc.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/include_dirs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/nan.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/nan_callbacks.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/nan_callbacks_12_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/nan_callbacks_pre_12_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/nan_converters.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/nan_converters_43_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/nan_converters_pre_43_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/nan_implementation_12_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/nan_implementation_pre_12_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/nan_maybe_43_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/nan_maybe_pre_43_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/nan_new.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/nan_object_wrap.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/nan_persistent_12_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/nan_persistent_pre_12_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/nan_string_bytes.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/nan_typedarray_contents.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/nan_weak.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/tools/1to2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/tools/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/node_modules/nan/tools/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/performance/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/performance/BookService/App.config" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/performance/BookService/BookService.csproj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/performance/BookService/BookService.sln" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/performance/BookService/Program.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/performance/BookService/Properties/AssemblyInfo.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/performance/BookService/compile.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/performance/BookService/packages.config" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/performance/latency.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/performance/marshal_clr2v8.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/101_hello_lambda.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/102_hello_function.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/103_hello_file.csx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/103_hello_file.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/104_add7_class.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/105_add7_dll.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/106_marshal_v82clr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/107_marshal_clr2v8.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/108_func.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/108_lambda.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/109_sync.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/110_clr_instance.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/111_clr_listener.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/201_worker.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/202_sql.csx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/202_sql.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/203_x509store.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/204_event_log.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/205_soap.csx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/205_soap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/206_registry_read.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/206_registry_write.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/207_unzip.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/207_zip.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/208_convertImage.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/209_websocket.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/210_windows_authentication.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/301_cspyfsps.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/samples/readme.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/common/edge_common.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/common/v8synchronizationcontext.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/dotnet/clractioncontext.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/dotnet/clrfunc.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/dotnet/clrfuncinvokecontext.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/dotnet/clrfuncreflectionwrap.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/dotnet/edge.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/dotnet/edge.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/dotnet/nodejsfunc.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/dotnet/nodejsfuncinvokecontext.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/dotnet/persistentdisposecontext.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/dotnet/utils.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/double/dotnet/EdgeJs.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/mono/clractioncontext.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/mono/clrfunc.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/mono/clrfuncinvokecontext.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/mono/clrfuncinvokecontext.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/mono/clrfuncreflectionwrap.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/mono/dictionary.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/mono/edge.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/mono/edge.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/mono/monoembedding.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/mono/monoembedding.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/mono/nodejsfunc.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/mono/nodejsfunc.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/mono/nodejsfuncinvokecontext.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/mono/nodejsfuncinvokecontext.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/mono/task.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/src/mono/utils.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/stress/test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/101_edge_func.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/102_node2net.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/103_net2node.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/104_csx.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/105_node2net_sync.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/201_patterns.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/build.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/double/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/double/double_stress/App.config" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/double/double_stress/Program.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/double/double_stress/Properties/AssemblyInfo.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/double/double_stress/double_stress.csproj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/double/double_stress/double_stress.sln" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/double/double_stress/packages.config" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/double/double_test/DoubleEdge.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/double/double_test/Properties/AssemblyInfo.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/double/double_test/double_test.csproj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/double/double_test/double_test.sln" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/double/double_test/packages.config" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/hello_class.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/hello_class.csx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/hello_lambda.csx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/test.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/testall.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/test/tests.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/tools/Microsoft.Portable.Common.targets" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/tools/build.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/tools/build_double.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/tools/buildall.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/tools/checkplatform.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/tools/debian_wheezy_clean_install.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/tools/download.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/tools/download.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/tools/install.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/tools/mono64.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/tools/nuget/edge.nuspec" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/tools/nuget/install.ps1" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/tools/repl.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/tools/runJsHint.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/tools/test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/tools/ubuntu_12.04_clean_install.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/node_modules/edge/tools/unzip.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/dymo/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/.gitattributes" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/.jshintrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/Dockerfile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/LICENSE.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/binding.gyp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/build/config.gypi" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/double_edge.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/edge.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/ia32/0.10.0/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/ia32/0.12.0/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/ia32/0.8.22/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/ia32/4.1.1/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/ia32/5.1.0/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/x64/0.10.0/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/x64/0.12.0/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/x64/0.8.22/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/x64/4.1.1/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/x64/4.1.1/project.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/lib/native/win32/x64/5.1.0/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/edge-cs/.gitattributes" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/edge-cs/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/edge-cs/LICENSE.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/edge-cs/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/edge-cs/lib/edge-cs-coreclr/project.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/edge-cs/lib/edge-cs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/edge-cs/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/edge-cs/src/edge-cs-coreclr/EdgeCompiler.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/edge-cs/src/edge-cs-coreclr/edge-cs-coreclr.sln" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/edge-cs/src/edge-cs-coreclr/edge-cs-coreclr.xproj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/edge-cs/src/edge-cs-coreclr/global.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/edge-cs/src/edge-cs-coreclr/gulpfile.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/edge-cs/src/edge-cs-coreclr/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/edge-cs/src/edge-cs-coreclr/project.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/edge-cs/src/edge-cs/EdgeCompiler.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/edge-cs/src/edge-cs/Properties/AssemblyInfo.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/edge-cs/src/edge-cs/edge-cs.csproj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/edge-cs/src/edge-cs/edge-cs.sln" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/edge-cs/tools/install.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/.dntrc" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/CHANGELOG.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/LICENSE.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/appveyor.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/doc/.build.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/doc/asyncworker.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/doc/buffers.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/doc/callback.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/doc/converters.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/doc/errors.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/doc/maybe_types.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/doc/methods.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/doc/new.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/doc/node_misc.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/doc/object_wrappers.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/doc/persistent.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/doc/scopes.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/doc/script.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/doc/string_bytes.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/doc/v8_internals.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/doc/v8_misc.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/include_dirs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/nan.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/nan_callbacks.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/nan_callbacks_12_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/nan_callbacks_pre_12_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/nan_converters.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/nan_converters_43_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/nan_converters_pre_43_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/nan_implementation_12_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/nan_implementation_pre_12_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/nan_maybe_43_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/nan_maybe_pre_43_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/nan_new.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/nan_object_wrap.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/nan_persistent_12_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/nan_persistent_pre_12_inl.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/nan_string_bytes.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/nan_typedarray_contents.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/nan_weak.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/tools/1to2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/tools/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/node_modules/nan/tools/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/performance/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/performance/BookService/App.config" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/performance/BookService/BookService.csproj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/performance/BookService/BookService.sln" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/performance/BookService/Program.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/performance/BookService/Properties/AssemblyInfo.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/performance/BookService/compile.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/performance/BookService/packages.config" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/performance/latency.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/performance/marshal_clr2v8.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/performance/performance.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/101_hello_lambda.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/102_hello_function.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/103_hello_file.csx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/103_hello_file.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/104_add7_class.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/105_add7_dll.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/106_marshal_v82clr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/107_marshal_clr2v8.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/108_func.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/108_lambda.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/109_sync.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/110_clr_instance.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/111_clr_listener.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/201_worker.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/202_sql.csx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/202_sql.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/203_x509store.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/204_event_log.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/205_soap.csx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/205_soap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/206_registry_read.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/206_registry_write.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/207_unzip.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/207_zip.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/208_convertImage.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/209_websocket.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/210_windows_authentication.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/301_cspyfsps.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/samples/readme.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/CoreCLREmbedding/bin/Release/dnxcore50/CoreCLREmbedding.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/CoreCLREmbedding/coreclrembedding.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/CoreCLREmbedding/coreclrembedding.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/CoreCLREmbedding/coreclrfunc.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/CoreCLREmbedding/coreclrfuncinvokecontext.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/CoreCLREmbedding/coreclrnodejsfunc.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/CoreCLREmbedding/coreclrnodejsfuncinvokecontext.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/CoreCLREmbedding/edge.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/CoreCLREmbedding/nodejsfunc.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/CoreCLREmbedding/nodejsfuncinvokecontext.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/CoreCLREmbedding/project.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/common/clrfuncreflectionwrap.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/common/edge.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/common/edge_common.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/common/utils.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/common/v8synchronizationcontext.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/dotnet/clractioncontext.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/dotnet/clrfunc.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/dotnet/clrfuncinvokecontext.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/dotnet/clrfuncreflectionwrap.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/dotnet/edge.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/dotnet/nodejsfunc.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/dotnet/nodejsfuncinvokecontext.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/dotnet/persistentdisposecontext.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/dotnet/utils.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/double/coreclr/EdgeJs.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/double/coreclr/bin/Debug/dnxcore50/coreclr.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/double/coreclr/project.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/double/dotnet/EdgeJs.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/mono/clractioncontext.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/mono/clrfunc.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/mono/clrfuncinvokecontext.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/mono/clrfuncinvokecontext.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/mono/dictionary.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/mono/edge.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/mono/monoembedding.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/mono/monoembedding.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/mono/nodejsfunc.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/mono/nodejsfunc.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/mono/nodejsfuncinvokecontext.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/mono/nodejsfuncinvokecontext.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/mono/task.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/src/mono/utils.cpp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/stress/test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/101_edge_func.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/102_node2net.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/103_net2node.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/104_csx.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/105_node2net_sync.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/201_patterns.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/build.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/build.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/double/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/double/double_stress/App.config" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/double/double_stress/Program.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/double/double_stress/Properties/AssemblyInfo.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/double/double_stress/double_stress.csproj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/double/double_stress/double_stress.sln" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/double/double_stress/packages.config" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/double/double_test/DoubleEdge.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/double/double_test/Properties/AssemblyInfo.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/double/double_test/double_test.csproj" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/double/double_test/double_test.sln" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/double/double_test/packages.config" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/hello_class.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/hello_class.csx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/hello_lambda.csx" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/project.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/test.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/testall.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/test/tests.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/tools/build.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/tools/build_double.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/tools/buildall.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/tools/checkplatform.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/tools/debian_ubuntu_clean_install.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/tools/download.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/tools/download.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/tools/install.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/tools/nuget/edge.nuspec" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/tools/nuget/install.ps1" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/tools/repl.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/tools/runJsHint.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/tools/test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/tools/unzip.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/edge/tools/whereis.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/label/printLabel.label" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lib/dymo/DYMO.Label.Framework.2.0.2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/admin/controllers/editQuantityModal.client.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/admin/controllers/imageViewerModal.client.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers/pointcard.admin.client.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers/stocks.admin.client.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/admin/views/partials/modal/editQuantityModal.client.view.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/admin/views/partials/modal/imageViewerModal.client.view.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/admin/views/subviews/pointcard.admin.client.view.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/admin/views/subviews/stocks.admin.client.view.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/core/controllers/redeemPointcardModal.client.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/core/controllers/usePointcardModal.client.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/core/services/fileUpload.client.service.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/core/services/scanner.client.service.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/core/views/modal/redeemPointcardModal.client.view.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/core/views/modal/usePointcardModal.client.view.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/pointcards/config/pointcards.client.routes.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/pointcards/controllers/addPointcard.client.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/pointcards/controllers/pointcards.client.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/pointcards/pointcards.client.module.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/pointcards/services/pointcards.client.service.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/pointcards/services/retrievePointcard.client.service.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/pointcards/tests/pointcards.client.controller.test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/pointcards/views/modal/addPointcardModal.client.view.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/pointcards/views/pointcard.client.view.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/stocks/config/stocks.client.routes.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/stocks/controllers/stocks.client.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/stocks/services/retrieveStocks.client.service.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/stocks/services/stocks.client.service.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/stocks/stocks.client.module.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/stocks/tests/stocks.client.controller.test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/stocks/views/create-stock.client.view.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/stocks/views/edit-stock.client.view.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/stocks/views/list-stocks.client.view.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/modules/stocks/views/view-stock.client.view.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/models/operations/inventory/output.docx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/models/operations/sms/test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/modules/core/controllers/tax" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/operations/inventory/template.docx" afterPath="$PROJECT_DIR$/app/models/operations/inventory/template.docx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/operations/inventory/templateWithDiscount.docx" afterPath="$PROJECT_DIR$/app/models/operations/inventory/templateWithDiscount.docx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/reports/reports.pdf" afterPath="$PROJECT_DIR$/public/reports/reports.pdf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/customers.server.controller.js" afterPath="$PROJECT_DIR$/app/controllers/customers.server.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/emails.server.controller.js" afterPath="$PROJECT_DIR$/app/controllers/emails.server.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/customer.server.model.js" afterPath="$PROJECT_DIR$/app/models/customer.server.model.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/email.server.model.js" afterPath="$PROJECT_DIR$/app/models/email.server.model.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/email.template.js" afterPath="$PROJECT_DIR$/app/models/email.template.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes/emails.server.routes.js" afterPath="$PROJECT_DIR$/app/routes/emails.server.routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/express.js" afterPath="$PROJECT_DIR$/config/express.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/giftcards.server.controller.js" afterPath="$PROJECT_DIR$/app/controllers/giftcards.server.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/inventory.server.model.js" afterPath="$PROJECT_DIR$/app/models/inventory.server.model.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/operations/appointment/addAppointment.js" afterPath="$PROJECT_DIR$/app/models/operations/appointment/addAppointment.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/operations/appointment/sendReminders.js" afterPath="$PROJECT_DIR$/app/models/operations/appointment/sendReminders.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/operations/appointment/updateAppointment.js" afterPath="$PROJECT_DIR$/app/models/operations/appointment/updateAppointment.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/operations/inventory/doneOrder.js" afterPath="$PROJECT_DIR$/app/models/operations/inventory/doneOrder.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/operations/inventory/getOrder.js" afterPath="$PROJECT_DIR$/app/models/operations/inventory/getOrder.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/operations/inventory/getReport.js" afterPath="$PROJECT_DIR$/app/models/operations/inventory/getReport.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/operations/inventory/printReceipt.js" afterPath="$PROJECT_DIR$/app/models/operations/inventory/printReceipt.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/operations/inventory/saveOrder.js" afterPath="$PROJECT_DIR$/app/models/operations/inventory/saveOrder.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/operations/inventory/selectOneOrder.js" afterPath="$PROJECT_DIR$/app/models/operations/inventory/selectOneOrder.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/env/all.js" afterPath="$PROJECT_DIR$/config/env/all.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/config.js" afterPath="$PROJECT_DIR$/public/config.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/admin/config/admin.client.routes.js" afterPath="$PROJECT_DIR$/public/modules/admin/config/admin.client.routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/admin/controllers/emailModal.client.controller.js" afterPath="$PROJECT_DIR$/public/modules/admin/controllers/emailModal.client.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers/marketing.admin.client.controller.js" afterPath="$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers/marketing.admin.client.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers/reports.admin.client.controller.js" afterPath="$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers/reports.admin.client.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers/settings.admin.client.controller.js" afterPath="$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers/settings.admin.client.controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/admin/views/admin.client.view.html" afterPath="$PROJECT_DIR$/public/modules/admin/views/admin.client.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/admin/views/subviews/marketing.admin.client.view.html" afterPath="$PROJECT_DIR$/public/modules/admin/views/subviews/marketing.admin.client.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/admin/views/subviews/modals/email.modal.admin.client.view.html" afterPath="$PROJECT_DIR$/public/modules/admin/views/subviews/modals/email.modal.admin.client.view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/admin/views/subviews/reports.admin.client.view.html" afterPath="$PROJECT_DIR$/public/modules/admin/views/subviews/reports.admin.client.view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/admin/views/subviews/settings.admin.client.view.html" afterPath="$PROJECT_DIR$/public/modules/admin/views/subviews/settings.admin.client.view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/core/controllers/home.client.controller.js" afterPath="$PROJECT_DIR$/public/modules/core/controllers/home.client.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/core/controllers/orderModal.client.controller.js" afterPath="$PROJECT_DIR$/public/modules/core/controllers/orderModal.client.controller.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/core/css/core.css" afterPath="$PROJECT_DIR$/public/modules/core/css/core.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/core/css/core.css.map" afterPath="$PROJECT_DIR$/public/modules/core/css/core.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/core/css/core.scss" afterPath="$PROJECT_DIR$/public/modules/core/css/core.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/emails/controllers/emails.client.controller.js" afterPath="$PROJECT_DIR$/public/modules/emails/controllers/emails.client.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/emails/directives/emails.client.directive.js" afterPath="$PROJECT_DIR$/public/modules/emails/directives/emails.client.directive.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/emails/services/emails.client.service.js" afterPath="$PROJECT_DIR$/public/modules/emails/services/emails.client.service.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/emails/views/template.client.view.html" afterPath="$PROJECT_DIR$/public/modules/emails/views/template.client.view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/core/services/FTScroller.client.service.js" afterPath="$PROJECT_DIR$/public/modules/core/services/FTScroller.client.service.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/core/services/mainpage.client.service.js" afterPath="$PROJECT_DIR$/public/modules/core/services/mainpage.client.service.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/core/views/home.client.view.html" afterPath="$PROJECT_DIR$/public/modules/core/views/home.client.view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/core/views/orderModal.client.view.html" afterPath="$PROJECT_DIR$/public/modules/core/views/orderModal.client.view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/core/views/partials/mainpage.client.view.html" afterPath="$PROJECT_DIR$/public/modules/core/views/partials/mainpage.client.view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/core/views/partials/mainpage/plusminus.client.view.html" afterPath="$PROJECT_DIR$/public/modules/core/views/partials/mainpage/plusminus.client.view.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/scheduler/controllers/scheduler.client.controller.js" afterPath="$PROJECT_DIR$/public/modules/scheduler/controllers/scheduler.client.controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/modules/scheduler/views/partials/eventinspector.client.view.html" afterPath="$PROJECT_DIR$/public/modules/scheduler/views/partials/eventinspector.client.view.html" />
     </list>
     <ignored path="POS1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,85 +617,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="emails.client.service.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/modules/emails/services/emails.client.service.js">
+      <file leaf-file-name="home.client.controller.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/modules/core/controllers/home.client.controller.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+              <caret line="562" column="72" selection-start-line="562" selection-start-column="72" selection-end-line="562" selection-end-column="72" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reports.admin.client.view.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/modules/admin/views/subviews/reports.admin.client.view.html">
+      <file leaf-file-name="mainpage.client.service.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/modules/core/services/mainpage.client.service.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+              <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="marketing.admin.client.view.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/modules/admin/views/subviews/marketing.admin.client.view.html">
+      <file leaf-file-name="scanner.client.service.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/modules/core/services/scanner.client.service.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="94" selection-start-line="8" selection-start-column="94" selection-end-line="8" selection-end-column="94" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#div#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="emails.client.controller.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/modules/emails/controllers/emails.client.controller.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="127" column="45" selection-start-line="127" selection-start-column="45" selection-end-line="127" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="express.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config/express.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.29533678">
-              <caret line="154" column="41" selection-start-line="154" selection-start-column="41" selection-end-line="154" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="categories.admin.client.view.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/modules/admin/views/subviews/categories.admin.client.view.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="email.modal.admin.client.view.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/modules/admin/views/subviews/modals/email.modal.admin.client.view.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-              <folding>
-                <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="email.server.model.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/email.server.model.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="114" column="3" selection-start-line="114" selection-start-column="3" selection-end-line="125" selection-end-column="2" />
+            <state vertical-scroll-proportion="0.57279235">
+              <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -149,57 +666,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/modules/core/controllers/orderModal.client.controller.js" />
-        <option value="$PROJECT_DIR$/app/models/operations/inventory/printReceipt.js" />
-        <option value="$PROJECT_DIR$/app/models/operations/inventory/getReport.js" />
-        <option value="$PROJECT_DIR$/public/modules/core/views/orderModal.client.view.html" />
-        <option value="$PROJECT_DIR$/public/modules/admin/views/partials/admin/report.client.view.html" />
-        <option value="$PROJECT_DIR$/public/modules/core/views/home.client.view.html" />
-        <option value="$PROJECT_DIR$/public/modules/admin/views/partials/adminpageLogin.client.view.html" />
-        <option value="$PROJECT_DIR$/public/modules/core/controllers/home.client.controller.js" />
-        <option value="$PROJECT_DIR$/app/models/operations/appointment/sendReminders.js" />
-        <option value="$PROJECT_DIR$/app/models/operations/appointment/getNumberOfReminders.js" />
-        <option value="$PROJECT_DIR$/public/modules/admin/views/categories.client.view.html" />
-        <option value="$PROJECT_DIR$/public/modules/admin/views/items.client.view.html" />
-        <option value="$PROJECT_DIR$/public/modules/admin/views/giftcard.client.view.html" />
-        <option value="$PROJECT_DIR$/public/modules/admin/services/adminloginpage.client.service.js" />
-        <option value="$PROJECT_DIR$/public/modules/admin/controllers/pages/settings.admin.client.controller.js" />
-        <option value="$PROJECT_DIR$/public/modules/admin/views/partials/admin/setting.client.view.html" />
-        <option value="$PROJECT_DIR$/public/modules/admin/views/settings.admin.client.view.html" />
-        <option value="$PROJECT_DIR$/public/modules/admin/views/reports.admin.client.view.html" />
-        <option value="$PROJECT_DIR$/public/modules/admin/views/items.admin.client.view.html" />
-        <option value="$PROJECT_DIR$/public/modules/admin/views/giftcard.admin.client.view.html" />
-        <option value="$PROJECT_DIR$/public/modules/admin/views/employee.admin.client.view.html" />
-        <option value="$PROJECT_DIR$/public/modules/admin/views/categories.admin.client.view.html" />
-        <option value="$PROJECT_DIR$/public/modules/admin/controllers/settings.admin.client.controller.js" />
-        <option value="$PROJECT_DIR$/public/modules/admin/controllers/categories.admin.client.controller.js" />
-        <option value="$PROJECT_DIR$/public/modules/admin/controllers/items.admin.client.controller.js" />
-        <option value="$PROJECT_DIR$/public/modules/admin/controllers/admin.client.controller.js" />
-        <option value="$PROJECT_DIR$/public/modules/admin/controllers/employee.admin.client.controller.js" />
-        <option value="$PROJECT_DIR$/public/modules/admin/controllers/giftcard.admin.client.controller.js" />
-        <option value="$PROJECT_DIR$/public/modules/admin/controllers/reports.admin.client.controller.js" />
-        <option value="$PROJECT_DIR$/config/env/all.js" />
-        <option value="$PROJECT_DIR$/public/modules/admin/views/admin.client.view.html" />
+        <option value="$PROJECT_DIR$/app/routes/upload.server.routes.js" />
         <option value="$PROJECT_DIR$/config/express.js" />
-        <option value="$PROJECT_DIR$/app/models/email.template.js" />
-        <option value="$PROJECT_DIR$/app/controllers/customers.server.controller.js" />
-        <option value="$PROJECT_DIR$/app/models/customer.server.model.js" />
-        <option value="$PROJECT_DIR$/app/controllers/emails.server.controller.js" />
-        <option value="$PROJECT_DIR$/app/models/email.server.model.js" />
-        <option value="$PROJECT_DIR$/public/modules/admin/views/subviews/emails.admin.client.view.html" />
-        <option value="$PROJECT_DIR$/public/modules/admin/config/admin.client.routes.js" />
-        <option value="$PROJECT_DIR$/public/modules/admin/views/subviews/modals/email.modal.admin.client.view.html.js" />
-        <option value="$PROJECT_DIR$/public/modules/admin/controllers/selectCustomerAdminModal.client.controller.js" />
-        <option value="$PROJECT_DIR$/public/modules/emails/directives/emails.client.directive.js" />
+        <option value="$PROJECT_DIR$/app/routes/stocks.server.routes.js" />
+        <option value="$PROJECT_DIR$/app/models/operations/stock/getAll.js" />
+        <option value="$PROJECT_DIR$/app/models/operations/stock/getAllCategory.js" />
+        <option value="$PROJECT_DIR$/app/models/operations/stock/removeItem.js" />
+        <option value="$PROJECT_DIR$/app/controllers/stocks.server.controller.js" />
         <option value="$PROJECT_DIR$/public/modules/core/css/core.scss" />
-        <option value="$PROJECT_DIR$/public/modules/admin/controllers/emailModal.client.controller.js" />
-        <option value="$PROJECT_DIR$/app/routes/emails.server.routes.js" />
-        <option value="$PROJECT_DIR$/public/modules/emails/services/emails.client.service.js" />
-        <option value="$PROJECT_DIR$/public/modules/admin/views/subviews/modals/email.modal.admin.client.view.html" />
-        <option value="$PROJECT_DIR$/public/modules/emails/views/template.client.view.html" />
-        <option value="$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers/marketing.admin.client.controller.js" />
-        <option value="$PROJECT_DIR$/public/modules/admin/views/subviews/marketing.admin.client.view.html" />
-        <option value="$PROJECT_DIR$/public/modules/emails/controllers/emails.client.controller.js" />
+        <option value="$PROJECT_DIR$/public/modules/core/views/partials/mainpage.client.view.html" />
+        <option value="$PROJECT_DIR$/public/modules/core/views/orderModal.client.view.html" />
+        <option value="$PROJECT_DIR$/app/models/operations/inventory/getTicketOrder.js" />
+        <option value="$PROJECT_DIR$/public/modules/core/controllers/orderModal.client.controller.js" />
+        <option value="$PROJECT_DIR$/public/config.js" />
+        <option value="$PROJECT_DIR$/app/models/operations/appointment/updateAppointment.js" />
+        <option value="$PROJECT_DIR$/public/modules/scheduler/views/partials/eventinspector.client.view.html" />
+        <option value="$PROJECT_DIR$/app/models/operations/appointment/addAppointment.js" />
+        <option value="$PROJECT_DIR$/app/models/operations/appointment/sendReminders.js" />
+        <option value="$PROJECT_DIR$/app/models/operations/customers/addCustomer.js" />
+        <option value="$PROJECT_DIR$/public/modules/admin/views/partials/modal/editQuantityModal.client.view.html" />
+        <option value="$PROJECT_DIR$/app/models/operations/stock/test.xml" />
+        <option value="$PROJECT_DIR$/app/models/operations/stock/printBarcode.js" />
+        <option value="$PROJECT_DIR$/config/env/all.js" />
+        <option value="$PROJECT_DIR$/public/modules/scheduler/controllers/scheduler.client.controller.js" />
+        <option value="$PROJECT_DIR$/public/modules/scheduler/views/partials/scheduler.client.view.html" />
+        <option value="$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers/reports.admin.client.controller.js" />
+        <option value="$PROJECT_DIR$/app/models/operations/stock/editQuantity.js" />
+        <option value="$PROJECT_DIR$/public/modules/admin/controllers/editQuantityModal.client.controller.js" />
+        <option value="$PROJECT_DIR$/app/models/operations/stock/addItem.js" />
+        <option value="$PROJECT_DIR$/public/modules/core/views/modal/imageViewerModal.client.view.html" />
+        <option value="$PROJECT_DIR$/public/modules/admin/controllers/imageViewerModal.client.controller.js" />
+        <option value="$PROJECT_DIR$/public/modules/admin/views/partials/modal/imageViewerModal.client.view.html" />
+        <option value="$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers/stocks.admin.client.controller.js" />
+        <option value="$PROJECT_DIR$/public/modules/core/css/core.css" />
+        <option value="$PROJECT_DIR$/public/modules/admin/views/subviews/stocks.admin.client.view.html" />
+        <option value="$PROJECT_DIR$/public/modules/core/views/home.client.view.html" />
+        <option value="$PROJECT_DIR$/public/modules/admin/views/subviews/reports.admin.client.view.html" />
+        <option value="$PROJECT_DIR$/app/models/operations/inventory/getOrder.js" />
+        <option value="$PROJECT_DIR$/public/modules/core/services/mainpage.client.service.js" />
+        <option value="$PROJECT_DIR$/app/models/operations/inventory/doneOrder.js" />
+        <option value="$PROJECT_DIR$/app/models/operations/inventory/saveOrder.js" />
+        <option value="$PROJECT_DIR$/app/models/operations/inventory/printReceipt.js" />
+        <option value="$PROJECT_DIR$/app/models/operations/inventory/voidOrder.js" />
+        <option value="$PROJECT_DIR$/public/modules/admin/views/subviews/settings.admin.client.view.html" />
+        <option value="$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers/settings.admin.client.controller.js" />
+        <option value="$PROJECT_DIR$/app/models/operations/inventory/getReport.js" />
+        <option value="$PROJECT_DIR$/public/modules/pointcards/controllers/pointcards.client.controller.js" />
+        <option value="$PROJECT_DIR$/app/models/inventory.server.model.js" />
+        <option value="$PROJECT_DIR$/app/models/stock.server.model.js" />
+        <option value="$PROJECT_DIR$/app/models/operations/stock/getItemWithBarcode.js" />
+        <option value="$PROJECT_DIR$/public/modules/core/services/scanner.client.service.js" />
+        <option value="$PROJECT_DIR$/public/modules/core/controllers/home.client.controller.js" />
       </list>
     </option>
   </component>
@@ -213,8 +730,9 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
     <option name="width" value="1280" />
-    <option name="height" value="800" />
+    <option name="height" value="773" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -257,7 +775,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
+              <option name="myItemId" value="POS1" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -267,7 +785,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
+              <option name="myItemId" value="POS1" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -281,25 +799,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="reports" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
               <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -317,7 +817,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
+              <option name="myItemId" value="POS1" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -329,7 +829,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="emails" />
+              <option name="myItemId" value="pointcards" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -339,33 +839,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="emails" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
               <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -377,59 +851,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="emails" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="emails" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="directives" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="emails" />
+              <option name="myItemId" value="pointcards" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -443,33 +865,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="emails" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
               <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -491,59 +887,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="directives" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
               <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -569,7 +913,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
+              <option name="myItemId" value="POS1" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -577,11 +921,17 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
+              <option name="myItemId" value="label" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="core" />
+              <option name="myItemId" value="POS1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="POS1" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -595,261 +945,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
               <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="subviews" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="subviews" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modals" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="subcontrollers" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
+              <option name="myItemId" value="env" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -859,21 +963,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
               <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -887,25 +977,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="routes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
               <option name="myItemId" value="POS1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="POS" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -914,6 +986,54 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="POS1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="POS1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="operations" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="stock" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="POS1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="POS1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="operations" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -948,28 +1068,44 @@
     <property name="editor.config.accepted" value="true" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="last_opened_file_path" value="$USER_HOME$/Documents/Work/DaaSPatcher" />
-    <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers" />
-      <recent name="$PROJECT_DIR$/public/modules/admin/views/subviews" />
-      <recent name="$PROJECT_DIR$/public/modules/admin/controllers" />
-      <recent name="$PROJECT_DIR$/app/models/operations/inventory" />
-      <recent name="$PROJECT_DIR$/public/modules/admin/views/partials/modal" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/public/modules/admin/views/subviews" />
       <recent name="$PROJECT_DIR$/public/modules/admin/controllers/admin.subcontrollers" />
       <recent name="$PROJECT_DIR$/public/modules/admin/controllers" />
       <recent name="$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/models/operations/stock" />
+      <recent name="$PROJECT_DIR$/app/models/operations/inventory" />
+      <recent name="$PROJECT_DIR$/public/modules/admin/controllers" />
+      <recent name="$PROJECT_DIR$/public/modules/admin/views/partials/modal" />
+      <recent name="$PROJECT_DIR$/public/modules/core/views/modal" />
+    </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
     <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
@@ -1112,30 +1248,30 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="773" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24609375" sideWeight="0.4924812" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26846704" sideWeight="0.4924812" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Grunt " active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34508076" sideWeight="0.5347334" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2319301" sideWeight="0.50751877" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43425927" sideWeight="0.503231" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19672132" sideWeight="0.503231" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.4418417" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44" sideWeight="0.46526656" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3455344" sideWeight="0.46526656" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.4418417" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32210836" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22401172" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1168,377 +1304,369 @@
     <option name="LAST_COMMIT_MESSAGE" value="Finalized all css/html for v-2.1" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="3" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers/categories.admin.client.controller.js">
+    <entry file="file://$PROJECT_DIR$/app/models/operations/appointment/sendReminders.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="39" selection-start-line="0" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.4527897">
+          <caret line="41" column="45" selection-start-line="41" selection-start-column="45" selection-end-line="41" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/admin/views/subviews/items.admin.client.view.html">
+    <entry file="file://$PROJECT_DIR$/app/models/operations/customers/addCustomer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.25751072">
+          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/admin/views/subviews/settings.admin.client.view.html">
+    <entry file="file://$PROJECT_DIR$/public/modules/core/views/partials/mainpage/plusminus.client.view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="81" selection-start-line="32" selection-start-column="81" selection-end-line="32" selection-end-column="81" />
+        <state vertical-scroll-proportion="0.13574661">
+          <caret line="4" column="13" selection-start-line="1" selection-start-column="4" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers/reports.admin.client.controller.js">
+    <entry file="file://$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers/pointcard.admin.client.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/core/config/core.client.routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="-0.74034333">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/admin/views/admin.client.view.html">
+    <entry file="file://$PROJECT_DIR$/public/modules/core/controllers/redeemPointcardModal.client.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="57" column="87" selection-start-line="57" selection-start-column="87" selection-end-line="57" selection-end-column="87" />
+        <state vertical-scroll-proportion="0.64377683">
+          <caret line="21" column="30" selection-start-line="0" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers/login.admin.client.controller.js">
+    <entry file="file://$PROJECT_DIR$/public/modules/core/views/modal/usePointcardModal.client.view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="38" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/admin/services/adminloginpage.client.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="65" column="30" selection-start-line="65" selection-start-column="30" selection-end-line="65" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/tests/email.server.model.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1761658">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/admin/controllers/admin.client.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/nodemailer/src/nodemailer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.376943">
-          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes/customers.server.routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/customer.server.model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68456376">
-          <caret line="30" column="3" selection-start-line="30" selection-start-column="3" selection-end-line="30" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers/giftcard.admin.client.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/admin/views/subviews/giftcard.admin.client.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.423077">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/admin/views/subviews/employee.admin.client.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.038462">
-          <caret line="23" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/emails/emails.client.module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/admin/config/admin.client.routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="106" column="5" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/core/views/modal/selectCustomerModal.client.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.423077">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/core/views/checkBalanceModal.client.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/core/controllers/selectCustomerCoreModal.client.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.849741">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/core/views/orderModal.client.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31903484">
-          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/core/views/doneOrderModal.client.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/admin/controllers/selectCustomerAdminModal.client.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3834197">
-          <caret line="125" column="51" selection-start-line="125" selection-start-column="29" selection-end-line="125" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/core/controllers/logoutModal.client.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30829015">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/core/controllers/home.client.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2007772">
-          <caret line="258" column="36" selection-start-line="258" selection-start-column="36" selection-end-line="258" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/core/directives/pagination.client.directive.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/emails/directives/emails.client.directive.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28626943">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/core/controllers/orderModal.client.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5945596">
-          <caret line="60" column="46" selection-start-line="60" selection-start-column="46" selection-end-line="60" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/email.template.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3082901">
-          <caret line="359" column="0" selection-start-line="359" selection-start-column="0" selection-end-line="370" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/emails/config/emails.client.routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13212435">
-          <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="22" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/core/css/core.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5094337">
-          <caret line="963" column="15" selection-start-line="963" selection-start-column="15" selection-end-line="963" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/core/services/FTScroller.client.service.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lib/angular/angular.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28970" column="4" selection-start-line="28970" selection-start-column="4" selection-end-line="28970" selection-end-column="4" />
-          <folding />
+        <state vertical-scroll-proportion="0.47511312">
+          <caret line="14" column="35" selection-start-line="0" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/modules/admin/controllers/emailModal.client.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.226415">
-          <caret line="35" column="49" selection-start-line="35" selection-start-column="49" selection-end-line="35" selection-end-column="49" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/emails/views/view-email.client.view.html">
+    <entry file="file://$PROJECT_DIR$/public/modules/core/views/partials/mainpage.client.view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20509383">
-          <caret line="9" column="53" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="53" />
+        <state vertical-scroll-proportion="0.45701358">
+          <caret line="155" column="56" selection-start-line="155" selection-start-column="51" selection-end-line="155" selection-end-column="56" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/emails/views/list-emails.client.view.html">
+    <entry file="file://$PROJECT_DIR$/public/modules/scheduler/views/partials/eventinspector.client.view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27345845">
-          <caret line="12" column="67" selection-start-line="12" selection-start-column="67" selection-end-line="12" selection-end-column="67" />
+        <state vertical-scroll-proportion="0.5769231">
+          <caret line="58" column="76" selection-start-line="56" selection-start-column="16" selection-end-line="58" selection-end-column="76" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/emails.server.controller.js">
+    <entry file="file://$PROJECT_DIR$/app/models/operations/stock/removeItem.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33290157">
-          <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.22532189">
+          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="54" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/customers.server.controller.js">
+    <entry file="file://$PROJECT_DIR$/public/modules/admin/views/partials/modal/selectCustomerModal.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20361991">
+          <caret line="6" column="113" selection-start-line="6" selection-start-column="111" selection-end-line="6" selection-end-column="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/core/views/modal/redeemPointcardModal.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13574661">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="8" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/admin/views/partials/modal/editQuantityModal.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.54298645">
+          <caret line="16" column="58" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lib/dymo/DYMO.Label.Framework.2.0.2.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes/emails.server.routes.js">
+    <entry file="file://$PROJECT_DIR$/config/env/all.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4183938">
-          <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.41230068">
+          <caret line="48" column="62" selection-start-line="48" selection-start-column="62" selection-end-line="48" selection-end-column="62" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/emails/services/emails.client.service.js">
+    <entry file="file://$PROJECT_DIR$/app/models/operations/stock/test.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.37974682">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/operations/stock/printBarcode.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39379475">
+          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/scheduler/views/partials/scheduler.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07594936">
+          <caret line="2" column="35" selection-start-line="2" selection-start-column="35" selection-end-line="2" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/scheduler/controllers/scheduler.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.82100236">
+          <caret line="530" column="15" selection-start-line="509" selection-start-column="12" selection-end-line="530" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/admin/controllers/admin.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.081145585">
+          <caret line="67" column="12" selection-start-line="67" selection-start-column="12" selection-end-line="67" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers/reports.admin.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31980908">
+          <caret line="56" column="62" selection-start-line="56" selection-start-column="51" selection-end-line="56" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/admin/controllers/editQuantityModal.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27684963">
+          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/operations/stock/addItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.3961813">
+          <caret line="49" column="34" selection-start-line="49" selection-start-column="34" selection-end-line="49" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/operations/stock/editQuantity.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42959428">
+          <caret line="12" column="66" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/admin/controllers/imageViewerModal.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28639618">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/core/css/core.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8369565">
+          <caret line="754" column="20" selection-start-line="754" selection-start-column="20" selection-end-line="754" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers/stocks.admin.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="198" column="42" selection-start-line="198" selection-start-column="42" selection-end-line="198" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/admin/views/subviews/stocks.admin.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.75">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/core/views/home.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16455697">
+          <caret line="32" column="156" selection-start-line="32" selection-start-column="156" selection-end-line="32" selection-end-column="156" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/admin/views/partials/modal/imageViewerModal.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15189873">
+          <caret line="4" column="59" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="59" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/modules/admin/views/subviews/reports.admin.client.view.html">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26835442">
+          <caret line="33" column="66" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/core/services/user.client.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.10739857">
+          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/operations/inventory/doneOrder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19570406">
+          <caret line="268" column="28" selection-start-line="268" selection-start-column="28" selection-end-line="276" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/operations/inventory/getOrder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3579952">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/operations/inventory/printReceipt.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3221957">
+          <caret line="189" column="34" selection-start-line="189" selection-start-column="34" selection-end-line="189" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers/settings.admin.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6420048">
+          <caret line="37" column="75" selection-start-line="37" selection-start-column="75" selection-end-line="37" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/operations/inventory/voidOrder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5346062">
+          <caret line="31" column="39" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/operations/inventory/saveOrder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.3770883">
+          <caret line="82" column="28" selection-start-line="82" selection-start-column="28" selection-end-line="88" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/admin/views/subviews/settings.admin.client.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30379745">
+          <caret line="8" column="75" selection-start-line="8" selection-start-column="75" selection-end-line="8" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/operations/inventory/getReport.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.77565634">
+          <caret line="72" column="55" selection-start-line="72" selection-start-column="55" selection-end-line="72" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/pointcards/pointcards.client.module.js">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/pointcards/controllers/pointcards.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26785713">
+          <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="55" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/operations/pointcard/getPointcard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/operations/stock/getAllItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28639618">
+          <caret line="8" column="15" selection-start-line="0" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/inventory.server.model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7755102">
+          <caret line="46" column="58" selection-start-line="46" selection-start-column="58" selection-end-line="46" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/stock.server.model.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7244898">
+          <caret line="37" column="22" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/operations/stock/getItemWithBarcode.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46539378">
+          <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/core/controllers/usePointcardModal.client.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40572792">
+          <caret line="19" column="10" selection-start-line="11" selection-start-column="8" selection-end-line="19" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/modules/core/services/mainpage.client.service.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers/marketing.admin.client.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19818653">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/admin/controllers/subcontrollers/employee.admin.client.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.68264246">
-          <caret line="31" column="41" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/admin/views/subviews/marketing.admin.client.view.html">
+    <entry file="file://$PROJECT_DIR$/public/modules/core/controllers/home.client.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="94" selection-start-line="8" selection-start-column="94" selection-end-line="8" selection-end-column="94" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#a#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/emails/views/template.client.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.613941">
-          <caret line="381" column="125" selection-start-line="381" selection-start-column="125" selection-end-line="381" selection-end-column="125" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/emails/controllers/emails.client.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="127" column="45" selection-start-line="127" selection-start-column="45" selection-end-line="127" selection-end-column="45" />
+          <caret line="562" column="72" selection-start-line="562" selection-start-column="72" selection-end-line="562" selection-end-column="72" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/express.js">
+    <entry file="file://$PROJECT_DIR$/public/modules/core/services/scanner.client.service.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29533678">
-          <caret line="154" column="41" selection-start-line="154" selection-start-column="41" selection-end-line="154" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/admin/views/subviews/categories.admin.client.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/modules/admin/views/subviews/modals/email.modal.admin.client.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-          <folding>
-            <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/email.server.model.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="114" column="3" selection-start-line="114" selection-start-column="3" selection-end-line="125" selection-end-column="2" />
+        <state vertical-scroll-proportion="0.57279235">
+          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
           <folding />
         </state>
       </provider>

@@ -1,0 +1,38 @@
+<div class="panel panel-primary" ng-init="initPointCard()">
+    <div class="panel-heading">
+        Point Card Settings
+    </div>
+    <div class="panel-body">
+        <div class="panel panel-default">
+            <div>
+                <div class="alert alert-danger" role="alert" ng-show="data.isError">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    {{data.errorMessage}}
+                </div>
+                <div class="alert alert-success" role="alert" ng-show="data.isSuccess">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span>
+                    {{data.errorMessage}}
+                </div>
+                <div class="form-group">
+                    <label>Payment Type: Cash</label>
+                    <input class="form-control" placeholder="Point" ng-model="data.cash" ng-change="reset()"> = $1
+                </div>
+                <div class="form-group">
+                    <label>Payment Type: Debit Card</label>
+                    <input class="form-control" placeholder="Point" ng-model="data.debit" ng-change="reset()"> = $1
+                </div>
+                <div class="form-group">
+                    <label>Payment Type: Credit Card</label>
+                    <input class="form-control" placeholder="Point" ng-model="data.credit" ng-change="reset()"> = $1
+                </div>
+                <div class="form-group">
+                    <label>Redeem</label>
+                    <input class="form-control" placeholder="Point" ng-model="data.redeem" ng-change="reset()"> = $1
+                </div>
+                <button class="btn btn-default" ng-click="changeSetting(data)">Update </button>
+            </div>
+        </div>
+    </div>
+</div>

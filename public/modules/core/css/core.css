@@ -377,6 +377,54 @@ a > span {
           visibility: hidden; }
           .flex-panel .summary-panel .subtotal-panel .slideThree input[type=checkbox]:checked + label {
             left: 43px; }
+    .flex-panel .summary-panel .subtotal-panel .slideDiscount {
+      display: inline-block;
+      width: 80px;
+      height: 30px;
+      background: #333;
+      margin: 5px auto;
+      margin-top: 10px;
+      margin-bottom: 0px;
+      position: relative;
+      border-radius: 50px;
+      box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2); }
+    .flex-panel .summary-panel .subtotal-panel .slideDiscount:after {
+      content: '$';
+      color: #27ae60;
+      top: 2px;
+      position: absolute;
+      right: 10px;
+      z-index: 0;
+      font: 12px/26px Arial, sans-serif;
+      font-weight: bold;
+      text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.15); }
+    .flex-panel .summary-panel .subtotal-panel .slideDiscount:before {
+      content: '%';
+      color: #27ae60;
+      top: 2px;
+      position: absolute;
+      left: 10px;
+      z-index: 0;
+      font: 12px/26px Arial, sans-serif;
+      font-weight: bold; }
+    .flex-panel .summary-panel .subtotal-panel .slideDiscount label {
+      display: block;
+      width: 34px;
+      height: 25px;
+      cursor: pointer;
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      z-index: 1;
+      background: #fcfff4;
+      background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+      border-radius: 50px;
+      transition: all 0.4s ease;
+      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3); }
+    .flex-panel .summary-panel .subtotal-panel .slideDiscount input[type=checkbox] {
+      visibility: hidden; }
+    .flex-panel .summary-panel .subtotal-panel .slideDiscount input[type=checkbox]:checked + label {
+      left: 43px; }
     .flex-panel .summary-panel * {
       -webkit-flex: 1;
       flex: 1;
@@ -660,6 +708,9 @@ input[type="button"], input[type="button"].btn {
 .discount {
   border: none; }
 
+.pointcard-input {
+  width: 100%
+}
 /** Scheduler */
 .calendar-view {
   margin: 15px 0; }
@@ -672,3 +723,34 @@ input[type="button"], input[type="button"].btn {
   background-color: #efe; }
 
 /*# sourceMappingURL=core.css.map */
+
+
+
+.sendReminder{
+  cursor: pointer;
+  appearance: none;
+  background: #34495E;
+  border-radius: 1px;
+  box-sizing: border-box;
+  position: relative;
+  box-sizing: content-box ;
+  width: 30px;
+  height: 30px;
+  border-width: 0;
+  transition: all .3s linear;
+}
+.sendReminder:checked{
+  background-color: #2ECC71;
+}
+.sendReminder:focus{
+  outline: 0 none;
+  box-shadow: none;
+}
+
+.modal-image .modal-dialog .modal-content{
+  display: table;
+}
+
+.modal-image .modal-dialog .modal-content img{
+  display: table-row;
+}
