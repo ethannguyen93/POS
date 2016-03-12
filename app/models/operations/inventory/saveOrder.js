@@ -61,6 +61,7 @@ module.exports = function (req, res) {
                     subtotal: req.body.subtotal,
                     tax: req.body.tax,
                     discount: req.body.discount,
+                    discountType: req.body.discountType,
                     discountPrice: req.body.discountPrice,
                     customerID: req.body.customerID,
                     paymentType: req.body.paymentType,
@@ -84,6 +85,7 @@ module.exports = function (req, res) {
                             subtotal: req.body.subtotal,
                             tax: req.body.tax,
                             discount: req.body.discount,
+                            discountType: req.body.discountType,
                             discountPrice: req.body.discountPrice,
                             paymentType: req.body.paymentType,
                             ticketNumber: req.body.ticketNumber

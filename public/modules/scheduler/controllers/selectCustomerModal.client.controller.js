@@ -21,7 +21,8 @@ angular.module('scheduler').controller('selectCustomerController', [
             new: {
                 name: '',
                 phone: '',
-                email: ''
+                email: '',
+                address: ''
             }
         };
         $scope.reset = function(){
@@ -40,7 +41,8 @@ angular.module('scheduler').controller('selectCustomerController', [
                     type: 'getCustomer',
                     name: $scope.data.new.name,
                     phone: $scope.data.new.phone,
-                    email: $scope.data.new.email
+                    email: $scope.data.new.email,
+                    address: $scope.data.new.address
                 };
                 RetrieveCustomer.load(body, function(response){
                     if (response[0].name === undefined){
@@ -51,7 +53,8 @@ angular.module('scheduler').controller('selectCustomerController', [
                         $scope.data.new = {
                             name: '',
                             phone: '',
-                            email: ''
+                            email: '',
+                            address: ''
                         }
                     }else{
                         $scope.data.isError = true;
@@ -82,16 +85,22 @@ angular.module('scheduler').controller('selectCustomerController', [
                     'ng-change="grid.appScope.reset()" placeholder="New email address"/>'
                 },
                 {
+                    name: 'Address',
+                    field: 'address',
+                    footerCellTemplate: '<input ng-model="grid.appScope.data.new.address" ' +
+                    'ng-change="grid.appScope.reset()" placeholder="New home address"/>'
+                },
+                {
                     name: 'Edit',
                     enableFiltering: false,
-                    cellTemplate: '<a href="" ng-click="grid.appScope.editCustomer(row.entity.name, row.entity.phone, row.entity.email, row.entity._id)"' +
+                    cellTemplate: '<a href="" ng-click="grid.appScope.editCustomer(row.entity.name, row.entity.phone, row.entity.email, row.entity.address, row.entity._id)"' +
                     '><span class="glyphicon glyphicon-pencil"></span></a>'
                 },
                 {
-                    name: 'Add/Select',
+                    name: 'Add/Remove',
                     enableFiltering: false,
-                    cellTemplate: '<a href="" ng-click="grid.appScope.selectCustomer(row.entity._id)"' +
-                    '><span class="glyphicon glyphicon-ok"></span></a>',
+                    cellTemplate: '<a href="" ng-click="grid.appScope.removeCustomer(row.entity._id)"' +
+                    '><span class="glyphicon glyphicon-remove"></span></a>',
                     footerCellTemplate: '<a href="" ng-click="grid.appScope.addCustomer()"> <span class="glyphicon glyphicon-plus"></span> </a>'
                 }
             ];
@@ -105,8 +114,8 @@ angular.module('scheduler').controller('selectCustomerController', [
                 });
             });
         })();
-        $scope.editCustomer = function(name, phone, email, id){
-            $scope.editCustomerModal(name, phone, email, id).then(function(customer){
+        $scope.editCustomer = function(name, phone, email, address, id){
+            $scope.editCustomerModal(name, phone, email, address, id).then(function(customer){
                 if (customer !== undefined){
                     var c = _.find($scope.data.customers, function(c){
                         return customer.id === c._id;
@@ -114,10 +123,11 @@ angular.module('scheduler').controller('selectCustomerController', [
                     c.name = customer.name;
                     c.phone = customer.phone;
                     c.email = customer.email;
+                    c.address = customer.address;
                 };
             });
         };
-        $scope.editCustomerModal = function (name, phone, email, id) {
+        $scope.editCustomerModal = function (name, phone, email, address, id) {
             var deferred = $q.defer();
             var editorInstance = $modal.open({
                 animation: true,
@@ -126,7 +136,7 @@ angular.module('scheduler').controller('selectCustomerController', [
                 controller: 'editCustomerController',
                 resolve: {
                     customer: function() {
-                        return {id: id, name: name, phone: phone, email: email}
+                        return {id: id, name: name, phone: phone, email: email, address: address}
                     }
                 }
             });
@@ -135,11 +145,33 @@ angular.module('scheduler').controller('selectCustomerController', [
             });
             return deferred.promise;
         };
-        $scope.selectCustomer = function(id){
-            var c = _.find($scope.data.customers, function(c){
-                return id === c._id;
+        $scope.removeCustomer = function(id){
+            $scope.removeCustomerModal(id).then(function(response){
+                if (response === 'yes'){
+                    var c = _.find($scope.data.customers, function(c){
+                        return id === c._id;
+                    });
+                    $scope.data.customers = _.without($scope.data.customers, c);
+                }
             });
-            $modalInstance.close(c);
+        };
+        $scope.removeCustomerModal = function (id) {
+            var deferred = $q.defer();
+            var editorInstance = $modal.open({
+                animation: true,
+                windowClass: 'modal-fullwindow',
+                templateUrl: 'modules/customers/views/modal/removeCustomerModal.client.view.html',
+                controller: 'removeCustomerController',
+                resolve: {
+                    customer: function() {
+                        return {id: id}
+                    }
+                }
+            });
+            editorInstance.result.then(function (response) {
+                deferred.resolve(response);
+            });
+            return deferred.promise;
         };
         $scope.gridOptions.onRegisterApi = function (gridApi) {
             $scope.gridApi = gridApi;

@@ -45,7 +45,10 @@
                         <div ng-show="admin.report.selectedOption==='InventoryReport'" class="col-md-3 justify-center">
                             <input class="height-100 form-control" placeholder="Item Barcode" ng-model="admin.report.itemBarcode">
                         </div>
-                        <div ng-show="admin.report.selectedOption==='EmployeeReport'" class="col-md-3 justify-center">
+                        <div ng-show="admin.report.selectedOption==='EmployeeReportDaily'
+                                    || admin.report.selectedOption==='EmployeeReportWeekly'
+                                    || admin.report.selectedOption==='EmployeeReportMonthly'
+                                    || admin.report.selectedOption==='EmployeeReportYearly'" class="col-md-3 justify-center">
                             <select ng-model="admin.report.selectedEmployee"
                                     class="height-100 form-control ng-pristine ng-valid ng-scope ng-touched">
                                 <option value="">---Please select---</option>

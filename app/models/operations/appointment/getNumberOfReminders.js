@@ -24,10 +24,17 @@ module.exports = function (req, res) {
                         console.log(err);
                     } else {
                         _.map(result, function(a){
-                            if (a.sentReminderPhone === undefined && a.sentReminderPhone !== 'sent' && a.customer.phone !== ''){
+                            if (a.sentReminderPhone === undefined
+                                && a.sentReminderPhone !== 'sent'
+                                && a.customer.phone !== ''
+                                && a.sendSMS){
+                                console.log('here');
                                 appointmentsPhone.push(a);
                             }
-                            if (a.sentReminderEmail === undefined && a.sentReminderEmail !== 'sent' && a.customer.email !== ''){
+                            if (a.sentReminderEmail === undefined
+                                && a.sentReminderEmail !== 'sent'
+                                && a.customer.email !== ''
+                                && a.sendEmail){
                                 appointmentsEmail.push(a);
                             }
                         });

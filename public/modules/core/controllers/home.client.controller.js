@@ -50,6 +50,7 @@ angular.module('core').controller('HomeController', [
 			return deferred.promise;
 		};
 		$scope.logOut = function(){
+			hidScanner.destroy();
 			$scope.view = 'numpad';
 			$scope.data.customerName = '';
 			$scope.data.customerPhone = '';
@@ -171,6 +172,7 @@ angular.module('core').controller('HomeController', [
 			];
 		};
 		$scope.initMainpage = function(){
+			hidScanner.initialize($scope);
 			// Check if not authenticated
 			if (!UserService.getUser()) {
 				$scope.logOut();
@@ -204,6 +206,7 @@ angular.module('core').controller('HomeController', [
 							$scope.data.customerID = selectedItem.data.customerID;
 							$scope.data.subtotal = selectedItem.data.subtotal;
 							$scope.data.tax = selectedItem.data.tax;
+							$scope.data.discountType = selectedItem.data.discountType;
 							$scope.data.discount = selectedItem.data.discount;
 							$scope.data.discountPrice = selectedItem.data.discountPrice;
 							$scope.data.selectedPayment = selectedItem.data.paymentType;
@@ -217,16 +220,22 @@ angular.module('core').controller('HomeController', [
 			if (newValue !== undefined && oldValue !== undefined){
 				if ($scope.data.discount !== undefined && $scope.data.discount !== ''){
 					var discountPrice = 0;
-					var discount = parseInt($scope.data.discount) / 100;
-					_.each($scope.data.orders, function(order){
-						if (!order.isGiftcard && !order.isPointcard){
-							discountPrice += order.price * order.quantity * discount;
+					if ($scope.data.discountType){
+						var discount = parseInt($scope.data.discount) / 100;
+						_.each($scope.data.orders, function(order){
+							if (!order.isGiftcard && !order.isPointcard){
+								discountPrice += order.price * order.quantity * discount;
+							}
+						});
+						if ($scope.data.isTax){
+							discountPrice = discountPrice * 1.13;
 						}
-					});
-					if ($scope.data.isTax){
-						discountPrice = discountPrice * 1.13;
+						$scope.data.discountPrice = discountPrice;
+					}else{
+						$scope.data.discountPrice = parseInt($scope.data.discount);
 					}
-					$scope.data.discountPrice = discountPrice;
+				}else if ($scope.data.discount !== undefined && $scope.data.discount === ''){
+					$scope.data.discountPrice = 0;
 				}
 			}
 		});
@@ -244,16 +253,22 @@ angular.module('core').controller('HomeController', [
 				}
 				if ($scope.data.discount !== undefined && $scope.data.discount !== ''){
 					var discountPrice = 0;
-					var discount = parseInt($scope.data.discount) / 100;
-					_.each($scope.data.orders, function(order){
-						if (!order.isGiftcard && !order.isPointcard){
-							discountPrice += order.price * order.quantity * discount;
+					if ($scope.data.discountType){
+						var discount = parseInt($scope.data.discount) / 100;
+						_.each($scope.data.orders, function(order){
+							if (!order.isGiftcard && !order.isPointcard){
+								discountPrice += order.price * order.quantity * discount;
+							}
+						});
+						if ($scope.data.isTax){
+							discountPrice = discountPrice * 1.13;
 						}
-					});
-					if ($scope.data.isTax){
-						discountPrice = discountPrice * 1.13;
+						$scope.data.discountPrice = discountPrice;
+					}else{
+						$scope.data.discountPrice = parseInt($scope.data.discount);
 					}
-					$scope.data.discountPrice = discountPrice;
+				}else if ($scope.data.discount !== undefined && $scope.data.discount === ''){
+					$scope.data.discountPrice = 0;
 				}
 			}
 		});
@@ -273,10 +288,11 @@ angular.module('core').controller('HomeController', [
 			var deferred = $q.defer();
 			var editorInstance = $modal.open({
 				animation: true,
-				windowClass: 'modal-fullwindow',
+				windowClass: 'modal-fullwindow modal-order',
 				templateUrl: 'modules/core/views/orderModal.client.view.html',
 				controller: 'orderCtrl',
 				backdrop : 'static',
+				keyboard: false,
 				resolve: {
 					currentUser : function(){
 						return UserService.getUser().name;
@@ -496,6 +512,7 @@ angular.module('core').controller('HomeController', [
 			};
 			RetrieveInventory.load(body, function(response){
 				console.log(response);
+				$scope.data.order = response[0];
 			});
 		};
 		$scope.applyDiscount = function(){
@@ -519,10 +536,6 @@ angular.module('core').controller('HomeController', [
 				$scope.data.discountPrice = 0;
 			}
 		};
-		hidScanner.initialize($scope);
-		$scope.$on('$destroy', function(){
-			hidScanner.destroy();
-		});
 		var guid = function() {
 			function s4() {
 				return Math.floor((1 + Math.random()) * 0x10000)

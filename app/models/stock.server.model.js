@@ -35,7 +35,8 @@ var operationMap = {
 	removeItem: require('./operations/stock/removeItem'),
 	editQuantity: require('./operations/stock/editQuantity'),
 	printBarcode: require('./operations/stock/printBarcode'),
-	getItemWithBarcode: require('./operations/stock/getItemWithBarcode')
+	getItemWithBarcode: require('./operations/stock/getItemWithBarcode'),
+	updateItemField: require('./operations/stock/updateItemField')
 };
 
 exports.operationMap = operationMap;

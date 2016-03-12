@@ -6,7 +6,8 @@ var mongoose = require('mongoose'),
     _ = require('lodash'),
     moment = require('moment'),
     nodemailer = require('nodemailer'),
-    xoauth2 = require('xoauth2');
+    xoauth2 = require('xoauth2'),
+    bwipjs = require('bwip-js');
 
 module.exports = function (req, res) {
     var connectionDB = mongoose.connection.db;

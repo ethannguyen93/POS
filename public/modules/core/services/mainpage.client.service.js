@@ -82,6 +82,7 @@ angular.module('core').factory('MainpageServices', ['RetrieveInventory', 'UserSe
                     'subtotal': $scope.data.subtotal,
                     'tax': $scope.data.tax,
                     'discount': $scope.data.discount,
+                    'discountType': $scope.data.discountType,
                     'discountPrice': $scope.data.discountPrice,
                     'customerID': $scope.data.customerID,
                     'ticketNumber': $scope.data.ticketNumber

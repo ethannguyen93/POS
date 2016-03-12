@@ -20,7 +20,8 @@ angular.module('admin').controller('Stocks.AdminController', ['$scope', '$state'
                 stockPrice: '',
                 quantity: 0,
                 image: '',
-                price: ''
+                price: '',
+                desc: ''
             },
             items: [],
             categories: [],
@@ -94,7 +95,9 @@ angular.module('admin').controller('Stocks.AdminController', ['$scope', '$state'
                 $scope.data.new.stockPrice === undefined ||
                 $scope.data.new.stockPrice === '' ||
                 $scope.data.new.price === undefined ||
-                $scope.data.new.price === ''
+                $scope.data.new.price === '' ||
+                $scope.data.new.desc === undefined ||
+                $scope.data.new.desc === ''
             ) {
                 $scope.data.isError = true;
                 $scope.data.errorMessage = 'Please fill all box below';
@@ -108,7 +111,8 @@ angular.module('admin').controller('Stocks.AdminController', ['$scope', '$state'
                     category: $scope.data.new.cat.name,
                     quantity: parseInt($scope.data.new.quantity),
                     stockPrice: parseFloat($scope.data.new.stockPrice),
-                    price: parseFloat($scope.data.new.price)
+                    price: parseFloat($scope.data.new.price),
+                    desc: $scope.data.new.desc
                 };
                 RetrieveStock.load(body, function(response){
                     $scope.data.items.push(response[0]);
@@ -133,8 +137,9 @@ angular.module('admin').controller('Stocks.AdminController', ['$scope', '$state'
                 var label = dymo.label.framework.openLabelXml(labelXml);
                 label.setObjectText("Top Barcode", item.barcode);
                 label.setObjectText("Bottom Barcode", item.barcode);
-                label.setObjectText("Top Text", '$'+item.price.toFixed(2));
-                label.setObjectText("Bottom Text", '$'+item.price.toFixed(2));
+                label.setObjectText("Top Text", '$'+item.price.toFixed(2)+'\n' + item.desc);
+                label.setObjectText("Bottom Text", '$'+item.price.toFixed(2)+'\n' + item.desc);
+                //debugger;
                 console.log(printers);
                 label.print(printers[0].name);
             }).error(function(data, status, headers, config) {
@@ -155,21 +160,24 @@ angular.module('admin').controller('Stocks.AdminController', ['$scope', '$state'
                 var field = colDef.field;
                 var tmp = _.filter($scope.data.items, function (item) {
                     return (item.name === rowEntity.name
-                    && item.category === rowEntity.category
-                    && item.price === rowEntity.price)
+                    && item.category === rowEntity.category)
                 });
                 if (tmp.length > 1) {
                     $scope.data.isError = true;
                     $scope.data.errorMessage = 'This item is already existed';
                     rowEntity[field] = oldValue;
                 } else {
-                    var data = {
-                        newValue: newValue,
-                        oldValue: oldValue,
-                        field: field,
-                        item: rowEntity
+                    var body = {
+                        type: 'updateItemField',
+                        name: rowEntity.name,
+                        desc: rowEntity.desc,
+                        id: rowEntity._id,
+                        stockPrice: rowEntity.stockPrice,
+                        price: rowEntity.price
                     };
-                    AdminPageServices.updateItem($scope, data, 'item');
+                    RetrieveStock.load(body, function(response){
+
+                    })
                 }
             });
         };
@@ -251,6 +259,14 @@ angular.module('admin').controller('Stocks.AdminController', ['$scope', '$state'
                         field: 'barcode',
                         enableCellEdit: false,
                         enableFiltering: true
+                    },
+                    {
+                        name: 'Description',
+                        field: 'desc',
+                        enableCellEdit: true,
+                        enableFiltering: false,
+                        footerCellTemplate: '<input ng-model="grid.appScope.data.new.desc" ' +
+                        'ng-change="grid.appScope.reset()" placeholder="Enter new desc"/>'
                     },
                     {
                         name: 'Print Barcode',

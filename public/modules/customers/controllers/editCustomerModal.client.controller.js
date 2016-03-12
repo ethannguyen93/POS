@@ -4,10 +4,18 @@
 angular.module('customers').controller('editCustomerController', [
     '$scope', '$modalInstance', 'RetrieveCustomer', 'customer',
     function ($scope, $modalInstance, RetrieveCustomer, customer) {
+        var sanitize = function(text){
+            if (text === undefined){
+                return ''
+            }else{
+                return text.toString();
+            }
+        };
         $scope.data = {
-            name: customer.name,
-            phone: customer.phone,
-            email: customer.email,
+            name: sanitize(customer.name),
+            phone: sanitize(customer.phone),
+            email: sanitize(customer.email),
+            address: sanitize(customer.address),
             isError: false,
             errorMessage: ''
         };
@@ -17,11 +25,12 @@ angular.module('customers').controller('editCustomerController', [
         };
         $scope.edit = function(){
             var body = {
-                type: 'getCustomer',
-                name: $scope.data.name,
-                phone: $scope.data.phone,
-                email: $scope.data.email,
-                id: customer.id
+                type: 'update',
+                name: sanitize($scope.data.name),
+                phone: sanitize($scope.data.phone),
+                email: sanitize($scope.data.email),
+                address: sanitize($scope.data.address),
+                id: sanitize(customer.id)
             };
             RetrieveCustomer.load(body, function(response){
                 if (response[0].name === undefined){
@@ -31,6 +40,7 @@ angular.module('customers').controller('editCustomerController', [
                            name: $scope.data.name,
                            phone: $scope.data.phone,
                            email: $scope.data.email,
+                           address: $scope.data.address,
                            id: customer.id
                        }
                        );

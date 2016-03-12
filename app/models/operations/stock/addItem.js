@@ -36,6 +36,7 @@ module.exports = function (req, res) {
                 price: req.body.price,
                 stockPrice: req.body.stockPrice,
                 barcode: barcode,
+                desc: req.body.desc,
                 type: 'StockItem'
             }, function(err, result){
                 var item = result[0];

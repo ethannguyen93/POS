@@ -500,35 +500,6 @@ angular.module('scheduler').controller('SchedulerController', [ '$scope', '$stat
         $scope.initFTScroller = function(id, vertical) {
             console.log('attempting init!');
             FTScroller.initFTScroller(id, vertical);
-        }
-
-
-
-
-
-        $scope.printBarcode = function(){
-            $http({
-                method  : 'GET',
-                url     : './label/printLabel.label',
-                timeout : 10000,
-                params  : {},  // Query Parameters (GET)
-                transformResponse : function(data) {
-                    return data;
-                }
-            }).success(function(data, status, headers, config) {
-                var printers = dymo.label.framework.getPrinters();
-                var labelXml = data;
-                var label = dymo.label.framework.openLabelXml(labelXml);
-                label.setObjectText("Top Barcode", '999999');
-                label.setObjectText("Bottom Barcode", '123456');
-                label.setObjectText("Top Text", '$1.99');
-                label.setObjectText("Bottom Text", '$5.99');
-                console.log(printers);
-                label.print(printers[0].name);
-                //$scope.xml = data.documentElement.innerHTML;
-            }).error(function(data, status, headers, config) {
-                console.log('error');
-            });
-        }
+        };
     }
 ]);

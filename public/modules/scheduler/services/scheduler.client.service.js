@@ -55,7 +55,9 @@ angular.module('scheduler').factory('SchedulerServices', [ 'uiCalendarConfig', '
                                 endTimeList: appointment.endTimeList,
                                 endDate: endDate,
                                 assignedEmployee: appointment.assignedEmployee,
-                                note: appointment.note
+                                note: appointment.note,
+                                sendSMS: appointment.sendSMS,
+                                sendEmail: appointment.sendEmail
                             }
                         });
                     });

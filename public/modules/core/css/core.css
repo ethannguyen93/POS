@@ -754,3 +754,11 @@ input[type="button"], input[type="button"].btn {
 .modal-image .modal-dialog .modal-content img{
   display: table-row;
 }
+
+.modal-order .modal-dialog {
+  width: 30%
+}
+
+.voidOrderInput{
+  width: 30%
+}

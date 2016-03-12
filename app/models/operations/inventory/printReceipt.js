@@ -4,11 +4,14 @@ var mongoose = require('mongoose'),
     fs = require('fs'),
     moment = require('moment'),
     Docxtemplater = require('docxtemplater'),
-    Q = require('q');
+    Q = require('q'),
+    bwipjs = require('bwip-js'),
+    ImageModule=require('docxtemplater-image-module');
 
 module.exports = function (req, res) {
     var connectionDB = mongoose.connection.db;
     var isWin = /^win/.test(process.platform);
+    var imageFile = './public/barcode.png';
     var getIndex = function(collection){
         var deferred = Q.defer();
         collection.find({todayDate: {$exists: true}}, function(err, cursor){
@@ -56,7 +59,6 @@ module.exports = function (req, res) {
         var deferred = Q.defer();
         connectionDB.collection('orders', function (err, collection) {
             getIndex(collection).then(function(index){
-                console.log('in Index');
                 if (!req.body.id){
                     collection.insert({
                         employee: req.body.actualEmployee,
@@ -77,7 +79,7 @@ module.exports = function (req, res) {
                             console.log(err)
                         } else {
                             console.log("saved successfully!");
-                            deferred.resolve(result._id);
+                            deferred.resolve(result[0]._id);
                         }
                     })
                 }else{
@@ -99,10 +101,81 @@ module.exports = function (req, res) {
                             if (err) {
                                 console.log(err)
                             } else {
-                                deferred.resolve(req.body.order);
+                                deferred.resolve(req.body.id);
                             }
                         })
                 }
+            });
+        });
+        return deferred.promise;
+    };
+    var getPointCardSetting = function(){
+        var deferred = Q.defer();
+        connectionDB.collection('settings', function (err, collection) {
+            collection.findOne({
+                type: 'PointCard'
+            }, function(err, result){
+                deferred.resolve(result);
+            })
+        });
+        return deferred.promise;
+    };
+    var getPointcardBalance = function(listOfGC){
+        var deferred = Q.defer();
+        var pointcards = [];
+        var pcNumbers = [];
+        getPointCardSetting().then(function(setting){
+            _.each(req.body.orders, function(order){
+                if (order.isPointcard){
+                    var point = req.body.subtotal;
+                    switch(req.body.paymentType) {
+                        case 'DebitCard':
+                            point = point * setting.debit;
+                            break;
+                        case 'CreditCard':
+                            point = point * setting.credit;
+                            break;
+                        case 'Cash':
+                            point = point * setting.cash;
+                            break;
+                    };
+                    point = Math.floor(point);
+                    switch (order.pcType){
+                        case 'Use':
+                            break;
+                        case 'Redeem':
+                            point = -order.pcRedeem;
+                            break;
+                    }
+                    var pc = _.find(pointcards, function(p){
+                        return p.pointcardNumber === order.pcNumber;
+                    });
+                    if (pc === undefined){
+                        pointcards.push({pointcardNumber: order.pcNumber, point: point});
+                        pcNumbers.push(order.pcNumber);
+                    }else{
+                        pc.point += point;
+                    }
+                }
+            });
+            connectionDB.collection('pointcards', function (err, collection) {
+                collection.find({
+                    number: { $in: pcNumbers}
+                }, function (err, cursor) {
+                    cursor.toArray(function(err, result){
+                        _.each(pointcards, function(pc){
+                            var tmp = _.find(result, function(pointcard){
+                                return pointcard.number === pc.pointcardNumber;
+                            });
+                            if (tmp === undefined){
+                                result.push({number: order.pcNumber, point: point});
+                            }else{
+                                tmp.point = tmp.point + pc.point;
+                            }
+                        });
+                        deferred.resolve({gc: listOfGC, pc: result});
+                    });
+                })
             });
         });
         return deferred.promise;
@@ -149,13 +222,12 @@ module.exports = function (req, res) {
         console.log(scriptFile);
         var child = exec(scriptFile, function (error, stdout, stderr) {
             child.kill();
-            res.jsonp([]);
+            res.jsonp([ID]);
         });
     };
     var saveCustomerReceipt = function(){
         var deferred = Q.defer();
         var templateFile = req.body.discountPrice !== 0 ? 'templateWithDiscount.docx' : 'template.docx';
-        console.log(templateFile);
         var fileName = isWin ? __dirname + '\\' + templateFile : __dirname + '/' + templateFile;
         var content = fs
             .readFileSync(fileName, "binary");
@@ -174,6 +246,8 @@ module.exports = function (req, res) {
             order.push(ord);
         });
         getGiftcardBalance().then(function(listOfGC){
+            return getPointcardBalance(listOfGC)
+        }).then(function(list){
             doc.setData({
                 "server":req.body.user.name,
                 "order":req.body.order,
@@ -185,23 +259,43 @@ module.exports = function (req, res) {
                 "paymentType": req.body.paymentType,
                 "percentage": req.body.discount,
                 "discount": req.body.discountPrice.toFixed(2),
-                "giftcards" : listOfGC,
+                "giftcards" : list.gc,
+                "pointcards" : list.pc,
                 "discountArr": [],
                 "isCustomer": true
             });
             doc.render();
             var buf = doc.getZip()
                 .generate({type:"nodebuffer"});
-            var outputFile = isWin ? __dirname + '\\output.docx' : __dirname + '/outputCustomer.docx';
+            var outputFile = isWin ? __dirname + '\\outputCustomer.docx' : __dirname + '/outputCustomer.docx';
             fs.writeFileSync(outputFile, buf);
             deferred.resolve();
         });
         return deferred.promise;
     };
-    var saveMerchantReceipt = function(){
+    var generateReceiptBarcode = function(barcode){
+        var deferred = Q.defer();
+        bwipjs.toBuffer({
+            bcid:           'code128',      // Barcode type
+            text:           barcode,   // Text to encode
+            scale:          3,              // 3x scaling factor
+            height:         10,             // Bar height, in millimeters
+            includetext:    true,           // Show human-readable text
+            textxalign:     'center',       // Use your custom font
+            textsize:       13              // Font size, in points
+        }, function (err, png) {
+            if (err) {
+            } else {
+                fs.writeFile(imageFile, png, 'binary', function(){
+                    deferred.resolve();
+                });
+            }
+        });
+        return deferred.promise;
+    };
+    var saveMerchantReceipt = function(orderId){
         var deferred = Q.defer();
         var templateFile = req.body.discountPrice !== 0 ? 'templateWithDiscount.docx' : 'template.docx';
-        console.log(templateFile);
         var fileName = isWin ? __dirname + '\\' + templateFile : __dirname + '/' + templateFile;
         var content = fs
             .readFileSync(fileName, "binary");
@@ -219,7 +313,24 @@ module.exports = function (req, res) {
             ord.price = (o.price*o.quantity).toFixed(2);
             order.push(ord);
         });
-        getGiftcardBalance().then(function(listOfGC){
+        generateReceiptBarcode(orderId).then(function(){
+            return getGiftcardBalance()
+        }).then(function(listOfGC) {
+            return getPointcardBalance(listOfGC)
+        }).then(function(list){
+            var opts = {};
+            opts.centered = false;
+            var imageModule = new ImageModule(opts);
+            imageModule.getSizeFromData=function(imgData) {
+                var sizeOf = require('image-size');
+                var sizeObj = sizeOf(imgData);
+                console.log('before:' + sizeObj);
+                sizeObj.width = 175;
+                sizeObj.height = 50;
+                console.log('after:' + sizeObj);
+                return [sizeObj.width,sizeObj.height];
+            };
+            doc.attachModule(imageModule);
             doc.setData({
                 "server":req.body.user.name,
                 "order":req.body.order,
@@ -231,28 +342,32 @@ module.exports = function (req, res) {
                 "paymentType": req.body.paymentType,
                 "percentage": req.body.discount,
                 "discount": req.body.discountPrice.toFixed(2),
-                "giftcards" : listOfGC,
+                "giftcards" : list.gc,
+                "pointcards" : list.pc,
                 "discountArr": [],
                 "isMerchant": true,
-                "orderId": req.body.id
+                "orderId": orderId,
+                "barcode": imageFile
             });
             doc.render();
             var buf = doc.getZip()
                 .generate({type:"nodebuffer"});
-            var outputFile = isWin ? __dirname + '\\output.docx' : __dirname + '/outputMerchant.docx';
+            var outputFile = isWin ? __dirname + '\\outputMerchant.docx' : __dirname + '/outputMerchant.docx';
             fs.writeFileSync(outputFile, buf);
             deferred.resolve();
         });
         return deferred.promise;
     };
-    saveOrder().then(function(){
-        saveMerchantReceipt().then(function(){
+    var ID;
+    saveOrder().then(function(orderId){
+        ID = orderId;
+        saveMerchantReceipt(orderId).then(function(){
             return saveCustomerReceipt();
         }).then(function(){
             if (isWin){
                 printDocument();
             }else{
-                res.jsonp([]);
+                res.jsonp([ID]);
             }
         });
     });

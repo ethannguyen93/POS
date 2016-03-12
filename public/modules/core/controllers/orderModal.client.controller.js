@@ -42,6 +42,7 @@ angular.module('core').controller('orderCtrl',
                 };
                 RetrieveInventory.load(body, function(response){
                     if (response[0]._id !== undefined){
+                        debugger;
                         $modalInstance.close({'message': 'order', 'data': response[0]});
                     }else{
                         $scope.data.errorMessage = 'This order does not exist or already paid!';

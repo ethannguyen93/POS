@@ -23,7 +23,7 @@ module.exports = function (req, res) {
         if (!req.body.reportType || req.body.reportType === 'DailyReport') {
             queryBody = {
                 void: {$exists: false},
-                timePaid: {
+                timeOrderPlaced: {
                     $gte: givenDate.toDate(),
                     $lt: nextDate.toDate()
                 }
@@ -31,7 +31,7 @@ module.exports = function (req, res) {
         } else if (req.body.reportType === 'WeeklyReport') {
             queryBody = {
                 void: {$exists: false},
-                timePaid: {
+                timeOrderPlaced: {
                     $gte: moment(req.body.date).startOf('week').toDate(),
                     $lt: moment(req.body.date).endOf('week').toDate()
                 }
@@ -39,7 +39,7 @@ module.exports = function (req, res) {
         }  else if (req.body.reportType === 'MonthlyReport') {
             queryBody = {
                 void: {$exists: false},
-                timePaid: {
+                timeOrderPlaced: {
                     $gte: moment(req.body.date).startOf('month').toDate(),
                     $lt: moment(req.body.date).endOf('month').toDate()
                 }
@@ -47,7 +47,7 @@ module.exports = function (req, res) {
         }  else if (req.body.reportType === 'YearlyReport') {
             queryBody = {
                 void: {$exists: false},
-                timePaid: {
+                timeOrderPlaced: {
                     $gte: moment(req.body.date).startOf('year').toDate(),
                     $lt: moment(req.body.date).endOf('year').toDate()
                 }
@@ -62,7 +62,8 @@ module.exports = function (req, res) {
             queryBody = {
                 void: {$exists: false},
                 'employee.name': req.body.employeeName,
-                timePaid: {
+                isPaid: true,
+                timeOrderPlaced: {
                     $gte: moment(req.body.date).startOf('day').toDate(),
                     $lt: moment(req.body.date).endOf('day').toDate()
                 }
@@ -71,7 +72,8 @@ module.exports = function (req, res) {
             queryBody = {
                 void: {$exists: false},
                 'employee.name': req.body.employeeName,
-                timePaid: {
+                isPaid: true,
+                timeOrderPlaced: {
                     $gte: moment(req.body.date).startOf('week').toDate(),
                     $lt: moment(req.body.date).endOf('week').toDate()
                 }
@@ -80,7 +82,8 @@ module.exports = function (req, res) {
             queryBody = {
                 void: {$exists: false},
                 'employee.name': req.body.employeeName,
-                timePaid: {
+                isPaid: true,
+                timeOrderPlaced: {
                     $gte: moment(req.body.date).startOf('month').toDate(),
                     $lt: moment(req.body.date).endOf('month').toDate()
                 }
@@ -89,7 +92,8 @@ module.exports = function (req, res) {
             queryBody = {
                 void: {$exists: false},
                 'employee.name': req.body.employeeName,
-                timePaid: {
+                isPaid: true,
+                timeOrderPlaced: {
                     $gte: moment(req.body.date).startOf('year').toDate(),
                     $lt: moment(req.body.date).endOf('year').toDate()
                 }
@@ -133,7 +137,7 @@ module.exports = function (req, res) {
                             //employee
                             o.push(order.employee.name);
                             //time
-                            var time = moment(order.timePaid).format("MMM-DD-YYYY HH:mm");
+                            var time = moment(order.timeOrderPlaced).format("MMM-DD-YYYY HH:mm");
                             o.push(time);
                             //customer name
                             o.push(order.customerName);
@@ -162,8 +166,10 @@ module.exports = function (req, res) {
                             var o = [];
                             //employee
                             o.push(order.employee.name);
+                            var isPaid = (order.isPaid) ? 'yes' : 'no';
+                            o.push(isPaid);
                             //time
-                            var time = moment(order.timePaid).format("MMM-DD-YYYY HH:mm");
+                            var time = moment(order.timeOrderPlaced).format("MMM-DD-YYYY HH:mm");
                             o.push(time);
                             //customer name
                             o.push(order.customerName);
@@ -201,7 +207,7 @@ module.exports = function (req, res) {
                                     var o = [];
                                     o.push(order.index.toString());
                                     o.push(order.employee.name);
-                                    var time = moment(order.timePaid).format("MMM-DD-YYYY HH:mm");
+                                    var time = moment(order.timeOrderPlaced).format("MMM-DD-YYYY HH:mm");
                                     o.push(time);
                                     o.push(order.customerName);
                                     o.push('$' + parseFloat(item.price).toFixed(2));
@@ -215,7 +221,7 @@ module.exports = function (req, res) {
                             //employee
                             o.push(order.employee.name);
                             //time
-                            var time = moment(order.timePaid).format("MMM-DD-YYYY HH:mm");
+                            var time = moment(order.timeOrderPlaced).format("MMM-DD-YYYY HH:mm");
                             o.push(time);
                             //customer name
                             o.push(order.customerName);
@@ -257,7 +263,7 @@ module.exports = function (req, res) {
                                 case 'MonthlyReport':
                                 case 'YearlyReport':
                                     _.each(orders, generateReportRegular);
-                                    tableCols = ['Employee', 'Time Paid', 'Customer', 'Subtotal', 'Giftcard', 'Pointcard', 'Tax', 'Discount', 'Total', 'PaymentType'];
+                                    tableCols = ['Employee', 'isPaid?' ,'Time Paid', 'Customer', 'Subtotal', 'Giftcard', 'Pointcard', 'Tax', 'Discount', 'Total', 'PaymentType'];
                                     var sumSubtotal = 0;
                                     var sumGiftcard = 0;
                                     var sumPointcard = 0;
@@ -285,7 +291,7 @@ module.exports = function (req, res) {
                                     sumPointcard = '$' + sumPointcard.toFixed(2);
                                     sumTotal = '$' + sumTotal.toFixed(2);
                                     sumTax = '$' + sumTax.toFixed(2);
-                                    report.push(['','','Total:', sumSubtotal, sumGiftcard, sumPointcard, sumTax, sumDiscount, sumTotal, '']);
+                                    report.push(['','', '','Total:', sumSubtotal, sumGiftcard, sumPointcard, sumTax, sumDiscount, sumTotal, '']);
                                     break;
                                 case 'CustomerReport':
                                     _.each(orders, generateCustomerReport);

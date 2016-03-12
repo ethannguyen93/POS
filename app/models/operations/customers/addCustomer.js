@@ -6,7 +6,8 @@ module.exports = function (req, res) {
         collection.insert({
             'name': req.body.name,
             'phone': req.body.phone,
-            'email': req.body.email
+            'email': req.body.email,
+            'address': req.body.address
         }, function(err, result){
             if (err) {
                 console.log(err)
