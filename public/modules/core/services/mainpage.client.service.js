@@ -29,33 +29,61 @@ angular.module('core').factory('MainpageServices', ['RetrieveInventory', 'UserSe
             },
             addItem: function ($scope, item) {
                 console.log(item);
+                var result = {};
                 var index = -1;
+                var added = true;
                 var prevItem = _.find($scope.data.orders, function (order) {
                     index++;
                     return order.id === item._id;
                 });
-                if (prevItem === undefined) {
-                    $scope.data.orders.push(_.clone({
-                        'id': item._id,
-                        'name': item.name,
-                        'price': item.price,
-                        'quantity': 1,
-                        'barcode': (item.barcode === undefined)  ? '' : item.barcode,
-                        'itemType': (item.type === undefined || item.type !== 'StockItem')? '' : 'StockItem',
-                        'index': $scope.data.orders.length,
-                        'isGiftcard': (item.isGiftcard === undefined) ? false : item.isGiftcard,
-                        'isPointcard': (item.isPointcard === undefined) ? false : item.isPointcard,
-                        'pcNumber': (item.pcNumber === undefined) ? '': item.pcNumber,
-                        'pcType': (item.pcType === undefined) ? '': item.pcType,
-                        'pcRedeem': (item.pcRedeem === undefined) ? '': item.pcRedeem
-                    }));
-                } else {
-                    $scope.data.orders[index].quantity++;
+
+                var newQty = (prevItem) ? $scope.data.orders[index].quantity + 1 : 1;
+
+                if ( ( item.quantity && item.quantity - newQty >= 0 ) || !item.quantity ) {
+                    if (!prevItem) {
+                        $scope.data.orders.push(_.clone({
+                            'id': item._id,
+                            'name': item.name,
+                            'price': item.price,
+                            'quantity': 1,
+                            'barcode': (item.barcode === undefined)  ? '' : item.barcode,
+                            'itemType': (item.type === undefined || item.type !== 'StockItem')? '' : 'StockItem',
+                            'index': $scope.data.orders.length,
+                            'isGiftcard': (item.isGiftcard === undefined) ? false : item.isGiftcard,
+                            'isPointcard': (item.isPointcard === undefined) ? false : item.isPointcard,
+                            'pcNumber': (item.pcNumber === undefined) ? '': item.pcNumber,
+                            'pcType': (item.pcType === undefined) ? '': item.pcType,
+                            'pcRedeem': (item.pcRedeem === undefined) ? '': item.pcRedeem
+                        }));
+                    } else {
+                        $scope.data.orders[index].quantity++;
+                    }
+                } else if ( item.quantity && item.quantity - newQty < 0 ) {
+                    added = false;
+                    result = { alert: "No stock remaining." };
+                    return result;
                 }
-                $scope.data.subtotal += item.price;
+
+                // TODO unhardcode 5
+                // Check if Item is StockItem. If it is, performs check on remaining stock qty
+                if ( item.quantity ) {
+                    var remaining = item.quantity - newQty;
+                    if ( remaining === 5 ) {
+                        result = { alert: 'Stock for "' + item.name + '" is low. Quantity remaining: ' + remaining };
+                    } else if ( remaining === 0 ) {
+                        result = { alert: 'Stock for "' + item.name + '" has been depleted. Quantity remaining: ' + remaining };
+                    }
+                }
+
+                if (added) {
+                    $scope.data.subtotal += item.price;
+                }
+
                 if (!item.isGiftcard && !item.isPointcard) {
                     $scope.data.tax += 0.13 * item.price;
                 }
+
+                return result;
             },
             /**
              *

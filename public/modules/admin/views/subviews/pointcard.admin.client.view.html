@@ -15,21 +15,21 @@
                     <span class="sr-only">Error:</span>
                     {{data.errorMessage}}
                 </div>
-                <div class="form-group">
-                    <label>Payment Type: Cash</label>
-                    <input class="form-control" placeholder="Point" ng-model="data.cash" ng-change="reset()"> = $1
+                <div class="form-group row">
+                    <label class="col-md-3">Payment Type: Cash</label>
+                    <input class="form-control col-md-5" placeholder="Point" ng-model="data.cash" ng-change="reset()"> = $1
                 </div>
-                <div class="form-group">
-                    <label>Payment Type: Debit Card</label>
-                    <input class="form-control" placeholder="Point" ng-model="data.debit" ng-change="reset()"> = $1
+                <div class="form-group row">
+                    <label class="col-md-3">Payment Type: Debit Card</label>
+                    <input class="form-control col-md-5" placeholder="Point" ng-model="data.debit" ng-change="reset()"> = $1
                 </div>
-                <div class="form-group">
-                    <label>Payment Type: Credit Card</label>
-                    <input class="form-control" placeholder="Point" ng-model="data.credit" ng-change="reset()"> = $1
+                <div class="form-group row">
+                    <label class="col-md-3">Payment Type: Credit Card</label>
+                    <input class="form-control col-md-5" placeholder="Point" ng-model="data.credit" ng-change="reset()"> = $1
                 </div>
-                <div class="form-group">
-                    <label>Redeem</label>
-                    <input class="form-control" placeholder="Point" ng-model="data.redeem" ng-change="reset()"> = $1
+                <div class="form-group row">
+                    <label class="col-md-3">Redeem</label>
+                    <input class="form-control col-md-5" placeholder="Point" ng-model="data.redeem" ng-change="reset()"> = $1
                 </div>
                 <button class="btn btn-default" ng-click="changeSetting(data)">Update </button>
             </div>

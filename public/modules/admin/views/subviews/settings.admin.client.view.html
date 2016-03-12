@@ -21,22 +21,23 @@
                 <div class="form-group">
                     <label>Account name: {{admin.setting.name}}</label>
                 </div>
-                <div class="form-group">
-                    <label>Current password:</label>
-                    <input disabled="true" type="password" class="form-control" placeholder="Password" ng-model="admin.setting.passcode">
+                <div class="form-group row">
+                    <label class="col-md-3">Current password:</label>
+                    <input disabled="true" type="password" class="col-md-5 form-control" placeholder="Password" ng-model="admin.setting.passcode">
                 </div>
-                <div class="form-group">
-                    <label>New password:</label>
-                    <input type="password" ng-change="admin.setting.onchange()" class="form-control" placeholder="Password" ng-model="admin.setting.newpasscode">
+                <div class="form-group row">
+                    <label class="col-md-3">New password:</label>
+                    <input type="password" ng-change="admin.setting.onchange()" class="col-md-5 form-control" placeholder="Password" ng-model="admin.setting.newpasscode">
                 </div>
-                <div class="form-group">
-                    <label>New password:</label>
-                    <input type="password" ng-change="admin.setting.onchange()" class="form-control" placeholder="Password" ng-model="admin.setting.newpasscode_repeat">
+                <div class="form-group row">
+                    <label class="col-md-3">New password:</label>
+                    <input type="password" ng-change="admin.setting.onchange()" class="col-md-5 form-control" placeholder="Password" ng-model="admin.setting.newpasscode_repeat">
                 </div>
                 <button type="submit" class="btn btn-default" ng-click="changepassword()">Submit</button>
-                <div class="form-group">
-                    <label>Void Order:</label>
-                    <input class="voidOrderInput" type="text" ng-change="admin.setting.onchange()" class="form-control" placeholder="order ID" ng-model="orderId">
+                <hr/>
+                <div class="form-group row">
+                    <label class="col-md-3">Void Order:</label>
+                    <input type="text" ng-change="admin.setting.onchange()" class="form-control col-md-5" placeholder="order ID" ng-model="orderId">
                 </div>
                 <button type="submit" class="btn btn-default" ng-click="voidOrder()">Void Order</button>
             </div>

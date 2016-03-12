@@ -307,16 +307,38 @@ angular.module('core').controller('HomeController', [
 		$scope.getItem = function(cat){
 			MainpageServices.getItem($scope, cat);
 		};
-		$scope.addItemToOrder = function(item){
-			MainpageServices.addItem($scope, item);
 
+		$scope.addItemToOrder = function(item){
+			var result = MainpageServices.addItem($scope, item);
+			if (result.alert) {
+				$scope.openNotificationModal(result.alert);
+			}
 		};
+
+		$scope.openNotificationModal = function (notification) {
+			var editorInstance = $modal.open({
+				animation: true,
+				windowClass: 'modal-fullwindow',
+				templateUrl: 'modules/core/views/notificationModal.client.view.html',
+				controller: 'notificationCtrl',
+				resolve: {
+					notification: function() {
+						return notification;
+					}
+				}
+			});
+			editorInstance.result.then(function () {
+				// do nothing
+			});
+		};
+
 		$scope.updateOrder = function(type, index){
 			MainpageServices.updateOrder($scope, type, index);
 			if ($scope.data.subtotal < 0){
 				$scope.data.subtotal = 0;
 			}
 		};
+
 		$scope.removeItemFromOrder = function(id){
 			var item = _.find($scope.data.orders, function(order){
 				return order.id === id;

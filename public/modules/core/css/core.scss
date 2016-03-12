@@ -27,6 +27,10 @@ $text-secondary: #727272;
   src: url(../../../assets/Open_Sans/OpenSans-Light.ttf);
 }
 
+html {
+  height: 100%;
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   color: #63768A;
@@ -34,7 +38,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  font-size: 2.4em;
+  font-size: 1.9em;
   overflow-x: hidden;
 }
 
@@ -54,6 +58,10 @@ section {
 }
 
 .full-width {
+  width: 100%;
+}
+
+.img-full-width {
   width: 100%;
 }
 
@@ -183,7 +191,7 @@ a > span {
   //letter-spacing: 3px;
   text-align: center;
   font-family: OpenSans;
-  height: 80px;
+  //height: 80px;
   display: flex;
   display: -webkit-flex;
   flex-direction: column;
@@ -215,7 +223,7 @@ a > span {
   font-size: 1.25em;
   text-align: center;
   font-family: OpenSans;
-  height: 80px;
+  min-height: 80px;
   display: flex;
   display: -webkit-flex;
   flex-direction: column;
@@ -268,7 +276,7 @@ a > span {
 
 .popout-right {
   right: 0;
-  backface-visibility: none;
+  backface-visibility: hidden;
   box-shadow: -8px 0px 5px -5px rgba(0,0,0,0.25);
 
   &.popout-hidden {
@@ -416,9 +424,10 @@ a > span {
       flex: 0;
     }
 
-    & * {
+    & > * {
       -webkit-flex: 1;
       flex: 1;
+      //height: 100px;
       /* display: flex;
        display: -webkit-flex;
        flex-direction: column;*/
@@ -474,6 +483,61 @@ a > span {
       /* $background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/13460/dark_wall.png'); */
       $background: #3498db;
 
+      .slideDiscount {
+        display: inline-block;
+        width: 80px;
+        height: 30px;
+        background: #333;
+        margin: 5px auto;
+        margin-top: 10px;
+        margin-bottom: 0px;
+        position: relative;
+        border-radius: 50px;
+        box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+        &:after {
+          content: '$';
+          color: #000;
+          top: 2px;
+          position: absolute;
+          right: 10px;
+          z-index: 0;
+          font: 12px/26px Arial, sans-serif;
+          font-weight: bold;
+          text-shadow: 1px 1px 0px rgba(255,255,255,.15);
+        }
+        &:before {
+          content: '%';
+          color: $activeColor;
+          top: 2px;
+          position: absolute;
+          left: 10px;
+          z-index: 0;
+          font: 12px/26px Arial, sans-serif;
+          font-weight: bold;
+        }
+        label {
+          display: block;
+          width: 34px;
+          height: 25px;
+          cursor: pointer;
+          position: absolute;
+          top: 3px;
+          left: 3px;
+          z-index: 1;
+          background: #fcfff4;
+          background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+          border-radius: 50px;
+          transition: all 0.4s ease;
+          box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+        }
+        input[type=checkbox] {
+          visibility: hidden;
+          &:checked + label {
+            left: 43px;
+          }
+        }
+      }
+
       .slideThree {
         display: inline-block;
         width: 80px;
@@ -528,6 +592,8 @@ a > span {
           }
         }
       }
+
+
       /* end .slideThree */
 
 
@@ -565,11 +631,23 @@ a > span {
   }
 }
 
+.flex-item-noflex {
+  flex: none;
+  -webkit-flex: none;
+}
+
 input[type="button"]
 {
   &, &.btn {
     outline:none;
   }
+}
+
+input[type="text"]
+{
+  color: rgb(65,65,65);
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 5px;
 }
 
 .btn {
@@ -729,7 +807,25 @@ input[type="button"]
   }
 }
 
+.modal-image {
+
+  .modal-dialog {
+    max-width: 50%;
+  }
+
+  .modal-content {
+    max-height: 60%;
+    overflow: hidden;
+  }
+
+  .modal-body {
+    text-align: center;
+  }
+
+}
+
 .modal-dialog {
+  min-width: 50%;
   margin: 0px auto;
   height: 100%;
 
@@ -785,6 +881,11 @@ input[type="button"]
   }
 }
 
+#order-grid {
+  height: 100% !important;
+  min-height: 470px !important;
+}
+
 .order-gridview {
   height: 600px;
   text-align: center;
@@ -807,6 +908,7 @@ input[type="button"]
 }
 
 .ui-grid {
+  height: 100%;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -814,6 +916,12 @@ input[type="button"]
   input {
     padding: 3px;
   }
+}
+
+.ui-grid-flex-container {
+  min-height: 480px;
+  //overflow: hidden;
+  height: 100%;
 }
 
 .ui-grid-header-cell, .ui-grid-header-cell-primary-focus {
@@ -961,6 +1069,7 @@ input[type="button"]
 }
 
 .discount {
+  width: 150px;
   border: none;
 }
 

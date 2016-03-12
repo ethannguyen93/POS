@@ -1,20 +1,22 @@
 <div class="col-md-12 property-content-container mainpage" ng-init="initMainpage()">
     <div class="flex-panel col-md-8">
         <div class="order-panel flex-panel-content">
-            <div class="panel-heading">
+            <div class="panel-heading flex-item-noflex">
                 <div class="row">
-                    <div class="col-md-2">
-                        <input placeholder="Enter Ticket number" style="color:black; border-width: 4px;" type="text" ng-model="data.ticketNumber">
+                    <div class="col-md-12">
+                        <div align="left">Order number {{data.index}} - Customer {{data.customerName}}</div>
                     </div>
-                    <div class="col-md-6">
-                        Order number {{data.index}} - Customer {{data.customerName}}
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <input class="full-width" placeholder="Enter Ticket number" type="text" ng-model="data.ticketNumber">
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <select class="form-control" ng-options="paymentType for paymentType in data.paymentTypes track by paymentType"
                                 ng-model="data.selectedPayment"
                                 ng-change="data.updateselectedPayment()"></select>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-4">
                         <select ng-if="data.employees.length > 0" class="form-control" ng-options="employee for employee in data.employees track by employee"
                                 ng-model="data.selectedEmployee"
                                 ng-change="data.updateEmployee()"></select>
@@ -23,8 +25,10 @@
 
 
             </div>
-            <div id="order-grid" ui-grid="data.gridOptions" ui-grid-pagination class="grid" ng-init="data.initOrder(); initFTScrollerGrid('order-grid')"></div>
-            <pos-pagination page="{{ data.gridApi.pagination.getPage() }}"
+            <div class="ui-grid-flex-container">
+                <div id="order-grid" ui-grid="data.gridOptions" ui-grid-pagination class="grid" ng-init="data.initOrder(); initFTScrollerGrid('order-grid')"></div>
+            </div>
+                <pos-pagination class="flex-item-noflex" page="{{ data.gridApi.pagination.getPage() }}"
                             of="{{ data.gridApi.pagination.getTotalPages() }}"
                             prev="data.gridApi.pagination.previousPage()"
                             next="data.gridApi.pagination.nextPage()"></pos-pagination>
@@ -82,7 +86,7 @@
                             </div>
                         </td>
                         <td ng-show="data.discountType">
-                            <input class="discount" ng-change="applyDiscount()" style="color:black; border-width: 4px;" type="text" ng-model="data.discount" ng-pattern="/^[0-9]{1,2}$/"> % = ${{data.discountPrice.toFixed(2)}}
+                            <input class="discount" ng-change="applyDiscount()" type="text" ng-model="data.discount" ng-pattern="/^[0-9]{1,2}$/"> % = ${{data.discountPrice.toFixed(2)}}
                         </td>
                         <td ng-hide="data.discountType">
                             $ <input class="discount" ng-change="applyDiscount()" style="color:black; border-width: 4px;" type="text" ng-model="data.discount" ng-pattern="/^[0-9]+$/">

@@ -9,6 +9,9 @@
   font-family: 'OpenSans';
   font-weight: 300;
   src: url(../../../assets/Open_Sans/OpenSans-Light.ttf); }
+html {
+  height: 100%; }
+
 body {
   -webkit-font-smoothing: antialiased;
   color: #63768A;
@@ -16,7 +19,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  font-size: 2.4em;
+  font-size: 1.9em;
   overflow-x: hidden; }
 
 /** For Angular hidden elements */
@@ -32,6 +35,9 @@ section {
   height: 100%; }
 
 .full-width {
+  width: 100%; }
+
+.img-full-width {
   width: 100%; }
 
 .inline-block {
@@ -129,7 +135,6 @@ a > span {
   line-height: 0.7em;
   text-align: center;
   font-family: OpenSans;
-  height: 80px;
   display: flex;
   display: -webkit-flex;
   flex-direction: column;
@@ -158,7 +163,7 @@ a > span {
   font-size: 1.25em;
   text-align: center;
   font-family: OpenSans;
-  height: 80px;
+  min-height: 80px;
   display: flex;
   display: -webkit-flex;
   flex-direction: column;
@@ -199,7 +204,7 @@ a > span {
 
 .popout-right {
   right: 0;
-  backface-visibility: none;
+  backface-visibility: hidden;
   box-shadow: -8px 0px 5px -5px rgba(0, 0, 0, 0.25); }
   .popout-right.popout-hidden {
     -webkit-transform: translateX(105%);
@@ -291,7 +296,7 @@ a > span {
       margin: 2px;
       -webkit-flex: 0;
       flex: 0; }
-    .flex-panel .order-panel * {
+    .flex-panel .order-panel > * {
       -webkit-flex: 1;
       flex: 1;
       /* display: flex;
@@ -329,6 +334,54 @@ a > span {
           border-top: 1px solid rgba(255, 255, 255, 0.1); }
       .flex-panel .summary-panel .subtotal-panel .table > tbody > tr > td {
         border-top: 1px solid rgba(255, 255, 255, 0.1); }
+      .flex-panel .summary-panel .subtotal-panel .slideDiscount {
+        display: inline-block;
+        width: 80px;
+        height: 30px;
+        background: #333;
+        margin: 5px auto;
+        margin-top: 10px;
+        margin-bottom: 0px;
+        position: relative;
+        border-radius: 50px;
+        box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2); }
+        .flex-panel .summary-panel .subtotal-panel .slideDiscount:after {
+          content: '$';
+          color: #000;
+          top: 2px;
+          position: absolute;
+          right: 10px;
+          z-index: 0;
+          font: 12px/26px Arial, sans-serif;
+          font-weight: bold;
+          text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.15); }
+        .flex-panel .summary-panel .subtotal-panel .slideDiscount:before {
+          content: '%';
+          color: #27ae60;
+          top: 2px;
+          position: absolute;
+          left: 10px;
+          z-index: 0;
+          font: 12px/26px Arial, sans-serif;
+          font-weight: bold; }
+        .flex-panel .summary-panel .subtotal-panel .slideDiscount label {
+          display: block;
+          width: 34px;
+          height: 25px;
+          cursor: pointer;
+          position: absolute;
+          top: 3px;
+          left: 3px;
+          z-index: 1;
+          background: #fcfff4;
+          background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+          border-radius: 50px;
+          transition: all 0.4s ease;
+          box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3); }
+        .flex-panel .summary-panel .subtotal-panel .slideDiscount input[type=checkbox] {
+          visibility: hidden; }
+          .flex-panel .summary-panel .subtotal-panel .slideDiscount input[type=checkbox]:checked + label {
+            left: 43px; }
       .flex-panel .summary-panel .subtotal-panel .slideThree {
         display: inline-block;
         width: 80px;
@@ -377,54 +430,6 @@ a > span {
           visibility: hidden; }
           .flex-panel .summary-panel .subtotal-panel .slideThree input[type=checkbox]:checked + label {
             left: 43px; }
-    .flex-panel .summary-panel .subtotal-panel .slideDiscount {
-      display: inline-block;
-      width: 80px;
-      height: 30px;
-      background: #333;
-      margin: 5px auto;
-      margin-top: 10px;
-      margin-bottom: 0px;
-      position: relative;
-      border-radius: 50px;
-      box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 0.2); }
-    .flex-panel .summary-panel .subtotal-panel .slideDiscount:after {
-      content: '$';
-      color: #27ae60;
-      top: 2px;
-      position: absolute;
-      right: 10px;
-      z-index: 0;
-      font: 12px/26px Arial, sans-serif;
-      font-weight: bold;
-      text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.15); }
-    .flex-panel .summary-panel .subtotal-panel .slideDiscount:before {
-      content: '%';
-      color: #27ae60;
-      top: 2px;
-      position: absolute;
-      left: 10px;
-      z-index: 0;
-      font: 12px/26px Arial, sans-serif;
-      font-weight: bold; }
-    .flex-panel .summary-panel .subtotal-panel .slideDiscount label {
-      display: block;
-      width: 34px;
-      height: 25px;
-      cursor: pointer;
-      position: absolute;
-      top: 3px;
-      left: 3px;
-      z-index: 1;
-      background: #fcfff4;
-      background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-      border-radius: 50px;
-      transition: all 0.4s ease;
-      box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3); }
-    .flex-panel .summary-panel .subtotal-panel .slideDiscount input[type=checkbox] {
-      visibility: hidden; }
-    .flex-panel .summary-panel .subtotal-panel .slideDiscount input[type=checkbox]:checked + label {
-      left: 43px; }
     .flex-panel .summary-panel * {
       -webkit-flex: 1;
       flex: 1;
@@ -448,8 +453,17 @@ a > span {
     margin: -5px;
     margin-bottom: 5px; }
 
+.flex-item-noflex {
+  flex: none;
+  -webkit-flex: none; }
+
 input[type="button"], input[type="button"].btn {
   outline: none; }
+
+input[type="text"] {
+  color: #414141;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 5px; }
 
 .btn {
   min-width: 75px;
@@ -551,7 +565,16 @@ input[type="button"], input[type="button"].btn {
   max-height: 80vh;
   overflow-y: scroll; }
 
+.modal-image .modal-dialog {
+  max-width: 50%; }
+.modal-image .modal-content {
+  max-height: 60%;
+  overflow: hidden; }
+.modal-image .modal-body {
+  text-align: center; }
+
 .modal-dialog {
+  min-width: 50%;
   margin: 0px auto;
   height: 100%; }
   .modal-dialog .modal-header {
@@ -584,6 +607,10 @@ input[type="button"], input[type="button"].btn {
   .order-selection button {
     flex: 1; }
 
+#order-grid {
+  height: 100% !important;
+  min-height: 470px !important; }
+
 .order-gridview {
   height: 600px;
   text-align: center; }
@@ -603,11 +630,16 @@ input[type="button"], input[type="button"].btn {
   background-clip: padding-box; }
 
 .ui-grid {
+  height: 100%;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px; }
   .ui-grid input {
     padding: 3px; }
+
+.ui-grid-flex-container {
+  min-height: 480px;
+  height: 100%; }
 
 .ui-grid-header-cell, .ui-grid-header-cell-primary-focus {
   height: 50px;
@@ -706,6 +738,7 @@ input[type="button"], input[type="button"].btn {
     border-right: 0; }
 
 .discount {
+  width: 150px;
   border: none; }
 
 .pointcard-input {
@@ -723,8 +756,6 @@ input[type="button"], input[type="button"].btn {
   background-color: #efe; }
 
 /*# sourceMappingURL=core.css.map */
-
-
 
 .sendReminder{
   cursor: pointer;
@@ -745,20 +776,4 @@ input[type="button"], input[type="button"].btn {
 .sendReminder:focus{
   outline: 0 none;
   box-shadow: none;
-}
-
-.modal-image .modal-dialog .modal-content{
-  display: table;
-}
-
-.modal-image .modal-dialog .modal-content img{
-  display: table-row;
-}
-
-.modal-order .modal-dialog {
-  width: 30%
-}
-
-.voidOrderInput{
-  width: 30%
 }
