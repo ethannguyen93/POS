@@ -1089,3 +1089,26 @@ input[type="text"]
 .list-group-item:hover {
   background-color: #efe;
 }
+
+.sendReminder{
+  cursor: pointer;
+  appearance: none;
+  background: #34495E;
+  border-radius: 1px;
+  box-sizing: border-box;
+  position: relative;
+  box-sizing: content-box ;
+  width: 30px;
+  height: 30px;
+  border-width: 0;
+  transition: all .3s linear;
+}
+
+.sendReminder:checked{
+  background-color: #2ECC71;
+}
+
+.sendReminder:focus{
+  outline: 0 none;
+  box-shadow: none;
+}

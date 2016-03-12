@@ -741,9 +741,6 @@ input[type="text"] {
   width: 150px;
   border: none; }
 
-.pointcard-input {
-  width: 100%
-}
 /** Scheduler */
 .calendar-view {
   margin: 15px 0; }
@@ -755,25 +752,24 @@ input[type="text"] {
 .list-group-item:hover {
   background-color: #efe; }
 
-/*# sourceMappingURL=core.css.map */
-
-.sendReminder{
+.sendReminder {
   cursor: pointer;
   appearance: none;
   background: #34495E;
   border-radius: 1px;
   box-sizing: border-box;
   position: relative;
-  box-sizing: content-box ;
+  box-sizing: content-box;
   width: 30px;
   height: 30px;
   border-width: 0;
-  transition: all .3s linear;
-}
-.sendReminder:checked{
-  background-color: #2ECC71;
-}
-.sendReminder:focus{
+  transition: all .3s linear; }
+
+.sendReminder:checked {
+  background-color: #2ECC71; }
+
+.sendReminder:focus {
   outline: 0 none;
-  box-shadow: none;
-}
+  box-shadow: none; }
+
+/*# sourceMappingURL=core.css.map */
