@@ -55,19 +55,21 @@ angular.module('pointcards').controller('PointcardsController', ['$scope', '$sta
 			hidScanner.destroy();
 		});
 		$scope.addPointcard = function(){
-			var pointcardNumber = $scope.data.newpc;
-			var pointcard = _.find($scope.data.pointcards, function(pc){
-				return pc.number === pointcardNumber;
-			});
-			if (pointcard === undefined){
-				$scope.addPointcardModal(pointcardNumber).then(function(pointcard){
-					if (pointcard !== 'no'){
-						$scope.data.pointcards.push(pointcard);
-					}
+			if ($scope.data.newpc !== undefined && $scope.data.newpc !== ''){
+				var pointcardNumber = $scope.data.newpc;
+				var pointcard = _.find($scope.data.pointcards, function(pc){
+					return pc.number === pointcardNumber;
 				});
-			}else{
-				$scope.data.errorMessage = 'This Point Card is already existed!';
-				$scope.data.isError = true;
+				if (pointcard === undefined){
+					$scope.addPointcardModal(pointcardNumber).then(function(pointcard){
+						if (pointcard !== 'no'){
+							$scope.data.pointcards.push(pointcard);
+						}
+					});
+				}else{
+					$scope.data.errorMessage = 'This Point Card is already existed!';
+					$scope.data.isError = true;
+				}
 			}
 		};
 		$scope.addPointcardModal = function (pointcardNumber) {

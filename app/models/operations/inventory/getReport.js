@@ -78,7 +78,7 @@ module.exports = function (req, res) {
                     $lt: moment(req.body.date).endOf('week').toDate()
                 }
             };
-        }  else if (req.body.reportType === 'EmployeeReportMontly'){
+        }  else if (req.body.reportType === 'EmployeeReportMonthly'){
             queryBody = {
                 void: {$exists: false},
                 'employee.name': req.body.employeeName,
@@ -107,14 +107,12 @@ module.exports = function (req, res) {
                 customerID: req.body.customerID
             };
         }
-        console.log(queryBody);
         collection.find(queryBody, function (err, cursor) {
             if (err) {
                 console.log(err)
             } else {
                 var orders = [];
                 cursor.toArray(function (err, result) {
-                    console.log(result);
                     if (err) {
                         console.log(err);
                     } else {
@@ -158,7 +156,8 @@ module.exports = function (req, res) {
                             var discountPrice = (order.discountPrice !== undefined) ? order.discountPrice: 0;
                             o.push('$ -' + (discountPrice).toFixed(2));
                             o.push('$' + (order.subtotal + order.tax - discountPrice).toFixed(2));
-                            o.push(order.paymentType);
+                            var paymentType = (order.paymentType) ? order.paymentType : '';
+                            o.push(paymentType);
                             report.push(o);
                         }
 
@@ -194,7 +193,8 @@ module.exports = function (req, res) {
                             var discountPrice = (order.discountPrice !== undefined) ? order.discountPrice: 0;
                             o.push('$ -' + (discountPrice).toFixed(2));
                             o.push('$' + (order.subtotal + order.tax - discountPrice).toFixed(2));
-                            o.push(order.paymentType);
+                            var paymentType = (order.paymentType) ? order.paymentType : '';
+                            o.push(paymentType);
                             report.push(o);
                         }
 
@@ -242,10 +242,98 @@ module.exports = function (req, res) {
                             var discountPrice = (order.discountPrice !== undefined) ? order.discountPrice: 0;
                             o.push('$ -' + (discountPrice).toFixed(2));
                             o.push('$' + (order.subtotal + order.tax - discountPrice).toFixed(2));
-                            o.push(order.paymentType);
+                            var paymentType = (order.paymentType) ? order.paymentType : '';
+                            o.push(paymentType);
                             report.push(o);
                         }
-
+                        function addRegularContent(){
+                            _.each(orders, generateReportRegular);
+                            tableCols = ['Employee', 'isPaid?' ,'Time Paid', 'Customer', 'Subtotal', 'Giftcard', 'Pointcard', 'Tax', 'Discount', 'Total', 'PaymentType'];
+                            var sumSubtotal = 0;
+                            var sumGiftcard = 0;
+                            var sumPointcard = 0;
+                            var sumDiscount = 0;
+                            var sumTotal = 0;
+                            var sumTax = 0;
+                            _.each(report,function(item){
+                                //remove $ sign then add new total
+                                var subtotal = parseFloat(item[tableCols.indexOf('Subtotal')].substring(1));
+                                var giftcard = parseFloat(item[tableCols.indexOf('Giftcard')].substring(1));
+                                var pointcard = parseFloat(item[tableCols.indexOf('Pointcard')].substring(1));
+                                var discount = parseFloat(item[tableCols.indexOf('Discount')].substring(1));
+                                var total = parseFloat(item[tableCols.indexOf('Total')].substring(1));
+                                var tax = parseFloat(item[tableCols.indexOf('Tax')].substring(1));
+                                sumSubtotal += subtotal;
+                                sumGiftcard += giftcard;
+                                sumPointcard += pointcard;
+                                sumDiscount += discount;
+                                sumTax += tax;
+                                sumTotal += total;
+                            });
+                            sumSubtotal = '$' + sumSubtotal.toFixed(2);
+                            sumGiftcard = '$' + sumGiftcard.toFixed(2);
+                            sumDiscount = '$' + sumDiscount.toFixed(2);
+                            sumPointcard = '$' + sumPointcard.toFixed(2);
+                            sumTotal = '$' + sumTotal.toFixed(2);
+                            sumTax = '$' + sumTax.toFixed(2);
+                            report.push(['','', '','Total:', sumSubtotal, sumGiftcard, sumPointcard, sumTax, sumDiscount, sumTotal, '']);
+                        };
+                        function addCustomerContent(){
+                            _.each(orders, generateCustomerReport);
+                            tableCols = ['Employee', 'Time Paid', 'Customer', 'Subtotal', 'Giftcard', 'Tax', 'Discount', 'Total', 'PaymentType'];
+                            var sumSubtotal = 0;
+                            var sumGiftcard = 0;
+                            var sumDiscount = 0;
+                            var sumTotal = 0;
+                            var sumTax = 0;
+                            _.each(report,function(item){
+                                //remove $ sign then add new total
+                                var subtotal = parseFloat(item[tableCols.indexOf('Subtotal')].substring(1));
+                                var giftcard = parseFloat(item[tableCols.indexOf('Giftcard')].substring(1));
+                                var discount = parseFloat(item[tableCols.indexOf('Discount')].substring(1));
+                                var total = parseFloat(item[tableCols.indexOf('Total')].substring(1));
+                                var tax = parseFloat(item[tableCols.indexOf('Tax')].substring(1));
+                                sumSubtotal += subtotal;
+                                sumGiftcard += giftcard;
+                                sumDiscount += discount;
+                                sumTax += tax;
+                                sumTotal += total;
+                            });
+                            sumSubtotal = '$' + sumSubtotal.toFixed(2);
+                            sumGiftcard = '$' + sumGiftcard.toFixed(2);
+                            sumDiscount = '$' + sumDiscount.toFixed(2);
+                            sumTotal = '$' + sumTotal.toFixed(2);
+                            sumTax = '$' + sumTax.toFixed(2);
+                            report.push(['','','Total:', sumSubtotal, sumGiftcard, sumTax, sumDiscount, sumTotal, '']);
+                        }
+                        function addEmployeeContent(){
+                            _.each(orders, generateEmployeeReport);
+                            tableCols = ['Employee', 'Time Paid', 'Customer', 'Subtotal', 'Giftcard', 'Tax', 'Discount', 'Total', 'PaymentType'];
+                            var sumSubtotal = 0;
+                            var sumGiftcard = 0;
+                            var sumDiscount = 0;
+                            var sumTotal = 0;
+                            var sumTax = 0;
+                            _.each(report,function(item){
+                                //remove $ sign then add new total
+                                var subtotal = parseFloat(item[tableCols.indexOf('Subtotal')].substring(1));
+                                var giftcard = parseFloat(item[tableCols.indexOf('Giftcard')].substring(1));
+                                var discount = parseFloat(item[tableCols.indexOf('Discount')].substring(1));
+                                var total = parseFloat(item[tableCols.indexOf('Total')].substring(1));
+                                var tax = parseFloat(item[tableCols.indexOf('Tax')].substring(1));
+                                sumSubtotal += subtotal;
+                                sumGiftcard += giftcard;
+                                sumDiscount += discount;
+                                sumTax += tax;
+                                sumTotal += total;
+                            });
+                            sumSubtotal = '$' + sumSubtotal.toFixed(2);
+                            sumGiftcard = '$' + sumGiftcard.toFixed(2);
+                            sumDiscount = '$' + sumDiscount.toFixed(2);
+                            sumTotal = '$' + sumTotal.toFixed(2);
+                            sumTax = '$' + sumTax.toFixed(2);
+                            report.push(['','','Total:', sumSubtotal, sumGiftcard, sumTax, sumDiscount, sumTotal, '']);
+                        }
                         if (req.body.reportType){
                             switch (req.body.reportType){
                                 case 'InventoryReport':
@@ -259,67 +347,16 @@ module.exports = function (req, res) {
                                     report.push(['','','Remaining:', remainder]);
                                     break;
                                 case 'DailyReport' :
+                                    addRegularContent();
+                                    break;
                                 case 'WeeklyReport':
                                 case 'MonthlyReport':
                                 case 'YearlyReport':
-                                    _.each(orders, generateReportRegular);
-                                    tableCols = ['Employee', 'isPaid?' ,'Time Paid', 'Customer', 'Subtotal', 'Giftcard', 'Pointcard', 'Tax', 'Discount', 'Total', 'PaymentType'];
-                                    var sumSubtotal = 0;
-                                    var sumGiftcard = 0;
-                                    var sumPointcard = 0;
-                                    var sumDiscount = 0;
-                                    var sumTotal = 0;
-                                    var sumTax = 0;
-                                    _.each(report,function(item){
-                                        //remove $ sign then add new total
-                                        var subtotal = parseFloat(item[tableCols.indexOf('Subtotal')].substring(1));
-                                        var giftcard = parseFloat(item[tableCols.indexOf('Giftcard')].substring(1));
-                                        var pointcard = parseFloat(item[tableCols.indexOf('Pointcard')].substring(1));
-                                        var discount = parseFloat(item[tableCols.indexOf('Discount')].substring(1));
-                                        var total = parseFloat(item[tableCols.indexOf('Total')].substring(1));
-                                        var tax = parseFloat(item[tableCols.indexOf('Tax')].substring(1));
-                                        sumSubtotal += subtotal;
-                                        sumGiftcard += giftcard;
-                                        sumPointcard += pointcard;
-                                        sumDiscount += discount;
-                                        sumTax += tax;
-                                        sumTotal += total;
-                                    });
-                                    sumSubtotal = '$' + sumSubtotal.toFixed(2);
-                                    sumGiftcard = '$' + sumGiftcard.toFixed(2);
-                                    sumDiscount = '$' + sumDiscount.toFixed(2);
-                                    sumPointcard = '$' + sumPointcard.toFixed(2);
-                                    sumTotal = '$' + sumTotal.toFixed(2);
-                                    sumTax = '$' + sumTax.toFixed(2);
-                                    report.push(['','', '','Total:', sumSubtotal, sumGiftcard, sumPointcard, sumTax, sumDiscount, sumTotal, '']);
+                                    addRegularContent();
+                                    report = [_.last(report)];
                                     break;
                                 case 'CustomerReport':
-                                    _.each(orders, generateCustomerReport);
-                                    tableCols = ['Employee', 'Time Paid', 'Customer', 'Subtotal', 'Giftcard', 'Tax', 'Discount', 'Total', 'PaymentType'];
-                                    var sumSubtotal = 0;
-                                    var sumGiftcard = 0;
-                                    var sumDiscount = 0;
-                                    var sumTotal = 0;
-                                    var sumTax = 0;
-                                    _.each(report,function(item){
-                                        //remove $ sign then add new total
-                                        var subtotal = parseFloat(item[tableCols.indexOf('Subtotal')].substring(1));
-                                        var giftcard = parseFloat(item[tableCols.indexOf('Giftcard')].substring(1));
-                                        var discount = parseFloat(item[tableCols.indexOf('Discount')].substring(1));
-                                        var total = parseFloat(item[tableCols.indexOf('Total')].substring(1));
-                                        var tax = parseFloat(item[tableCols.indexOf('Tax')].substring(1));
-                                        sumSubtotal += subtotal;
-                                        sumGiftcard += giftcard;
-                                        sumDiscount += discount;
-                                        sumTax += tax;
-                                        sumTotal += total;
-                                    });
-                                    sumSubtotal = '$' + sumSubtotal.toFixed(2);
-                                    sumGiftcard = '$' + sumGiftcard.toFixed(2);
-                                    sumDiscount = '$' + sumDiscount.toFixed(2);
-                                    sumTotal = '$' + sumTotal.toFixed(2);
-                                    sumTax = '$' + sumTax.toFixed(2);
-                                    report.push(['','','Total:', sumSubtotal, sumGiftcard, sumTax, sumDiscount, sumTotal, '']);
+                                    addCustomerContent();
                                     break;
                                 case 'checkGiftcard':
                                     _.each(orders, generateReportGiftCard);
@@ -334,40 +371,16 @@ module.exports = function (req, res) {
                                     report.push(['','', '','Total:', sumTotal]);
                                     break;
                                 case 'EmployeeReportDaily':
+                                    addEmployeeContent();
+                                    break;
                                 case 'EmployeeReportWeekly':
-                                case 'EmployeeReportMontly':
+                                case 'EmployeeReportMonthly':
                                 case 'EmployeeReportYearly':
-                                    _.each(orders, generateEmployeeReport);
-                                    tableCols = ['Employee', 'Time Paid', 'Customer', 'Subtotal', 'Giftcard', 'Tax', 'Discount', 'Total', 'PaymentType'];
-                                    var sumSubtotal = 0;
-                                    var sumGiftcard = 0;
-                                    var sumDiscount = 0;
-                                    var sumTotal = 0;
-                                    var sumTax = 0;
-                                    _.each(report,function(item){
-                                        //remove $ sign then add new total
-                                        var subtotal = parseFloat(item[tableCols.indexOf('Subtotal')].substring(1));
-                                        var giftcard = parseFloat(item[tableCols.indexOf('Giftcard')].substring(1));
-                                        var discount = parseFloat(item[tableCols.indexOf('Discount')].substring(1));
-                                        var total = parseFloat(item[tableCols.indexOf('Total')].substring(1));
-                                        var tax = parseFloat(item[tableCols.indexOf('Tax')].substring(1));
-                                        sumSubtotal += subtotal;
-                                        sumGiftcard += giftcard;
-                                        sumDiscount += discount;
-                                        sumTax += tax;
-                                        sumTotal += total;
-                                    });
-                                    sumSubtotal = '$' + sumSubtotal.toFixed(2);
-                                    sumGiftcard = '$' + sumGiftcard.toFixed(2);
-                                    sumDiscount = '$' + sumDiscount.toFixed(2);
-                                    sumTotal = '$' + sumTotal.toFixed(2);
-                                    sumTax = '$' + sumTax.toFixed(2);
-                                    report.push(['','','Total:', sumSubtotal, sumGiftcard, sumTax, sumDiscount, sumTotal, '']);
+                                    addEmployeeContent();
+                                    report = [_.last(report)];
                                     break;
                             }
                         }
-                        //_.each(orders, (!req.body.reportType || req.body.reportType === 'DailyReport') ? generateReportRegular : generateReportGiftCard);
-
                         saveToPDF(PDFFile, report, tableCols);
                         res.jsonp([{"status": "success", "pdf": "/reports/reports.pdf"}])
                     }

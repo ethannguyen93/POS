@@ -61,7 +61,7 @@ module.exports = function (req, res) {
                                     if (err !== null){
                                         console.log(err.message);
                                     }else{
-                                        console.log(message.sid);
+                                        console.log(Messamessage.sid);
                                     }
                                 });*/
                             }
@@ -69,7 +69,7 @@ module.exports = function (req, res) {
                         var transporter = nodemailer.createTransport({
                             service: 'Gmail',
                             auth: {
-                                user: 'ethannguyen93@gmail.com',
+                                user: 'email',
                                 pass: 'password'
                             }
                         });
@@ -77,11 +77,11 @@ module.exports = function (req, res) {
                         _.each(appointmentsEmail, function(a){
                             if (a.customer.email !== ''){
                                 bulk.find({ _id: mongoose.Types.ObjectId(a._id) }).updateOne( { $set: { sentReminderEmail: 'sent'} } );
-                                var message = 'Hello ' + a.customer.name + ', this is a reminder that your appointment ' +
+                                /*var message = 'Hello ' + a.customer.name + ', this is a reminder that your appointment ' +
                                     'with ... is tomorrow at ' + a.startTime + ' ' + a.startTimeList + '. We hope ' +
                                     'to see you there.';
                                 console.log(message);
-                                /*transporter.sendMail({
+                                transporter.sendMail({
                                     from: 'ethannguyen93@gmail.com',
                                     to: a.customer.email,
                                     subject: 'Reminder Email',

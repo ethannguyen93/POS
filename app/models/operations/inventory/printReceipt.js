@@ -275,9 +275,10 @@ module.exports = function (req, res) {
     };
     var generateReceiptBarcode = function(barcode){
         var deferred = Q.defer();
+        console.log(barcode);
         bwipjs.toBuffer({
             bcid:           'code128',      // Barcode type
-            text:           barcode,   // Text to encode
+            text:           barcode.toString(),   // Text to encode
             scale:          3,              // 3x scaling factor
             height:         10,             // Bar height, in millimeters
             includetext:    true,           // Show human-readable text
@@ -285,7 +286,9 @@ module.exports = function (req, res) {
             textsize:       13              // Font size, in points
         }, function (err, png) {
             if (err) {
+                console.log(err);
             } else {
+                console.log('generating barcode');
                 fs.writeFile(imageFile, png, 'binary', function(){
                     deferred.resolve();
                 });
@@ -305,7 +308,6 @@ module.exports = function (req, res) {
         var nowFormat = moment(now).format('MM/DD/YY hh:mm a');
         var order = [];
         var total = req.body.tax + req.body.subtotal - req.body.discountPrice;
-
         _.each(req.body.orders, function(o){
             var ord = {};
             ord.quantity = o.quantity;
@@ -314,8 +316,10 @@ module.exports = function (req, res) {
             order.push(ord);
         });
         generateReceiptBarcode(orderId).then(function(){
+            console.log('in here');
             return getGiftcardBalance()
         }).then(function(listOfGC) {
+            console.log('after list');
             return getPointcardBalance(listOfGC)
         }).then(function(list){
             var opts = {};
@@ -367,6 +371,7 @@ module.exports = function (req, res) {
             if (isWin){
                 printDocument();
             }else{
+                console.log('Finish');
                 res.jsonp([ID]);
             }
         });

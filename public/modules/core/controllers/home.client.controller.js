@@ -533,6 +533,7 @@ angular.module('core').controller('HomeController', [
 				'ticketNumber': $scope.data.ticketNumber
 			};
 			RetrieveInventory.load(body, function(response){
+				debugger;
 				console.log(response);
 				$scope.data.order = response[0];
 			});

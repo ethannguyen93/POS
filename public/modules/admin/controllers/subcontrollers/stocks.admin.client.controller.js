@@ -50,6 +50,8 @@ angular.module('admin').controller('Stocks.AdminController', ['$scope', '$state'
                     data: item
                 }).success(function(response) {
                     item.image = response;
+                    var random = (new Date()).toString();
+                    item.image = item.image + "?cb=" + random;
                 })
             }
         };
@@ -76,13 +78,30 @@ angular.module('admin').controller('Stocks.AdminController', ['$scope', '$state'
             });
             return deferred.promise;
         };
+        $scope.verifyModal = function () {
+            var deferred = $q.defer();
+            var editorInstance = $modal.open({
+                animation: true,
+                windowClass: 'modal-fullwindow',
+                templateUrl: 'modules/admin/views/subviews/modals/verifyModal.client.view.html',
+                controller: 'logoutCtrl'
+            });
+            editorInstance.result.then(function (response) {
+                deferred.resolve(response);
+            });
+            return deferred.promise;
+        };
         $scope.removeItem = function (item) {
-            var body = {
-                type: 'removeItem',
-                _id: item._id
-            };
-            RetrieveStock.load(body, function(response){
-                $scope.data.items = _.without($scope.data.items, _.findWhere($scope.data.items, {_id: item._id}));
+            $scope.verifyModal().then(function(response){
+                if (response === 'yes'){
+                    var body = {
+                        type: 'removeItem',
+                        _id: item._id
+                    };
+                    RetrieveStock.load(body, function(response){
+                        $scope.data.items = _.without($scope.data.items, _.findWhere($scope.data.items, {_id: item._id}));
+                    });
+                }
             });
         };
         $scope.addItem = function () {

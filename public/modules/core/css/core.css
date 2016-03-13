@@ -773,3 +773,7 @@ input[type="text"] {
   box-shadow: none; }
 
 /*# sourceMappingURL=core.css.map */
+
+.pointcard-input {
+  width: 100%
+}

@@ -97,10 +97,10 @@ angular.module('core').controller('selectCustomerCoreController', [
                     '><span class="glyphicon glyphicon-pencil"></span></a>'
                 },
                 {
-                    name: 'Add/Remove',
+                    name: 'Add/Select',
                     enableFiltering: false,
-                    cellTemplate: '<a href="" ng-click="grid.appScope.removeCustomer(row.entity._id)"' +
-                    '><span class="glyphicon glyphicon-remove"></span></a>',
+                    cellTemplate: '<a href="" ng-click="grid.appScope.selectCustomer(row.entity._id)"' +
+                    '><span class="glyphicon glyphicon-ok"></span></a>',
                     footerCellTemplate: '<a href="" ng-click="grid.appScope.addCustomer()"> <span class="glyphicon glyphicon-plus"></span> </a>'
                 }
             ];
@@ -145,33 +145,11 @@ angular.module('core').controller('selectCustomerCoreController', [
             });
             return deferred.promise;
         };
-        $scope.removeCustomer = function(id){
-            $scope.removeCustomerModal(id).then(function(response){
-                if (response === 'yes'){
-                    var c = _.find($scope.data.customers, function(c){
-                        return id === c._id;
-                    });
-                    $scope.data.customers = _.without($scope.data.customers, c);
-                }
+        $scope.selectCustomer = function(id){
+            var c = _.find($scope.data.customers, function(c){
+                return id === c._id;
             });
-        };
-        $scope.removeCustomerModal = function (id) {
-            var deferred = $q.defer();
-            var editorInstance = $modal.open({
-                animation: true,
-                windowClass: 'modal-fullwindow',
-                templateUrl: 'modules/customers/views/modal/removeCustomerModal.client.view.html',
-                controller: 'removeCustomerController',
-                resolve: {
-                    customer: function() {
-                        return {id: id}
-                    }
-                }
-            });
-            editorInstance.result.then(function (response) {
-                deferred.resolve(response);
-            });
-            return deferred.promise;
+            $modalInstance.close(c);
         };
         $scope.gridOptions.onRegisterApi = function (gridApi) {
             $scope.gridApi = gridApi;
