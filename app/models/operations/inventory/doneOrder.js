@@ -182,7 +182,7 @@ module.exports = function (req, res) {
                     var bulk = collection.initializeUnorderedBulkOp();
                     _.each(req.body.orders, function(order){
                         if (order.isPointcard){
-                            var point = req.body.subtotal;
+                            var point = req.body.subtotal - req.body.discountPrice;
                             switch(req.body.paymentType) {
                                 case 'DebitCard':
                                     point = point * setting.debit;

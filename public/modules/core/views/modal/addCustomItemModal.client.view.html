@@ -1,0 +1,31 @@
+<div class="modal-header">
+    <h3 class="modal-title">Edit Customer</h3>
+</div>
+<div class="modal-body">
+    <div class="alert alert-danger" role="alert" ng-show="data.isError">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        {{data.errorMessage}}
+    </div>
+    <div class="col-md-12">
+        <div class="passcode">
+            <div class="space-bottom">
+                <label class="col-md-12">
+                    Item Name:
+                </label>
+                <input class="input-text" type="text" ng-model="data.name" ng-change="reset()"/>
+            </div>
+
+            <div class="space-bottom">
+                <label class="col-md-12">
+                    Price:
+                </label>
+                <input class="input-text" type="text" ng-model="data.price" ng-change="reset()"/>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" ng-click="add()">Add</button>
+    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+</div>

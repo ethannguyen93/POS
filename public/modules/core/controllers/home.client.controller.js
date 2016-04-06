@@ -6,9 +6,9 @@ angular.module('core').controller('HomeController', [
 	'LoginpageService', '$q', 'AdminLoginPageServices', 'AdminPageServices', '$modal', '$compile', 'uiCalendarConfig',
 	'RetrieveAppointments', 'FTScroller', 'hidScanner', 'RetrievePointcard', 'RetrieveStock',
 	function(
-			$scope, $state, Authentication, UserService, RetrieveEmployee, RetrieveInventory, MainpageServices,
-			LoginpageService, $q, AdminLoginPageServices, AdminPageServices, $modal, $compile, uiCalendarConfig,
-			RetrieveAppointments, FTScroller, hidScanner, RetrievePointcard, RetrieveStock
+		$scope, $state, Authentication, UserService, RetrieveEmployee, RetrieveInventory, MainpageServices,
+		LoginpageService, $q, AdminLoginPageServices, AdminPageServices, $modal, $compile, uiCalendarConfig,
+		RetrieveAppointments, FTScroller, hidScanner, RetrievePointcard, RetrieveStock
 	) {
 
 		// Inject UserService into $scope
@@ -135,12 +135,50 @@ angular.module('core').controller('HomeController', [
 				columnHeaderHeight: 60,
 				columnFooterHeight: 60,
 				enablePaginationControls: false,
+				showColumnFooter: true,
 				paginationPageSize: 10,
 				data: 'data.orders'
 			}
 		};
+		var guid = function() {
+			function s4() {
+				return Math.floor((1 + Math.random()) * 0x10000)
+					.toString(16)
+					.substring(1);
+			}
+			return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+				s4() + '-' + s4() + s4() + s4();
+		};
 		$scope.data.gridOptions.onRegisterApi = function (gridApi) {
 			$scope.data.gridApi = gridApi;
+		};
+		$scope.addCustomItemModal = function(){
+			var deferred = $q.defer();
+			var editorInstance = $modal.open({
+				animation: true,
+				windowClass: 'modal-fullwindow modal-order',
+				templateUrl: 'modules/core/views/modal/addCustomItemModal.client.view.html',
+				controller: 'addCustomItemController'
+			});
+			editorInstance.result.then(function (item) {
+				deferred.resolve(item);
+			});
+			return deferred.promise;
+		};
+		$scope.addCustomItem = function(){
+			$scope.addCustomItemModal().then(function(item){
+				if (item.name && item.price){
+					var prevItem = _.find($scope.data.orders, function(i){
+						return (i.name === item.name && i.price === item.price);
+					});
+					if (prevItem) {
+						item._id = prevItem._id;
+					}else{
+						item._id = guid();
+					}
+					MainpageServices.addItem($scope, item);
+				}
+			});
 		};
 		$scope.data.initOrder = function(){
 			$scope.data.gridOptions.columnDefs = [
@@ -151,7 +189,8 @@ angular.module('core').controller('HomeController', [
 				},
 				{
 					name: 'Item' ,
-					field: 'name'
+					field: 'name',
+					footerCellTemplate: '<a href="" ng-click="grid.appScope.addCustomItem()"> <span class="glyphicon glyphicon-plus"></span> </a>'
 				},
 				{
 					name: 'Price' ,
@@ -227,15 +266,15 @@ angular.module('core').controller('HomeController', [
 								discountPrice += order.price * order.quantity * discount;
 							}
 						});
-						if ($scope.data.isTax){
-							discountPrice = discountPrice * 1.13;
-						}
 						$scope.data.discountPrice = discountPrice;
 					}else{
 						$scope.data.discountPrice = parseInt($scope.data.discount);
 					}
 				}else if ($scope.data.discount !== undefined && $scope.data.discount === ''){
 					$scope.data.discountPrice = 0;
+				}
+				if ($scope.data.isTax){
+					$scope.data.tax += -$scope.data.discountPrice * 0.13;
 				}
 			}
 		});
@@ -260,15 +299,15 @@ angular.module('core').controller('HomeController', [
 								discountPrice += order.price * order.quantity * discount;
 							}
 						});
-						if ($scope.data.isTax){
-							discountPrice = discountPrice * 1.13;
-						}
 						$scope.data.discountPrice = discountPrice;
 					}else{
 						$scope.data.discountPrice = parseInt($scope.data.discount);
 					}
 				}else if ($scope.data.discount !== undefined && $scope.data.discount === ''){
 					$scope.data.discountPrice = 0;
+				}
+				if ($scope.data.isTax){
+					$scope.data.tax += -$scope.data.discountPrice * 0.13;
 				}
 			}
 		});
@@ -548,15 +587,15 @@ angular.module('core').controller('HomeController', [
 							discountPrice += order.price * order.quantity * discount;
 						}
 					});
-					if ($scope.data.isTax){
-						discountPrice = discountPrice * 1.13;
-					}
 					$scope.data.discountPrice = discountPrice;
 				}else{
 					$scope.data.discountPrice = parseInt($scope.data.discount);
 				}
 			}else if ($scope.data.discount !== undefined && $scope.data.discount === ''){
 				$scope.data.discountPrice = 0;
+			}
+			if ($scope.data.isTax){
+				$scope.data.tax += -$scope.data.discountPrice * 0.13;
 			}
 		};
 		var guid = function() {

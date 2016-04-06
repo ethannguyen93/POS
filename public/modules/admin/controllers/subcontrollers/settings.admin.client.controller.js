@@ -22,7 +22,7 @@ angular.module('admin').controller('Settings.AdminController', [
             $scope.admin.setting.errorMessage = '';
         };
         $scope.voidOrder = function(){
-            var checkForHexRegExp = new RegExp("^[0-9a-fA-F]{24}$");
+            var checkForHexRegExp = new RegExp("^[0-9]{9}$");
             if (!checkForHexRegExp.test($scope.orderId)){
                 $scope.admin.setting.isError = true;
                 $scope.admin.setting.errorMessage = 'Please enter a valid order ID';

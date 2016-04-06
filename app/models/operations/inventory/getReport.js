@@ -18,6 +18,7 @@ module.exports = function (req, res) {
     var nextDate = moment(givenDate).add(1, 'days');
     var connectionDB = mongoose.connection.db;
     var collName = (req.body.reportType === 'InventoryReport') ? 'inventoryTracking' : 'orders';
+    var sortBy = (req.body.reportType === 'InventoryReport') ? {date: 1} : {timeOrderPlaced: 1};
     connectionDB.collection(collName, function (err, collection) {
         var queryBody = {};
         if (!req.body.reportType || req.body.reportType === 'DailyReport') {
@@ -107,7 +108,7 @@ module.exports = function (req, res) {
                 customerID: req.body.customerID
             };
         }
-        collection.find(queryBody, function (err, cursor) {
+        collection.find(queryBody).sort(sortBy, function (err, cursor) {
             if (err) {
                 console.log(err)
             } else {
@@ -152,9 +153,9 @@ module.exports = function (req, res) {
                             });
                             o.push('$' + (totalBeforeGC).toFixed(2));
                             o.push('$' + (Giftcard).toFixed(2));
-                            o.push('$' + (order.tax).toFixed(2));
                             var discountPrice = (order.discountPrice !== undefined) ? order.discountPrice: 0;
                             o.push('$ -' + (discountPrice).toFixed(2));
+                            o.push('$' + (order.tax).toFixed(2));
                             o.push('$' + (order.subtotal + order.tax - discountPrice).toFixed(2));
                             var paymentType = (order.paymentType) ? order.paymentType : '';
                             o.push(paymentType);
@@ -189,9 +190,9 @@ module.exports = function (req, res) {
                             o.push('$' + (totalBeforeGC).toFixed(2));
                             o.push('$' + (Giftcard).toFixed(2));
                             o.push('$' + (Pointcard).toFixed(2));
-                            o.push('$' + (order.tax).toFixed(2));
                             var discountPrice = (order.discountPrice !== undefined) ? order.discountPrice: 0;
                             o.push('$ -' + (discountPrice).toFixed(2));
+                            o.push('$' + (order.tax).toFixed(2));
                             o.push('$' + (order.subtotal + order.tax - discountPrice).toFixed(2));
                             var paymentType = (order.paymentType) ? order.paymentType : '';
                             o.push(paymentType);
@@ -238,9 +239,9 @@ module.exports = function (req, res) {
                             });
                             o.push('$' + (totalBeforeGC).toFixed(2));
                             o.push('$' + (Giftcard).toFixed(2));
-                            o.push('$' + (order.tax).toFixed(2));
                             var discountPrice = (order.discountPrice !== undefined) ? order.discountPrice: 0;
                             o.push('$ -' + (discountPrice).toFixed(2));
+                            o.push('$' + (order.tax).toFixed(2));
                             o.push('$' + (order.subtotal + order.tax - discountPrice).toFixed(2));
                             var paymentType = (order.paymentType) ? order.paymentType : '';
                             o.push(paymentType);
@@ -248,7 +249,7 @@ module.exports = function (req, res) {
                         }
                         function addRegularContent(){
                             _.each(orders, generateReportRegular);
-                            tableCols = ['Employee', 'isPaid?' ,'Time Paid', 'Customer', 'Subtotal', 'Giftcard', 'Pointcard', 'Tax', 'Discount', 'Total', 'PaymentType'];
+                            tableCols = ['Employee', 'isPaid?' ,'Time Paid', 'Customer', 'Subtotal', 'Giftcard', 'Pointcard', 'Discount', 'Tax', 'Total', 'PaymentType'];
                             var sumSubtotal = 0;
                             var sumGiftcard = 0;
                             var sumPointcard = 0;
@@ -276,11 +277,11 @@ module.exports = function (req, res) {
                             sumPointcard = '$' + sumPointcard.toFixed(2);
                             sumTotal = '$' + sumTotal.toFixed(2);
                             sumTax = '$' + sumTax.toFixed(2);
-                            report.push(['','', '','Total:', sumSubtotal, sumGiftcard, sumPointcard, sumTax, sumDiscount, sumTotal, '']);
+                            report.push(['','', '','Total:', sumSubtotal, sumGiftcard, sumPointcard, sumDiscount, sumTax, sumTotal, '']);
                         };
                         function addCustomerContent(){
                             _.each(orders, generateCustomerReport);
-                            tableCols = ['Employee', 'Time Paid', 'Customer', 'Subtotal', 'Giftcard', 'Tax', 'Discount', 'Total', 'PaymentType'];
+                            tableCols = ['Employee', 'Time Paid', 'Customer', 'Subtotal', 'Giftcard', 'Discount', 'Tax', 'Total', 'PaymentType'];
                             var sumSubtotal = 0;
                             var sumGiftcard = 0;
                             var sumDiscount = 0;
@@ -304,11 +305,11 @@ module.exports = function (req, res) {
                             sumDiscount = '$' + sumDiscount.toFixed(2);
                             sumTotal = '$' + sumTotal.toFixed(2);
                             sumTax = '$' + sumTax.toFixed(2);
-                            report.push(['','','Total:', sumSubtotal, sumGiftcard, sumTax, sumDiscount, sumTotal, '']);
+                            report.push(['','','Total:', sumSubtotal, sumGiftcard, sumDiscount, sumTax, sumTotal, '']);
                         }
                         function addEmployeeContent(){
                             _.each(orders, generateEmployeeReport);
-                            tableCols = ['Employee', 'Time Paid', 'Customer', 'Subtotal', 'Giftcard', 'Tax', 'Discount', 'Total', 'PaymentType'];
+                            tableCols = ['Employee', 'Time Paid', 'Customer', 'Subtotal', 'Giftcard', 'Discount', 'Tax', 'Total', 'PaymentType'];
                             var sumSubtotal = 0;
                             var sumGiftcard = 0;
                             var sumDiscount = 0;
@@ -332,7 +333,7 @@ module.exports = function (req, res) {
                             sumDiscount = '$' + sumDiscount.toFixed(2);
                             sumTotal = '$' + sumTotal.toFixed(2);
                             sumTax = '$' + sumTax.toFixed(2);
-                            report.push(['','','Total:', sumSubtotal, sumGiftcard, sumTax, sumDiscount, sumTotal, '']);
+                            report.push(['','','Total:', sumSubtotal, sumGiftcard, sumDiscount, sumTax, sumTotal, '']);
                         }
                         if (req.body.reportType){
                             switch (req.body.reportType){

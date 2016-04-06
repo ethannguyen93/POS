@@ -8,8 +8,9 @@ module.exports = function (req, res) {
         var connectionDB = mongoose.connection.db;
         connectionDB.collection('orders', function (err, collection) {
             collection.findOne({
-                _id: mongoose.Types.ObjectId(req.body.orderId)
+                barcode: parseInt(req.body.orderId)
             }, function(err, result){
+                console.log(err);
                 console.log(result);
                 if (result === null){
                     deferred.reject();
@@ -25,7 +26,7 @@ module.exports = function (req, res) {
         var connectionDB = mongoose.connection.db;
         connectionDB.collection('orders', function (err, collection) {
             collection.update({
-                _id: mongoose.Types.ObjectId(req.body.orderId)
+                barcode: parseInt(req.body.orderId)
             },{
                 $set: {void: true}
             }, function(err, result){

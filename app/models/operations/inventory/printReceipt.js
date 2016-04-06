@@ -12,6 +12,8 @@ module.exports = function (req, res) {
     var connectionDB = mongoose.connection.db;
     var isWin = /^win/.test(process.platform);
     var imageFile = './public/barcode.png';
+    var barcode = '';
+    var total = req.body.subtotal - req.body.discountPrice;
     var getIndex = function(collection){
         var deferred = Q.defer();
         collection.find({todayDate: {$exists: true}}, function(err, cursor){
@@ -55,6 +57,52 @@ module.exports = function (req, res) {
         });
         return deferred.promise;
     };
+    var generateBarcode = function(){
+        var deferred = Q.defer();
+        var success = false;
+        connectionDB.collection('orders', function(err, collection){
+            collection.find({}, {barcode: 1}, function(err, cursor){
+                cursor.toArray(function(err, result){
+                    while (!success){
+                        var barcode = Math.floor(Math.random()*900000000) + 100000000;
+                        var item = _.find(result, function(i){
+                            return (i.barcode !== undefined && i.barcode === barcode);
+                        });
+                        if (item === undefined){
+                            success = true;
+                            console.log(barcode);
+                            deferred.resolve(barcode);
+                        }
+                    }
+                });
+            });
+        });
+        return deferred.promise;
+    };
+    var getBarcode = function(){
+        var deferred = Q.defer();
+        if (req.body.id){
+            connectionDB.collection('orders', function(err, collection){
+                collection.findOne({
+                    _id: mongoose.Types.ObjectId(req.body.id)
+                }, function(err, result){
+                    console.log(result);
+                    if (result.barcode === undefined){
+                        generateBarcode().then(function(barcode){
+                            deferred.resolve(barcode);
+                        })
+                    }else{
+                        deferred.resolve(result.barcode);
+                    }
+                })
+            })
+        }else{
+            generateBarcode().then(function(barcode){
+                deferred.resolve(barcode);
+            })
+        }
+        return deferred.promise;
+    };
     var saveOrder = function(){
         var deferred = Q.defer();
         connectionDB.collection('orders', function (err, collection) {
@@ -73,7 +121,8 @@ module.exports = function (req, res) {
                         discountPrice: req.body.discountPrice,
                         customerID: req.body.customerID,
                         paymentType: req.body.paymentType,
-                        ticketNumber: req.body.ticketNumber
+                        ticketNumber: req.body.ticketNumber,
+                        barcode: barcode
                     }, function(err, result){
                         if (err) {
                             console.log(err)
@@ -95,7 +144,8 @@ module.exports = function (req, res) {
                                 discount: req.body.discount,
                                 discountPrice: req.body.discountPrice,
                                 paymentType: req.body.paymentType,
-                                ticketNumber: req.body.ticketNumber
+                                ticketNumber: req.body.ticketNumber,
+                                barcode: barcode
                             }
                         }, function(err, result){
                             if (err) {
@@ -127,7 +177,7 @@ module.exports = function (req, res) {
         getPointCardSetting().then(function(setting){
             _.each(req.body.orders, function(order){
                 if (order.isPointcard){
-                    var point = req.body.subtotal;
+                    var point = total;
                     switch(req.body.paymentType) {
                         case 'DebitCard':
                             point = point * setting.debit;
@@ -236,7 +286,6 @@ module.exports = function (req, res) {
         var now = new Date();
         var nowFormat = moment(now).format('MM/DD/YY hh:mm a');
         var order = [];
-        var total = req.body.tax + req.body.subtotal - req.body.discountPrice;
 
         _.each(req.body.orders, function(o){
             var ord = {};
@@ -273,17 +322,16 @@ module.exports = function (req, res) {
         });
         return deferred.promise;
     };
-    var generateReceiptBarcode = function(barcode){
+    var generateReceiptBarcode = function(){
         var deferred = Q.defer();
-        console.log(barcode);
         bwipjs.toBuffer({
             bcid:           'code128',      // Barcode type
             text:           barcode.toString(),   // Text to encode
-            scale:          3,              // 3x scaling factor
-            height:         10,             // Bar height, in millimeters
+            scale:          1,              // 3x scaling factor
+            height:         3,             // Bar height, in millimeters
             includetext:    true,           // Show human-readable text
             textxalign:     'center',       // Use your custom font
-            textsize:       13              // Font size, in points
+            textsize:       9              // Font size, in points
         }, function (err, png) {
             if (err) {
                 console.log(err);
@@ -307,7 +355,6 @@ module.exports = function (req, res) {
         var now = new Date();
         var nowFormat = moment(now).format('MM/DD/YY hh:mm a');
         var order = [];
-        var total = req.body.tax + req.body.subtotal - req.body.discountPrice;
         _.each(req.body.orders, function(o){
             var ord = {};
             ord.quantity = o.quantity;
@@ -315,7 +362,7 @@ module.exports = function (req, res) {
             ord.price = (o.price*o.quantity).toFixed(2);
             order.push(ord);
         });
-        generateReceiptBarcode(orderId).then(function(){
+        generateReceiptBarcode().then(function(){
             console.log('in here');
             return getGiftcardBalance()
         }).then(function(listOfGC) {
@@ -328,11 +375,7 @@ module.exports = function (req, res) {
             imageModule.getSizeFromData=function(imgData) {
                 var sizeOf = require('image-size');
                 var sizeObj = sizeOf(imgData);
-                console.log('before:' + sizeObj);
-                sizeObj.width = 175;
-                sizeObj.height = 50;
-                console.log('after:' + sizeObj);
-                return [sizeObj.width,sizeObj.height];
+                return [137.57480315,24.188976378];
             };
             doc.attachModule(imageModule);
             doc.setData({
@@ -350,7 +393,7 @@ module.exports = function (req, res) {
                 "pointcards" : list.pc,
                 "discountArr": [],
                 "isMerchant": true,
-                "orderId": orderId,
+                "orderId": barcode,
                 "barcode": imageFile
             });
             doc.render();
@@ -363,7 +406,10 @@ module.exports = function (req, res) {
         return deferred.promise;
     };
     var ID;
-    saveOrder().then(function(orderId){
+    getBarcode().then(function(generatedBarcode){
+        barcode = generatedBarcode;
+        return saveOrder();
+    }).then(function(orderId){
         ID = orderId;
         saveMerchantReceipt(orderId).then(function(){
             return saveCustomerReceipt();

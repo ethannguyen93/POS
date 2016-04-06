@@ -65,18 +65,6 @@
                     </tr>
                     <tr>
                         <td>
-                            Taxes
-                            <div class="slideThree">
-                                <input type="checkbox" value="None" id="slideThree" name="check" checked
-                                       ng-model="data.isTax" ng-change="data.getTax()"
-                                />
-                                <label for="slideThree"></label>
-                            </div>
-                        </td>
-                        <td>${{(data.tax).toFixed(2)}}</td>
-                    </tr>
-                    <tr>
-                        <td>
                             Discount
                             <div class="slideDiscount">
                                 <input type="checkbox" value="None" id="slideDiscount" name="check" checked
@@ -91,6 +79,18 @@
                         <td ng-hide="data.discountType">
                             $ <input class="discount" ng-change="applyDiscount()" style="color:black; border-width: 4px;" type="text" ng-model="data.discount" ng-pattern="/^[0-9]+$/">
                         </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Taxes
+                            <div class="slideThree">
+                                <input type="checkbox" value="None" id="slideThree" name="check" checked
+                                       ng-model="data.isTax" ng-change="data.getTax()"
+                                />
+                                <label for="slideThree"></label>
+                            </div>
+                        </td>
+                        <td>${{(data.tax).toFixed(2)}}</td>
                     </tr>
                     <tr>
                         <td>Total cost</td>
