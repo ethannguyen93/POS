@@ -38,6 +38,7 @@ var operationMap = {
 	addCustomer: require('./operations/customers/addCustomer'),
 	getAll: require('./operations/customers/getAllCustomers'),
 	update: require('./operations/customers/updateCustomer'),
-	remove: require('./operations/customers/removeCustomer')
+	remove: require('./operations/customers/removeCustomer'),
+	addPhoto: require('./operations/customers/addPhoto')
 };
 exports.operationMap = operationMap;

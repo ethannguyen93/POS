@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <h3 class="modal-title">Edit Customer</h3>
+</div>
+<div class="modal-body">
+    <webcam ng-hide="captured"
+            on-streaming="onSuccess()"
+            channel="channel"
+    ></webcam>
+    <canvas ng-show="captured" id="snapshot" class="well pull-right"></canvas>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" ng-hide="captured" ng-click="capture()">Capture</button>
+    <button class="btn btn-default" ng-show="captured" ng-click="retake()">Retake</button>
+    <button class="btn btn-default" ng-show="captured" ng-click="save()">Save</button>
+    <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+</div>

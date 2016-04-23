@@ -151,6 +151,5 @@ exports.hasAuthorization = function(req, res, next) {
 };
 
 exports.load = function(req, res){
-	console.log(req.body);
 	customerModel.operationMap[req.body.type](req, res);
 };

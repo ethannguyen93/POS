@@ -97,6 +97,21 @@ angular.module('customers').controller('CustomersController', ['$scope', '$state
 					'><span class="glyphicon glyphicon-pencil"></span></a>'
 				},
 				{
+					name: 'Photo',
+					enableFiltering: false,
+					field: 'image',
+					cellTemplate: '<img data-ng-src="/customerImage/{{row.entity.image}}" data-ng-if="row.entity.image" height="100" width="100" ng-click="grid.appScope.openImage(row.entity)">',
+
+				},
+				{
+					name: 'Take Picture',
+					field: 'capture',
+					cellTemplate: '<a href="" ng-click="grid.appScope.capturePhoto(row.entity)"' +
+					'><span class="glyphicon glyphicon-camera"></span></a>',
+					enableFiltering: false,
+					enableCellEdit: false
+				},
+				{
 					name: 'Add/Remove',
 					enableFiltering: false,
 					cellTemplate: '<a href="" ng-click="grid.appScope.removeCustomer(row.entity._id)"' +
@@ -114,6 +129,42 @@ angular.module('customers').controller('CustomersController', ['$scope', '$state
 				});
 			});
 		})();
+		$scope.openImage = function(item){
+			$modal.open({
+				animation: true,
+				windowClass: 'modal-image',
+				templateUrl: 'modules/customers/views/modal/imageViewerModal.client.view.html',
+				controller: function($scope) {
+					$scope.image = item.image;
+				}
+			});
+		};
+		$scope.capturePhoto = function(item){
+			$scope.capturePhotoModal(item._id).then(function(image){
+				if (image){
+					var random = (new Date()).toString();
+					item.image = image + "?cb=" + random;
+				}
+			});
+		};
+		$scope.capturePhotoModal = function (id) {
+			var deferred = $q.defer();
+			var editorInstance = $modal.open({
+				animation: true,
+				windowClass: 'modal-fullwindow-capture',
+				templateUrl: 'modules/customers/views/modal/capturePhotoModal.client.view.html',
+				controller: 'CapturePhotoController',
+				resolve: {
+					customerID: function(){
+						return id;
+					}
+				}
+			});
+			editorInstance.result.then(function (image) {
+				deferred.resolve(image);
+			});
+			return deferred.promise;
+		};
 		$scope.editCustomer = function(name, phone, email, address, id){
 			$scope.editCustomerModal(name, phone, email, address, id).then(function(customer){
 				if (customer !== undefined){

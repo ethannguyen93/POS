@@ -46,7 +46,8 @@ module.exports = {
 				'public/lib/ng-file-upload/ng-file-upload-shim.min.js',
 				'public/lib/ng-file-upload/ng-file-upload.min.js',
 				'public/lib/angular-bootstrap-checkbox/angular-bootstrap-checkbox.js',
-				'public/lib/dymo/DYMO.Label.Framework.2.0.2.js'
+				'public/lib/dymo/DYMO.Label.Framework.2.0.2.js',
+				'public/lib/webcam/app/scripts/webcam.js'
 			]
 		},
 		css: [

@@ -1,53 +1,10 @@
 var mongoose = require('mongoose'),
     _ = require('lodash'),
-    Q = require('q');
+    Q = require('q'),
+    util = require('../util');
 
 module.exports = function (req, res) {
     var connectionDB = mongoose.connection.db;
-    console.log('here');
-    var getIndex = function(collection){
-        var deferred = Q.defer();
-        collection.find({todayDate: {$exists: true}}, function(err, cursor){
-            cursor.toArray(function(err, result){
-                if (result.length > 0){
-                    var now = new Date ();
-                    var isSameDay = (now.getDate() == result[0].todayDate.getDate()
-                    && now.getMonth() == result[0].todayDate.getMonth()
-                    && now.getFullYear() == result[0].todayDate.getFullYear());
-                    if (!isSameDay){
-                        collection.update(
-                            {
-                                todayDate: result[0].todayDate
-                            },
-                            {
-                                t$set: {todayDate: now, index: 0}
-                            }, function(){
-                                deferred.resolve(0);
-                            })
-                    }else{
-                        collection.update(
-                            {
-                                todayDate: result[0].todayDate
-                            },
-                            {
-                                $set: {todayDate: now, index: result[0].index + 1}
-                            }, function(){
-                                deferred.resolve(result[0].index);
-                            });
-                    }
-                }else{
-                    collection.insert(
-                        {
-                            todayDate: new Date(),
-                            index: 0
-                        }, function(){
-                            deferred.resolve(0);
-                        })
-                }
-            });
-        });
-        return deferred.promise;
-    };
     var updateGiftcard = function(){
         var deferred = Q.defer();
         var hasGC = _.find(req.body.orders, function(order){
@@ -234,7 +191,7 @@ module.exports = function (req, res) {
     }).then(function(){
         connectionDB.collection('orders', function (err, collection) {
             if (req.body.order === 0 || req.body.order === ''){
-                getIndex(collection).then(function(index) {
+                util.getIndexFromOrders().then(function(index) {
                     collection.insert({
                         employee: req.body.user,
                         orders: req.body.orders,

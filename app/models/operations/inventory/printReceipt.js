@@ -9,11 +9,12 @@ var mongoose = require('mongoose'),
     ImageModule=require('docxtemplater-image-module');
 
 module.exports = function (req, res) {
+    console.log('here');
     var connectionDB = mongoose.connection.db;
     var isWin = /^win/.test(process.platform);
     var imageFile = './public/barcode.png';
     var barcode = '';
-    var total = req.body.subtotal - req.body.discountPrice;
+    var total = req.body.subtotal - req.body.discountPrice + req.body.tax;
     var getIndex = function(collection){
         var deferred = Q.defer();
         collection.find({todayDate: {$exists: true}}, function(err, cursor){
@@ -327,7 +328,7 @@ module.exports = function (req, res) {
         bwipjs.toBuffer({
             bcid:           'code128',      // Barcode type
             text:           barcode.toString(),   // Text to encode
-            scale:          1,              // 3x scaling factor
+            scale:          5,              // 3x scaling factor
             height:         3,             // Bar height, in millimeters
             includetext:    true,           // Show human-readable text
             textxalign:     'center',       // Use your custom font

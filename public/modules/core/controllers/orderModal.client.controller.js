@@ -88,8 +88,8 @@ angular.module('core').controller('orderCtrl',
             var editorInstance = $modal.open({
                 animation: true,
                 windowClass: 'modal-expand',
-                templateUrl: 'modules/core/views/modal/selectCustomerModal.client.view.html',
-                controller: 'selectCustomerCoreController'
+                templateUrl: 'modules/scheduler/views/modal/selectCustomerModal.client.view.html',
+                controller: 'selectCustomerController'
             });
             editorInstance.result.then(function (customer) {
                 deferred.resolve(customer);

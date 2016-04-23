@@ -1,7 +1,29 @@
 #customer-grid {
   height: calc(100% - 75px) !important;
 }
+.ui-grid-cell img{
+  margin: 0 auto;
+  display: block;
+}
+.modal-fullwindow-capture{
+  .modal-content{
+    width: 80%;
+    height: 80%;
+    margin-left: 10%;
 
+    .modal-body{
+      width: 100%;
+      .webcam-live{
+        height: 100%;
+        width: 100%;
+      }
+      canvas{
+        height: 90%;
+        width: 100%;
+      }
+    }
+  }
+}
 //#customer-grid .ui-grid-render-container {
 //  // 100% - 75px for the pagination height
 //  height: calc(100% - 75px) !important;

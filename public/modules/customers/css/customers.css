@@ -1,4 +1,21 @@
 #customer-grid {
   height: calc(100% - 75px) !important; }
 
+.ui-grid-cell img {
+  margin: 0 auto;
+  display: block; }
+
+.modal-fullwindow-capture .modal-content {
+  width: 80%;
+  height: 80%;
+  margin-left: 10%; }
+  .modal-fullwindow-capture .modal-content .modal-body {
+    width: 100%; }
+    .modal-fullwindow-capture .modal-content .modal-body .webcam-live {
+      height: 100%;
+      width: 100%; }
+    .modal-fullwindow-capture .modal-content .modal-body canvas {
+      height: 90%;
+      width: 100%; }
+
 /*# sourceMappingURL=customers.css.map */
