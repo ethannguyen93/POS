@@ -28,6 +28,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         .state('core.authenticated', {
             url: 'pos',
             params: {user: null},
+            controller: 'POSController',
             template: '<main-page></main-page>'
         })
 

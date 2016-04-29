@@ -3,18 +3,18 @@
 /* UserService which holds information about current User throughout application */
 angular.module('core').service('UserService', [function() {
 
-    var user;
+    var _user;
 
-    this.setUser = function(userName) {
-        user = { 'name' : userName };
+    this.setUser = function(user) {
+        _user = user;
     };
 
     this.logoutUser = function() {
-        user = undefined;
+        _user = undefined;
     };
 
     this.getUser = function() {
-        return user;
+        return _user;
     }
 
 }]);

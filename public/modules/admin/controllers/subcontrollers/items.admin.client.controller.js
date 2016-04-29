@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('admin').controller('Items.AdminController', ['$scope', '$state', '$stateParams', 'Authentication', 'RetrieveEmployee', 'RetrieveInventory', 'MainpageServices',
-    'LoginpageService', '$q', 'AdminLoginPageServices', 'AdminPageServices',
+    'LoginpageService', '$q', 'AdminLoginPageServices', 'AdminPageServices', 'Modals',
     function ($scope, $state, $stateParams, Authentication, RetrieveEmployee, RetrieveInventory, MainpageServices,
-              LoginpageService, $q, AdminLoginPageServices, AdminPageServices) {
+              LoginpageService, $q, AdminLoginPageServices, AdminPageServices, Modals) {
 
         // Init - $scope.admin inherited from AdminController
         $scope.admin.item.newcat = '';
@@ -19,7 +19,11 @@ angular.module('admin').controller('Items.AdminController', ['$scope', '$state',
                 category: category,
                 price: price
             };
-            AdminPageServices.remove($scope, data, 'item');
+            Modals.openDeleteModal().then(function(result) {
+                if (result === 'yes') {
+                    AdminPageServices.remove($scope, data, 'item');
+                }
+            });
         };
         $scope.addItem = function () {
             if ($scope.admin.item.newitemname === undefined ||

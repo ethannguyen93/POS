@@ -1,7 +1,7 @@
 <div class="col-md-4 col-md-offset-4">
-    <div class="passcode" ng-init="logOut();">
+    <div class="passcode" ng-class="{ shaking: failedAttempt }" ng-init="logOut();">
         <input class="input-number" readonly="true" type="password"
-               ng-model="data.password" placeholder="Passcode"/>
+               ng-model="passcode.value" placeholder="Passcode"/>
         <ul class="numpad">
             <a ng-repeat="num in numpad" href ng-click="updatePasscode(num)">{{num}}</a>
             <a href ng-click="verify()"><span class="glyphicon glyphicon-ok"></span></a>

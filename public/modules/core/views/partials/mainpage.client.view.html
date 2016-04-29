@@ -25,8 +25,8 @@
 
 
             </div>
-            <div class="ui-grid-flex-container">
-                <div id="order-grid" ui-grid="data.gridOptions" ui-grid-pagination class="grid" ng-init="data.initOrder(); initFTScrollerGrid('order-grid')"></div>
+            <div class="ui-grid-flex-container display-flex-column">
+                <div id="order-grid" ui-grid="data.gridOptions" ui-grid-pagination ui-grid-auto-resize class="grid" ng-init="data.initOrder(); initFTScrollerGrid('order-grid')"></div>
             </div>
                 <pos-pagination class="flex-item-noflex" page="{{ data.gridApi.pagination.getPage() }}"
                             of="{{ data.gridApi.pagination.getTotalPages() }}"
@@ -41,7 +41,7 @@
                         <div>Print Receipt</div>
                     </button>
                 </div>
-                <div class="flex-column">
+                <div class="flex-column" ng-if="config.SAVE_ORDER_ACTIVE">
                     <button type="button" class="btn-squircle-expand btn-w-icon btn btn-success" ng-click="data.saveOrder()">
                         <div><span class="glyphicon glyphicon-save-file"></span></div>
                         <div>Save Order</div>
@@ -127,7 +127,7 @@
                 </div>
             </div>
         </div>
-        <div class="giftcard-panel flex-panel-content">
+        <div class="giftcard-panel flex-panel-content" ng-if="config.GIFT_CARDS_ACTIVE">
             <div class="panel-heading">
                 Gift card
             </div>
@@ -147,7 +147,7 @@
                 </div>
             </div>
         </div>
-        <div class="giftcard-panel flex-panel-content">
+        <div class="giftcard-panel flex-panel-content" ng-if="config.POINT_CARDS_ACTIVE">
             <div class="panel-heading">
                 Point Card
             </div>

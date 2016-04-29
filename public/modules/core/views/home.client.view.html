@@ -6,15 +6,15 @@
             </div>
             <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
                 <ul class="nav navbar-nav navbar-right" ng-show="inState('core.login')">
-                    <li>
+                    <li ng-if="config.SCHEDULER_ACTIVE">
                         <button ui-sref="core.scheduler" type="button" class="btn btn-default btn-block ng-binding ng-scope ng-click-active">
                             <span class="glyphicon glyphicon-calendar"></span>&nbsp;Scheduler</button>
                     </li>
-                    <li>
+                    <li ng-if="config.POINT_CARDS_ACTIVE">
                         <button ui-sref="core.pointcard" type="button" class="btn btn-default btn-block ng-binding ng-scope ng-click-active">
                             <span class="glyphicon glyphicon-star"></span>&nbsp;Point Cards</button>
                     </li>
-                    <li>
+                    <li ng-if="config.CUSTOMERS_ACTIVE">
                         <button ui-sref="core.customer" type="button" class="btn btn-default btn-block ng-binding ng-scope ng-click-active">
                             <span class="glyphicon glyphicon-folder-open"></span>&nbsp;Customers</button>
                     </li>

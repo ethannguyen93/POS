@@ -1,10 +1,9 @@
 'use strict';
 
 angular.module('admin').controller('Employee.AdminController', ['$scope', '$state', '$stateParams', 'Authentication', 'RetrieveEmployee', 'RetrieveInventory', 'MainpageServices',
-    'LoginpageService', '$q', 'AdminLoginPageServices', 'AdminPageServices', '$modal', '$compile', 'uiCalendarConfig',
-    'RetrieveAppointments', 'FTScroller',
+    'LoginpageService', '$q', 'AdminLoginPageServices', 'AdminPageServices', '$modal', 'Modals',
     function ($scope, $state, $stateParams, Authentication, RetrieveEmployee, RetrieveInventory, MainpageServices,
-              LoginpageService, $q, AdminLoginPageServices, AdminPageServices, $modal) {
+              LoginpageService, $q, AdminLoginPageServices, AdminPageServices, $modal, Modals) {
 
         // Init - $scope.admin inherited from AdminController
         $scope.admin.employee.newemployeename = '';
@@ -111,7 +110,11 @@ angular.module('admin').controller('Employee.AdminController', ['$scope', '$stat
                 passcode: passcode,
                 name: name
             };
-            AdminPageServices.remove($scope, data, 'employee');
+            Modals.openDeleteModal().then(function(result) {
+                if (result === 'yes') {
+                    AdminPageServices.remove($scope, data, 'employee');
+                }
+            });
         };
         $scope.admin.employee.onchange = function () {
             $scope.admin.employee.isError = false;

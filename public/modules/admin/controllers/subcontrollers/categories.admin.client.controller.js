@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('admin').controller('Categories.AdminController', ['$scope', '$state', '$stateParams', 'Authentication', 'RetrieveEmployee', 'RetrieveInventory', 'MainpageServices',
-    'LoginpageService', '$q', 'AdminLoginPageServices', 'AdminPageServices',
+    'LoginpageService', '$q', 'AdminLoginPageServices', 'AdminPageServices', 'Modals',
     function ($scope, $state, $stateParams, Authentication, RetrieveEmployee, RetrieveInventory, MainpageServices,
-              LoginpageService, $q, AdminLoginPageServices, AdminPageServices) {
+              LoginpageService, $q, AdminLoginPageServices, AdminPageServices, Modals) {
         // Init - $scope.admin inherited from AdminController
         $scope.admin.category.newcategoryname = '';
         $scope.admin.category.errorMessage = '';
@@ -14,7 +14,11 @@ angular.module('admin').controller('Categories.AdminController', ['$scope', '$st
             var data = {
                 name: name
             };
-            AdminPageServices.remove($scope, data, 'category');
+            Modals.openDeleteModal().then(function (result) {
+                if (result === 'yes') {
+                    AdminPageServices.remove($scope, data, 'category');
+                }
+            });
         };
         $scope.addCategory = function () {
             if ($scope.admin.category.newcategoryname === undefined || $scope.admin.category.newcategoryname === '') {

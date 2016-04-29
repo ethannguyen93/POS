@@ -31,6 +31,7 @@ body {
 section {
   height: 100%; }
 
+/*----------- Compositional classes -------------*/
 .full-height {
   height: 100%; }
 
@@ -57,6 +58,16 @@ section {
 
 .btn.font-sm {
   font-size: 0.75em; }
+
+.display-flex, .display-flex-row, .display-flex-column {
+  display: flex;
+  display: -webkit-flex; }
+  .display-flex-row {
+    flex-direction: row;
+    -webkit-flex-direction: row; }
+  .display-flex-column {
+    flex-direction: column;
+    -webkit-flex-direction: column; }
 
 .content {
   height: calc(100% - 70px);
@@ -608,8 +619,8 @@ input[type="text"] {
     flex: 1; }
 
 #order-grid {
-  height: 100% !important;
-  min-height: 470px !important; }
+  flex: 1;
+  height: 0px; }
 
 .order-gridview {
   height: 600px;
@@ -772,8 +783,18 @@ input[type="text"] {
   outline: 0 none;
   box-shadow: none; }
 
-/*# sourceMappingURL=core.css.map */
-
 .pointcard-input {
-  width: 100%
-}
+  width: 100%; }
+
+@keyframes shake {
+  from {
+    -webkit-transform: translateX(-20px); }
+  to {
+    -webkit-transform: translateX(20px); } }
+.shaking {
+  animation-duration: 75ms;
+  animation-name: shake;
+  animation-iteration-count: infinite;
+  animation-direction: alternate; }
+
+/*# sourceMappingURL=core.css.map */

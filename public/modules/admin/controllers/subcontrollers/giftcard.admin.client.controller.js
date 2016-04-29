@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('admin').controller('Giftcard.AdminController', ['$scope', '$state', '$stateParams', 'Authentication', 'RetrieveEmployee', 'RetrieveInventory', 'MainpageServices',
-    'LoginpageService', '$q', 'AdminLoginPageServices', 'AdminPageServices',
+    'LoginpageService', '$q', 'AdminLoginPageServices', 'AdminPageServices', 'Modals',
     function ($scope, $state, $stateParams, Authentication, RetrieveEmployee, RetrieveInventory, MainpageServices,
-              LoginpageService, $q, AdminLoginPageServices, AdminPageServices) {
+              LoginpageService, $q, AdminLoginPageServices, AdminPageServices, Modals) {
 
         // Init - $scope.admin inherited from AdminController
         $scope.admin.giftcard.newgc = '';
@@ -11,6 +11,14 @@ angular.module('admin').controller('Giftcard.AdminController', ['$scope', '$stat
         $scope.admin.item.errorMessage = '';
         $scope.admin.item.isError = false;
         AdminPageServices.getAll($scope, 'giftcard');
+
+        $scope.removeGiftcard = function(gcNum) {
+            Modals.openDeleteModal().then(function(result) {
+                if (result === 'yes') {
+                    AdminPageServices.remove($scope, { number: gcNum }, 'giftcard');
+                }
+            });
+        };
 
         $scope.admin.giftcard.gridOptions.onRegisterApi = function (gridApi) {
             $scope.admin.giftcard.gridApi = gridApi;
