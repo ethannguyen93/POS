@@ -2,13 +2,43 @@
 
 // Workflows controller
 angular.module('core').controller('orderCtrl',
-    function ($scope, UserService, $state, $stateParams, $location, $modalInstance, currentUser, RetrieveInventory, $q, $modal) {
+    function ($scope, UserService, $state, $stateParams, $location, $modalInstance, currentUser, 
+              RetrieveInventory, $q, $modal, Config) {
+        $scope.config = Config;
         $scope.data = {
             orders: [],
             view: 'selection',
             isError: false,
             errorMessage: '',
-            ticketNumber: ''
+            ticketNumber: '',
+            searchOptions: ['Ticket Number', 'Customer Name'],
+            selectedOption: 'Customer Name',
+            customerName: '',
+            customerOrders: [],
+            oneAtATime: true
+        };
+        if (!Config.SAVE_ORDER_ACTIVE && !Config.EXISTING_ORDER_ACTIVE){
+            $scope.data.view = 'newOrders';
+        }
+        $scope.searchCustomerOrder = function(){
+            if ($scope.data.customerName !== ''){
+                var body = {
+                    type: 'searchCustomerOrder',
+                    customerName: $scope.data.customerName
+                };
+                RetrieveInventory.load(body, function(response){
+                    _.each(response, function(order){
+                        order._time = moment(order.timeOrderPlaced).format("ddd, MMM Do YYYY, h:mm:ss a");
+                    });
+                    $scope.data.customerOrders = response;
+                });
+            }else{
+                $scope.data.errorMessage = 'Please enter customer name';
+                $scope.data.isError = true;
+            }
+        };
+        $scope.selectCustomerOrder = function(order){
+            $modalInstance.close({'message': 'order', 'data': order});
         };
         $scope.selectOrder = function(id){
             var body = {

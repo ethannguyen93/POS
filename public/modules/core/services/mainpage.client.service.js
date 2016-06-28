@@ -3,6 +3,9 @@
 angular.module('core').factory('MainpageServices', ['RetrieveInventory', 'UserService',
     function (RetrieveInventory, UserService) {
         return {
+            updateTotalCost: function(){
+                
+            },
             updateOrder: function ($scope, type, index) {
                 var self = this;
                 switch (type) {
@@ -105,7 +108,7 @@ angular.module('core').factory('MainpageServices', ['RetrieveInventory', 'UserSe
                     'paymentType': $scope.data.selectedPayment,
                     'orders': $scope.data.orders,
                     'user': UserService.getUser(),
-                    'order': $scope.data.order,
+                    'id': $scope.data.id,
                     'customerName': $scope.data.customerName,
                     'subtotal': $scope.data.subtotal,
                     'tax': $scope.data.tax,

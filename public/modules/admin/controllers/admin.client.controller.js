@@ -3,11 +3,11 @@
 angular.module('admin').controller('AdminController', [
     '$scope', '$state', '$stateParams', 'Authentication', 'RetrieveEmployee', 'RetrieveInventory', 'MainpageServices',
     'LoginpageService', '$q', 'AdminLoginPageServices', 'AdminPageServices', '$modal', '$compile', 'uiCalendarConfig',
-    'RetrieveAppointments', 'FTScroller',
+    'RetrieveAppointments', 'FTScroller', 'Config',
     function ($scope, $state, $stateParams, Authentication, RetrieveEmployee, RetrieveInventory, MainpageServices,
               LoginpageService, $q, AdminLoginPageServices, AdminPageServices, $modal, $compile, uiCalendarConfig,
-              RetrieveAppointments, FTScroller) {
-
+              RetrieveAppointments, FTScroller, Config) {
+        $scope.config = Config;
         /*Admin Main Page*/
         $scope.admin = {
             page: 'setting',

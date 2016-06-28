@@ -1,13 +1,21 @@
-var accountSid = 'ACc6d06b7c7cc18f2b04ca09f823f69a8f';
-var authToken = 'f0b37ac21592628e9f9abd792add153f';
+var config = require('../../../../clientConfig');
+var accountSid = config.accountSid;
+var authToken = config.authToken;
 
 var mongoose = require('mongoose'),
     client = require('twilio')(accountSid, authToken),
     _ = require('lodash'),
     moment = require('moment'),
     nodemailer = require('nodemailer'),
-    xoauth2 = require('xoauth2'),
-    bwipjs = require('bwip-js');
+    xoauth2 = require('xoauth2');
+
+var transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: config.email,
+        pass: config.emailPassword
+    }
+});
 
 module.exports = function (req, res) {
     var connectionDB = mongoose.connection.db;
@@ -50,43 +58,32 @@ module.exports = function (req, res) {
                         _.each(appointmentsPhone, function(a){
                             if (a.customer.phone !== ''){
                                 bulk.find({ _id: mongoose.Types.ObjectId(a._id) }).updateOne( { $set: { sentReminderPhone: 'sent'} } );
-                                var message = 'Hello ' + a.customer.name + ', this is a reminder that your appointment ' +
-                                    'with ... is tomorrow at ' + a.startTime + ' ' + a.startTimeList + '. We hope ' +
-                                    'to see you there.';
-                                /*client.messages.create({
+                                var message = config.SMSMessage(a.customer.name, a.startTime, a.startTimeList);
+                                client.messages.create({
                                     to: a.customer.phone,
-                                    from: "+16475600735",
+                                    from: config.phoneNumber,
                                     body: message
                                 }, function(err, message){
                                     if (err !== null){
                                         console.log(err.message);
                                     }else{
-                                        console.log(Messamessage.sid);
+                                        console.log(message.sid);
                                     }
-                                });*/
-                            }
-                        });
-                        var transporter = nodemailer.createTransport({
-                            service: 'Gmail',
-                            auth: {
-                                user: 'email',
-                                pass: 'password'
+                                });
                             }
                         });
                         console.log(appointmentsEmail);
                         _.each(appointmentsEmail, function(a){
                             if (a.customer.email !== ''){
                                 bulk.find({ _id: mongoose.Types.ObjectId(a._id) }).updateOne( { $set: { sentReminderEmail: 'sent'} } );
-                                /*var message = 'Hello ' + a.customer.name + ', this is a reminder that your appointment ' +
-                                    'with ... is tomorrow at ' + a.startTime + ' ' + a.startTimeList + '. We hope ' +
-                                    'to see you there.';
+                                var message = config.EmailMessage(a.customer.name, a.startTime, a.startTimeList);
                                 console.log(message);
                                 transporter.sendMail({
-                                    from: 'ethannguyen93@gmail.com',
+                                    from: config.email,
                                     to: a.customer.email,
                                     subject: 'Reminder Email',
                                     text: message
-                                });*/
+                                });
                             }
                         });
                         if (appointmentsPhone.length !== 0 || appointmentsEmail.length !== 0){

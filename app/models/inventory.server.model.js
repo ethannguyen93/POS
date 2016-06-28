@@ -44,7 +44,8 @@ var operationMap = {
 	doneOrder: require('./operations/inventory/doneOrder'),
 	getReport: require('./operations/inventory/getReport'),
 	getTicketOrder: require('./operations/inventory/getTicketOrder'),
-	voidOrder: require('./operations/inventory/voidOrder')
+	voidOrder: require('./operations/inventory/voidOrder'),
+	searchCustomerOrder: require('./operations/inventory/searchCustomerOrder')
 };
 
 exports.operationMap = operationMap;

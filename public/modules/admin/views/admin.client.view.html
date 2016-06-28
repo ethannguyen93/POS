@@ -28,7 +28,7 @@
                 </a>
             </li>
             <li>
-                <a href="" ui-sref=".stocks">
+                <a href="" ui-sref=".stocks" ng-if="config.INVENTORY_ACTIVE">
                     <div class="row">
                         <div class="col-md-3"><span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
                         </div>
@@ -46,7 +46,7 @@
                 </a>
             </li>
             <li>
-                <a href="" ui-sref=".giftcard">
+                <a href="" ui-sref=".giftcard" ng-if="config.GIFT_CARDS_ACTIVE">
                     <div class="row">
                         <div class="col-md-3"><span class="glyphicon glyphicon-gift" aria-hidden="true"></span></div>
                         <div class="col-md-9">Giftcard</div>
@@ -54,7 +54,7 @@
                 </a>
             </li>
             <li>
-                <a href="" ui-sref=".pointcard">
+                <a href="" ui-sref=".pointcard" ng-if="config.POINT_CARDS_ACTIVE">
                     <div class="row">
                         <div class="col-md-3"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></div>
                         <div class="col-md-9">Pointcard</div>
@@ -62,7 +62,7 @@
                 </a>
             </li>
             <li>
-                <a href="" ui-sref=".marketing">
+                <a href="" ui-sref=".marketing" ng-if="config.MARKETING_ACTIVE">
                     <div class="row">
                         <div class="col-md-3"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></div>
                         <div class="col-md-9">Marketing</div>
@@ -70,7 +70,7 @@
                 </a>
             </li>
             <li>
-                <a href="" ng-click="showReport()" ui-sref=".reports">
+                <a href="" ui-sref=".reports">
                     <div class="row">
                         <div class="col-md-3"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span></div>
                         <div class="col-md-9">Reports</div>

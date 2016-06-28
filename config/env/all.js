@@ -17,7 +17,8 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
 				'public/lib/eeh-navigation/dist/eeh-navigation.css',
 				'public/lib/angular-ui-grid/ui-grid.min.css',
-				'public/lib/fullcalendar/dist/fullcalendar.css'
+				'public/lib/fullcalendar/dist/fullcalendar.css',
+				'public/lib/components-font-awesome/css/font-awesome.css'
 			],
 			js: [
 				'public/lib/jquery/dist/jquery.min.js',

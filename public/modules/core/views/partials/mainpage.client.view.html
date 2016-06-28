@@ -9,17 +9,15 @@
                 </div>
                 <div class="row">
                     <div class="col-md-4">
-                        <input class="full-width" placeholder="Enter Ticket number" type="text" ng-model="data.ticketNumber">
+                        <input ng-if="config.SAVE_ORDER_ACTIVE" class="full-width" placeholder="Enter Ticket number" type="text" ng-model="data.ticketNumber">
                     </div>
                     <div class="col-md-4">
                         <select class="form-control" ng-options="paymentType for paymentType in data.paymentTypes track by paymentType"
-                                ng-model="data.selectedPayment"
-                                ng-change="data.updateselectedPayment()"></select>
+                                ng-model="data.selectedPayment" ng-change="updateTaxable()"></select>
                     </div>
                     <div class="col-md-4">
                         <select ng-if="data.employees.length > 0" class="form-control" ng-options="employee for employee in data.employees track by employee"
-                                ng-model="data.selectedEmployee"
-                                ng-change="data.updateEmployee()"></select>
+                                ng-model="data.selectedEmployee"></select>
                     </div>
                 </div>
 
@@ -77,14 +75,14 @@
                             <input class="discount" ng-change="applyDiscount()" type="text" ng-model="data.discount" ng-pattern="/^[0-9]{1,2}$/"> % = ${{data.discountPrice.toFixed(2)}}
                         </td>
                         <td ng-hide="data.discountType">
-                            $ <input class="discount" ng-change="applyDiscount()" style="color:black; border-width: 4px;" type="text" ng-model="data.discount" ng-pattern="/^[0-9]+$/">
+                            $ <input class="discount" ng-change="applyDiscount()" style="color:black; border-width: 4px;" type="text" ng-model="data.discount" ng-pattern="/^[0-9]+|[0-9]+\.{1}[0-9]+$/">
                         </td>
                     </tr>
                     <tr>
                         <td>
                             Taxes
                             <div class="slideThree">
-                                <input type="checkbox" value="None" id="slideThree" name="check" checked
+                                <input ng-disabled='data.isCash' type="checkbox" value="None" id="slideThree" name="check" checked
                                        ng-model="data.isTax" ng-change="data.getTax()"
                                 />
                                 <label for="slideThree"></label>

@@ -2,7 +2,17 @@
     <h3 class="modal-title">Finish the payment?</h3>
 </div>
 <div class="modal-body">
-    <h4>Do you want to finish this order?</h4>
+    <h3>Do you want to finish this order?</h3>
+    <div ng-if="data.selectedPayment === 'Cash'">
+        <h3> Subtotal: <b>{{(data.subtotal + data.tax - data.discountPrice).toFixed(2)}}</b></h3>
+        <input class="full-width"
+               placeholder="Enter Cash Amount"
+               type="text"
+               ng-model="cash.amount"
+               ng-pattern="/^[0-9]+|[0-9]+\.{1}[0-9]+$/"
+        >
+        <h3> Change: <b>{{cash.change.toFixed(2)}}</b></h3>
+    </div>
 </div>
 <div class="modal-footer">
     <button class="btn btn-info" ng-click="ok()">Yes</button>

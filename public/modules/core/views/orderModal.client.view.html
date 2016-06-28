@@ -12,14 +12,14 @@
     </div>
     <div ng-switch on="data.view">
         <div class="order-selection"  ng-switch-when="selection">
-            <button type="button" class="btn-squircle btn-w-icon btn btn-success" ng-click="getOrders()">
+            <button ng-if="config.EXISTING_ORDER_ACTIVE" type="button" class="btn-squircle btn-w-icon btn btn-success" ng-click="getOrders()">
                 <div><span class="glyphicon glyphicon-th-large"></span></div>
                 <div>Existing Order</div>
             </button>
             <button type="button" class="btn-squircle btn-w-icon btn btn-success" ng-click="newOrders()">
                 <div><span class="glyphicon glyphicon-pencil"></span></div>
                 <div>New Order</div></button>
-            <button type="button" class="btn-squircle btn-w-icon btn btn-success" ng-click="ticketOrders()">
+            <button ng-if="config.SAVE_ORDER_ACTIVE" type="button" class="btn-squircle btn-w-icon btn btn-success" ng-click="ticketOrders()">
                 <div><span class="glyphicon glyphicon-list-alt"></span></div>
                 <div>Ticket Order</div></button>
         </div>
@@ -39,15 +39,65 @@
         </div>
         <div ng-switch-when="ticketOrders">
             <div class="row margin-around">
-                <div class="col-md-9">
-                    <input type="text" class="form-control full-width"  placeholder="Enter ticket number" ng-model="data.ticketNumber" ng-change="reset()">
+                <div class="row row-top-bottom">
+                    <div class="col-md-3">
+                        <select ng-options="option for option in data.searchOptions"
+                                ng-model="data.selectedOption"></select>
+                    </div>
+                </div>
+                <div class="row row-top-bottom" ng-switch on="data.selectedOption">
+                    <div class="col-md-12 row-top-bottom" ng-switch-when="Ticket Number">
+                        <input type="text" class="form-control full-width"  placeholder="Enter ticket number" ng-model="data.ticketNumber" ng-change="reset()">
+                    </div>
+                    <div class="col-md-12" ng-switch-when="Customer Name">
+                        <div class="row col-md-12 row-top-bottom">
+                            <input type="text" class="form-control" placeholder="Enter customer name" ng-model="data.customerName" ng-change="reset()">
+                            <button class="btn btn-default" ng-click="searchCustomerOrder()">Search</button>
+                        </div>
+                        <div class="row col-md-12 row-top-bottom">
+                            <uib-accordion close-others="true">
+                                <uib-accordion-group ng-repeat="order in data.customerOrders">
+                                    <uib-accordion-heading>
+                                        <div class="col-md-12">
+                                            Order number {{order.index}} - Date: {{order._time}}
+                                        </div>
+                                        <div class="col-md-12" ng-show="order.isPaid">
+                                            <p class="text-success isPaid">Paid</p>
+                                        </div>
+                                        <div class="col-md-12" ng-hide="order.isPaid">
+                                            <p class="text-danger isPaid">Unpaid</p>
+                                        </div>
+                                    </uib-accordion-heading>
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th class="col-md-6 text-center">Item name</th>
+                                                <th class="col-md-3 text-center">Price</th>
+                                                <th class="col-md-3 text-center">Quantity</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in order.orders">
+                                                <td class="text-center">{{item.name}}</td>
+                                                <td class="text-center">{{item.price.toFixed(2)}}</td>
+                                                <td class="text-center">{{item.quantity}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="col-md-12 text-center" ng-hide="order.isPaid">
+                                        <button class="text-center btn btn-default btn-sm" ng-click="selectCustomerOrder(order)">Select Order</button>
+                                    </div>
+                                </uib-accordion-group>
+                            </uib-accordion>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-default" ng-click="back()" ng-show="data.view === 'existingOrders' || data.view === 'newOrders' || data.view === 'ticketOrders'">Back</button>
+    <button class="btn btn-default" ng-if="config.SAVE_ORDER_ACTIVE || config.EXISTING_ORDER_ACTIVE" ng-click="back()" ng-show="data.view === 'existingOrders' || data.view === 'newOrders' || data.view === 'ticketOrders'">Back</button>
     <button class="btn btn-default" ng-click="cancel()">Cancel</button>
     <button class="btn btn-default" ng-click="done()" ng-show="data.view === 'newOrders'">Done</button>
     <button class="btn btn-default" ng-click="getTicketOrder()" ng-show="data.view === 'ticketOrders'">Done</button>

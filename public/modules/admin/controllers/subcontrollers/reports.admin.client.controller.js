@@ -1,13 +1,14 @@
 'use strict';
 
 angular.module('admin').controller('Reports.AdminController', ['$scope', '$state', '$stateParams', 'Authentication', 'RetrieveEmployee', 'RetrieveInventory', 'MainpageServices',
-    'LoginpageService', '$q', 'AdminLoginPageServices', 'AdminPageServices', '$modal',
+    'LoginpageService', '$q', 'AdminLoginPageServices', 'AdminPageServices', '$modal', 'Config',
     function ($scope, $state, $stateParams, Authentication, RetrieveEmployee, RetrieveInventory, MainpageServices,
-              LoginpageService, $q, AdminLoginPageServices, AdminPageServices, $modal) {
-
+              LoginpageService, $q, AdminLoginPageServices, AdminPageServices, $modal, Config) {
+        $scope.exportType = ['PDF', 'CSV'];
+        $scope.exportTypeSelected = 'PDF';
         // Init - $scope.admin inherited from AdminController
         $scope.admin.report.pdf = undefined;
-
+        $scope.config = Config;
         $scope.selectCustomer = function () {
             $scope.selectCustomerModal().then(function (customer) {
                 if (customer !== undefined) {
@@ -57,7 +58,8 @@ angular.module('admin').controller('Reports.AdminController', ['$scope', '$state
                 'itemBarcode': $scope.admin.report.itemBarcode,
                 'customerID': $scope.admin.report.customer.id,
                 'employeeName': $scope.admin.report.selectedEmployee,
-                date: $scope.admin.report.date
+                date: $scope.admin.report.date,
+                exportType: $scope.exportTypeSelected
             };
             console.log('generating report');
             $scope.admin.report.pdf = undefined;

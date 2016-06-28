@@ -85,10 +85,24 @@ angular.module('core').factory('Modals', ['$q', '$modal', 'UserService',
             });
         }
 
-        function _openDoneOrderModal() {
-            return _openGenericModal({ templateUrl: 'modules/core/views/doneOrderModal.client.view.html',
-                controller: 'ModalInstanceCtrl'
+        function _openDoneOrderModal(data) {
+            var deferred = $q.defer();
+            var editorInstance = $modal.open({
+                animation: true,
+                windowClass: 'modal-fullwindow',
+                templateUrl: 'modules/core/views/doneOrderModal.client.view.html',
+                controller: 'doneOrderCtrl',
+                resolve: {
+                    data: function(){
+                        return data;
+                    }
+                }
+
             });
+            editorInstance.result.then(function (bundle) {
+                deferred.resolve(bundle);
+            });
+            return deferred.promise;
         }
 
         // Modal which shows a Notification
@@ -126,6 +140,14 @@ angular.module('core').factory('Modals', ['$q', '$modal', 'UserService',
         }
 
         // Modal for Logout Confirmation
+        function _openSaveOrderModal() {
+            return _openGenericModal({
+                templateUrl: 'modules/core/views/modal/saveOrderModal.client.view.html',
+                controller: 'deleteModalCtrl'
+            });
+        }
+
+        // Modal for Logout Confirmation
         function _openLogoutModal() {
             var deferred = $q.defer();
             var editorInstance = $modal.open({
@@ -140,6 +162,25 @@ angular.module('core').factory('Modals', ['$q', '$modal', 'UserService',
             return deferred.promise;
         }
 
+        // Modal for Printing Message
+        function _printingModal(data) {
+            var deferred = $q.defer();
+            var printingInstance = $modal.open({
+                animation: true,
+                windowClass: 'modal-fullwindow',
+                templateUrl: 'modules/core/views/modal/printingModal.client.view.html',
+                controller: 'printingCtrl',
+                resolve: {
+                    data: function () {
+                        return data;
+                    }
+                }
+            });
+            printingInstance.result.then(function (response) {
+                deferred.resolve(response);
+            });
+            return deferred.promise;
+        }
         // Public API
         return {
             openOrderModal: _openOrderModal,
@@ -149,12 +190,15 @@ angular.module('core').factory('Modals', ['$q', '$modal', 'UserService',
             openNotificationModal: _openNotificationModal,
             openDoneOrderModal: _openDoneOrderModal,
             openLogoutModal: _openLogoutModal,
+            openSaveOrderModal: _openSaveOrderModal,
 
             openPointCardModal: _openPointCardModal,
             openRedeemPointCardModal: _openRedeemPointCardModal,
 
             openBuyGiftCardModal: _openBuyGiftCardModal,
             openUseGiftCardModal: _openUseGiftCardModal,
-            openCheckBalanceModal: _openCheckBalanceModal
+            openCheckBalanceModal: _openCheckBalanceModal,
+
+            printingModal: _printingModal
         }
     }]);

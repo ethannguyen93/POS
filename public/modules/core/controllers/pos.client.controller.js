@@ -4,12 +4,13 @@
 angular.module('core').controller('POSController', [
 	'$scope', '$state', 'Authentication', 'POSData', 'UserService', 'RetrieveEmployee', 'RetrieveInventory', 'MainpageServices',
 	'LoginpageService', '$q', 'AdminLoginPageServices', 'AdminPageServices', '$compile', 'uiCalendarConfig',
-	'RetrieveAppointments', 'FTScroller', 'hidScanner', 'RetrievePointcard', 'RetrieveStock', 'GUID', 'Modals',
+	'RetrieveAppointments', 'FTScroller', 'hidScanner', 'RetrievePointcard', 'RetrieveStock', 'GUID', 'Modals', 'Config',
 	function(
 		$scope, $state, Authentication, POSData, UserService, RetrieveEmployee, RetrieveInventory, MainpageServices,
 		LoginpageService, $q, AdminLoginPageServices, AdminPageServices, $compile, uiCalendarConfig,
-		RetrieveAppointments, FTScroller, hidScanner, RetrievePointcard, RetrieveStock, GUID, Modals
+		RetrieveAppointments, FTScroller, hidScanner, RetrievePointcard, RetrieveStock, GUID, Modals, Config
 	) {
+		$scope.config = Config;
 		/*User Main Page*/
 		$scope.data = POSData.init();
 
@@ -114,7 +115,7 @@ angular.module('core').controller('POSController', [
 						break;
 					case 'order':
 						$scope.data.index = selectedItem.data.index;
-						$scope.data.order = selectedItem.data._id;
+						$scope.data.id = selectedItem.data._id;
 						$scope.data.orders = selectedItem.data.orders;
 						$scope.data.customerName = selectedItem.data.customerName;
 						$scope.data.customerID = selectedItem.data.customerID;
@@ -129,7 +130,7 @@ angular.module('core').controller('POSController', [
 				}
 			});
 		}
-
+		
 		$scope.$watch("data.subtotal", function(newValue, oldValue) {
 			if (newValue !== undefined && oldValue !== undefined){
 				if ($scope.data.discount !== undefined && $scope.data.discount !== ''){
@@ -284,12 +285,16 @@ angular.module('core').controller('POSController', [
 		};
 
 		$scope.data.saveOrder = function () {
-			MainpageServices.saveOrder($scope);
-			$scope.logOut();
+			Modals.openSaveOrderModal().then(function(result) {
+				if (result === 'yes') {
+					MainpageServices.saveOrder($scope);
+					$scope.logOut();
+				}
+			});
 		};
-
+		
 		$scope.data.doneOrder = function () {
-			Modals.openDoneOrderModal().then(function(selectedItem){
+			Modals.openDoneOrderModal($scope.data).then(function(selectedItem){
 				var server = {'name' : ''};
 				if ($scope.data.selectedEmployee === undefined || $scope.data.selectedEmployee === ''){
 					server = UserService.getUser();
@@ -299,7 +304,7 @@ angular.module('core').controller('POSController', [
 				if (selectedItem === 'yes'){
 					var body = {
 						'type': 'doneOrder',
-						'order': $scope.data.order,
+						'id': $scope.data.id,
 						'orders': $scope.data.orders,
 						'user': server,
 						'customerName': $scope.data.customerName,
@@ -318,33 +323,7 @@ angular.module('core').controller('POSController', [
 		};
 
 		$scope.data.printReceipt = function () {
-			var server = {'name' : ''};
-			if ($scope.data.selectedEmployee === undefined || $scope.data.selectedEmployee === ''){
-				server = UserService.getUser();
-			}else{
-				server = {'name' : $scope.data.selectedEmployee};
-			}
-			var body = {
-				'type': 'printReceipt',
-				'id': $scope.data.order,
-				'order': $scope.data.index,
-				'orders': $scope.data.orders,
-				'user': server,
-				'actualEmployee': UserService.getUser(),
-				'customerName': $scope.data.customerName,
-				'subtotal': $scope.data.subtotal,
-				'tax': $scope.data.tax,
-				'paymentType': $scope.data.selectedPayment,
-				'discount': $scope.data.discount,
-				'discountPrice': $scope.data.discountPrice,
-				'customerID': $scope.data.customerID,
-				'ticketNumber': $scope.data.ticketNumber
-			};
-			RetrieveInventory.load(body, function(response){
-				debugger;
-				console.log(response);
-				$scope.data.order = response[0];
-			});
+			Modals.printingModal($scope.data)
 		};
 
 		$scope.applyDiscount = function(){
@@ -403,6 +382,17 @@ angular.module('core').controller('POSController', [
 				})
 			}
 		});
+
+		$scope.updateTaxable = function () {
+			if ($scope.data.selectedPayment !== 'Cash') {
+				$scope.data.isCash = true;
+				$scope.data.isTax = true;
+				$scope.data.getTax();
+			} else {
+				$scope.data.isCash = false;
+			}
+		};
+
 		/******************************************************************************************************/
 		/*Scroller Initialization*/
 		$scope.initFTScroller = FTScroller.initFTScroller;

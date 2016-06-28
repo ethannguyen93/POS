@@ -2,8 +2,11 @@ var mongoose = require('mongoose'),
     _ = require('lodash'),
     PdfPrinter = require('pdfmake'),
     fs = require('fs'),
-    moment = require('moment');
+    moment = require('moment'),
+    json2csv = require('json2csv'),
+    Q = require('Q');
 var PDFFile = './public/reports/reports.pdf';
+var CSVFile = './public/reports/reports.csv';
 
 module.exports = function (req, res) {
     var fonts = {
@@ -56,8 +59,8 @@ module.exports = function (req, res) {
         } else if (req.body.reportType === 'checkGiftcard') {
             var regex = 'Giftcard ' + req.body.giftcardNum;
             queryBody = {
-                $query: { isPaid: true, 'orders.name': new RegExp(regex)},
-                $orderBy: {timeOrderPlace: 1}
+                isPaid: true,
+                'orders.name': {$regex: new RegExp(regex)}
             };
         } else if (req.body.reportType === 'EmployeeReportDaily'){
             queryBody = {
@@ -102,6 +105,10 @@ module.exports = function (req, res) {
         } else if (req.body.reportType === 'InventoryReport'){
             queryBody = {
                 itemBarcode: parseInt(req.body.itemBarcode)
+            };
+        } else if (req.body.reportType === 'GetAllOrders'){
+            queryBody = {
+                todayDate : {$exists: false}
             };
         }else{
             queryBody = {
@@ -160,6 +167,38 @@ module.exports = function (req, res) {
                             var paymentType = (order.paymentType) ? order.paymentType : '';
                             o.push(paymentType);
                             report.push(o);
+                        }
+
+                        function generateAllOrders(order) {
+                            _.each(order.orders, function(item) {
+                                var o = [];
+                                o.push(order._id);
+                                //employee
+                                o.push(order.employee.name);
+                                var isPaid = (order.isPaid) ? 'yes' : 'no';
+                                o.push(isPaid);
+                                //time
+                                var time = moment(order.timeOrderPlaced).format("MMM-DD-YYYY HH:mm");
+                                o.push(time);
+                                //customer name
+                                o.push(order.customerName);
+                                var paymentType = (order.paymentType) ? order.paymentType : '';
+                                o.push(paymentType);
+                                var discountPrice = (order.discountPrice !== undefined) ? order.discountPrice: 0;
+                                o.push('$ -' + (discountPrice).toFixed(2));
+                                o.push('$' + (order.tax).toFixed(2));
+                                o.push('$' + (order.subtotal + order.tax - discountPrice).toFixed(2));
+                                o.push(order.ticketNumber);
+                                o.push(order.barcode);
+                                o.push(item.id);
+                                o.push(item.name);
+                                o.push(item.price);
+                                o.push(item.quantity);
+                                o.push(item.barcode);
+                                o.push(item.isGiftcard);
+                                o.push(item.isPointcard);
+                                report.push(o);
+                            });
                         }
 
                         function generateReportRegular(order) {
@@ -247,6 +286,11 @@ module.exports = function (req, res) {
                             o.push(paymentType);
                             report.push(o);
                         }
+                        function addAllContent(){
+                            _.each(orders, generateAllOrders);
+                            tableCols = ['orderId', 'Employee', 'isPaid?' ,'Time Order Placed', 'Customer', 'Payment Type', 'Discount', 'Tax', 'Total', 'Ticket Number',
+                            'Order barcode' , 'itemId' , 'Item Name' , 'Item Price' , 'Item Quantity' , 'Item Barcode' , 'Is Item Giftcard?' , 'Is Item Pointcard?'];
+                        };
                         function addRegularContent(){
                             _.each(orders, generateReportRegular);
                             tableCols = ['Employee', 'isPaid?' ,'Time Paid', 'Customer', 'Subtotal', 'Giftcard', 'Pointcard', 'Discount', 'Tax', 'Total', 'PaymentType'];
@@ -256,6 +300,8 @@ module.exports = function (req, res) {
                             var sumDiscount = 0;
                             var sumTotal = 0;
                             var sumTax = 0;
+                            var sumCash = 0;
+                            var sumOther = 0;
                             _.each(report,function(item){
                                 //remove $ sign then add new total
                                 var subtotal = parseFloat(item[tableCols.indexOf('Subtotal')].substring(1));
@@ -270,6 +316,11 @@ module.exports = function (req, res) {
                                 sumDiscount += discount;
                                 sumTax += tax;
                                 sumTotal += total;
+                                if (item[tableCols.indexOf('PaymentType')] === 'Cash') {
+                                    sumCash += total
+                                } else {
+                                    sumOther += total;
+                                }
                             });
                             sumSubtotal = '$' + sumSubtotal.toFixed(2);
                             sumGiftcard = '$' + sumGiftcard.toFixed(2);
@@ -277,7 +328,11 @@ module.exports = function (req, res) {
                             sumPointcard = '$' + sumPointcard.toFixed(2);
                             sumTotal = '$' + sumTotal.toFixed(2);
                             sumTax = '$' + sumTax.toFixed(2);
+                            sumCash = '$' + sumCash.toFixed(2);
+                            sumOther = '$' + sumOther.toFixed(2);
                             report.push(['','', '','Total:', sumSubtotal, sumGiftcard, sumPointcard, sumDiscount, sumTax, sumTotal, '']);
+                            report.push(['','', '','Total Cash:', '', '', '', '', '', sumCash, '']);
+                            report.push(['','', '','Total Other:', '', '', '', '', '', sumOther, '']);
                         };
                         function addCustomerContent(){
                             _.each(orders, generateCustomerReport);
@@ -287,6 +342,8 @@ module.exports = function (req, res) {
                             var sumDiscount = 0;
                             var sumTotal = 0;
                             var sumTax = 0;
+                            var sumCash = 0;
+                            var sumOther = 0;
                             _.each(report,function(item){
                                 //remove $ sign then add new total
                                 var subtotal = parseFloat(item[tableCols.indexOf('Subtotal')].substring(1));
@@ -299,13 +356,22 @@ module.exports = function (req, res) {
                                 sumDiscount += discount;
                                 sumTax += tax;
                                 sumTotal += total;
+                                if (item[tableCols.indexOf('PaymentType')] === 'Cash') {
+                                    sumCash += total
+                                } else {
+                                    sumOther += total;
+                                }
                             });
                             sumSubtotal = '$' + sumSubtotal.toFixed(2);
                             sumGiftcard = '$' + sumGiftcard.toFixed(2);
                             sumDiscount = '$' + sumDiscount.toFixed(2);
                             sumTotal = '$' + sumTotal.toFixed(2);
                             sumTax = '$' + sumTax.toFixed(2);
+                            sumCash = '$' + sumCash.toFixed(2);
+                            sumOther = '$' + sumOther.toFixed(2);
                             report.push(['','','Total:', sumSubtotal, sumGiftcard, sumDiscount, sumTax, sumTotal, '']);
+                            report.push(['','','Total Cash:', '', '', '', '', sumCash, '']);
+                            report.push(['','','Total Other:', '', '', '', '', sumOther, '']);
                         }
                         function addEmployeeContent(){
                             _.each(orders, generateEmployeeReport);
@@ -315,6 +381,8 @@ module.exports = function (req, res) {
                             var sumDiscount = 0;
                             var sumTotal = 0;
                             var sumTax = 0;
+                            var sumCash = 0;
+                            var sumOther = 0;
                             _.each(report,function(item){
                                 //remove $ sign then add new total
                                 var subtotal = parseFloat(item[tableCols.indexOf('Subtotal')].substring(1));
@@ -327,13 +395,22 @@ module.exports = function (req, res) {
                                 sumDiscount += discount;
                                 sumTax += tax;
                                 sumTotal += total;
+                                if (item[tableCols.indexOf('PaymentType')] === 'Cash') {
+                                    sumCash += total
+                                } else {
+                                    sumOther += total;
+                                }
                             });
                             sumSubtotal = '$' + sumSubtotal.toFixed(2);
                             sumGiftcard = '$' + sumGiftcard.toFixed(2);
                             sumDiscount = '$' + sumDiscount.toFixed(2);
                             sumTotal = '$' + sumTotal.toFixed(2);
                             sumTax = '$' + sumTax.toFixed(2);
+                            sumCash = '$' + sumCash.toFixed(2);
+                            sumOther = '$' + sumOther.toFixed(2);
                             report.push(['','','Total:', sumSubtotal, sumGiftcard, sumDiscount, sumTax, sumTotal, '']);
+                            report.push(['','','Total Cash:', '', '', '', '', sumCash, '']);
+                            report.push(['','','Total Other:', '', '', '', '', sumOther, '']);
                         }
                         if (req.body.reportType){
                             switch (req.body.reportType){
@@ -347,6 +424,9 @@ module.exports = function (req, res) {
                                     remainder = remainder.toString();
                                     report.push(['','','Remaining:', remainder]);
                                     break;
+                                case 'GetAllOrders' :
+                                    addAllContent();
+                                    break;
                                 case 'DailyReport' :
                                     addRegularContent();
                                     break;
@@ -354,7 +434,9 @@ module.exports = function (req, res) {
                                 case 'MonthlyReport':
                                 case 'YearlyReport':
                                     addRegularContent();
-                                    report = [_.last(report)];
+                                    if (req.body.exportType === 'PDF'){
+                                        report = [_.last(report)];
+                                    }
                                     break;
                                 case 'CustomerReport':
                                     addCustomerContent();
@@ -378,18 +460,28 @@ module.exports = function (req, res) {
                                 case 'EmployeeReportMonthly':
                                 case 'EmployeeReportYearly':
                                     addEmployeeContent();
-                                    report = [_.last(report)];
+                                    if (req.body.exportType === 'PDF'){
+                                        report = [_.last(report)];
+                                    }
                                     break;
                             }
                         }
-                        saveToPDF(PDFFile, report, tableCols);
-                        res.jsonp([{"status": "success", "pdf": "/reports/reports.pdf"}])
+                        if (req.body.exportType === 'PDF' && req.body.reportType !== 'GetAllOrders'){
+                            saveToPDF(PDFFile, report, tableCols).then(function(){
+                                res.jsonp([{"status": "success", "pdf": "/reports/reports.pdf"}])
+                            });
+                        }else{
+                            saveToCSV(CSVFile, report, tableCols).then(function(){
+                                res.jsonp([{"status": "success", "pdf": "/reports/reports.csv"}])
+                            });
+                        }
                     }
                 });
             }
         })
     });
     var saveToPDF = function (filename, report, tableCols) {
+        var deferred = Q.defer();
         var printer = new PdfPrinter(fonts);
 
         var title = (req.body.reportType === 'checkGiftcard') ?  ('Giftcard ' + req.body.giftcardNum) : (moment(givenDate).format("MMM-DD-YYYY HH:mm")) ;
@@ -414,5 +506,28 @@ module.exports = function (req, res) {
         var pdfDoc = printer.createPdfKitDocument(docDefinition);
         pdfDoc.pipe(fs.createWriteStream(filename));
         pdfDoc.end();
+        deferred.resolve();
+        return deferred.promise;
+    };
+    var saveToCSV = function (filename, report, tableCols){
+        var deferred = Q.defer();
+        var data = [];
+        _.each(report, function(r){
+            var detail = {};
+            for (var i = 0; i < tableCols.length; i++){
+                detail[tableCols[i]] = r[i];
+            }
+            data.push(detail);
+        });
+        data = _.without(data, _.last(data));
+        json2csv({ data: data, fields: tableCols }, function(err, csv) {
+            if (err) console.log(err);
+            fs.writeFile(filename, csv, function(err) {
+                if (err) throw err;
+                console.log('file saved');
+                deferred.resolve();
+            });
+        });
+        return deferred.promise;
     }
 };

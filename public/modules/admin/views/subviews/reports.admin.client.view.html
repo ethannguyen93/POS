@@ -30,13 +30,14 @@
                                 <option value="WeeklyReport">Weekly Report</option>
                                 <option value="MonthlyReport">Monthly Report</option>
                                 <option value="YearlyReport">Yearly Report</option>
-                                <option value="InventoryReport">Inventory Report</option>
+                                <option ng-if="config.INVENTORY_ACTIVE" value="InventoryReport">Inventory Report</option>
                                 <option value="EmployeeReportDaily">Employee Report Daily</option>
                                 <option value="EmployeeReportWeekly">Employee Report Weekly</option>
                                 <option value="EmployeeReportMonthly">Employee Report Monthly</option>
                                 <option value="EmployeeReportYearly">Employee Report Yearly</option>
                                 <option value="CustomerReport">Customer Report</option>
                                 <option value="checkGiftcard">Giftcard Transaction</option>
+                                <option value="GetAllOrders">All Orders</option>
                             </select>
                         </div>
                         <div ng-show="admin.report.selectedOption==='checkGiftcard'" class="col-md-3 justify-center">
@@ -69,6 +70,19 @@
                     <div class="row">
                         <div class="col-md-12">
                             &nbsp;
+                        </div>
+                    </div>
+                    <div ng-show="config.CSV_REPORT">
+                        <div class="row">
+                            <p class="col-md-2 col-md-offset-4">Please select export type:</p>
+                            <select class="col-md-2"
+                                    ng-options="type for type in exportType"
+                                    ng-model="exportTypeSelected"></select>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                &nbsp;
+                            </div>
                         </div>
                     </div>
                     <div class="row">

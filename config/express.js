@@ -18,6 +18,7 @@ var fs = require('fs'),
     mongoStore = require('connect-mongo')({
         session: session
     }),
+    clientConfig = require('../clientConfig'),
     flash = require('connect-flash'),
     config = require('./config'),
     consolidate = require('consolidate'),
@@ -147,8 +148,8 @@ module.exports = function (db) {
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'ulestatestbest@gmail.com',
-            pass: 'Ulesta123'
+            user: clientConfig.email,
+            pass: clientConfig.emailPassword
         },
         logger: true,
         debug: true

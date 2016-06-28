@@ -189,57 +189,8 @@ module.exports = function (req, res) {
     }).then(function(){
         return updateStock();
     }).then(function(){
-        connectionDB.collection('orders', function (err, collection) {
-            if (req.body.order === 0 || req.body.order === ''){
-                util.getIndexFromOrders().then(function(index) {
-                    collection.insert({
-                        employee: req.body.user,
-                        orders: req.body.orders,
-                        isPaid: true,
-                        timeOrderPlaced: new Date(),
-                        'timePaid': new Date(),
-                        index: index+1,
-                        customerName: req.body.customerName,
-                        subtotal: req.body.subtotal,
-                        tax: req.body.tax,
-                        isTax: req.body.isTax,
-                        discountPrice: req.body.discountPrice,
-                        customerID: req.body.customerID,
-                        paymentType: req.body.paymentType
-                    }, function(err, result){
-                        if (err) {
-                            console.log(err)
-                        } else {
-                            res.jsonp([result]);
-                        }
-                    })
-                });
-            }else{
-                collection.update(
-                    {
-                        'isPaid': false,
-                        '_id': mongoose.Types.ObjectId(req.body.order.toString())
-                    },
-                    {
-                        $set: {
-                            employee: req.body.user,
-                            'isPaid': true,
-                            'timePaid': new Date(),
-                            orders: req.body.orders,
-                            subtotal: req.body.subtotal,
-                            tax: req.body.tax,
-                            discount: req.body.discount,
-                            discountPrice: req.body.discountPrice,
-                            paymentType: req.body.paymentType,
-                            ticketNumber: req.body.ticketNumber
-                        }
-                    },
-                    function(err, result){
-                        console.log(result);
-                        res.jsonp();
-                    }
-                )
-            }
+        util.saveOrder(req, true).then(function(result){
+            res.jsonp(result);
         });
     });
 };

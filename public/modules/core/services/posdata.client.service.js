@@ -3,18 +3,19 @@
 angular.module('core').factory('POSData', [function() {
     // Default Boilerplate
     var _default = {
-        paymentTypes: ['Cash', 'DebitCard', 'CreditCard'],
+        paymentTypes: ['Cash', 'DebitCard', 'CreditCard', 'Giftcard'],
         selectedPayment: 'Cash',
         ticketNumber: '',
         discount: '',
         discountPrice: 0,
         password : '',
-        order: 0,
+        id: 0,
         index: 0,
         orders: [],
         categories: [],
         items: [],
         subtotal: 0,
+        isCash: false,
         tax: 0,
         isTax: true,
         //if discountType is true: % else $

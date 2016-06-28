@@ -270,6 +270,9 @@ angular.module('scheduler').controller('SchedulerController', [ '$scope', '$stat
             _.each($scope.scheduler.hourList, function(h){
                 h.disable = {start: false, end: false};
             });
+            uiCalendarConfig.calendars['myCalendar'].fullCalendar('changeView','agendaDay');
+            uiCalendarConfig.calendars['myCalendar'].fullCalendar('gotoDate', date.data.startDate);
+
         };
         /* alert on Drop */
         $scope.alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view){

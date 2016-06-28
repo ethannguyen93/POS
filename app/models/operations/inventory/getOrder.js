@@ -6,7 +6,7 @@ module.exports = function (req, res) {
     console.log(req.body.currentUser);
     connectionDB.collection('orders', function (err, collection) {
         collection.find({
-            'employee.name': req.body.currentUser.name,
+            //'employee.name': req.body.currentUser.name,
             'isPaid': false
         }, function(err, cursor){
             if (err) {

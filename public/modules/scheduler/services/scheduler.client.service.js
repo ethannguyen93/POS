@@ -41,25 +41,27 @@ angular.module('scheduler').factory('SchedulerServices', [ 'uiCalendarConfig', '
                         var endDate = new Date(appointment.endDate);
                         self.setHours(startDate, appointment.startTime, appointment.startTimeList);
                         self.setHours(endDate, appointment.endTime, appointment.endTimeList);
-                        events.push({
-                            title: appointment.assignedEmployee.name + ' - ' + appointment.customer.name,
-                            start: startDate,
-                            end: endDate,
-                            data: {
-                                id: appointment._id,
-                                customer: appointment.customer,
-                                startTime: appointment.startTime,
-                                startTimeList: appointment.startTimeList,
-                                startDate: startDate,
-                                endTime: appointment.endTime,
-                                endTimeList: appointment.endTimeList,
-                                endDate: endDate,
-                                assignedEmployee: appointment.assignedEmployee,
-                                note: appointment.note,
-                                sendSMS: appointment.sendSMS,
-                                sendEmail: appointment.sendEmail
-                            }
-                        });
+                        if (appointment.assignedEmployee){
+                            events.push({
+                                title: appointment.assignedEmployee.name + ' - ' + appointment.customer.name,
+                                start: startDate,
+                                end: endDate,
+                                data: {
+                                    id: appointment._id,
+                                    customer: appointment.customer,
+                                    startTime: appointment.startTime,
+                                    startTimeList: appointment.startTimeList,
+                                    startDate: startDate,
+                                    endTime: appointment.endTime,
+                                    endTimeList: appointment.endTimeList,
+                                    endDate: endDate,
+                                    assignedEmployee: appointment.assignedEmployee,
+                                    note: appointment.note,
+                                    sendSMS: appointment.sendSMS,
+                                    sendEmail: appointment.sendEmail
+                                }
+                            });
+                        }
                     });
                 });
             },
